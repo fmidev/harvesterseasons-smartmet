@@ -1,0 +1,11 @@
+# This file is used by the "filesys2smartmet" program. It defines the producer
+# information when the content information is read from the file system.
+#
+# FIELDS:
+# 1. Producer abbr
+# 2. Producer name
+# 3. Producer title
+# 4. Producer desciption
+#
+ERA5;ERA5;ERA5;Era5 data from ECMWF
+EC-SF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF

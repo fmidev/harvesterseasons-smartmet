@@ -1,0 +1,128 @@
+// Options
+
+accesslogdir = "/var/log/smartmet/";
+port = 8080;
+
+slowpool:
+{
+  maxthreads = 15;
+  maxrequeuesize = 1000;
+};
+
+fastpool:
+{
+  maxthreads = 15;
+  maxrequeuesize = 1000;
+};
+
+lazylinking = true;
+defaultlogging = true;
+debug = true;
+verbose = true;
+
+engines:
+{
+  sputnik:
+  {
+    // Sputnik is required in order to to get the nice 
+    // "SmartMet Server" -hello from "localhost/"
+    configfile = "engines/sputnik.conf";
+    disabled = false;
+  };
+  contour:
+  {
+    // Contouring is required by WFS plugin
+    configfile = "engines/contour.conf";
+    disabled = false;
+  };
+  observation:
+  {
+    configfile = "engines/observation.conf"
+    // Dont be fooled though. The package itself is required to be installed
+    // smartmet-engine-observation
+    disabled = true;
+  };
+  geonames:
+  {
+    // timeseries-plugin requires geonames-engine to be available
+    //
+    // EXCEPTION Geonames engine unavailable
+    // * Function   : virtual void SmartMet::Plugin::TimeSeries::Plugin::init()
+    // * Location   : timeseries/Plugin.cpp:4529
+    configfile = "engines/geonames.conf";
+    disabled = false;
+  };
+  gis:
+  {
+    // timeseries-plugin requires gis-engine to be available
+    //
+    // EXCEPTION Gis engine unavailable
+    // * Function   : virtual void SmartMet::Plugin::TimeSeries::Plugin::init()
+    // * Location   : timeseries/Plugin.cpp:4535
+    configfile = "engines/gis.conf";
+    disabled = false;
+  };
+  querydata:
+  {
+    // timeseries-plugin requires querydata-engine to be available
+    //
+    // EXCEPTION Querydata engine unavailable
+    //  * Function   : virtual void SmartMet::Plugin::TimeSeries::Plugin::init()
+    //  * Location   : timeseries/Plugin.cpp:4544 
+    configfile = "engines/querydata.conf";
+    disabled = false;
+  };
+  grid:
+  {
+    configfile = "engines/grid-engine.conf";
+    disabled = false;
+  };
+  
+};
+
+plugins:
+{
+  admin:
+  {
+    configfile = "plugins/admin.conf";
+    disabled = false;
+  };
+  backend:
+  {
+    configfile = "plugins/backend.conf";
+    disabled = false;
+  };
+  download:
+  {
+    configfile = "plugins/download.conf";
+    disabled = true;
+  };
+  timeseries:
+  {
+    configfile = "plugins/timeseries.conf";
+    disabled = false;
+  };
+  wms:
+  {
+    configfile = "plugins/wms.conf";
+    disabled = false;
+  };
+  wfs:
+  {
+    configfile = "plugins/wfs.conf";
+    disabled = false;
+  };
+  grid-gui:
+  {
+    configfile = "plugins/grid-gui.conf";
+    disabled = false;
+  };
+  grid-admin:
+  {
+    disabled   = false;
+    configfile = "plugins/grid-admin.conf";
+  };
+};
+
+
+

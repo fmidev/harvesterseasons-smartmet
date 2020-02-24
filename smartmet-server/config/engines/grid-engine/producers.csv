@@ -1,0 +1,67 @@
+# Producer & geometryId search order. If no producer is given in
+# the query then the producers are used in the following order.
+#producer;geometry_id;grid_size (info)
+Harmonie;999;
+
+# "Default"
+ERA5;26;27.8km x 27.8km;
+SMARTMET;1073;7.6km x 7.5km;
+SMARTMETMTA;1073;7.6km x 7.5km;
+HL2;173;7.9km x 7.2km;
+HL2;174;8.0km x 7.1km;
+HL2;175;7.9km x 7.1km;
+HL2MTA;173;7.9km x 7.2km;
+ECG;1008;8.9km x 12.9km;
+ECG;1007;11.1km x 11.1km;
+ECG;1045;8.9km x 12.9km;
+ECG;1090;10.1km x 11.1km;
+ECG;1091;10.1km x 11.1km;
+ECG;1049;17.7km x 25.8km;
+ECGEPS;1049;17.7km x 25.8km;
+ECGEPS;1068;17.7km x 25.8km;
+ECGEPS;1074;22.2km x 22.2km;
+ECGEPSMTA;1049;17.7km x 25.8km;
+ECGMTA;1008;8.9km x 12.9km;
+ECGMTA;1007;11.1km x 11.1km;
+ECGMTA;1090;10.1km x 11.1km;
+ECGMTA;226;33.1km x 55.6km;
+ECGMTA;409;78.6km x 111.2km;
+ECGMTA;411;78.6km x 111.2km;
+ECGSEA;1064;15.8km x 27.8km;
+ECGSEA;414;19.6km x 27.8km;
+ECGSEA;415;19.7km x 27.8km;
+ECKALLAPS;1080;3.0km x 3.0km;
+ECMOSKRIGING;1065;7.1km x 11.1km;
+ECMOSKRIGING_DEV;1065;7.1km x 11.1km;
+ECM_PROB;1049;17.7km x 25.8km;
+ECM_PROB;1074;22.2km x 22.2km;
+FMI_PEPS;1083;7.5km x 7.6km;
+GEFS;21;55.6km x 55.6km;
+GEFS;3;111.2km x 111.2km;
+GEM;24;26.7km x 26.7km;
+GFSMTA;21;55.6km x 55.6km;
+GFSMTA;26;27.8km x 27.8km;
+GFSMTA;3;111.2km x 111.2km;
+GLAMEPS;1054;4.2km x 10.9km;
+GLAMEPSCAL;1054;4.2km x 10.9km;
+GLAMEPSMTA;1054;4.2km x 10.9km;
+HELMI;609;1.8km x 1.9km;
+IASIL2;1079;10.8km x 10.8km;
+ICON_GLO;1082;4.5km x 6.9km;
+ICON_GLO;1085;13.9km x 13.9km;
+KWBG;26;27.8km x 27.8km;
+LAPSFIN;40;3.4km x 2.7km;
+LAPSSCAN;41;2.9km x 3.2km;
+LAPSSCAN;1067;3.0km x 3.0km;
+MEPS;1078;2.6km x 2.4km;
+MEPSMTA;1078;2.6km x 2.4km;
+MEPS_PREOP;1078;2.6km x 2.4km;
+MEPS_PREOPMTA;1078;2.6km x 2.4km;
+MESAN;13;9.4km x 11.1km;
+PEPSSCAN;1071;2.5km x 2.5km;
+SMHIMESAN;1066;2.7km x 2.8km;
+TIENHOITO;13;9.4km x 11.1km;
+WAM_MBE;606;7.5km x 7.5km;
+BLENDR;1086;3.0km x 3.0km;
+BLENDB;1086;3.0km x 3.0km;
+BLENDW;1086;3.0km x 3.0km;

@@ -1,0 +1,89 @@
+version: "3"
+
+services:
+  smartmet-server:
+    image: smartmet-server:latest
+    build: 
+      context: ./smartmet-server
+      dockerfile: Dockerfile
+    container_name: smartmet-server
+    environment:
+      # Settings for grib files are here
+      # Some of these may be need to be copied to config files
+      - SMARTMET_GRID_CONFIG_FILE=/home/smartmet/config/libraries/grid-files/grid-files.conf
+      # Other settings for grib file things
+      - SMARTMET_ENV_FILE=/home/smartmet/config/engines/grid-engine/base.conf
+      # Redis adderess is the name of docker service
+      - REDIS_CONTENT_SERVER_ADDRESS=redis-db
+      - REDIS_CONTENT_SERVER_PORT=6379
+      # This is just some random prefix. Not sure if absolutely required
+      - REDIS_CONTENT_SERVER_TABLE_PREFIX=a.
+      # The password is only required for the entrypoint script (see below)
+      # Wouldn't it be nice to store this some where else.
+      - POSTGRES_PASSWORD=OmaHassuSalasana1234!
+    ports:
+      - "8080:80"
+    depends_on:
+      # Entrypoint has script to validate that database is ready
+      - fminames-db
+      - redis-db
+    restart: "no"
+    volumes:
+      - ../config:/home/smartmet/config:Z
+      - ../share:/home/smartmet/share:Z
+      # For this container you need grib2-data in ../data/grib directory
+      # Location is relative to this docker-compose.yaml file.
+      - ../data/grib:/srv/data:Z
+    entrypoint:
+      # The content of 'command' is passed as an argument to entrypoint script
+      - "/home/smartmet/scripts/wait-for-postgres.sh"
+    command: fminames-db /usr/sbin/smartmetd -c /home/smartmet/config/smartmet.conf
+
+  # Smartmet-server is very demanding and requires this database to be present
+  # Some settings need to be manually updated to smartmet-servers settings:
+  # smartmet-server/config/plugins/wfs.conf
+  # smartmet-server/config/engines/geonames.conf
+  fminames-db:
+    build: 
+      context: ./fminames-db
+      dockerfile: Dockerfile
+    image: fminames-db:latest
+    container_name: fminames-db
+    restart: "no"
+    environment:
+      # This silly password needs to copied into ./smartmet/geonames.conf
+      - POSTGRES_PASSWORD=OmaHassuSalasana1234!
+      - POSTGRES_USER=fminames_user
+      # POSTGRES_DB: fminames  
+    ports:
+      # Port exposed for connecting from host (not required in production)
+     - "5432:5432"
+    # volumes:
+    #   # Keep database stuff stored on local file system
+    #   - ./fminames-db/data:/var/lib/postgresql/data:Z
+
+  # Redis is used for storing information for grib-data files
+  redis-db:
+    # From image...
+    image: redis:latest
+    # Create a container named...
+    container_name: redis-content-server
+    restart: always
+    ports:
+      # Port exposed for connecting from host (not required in production)
+      - "6379:6379"
+
+  # The thing to make the things that are needed for you-know-what
+#  contouring:
+#    image: contouring:latest
+#    build: 
+#      context: ./contouring
+#      dockerfile: Dockerfile
+#    container_name: contouring
+#    depends_on:
+      # Entrypoint needs a script to validate that smartmet-server is ready
+#      - smartmet-server
+#    volumes:
+#      - ./contouring:/usr/src/app:Z
+#    entrypoint: 
+#      - "/bin/sh"

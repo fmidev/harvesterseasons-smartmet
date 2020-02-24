@@ -1,0 +1,714 @@
+<HTML>
+<BODY style="font-family:Arial;">
+<H1>ContentServer service methods and parameters</H1>
+
+<H2>Database</H2>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD clear</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Clears the whole content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD reload</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Reloads the content information into the memory (when using cache implementation).</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+
+<H2>Data servers</H2>
+
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addDataServerInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new ServerInfo record into the content database. 
+      The DataServer calls this method when it wants to register itself during the start-up.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>serverInfo</TD><TD>ServerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteDataServerInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the ServerInfo record from the content information database. 
+      The DataServer usually calls this method when it is shutting down. All the content registrations for the current DataServer will be removed.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>Server identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getDataServerInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the ServerInfo record according to the DataServer identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>Server identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>serverInfo</TD><TD>ServerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getDataServerInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the ServerInfo record according to the DataServer name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverName</TD><TD>Server name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>serverInfo</TD><TD>ServerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getDataServerInfoByIor</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the ServerInfo record according to the DataServer IOR.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverIor</TD><TD>Server IOR.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>serverInfo</TD><TD>ServerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getDataServerInfoList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns all the ServerInfo records from the content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>producerInfo[]</TD><TD>ProducerInfo records (in CSV).</TD></TR>
+</TABLE>
+
+
+<H2>Producers</H2>
+
+<p>The purpose of the producer information is to define "ownership" for the information stored into the content information database.
+The producer information is stored in ProducerInfo records, which contains the following fields.</p>
+
+<TABLE border="1" width="100%"> 
+<TR style="background:#800000; color:#FFFF00; font-size:13pt;"><TD colspan=2><B>RECORD ProducerInfo</B></TD></TR>
+<TR style="background:#000000; color:#FFFFFF; font-size:13pt;"><TD width=120>Name</B></TD><TD>Description</B></TD></TR>
+<TR><TD>producerId</TD><TD>Unique producer identifier. This is used as a technical key in other records (like GenerationInfo,FileInfo and ContentInfo).</TD></TR>
+<TR><TD>name</TD><TD>Unique producer name, which is usually a short name of the actual producer (for example FMI).</TD></TR>
+<TR><TD>title</TD><TD>Official name of the producer (for example, "Finnish Meteorological Institute").</TD></TR>
+<TR><TD>description</TD><TD>More information about the current producer.</TD></TR>
+<TR><TD>flags</TD><TD>Additional information flags (32-bits) releated to the current producer. These flags can be used for example for categorizing different producers.</TD></TR>
+</TABLE>
+
+
+</BR>
+
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addProducerInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new ProducerInfo record into the content database. </TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>producerInfo</TD><TD>ProducerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteProducerInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the producer information from the content information database. 
+      This method deletes the ProducerInfo record, all GenerationInfo/FileInfo/ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteProducerInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the producer information from the content information database. 
+      This method deletes the ProducerInfo record, all GenerationInfo/FileInfo/ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getProducerInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the ProducerInfo record according to the producer identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>producerInfo</TD><TD>ProducerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getProducerInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the ProducerInfo record according to the producer name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>producerInfo</TD><TD>ProducerInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getProducerInfoList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns all the ProducerInfo records from the content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>producerInfo[]</TD><TD>ProducerInfo records (in CSV).</TD></TR>
+</TABLE>
+
+
+
+<H2>Generations</H2>
+
+<p>Forecast information is usually generated many times a day, which means that there can be several forecast generations in the same content 
+information base at the same time. The purpose of the generation information is to separate these generations from each other. </p>
+
+<p>If we want to add a new generation data into the content information base, we have to first create a new GenerationInfo record and after that
+we can add file and content information related to the current generation. The point is that each FileInfo and ContentInfo record must have 
+a valid "generationId" field value, which tells the generation where they belong to.</p> 
+
+<p>The generation information is stored in GenerationInfo records, which contains the following fields.</p>
+
+<TABLE border="1" width="100%"> 
+<TR style="background:#800000; color:#FFFF00; font-size:13pt;"><TD colspan=2><B>RECORD GenerationInfo</B></TD></TR>
+<TR style="background:#000000; color:#FFFFFF; font-size:13pt;"><TD width=120>Name</B></TD><TD>Description</B></TD></TR>
+<TR><TD>generationId</TD><TD>Unique generation identifier. This field is automatically generated when a new GenerationInfo record is added. 
+  The field is used as a technical key in other records (like FileInfo and ContentInfo).</TD></TR>
+<TR><TD>producerId</TD><TD>The producer identifier, which links the current generation to a certain producer.</TD></TR>
+<TR><TD>name</TD><TD>Generation name.The name should be unique and easy to remember. This makes it easier to access content information 
+  in different generations. The recommendation is that the name is in format "producerName:originTime" (for example "HIRLAM:20170317T000000")</TD></TR>
+<TR><TD>description</TD><TD>More information about the current generation.</TD></TR>
+<TR><TD>status</TD><TD>The status of the current generation (0 = unknown, 1=valid, 2=incomplete).</TD></TR>
+<TR><TD>flags</TD><TD>Additional information flags (32-bits) releated to the current producer. These flags can be used for example for categorizing 
+  different producers.</TD></TR>
+</TABLE>
+
+</BR>
+
+
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addGenerationInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new GenerationInfo record into the content database. 
+      The method returns a new GenerationInfo record that contains the "generationId" field, which should be used as a technical key of the current record.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>generationInfo</TD><TD>GenerationInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteGenerationInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the generation information from 
+      the content information database. This method deletes the GenerationInfo record and FileInfo and ContentInfo recods releated to the current 
+      generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteGenerationInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the generation information from 
+      the content information database. This method deletes the GenerationInfo record and FileInfo and ContentInfo recods releated to the current generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationName</TD><TD>Generation name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteGenerationInfoListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the generation information related to the current producer. 
+      This method deletes the all GenerationInfo, FileInfo and ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteGenerationInfoListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the generation information related to the current producer. 
+      This method deletes the all GenerationInfo, FileInfo and ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getGenerationInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the GenerationInfo record according to the generation identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>generationInfo</TD><TD>GenerationInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getGenerationInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the GenerationInfo record according to the generation name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>generationInfo</TD><TD>GenerationInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getGenerationInfoList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns all the GenerationInfo records 
+       from the content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>generationInfo[]</TD><TD>GenerationInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getGenerationInfoListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns all the GenerationInfo records related 
+      to the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>generationInfo[]</TD><TD>GenerationInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getGenerationInfoListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns all the GenerationInfo records related to the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>generationInfo[]</TD><TD>GenerationInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD setGenerationInfoStatusById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Sets the status field of the GenerationInfo record.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>status</TD><TD>Status.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD setGenerationInfoStatusByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Sets the status field of the GenerationInfo record.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationName</TD><TD>Generation name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>status</TD><TD>Status.</TD></TR>
+</TABLE>
+
+
+
+
+<H2>Files</H2>
+
+<p>Forecast information is usually stored in several files. So, each generation contain most likely quite many files.</p>
+
+<p>The file information is stored in FileInfo records, which contains the following fields.</p>
+
+<TABLE border="1" width="100%"> 
+<TR style="background:#800000; color:#FFFF00; font-size:13pt;"><TD colspan=2><B>RECORD FileInfo</B></TD></TR>
+<TR style="background:#000000; color:#FFFFFF; font-size:13pt;"><TD width=120>Name</B></TD><TD>Description</B></TD></TR>
+<TR><TD>fileId</TD><TD>Unique file identifier. This field is automatically generated when a new FileInfo record is added. 
+  The field is used as a technical key in other records (like ContentInfo).</TD></TR>
+<TR><TD>producerId</TD><TD>The producer identifier, which links the current file to a certain producer.</TD></TR>
+<TR><TD>generationId</TD><TD>The generation identifier, which links the current file to a certain generation.</TD></TR>
+<TR><TD>fileType</TD><TD>The type of the forecast file (0 = unknown, 1 = GRIB1, 2 = GRIB2).</TD></TR>
+<TR><TD>name</TD><TD>The filename with the directory path. This field must be unique in content information database.</TD></TR>
+<TR><TD>groupFlags</TD><TD>A file can belong to 32 different groups, which are indicated by 32-bit group flags. The point is that 
+  these groups gives us an opportunity to divide files into different groups according to some criteria. For example, a file 
+  might belong to group X, which means that file must be kept in the memory all the time in order to guarantee a fast data access.</TD></TR>
+<TR><TD>flags</TD><TD>Additional information flags (32-bits) releated to the current file. These flags can be used for example 
+  to tell that the content of the current file is predefined, which means that the DataServers should use these predefinitions 
+  and not to try to find out the content by themselves.</TD></TR>
+</TABLE>
+
+</BR>
+
+
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addFileInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new FileInfo record 
+      into the content database. The method returns a new FileInfo record that contains the "fileId" field, which should be used as a technical 
+      key of the current record.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>fileInfo</TD><TD>FileInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addFileInfoWithContentList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new FileInfo record and its 
+      predefined content information into the content information database. The method returns a new FileInfo record that contains the "fileId" field, 
+      which should be used as a technical key of the current record. The "flags" field is used to indicate that the content of the current file is 
+      predefined.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>fileInfo</TD><TD>FileInfo record (in CSV).</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>contentInfo[]</TD><TD>ContentInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the file information from the content 
+      information database. This method deletes the FileInfo record and ContentInfo recods releated to the current file.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the file information from the content 
+      information database. This method deletes the FileInfo record and ContentInfo recods releated to the current file.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileName</TD><TD>File name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the file information related 
+      to the current producer. This method deletes the all FileInfo and ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the file information related 
+      to the current producer. This method deletes the all FileInfo and ContentInfo recods releated to the current producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoListByGenerationId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the file information related 
+      to the current generation. This method deletes the all FileInfo and ContentInfo recods releated to the current generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoListByGenerationName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the file information related 
+      to the current generation. This method deletes the all FileInfo and ContentInfo recods releated to the current generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteFileInfoListByGroupFlags</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes all the file information related 
+      to the given groups. This method deletes the all FileInfo and ContentInfo recods releated to the given groups.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>groupFlags</TD><TD>Group flags.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoById</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the FileInfo record according 
+      to the file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo</TD><TD>FileInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoByName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns the FileInfo record according 
+      to the file name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo</TD><TD>FileInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records from the content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records related to the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records related to the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoListByGenerationId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records related to the given generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoListByGenerationName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records related to the given generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationName</TD><TD>Generation name.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getFileInfoListByGroupFlags</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Returns FileInfo records related to the given groups.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>groupFlags</TD><TD>Group flags.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>startFileId</TD><TD>The records search starts from this file identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>maxRecords</TD><TD>The maximum number of the returned records .</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>out</TD><TD>fileInfo[]</TD><TD>FileInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+
+
+<H2>Content</H2>
+
+<p>The actual forecast information is stored into GRIB files. Each GRIB files can contain one or several messages, which can have 
+different content. That's why each message in the file needs to have own ContentInfo record. Technically a ContentInfo record tell
+what kind of information (= temperature, pressure, wind, etc.) the current message contains. The point is that when we want to find
+some specific information (for example "temperature") during a given time interval then we go through all the ContentInfo records and
+search records that match our criteria. After that we know exactly which files and which messages contains the information that we were looking for. 
+</p>
+
+<p>The content information is stored in ContentInfo records, which contains the following fields.</p>
+
+<TABLE border="1" width="100%"> 
+<TR style="background:#800000; color:#FFFF00; font-size:13pt;"><TD colspan=2><B>RECORD FileInfo</B></TD></TR>
+<TR style="background:#000000; color:#FFFFFF; font-size:13pt;"><TD width=120>Name</B></TD><TD>Description</B></TD></TR>
+<TR><TD>fileId</TD><TD>The file identifier, which links the current content to a certain file.</TD></TR>
+<TR><TD>fileType</TD><TD>The type of the forecast file (0 = unknown, 1 = GRIB1, 2 = GRIB2).</TD></TR>
+<TR><TD>messageIndex</TD><TD>The index of the message, which links the current content to a certain message in the current file. 
+  Notice that the first message in a file has index 0.</TD></TR>
+
+<TR><TD>producerId</TD><TD>The producer identifier, which links the current content to a certain producer.</TD></TR>
+<TR><TD>generationId</TD><TD>The generation identifier, which links the current content to a certain generation.</TD></TR>
+<TR><TD>groupFlags</TD><TD>A content file can belong to 32 different groups, which are indicated by 32-bit group flags. 
+  So, these groupFlags should be the same as the groupFlags in the releated FileInfo record.</TD></TR>
+
+<TR><TD>startTime</TD><TD>The start time of the current content. The time format is "YYYYMMDDTHHMMSS". (for example, "20170317T123000")</TD></TR>
+<TR><TD>endTime</TD><TD>The end time of the current content. The time format is "YYYYMMDDTHHMMSS". (for example, "20170317T123000")</TD></TR>
+
+<TR><TD>fmiParameterId</TD><TD>The content parameter identifier used by FMI-Radon.</TD></TR>
+<TR><TD>fmiParameterName</TD><TD>The content parameter name used by FMI-Radon.</TD></TR>
+<TR><TD>gribParameterId</TD><TD>The content parameter identifier used by GRIB.</TD></TR>
+<TR><TD>cdmParameterId</TD><TD>The content parameter identifier used by CDM.</TD></TR>
+<TR><TD>cdmParameterName</TD><TD>The content parameter name used by CDM.</TD></TR>
+<TR><TD>newbaseParameterId</TD><TD>The content parameter identifier used by FMI-Newbase.</TD></TR>
+<TR><TD>newbaseParameterName</TD><TD>The content parameter name used by FMI-Newbase.</TD></TR>
+<TR><TD>fmiParameterLevelId</TD><TD>The content parameter level identifier used by FMI-Radon.</TD></TR>
+<TR><TD>grib1ParameterLevelId</TD><TD>The content parameter level identifier used by GRIB 1.</TD></TR>
+<TR><TD>grib2ParameterLevelId</TD><TD>The content parameter level identifier used by GRIB 2.</TD></TR>
+<TR><TD>gribParameterLevel</TD><TD>The content parameter level.</TD></TR>
+<TR><TD>fmiParameterUnits</TD><TD>The content parameter units used by FMI-Radon.</TD></TR>
+<TR><TD>gribParameterUnits</TD><TD>The content parameter units used by GRIB.</TD></TR>
+<TR><TD>serverFlags</TD><TD>These flags indicates which DataServers have registered the current content. In other words, the content 
+  is available in these DataServers. The field has 64 bits and each bit indicates wheather a DataServer has registered the
+  current content. For example, if a DataServer (serverId = 1) has registered the content then the first bit of the serverFlags
+  field should be "1".</TD></TR>
+<TR><TD>flags</TD><TD>Additional information flags (32-bits) releated to the current content.</TD></TR>
+</TABLE>
+</BR>
+
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addContent</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a new ContentInfo record 
+      into the content database. The current record can be accessed by using its "fileId" and "messageIndex" field i.e. this combination 
+      should be always unique.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>contentInfo</TD><TD>ContentInfo record (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addContentList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Adds a list of new ContentInfo records 
+      into the content database. </TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>contentInfo[]</TD><TD>ContentInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes the ContentInfo record 
+      according to its "fileId" and "messageIndex" fields.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>messageIndex</TD><TD>The message index.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByFileId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given file.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByFileName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given file.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileName</TD><TD>Filename.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByGroupFlags</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records that belongs to the given groups.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>groupFlags</TD><TD>Group flags.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerId</TD><TD>Producer identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given producer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>producerName</TD><TD>Producer name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByGenerationId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>generationId</TD><TD>Generation identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD deleteContentListByGenerationName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>Deletes ContentInfo records linked into the given generation.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>GenerationName</TD><TD>Generation name.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD registerContentList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>DataServers use this method for registering the content information that they can deliver.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>DataServer identifier, which is registering the content.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>inout</TD><TD>contentInfo[]</TD><TD>ContentInfo records (in CSV).</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD registerContentListByFileId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>DataServers use this method for registering the content information of a file.
+      which ContentInfo records can already be found from the content information database.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>DataServer identifier, which is registering the content.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD unregisterContentList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>DataServers can use this method for removing all their content registrations. 
+       This is usually done when a DataServer is reseting itself.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>DataServer identifier, which is unregistering the content.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD unregisterContentListByFileId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>DataServers use this method for unregistering the content information of a file.
+      In this way it indicates that the current content is not available in the current DataServer.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>serverId</TD><TD>DataServer identifier, which is registering the content.</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;"></TD><TD>in</TD><TD>fileId</TD><TD>File identifier.</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentInfo(in sessionId,in fileId,in messageIndex,out contentInfo)</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentList(in sessionId,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByFileId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByFileId(in sessionId,in fileId,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByFileName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByFileName(in sessionId,in filename,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByGroupFlags</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByGroupFlags(in sessionId,in groupFlags,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByProducerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByProducerId(in sessionId,in producerId,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByProducerName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByProducerName(in sessionId,in producerName,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByServerId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByServerId(in sessionId,in serverId,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByGenerationId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByGenerationId(in sessionId,in generationId,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByGenerationName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByGenerationName(in sessionId,in generationName,in startFileId,in startMessageIndex,in maxRecords,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByGenerationIdAndTimeRange</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByGenerationIdAndTimeRange(in sessionId,in generationId,in startTime,in endTime,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByGenerationNameAndTimeRange</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByGenerationNameAndTimeRange(in sessionId,in generationName,in startTime,in endTime,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByParameter</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByParameter(in sessionId,in parameterKeyType,in parameterKey,in parameterLevelIdType,in parameterLevelId,in minLevel,in maxLevel,in startTime,in endTime,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByParameterAndGenerationId</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByParameterAndGenerationId(in sessionId,in generationId,in parameterKeyType,in parameterKey,in parameterLevelIdType,in parameterLevelId,in minLevel,in maxLevel,in startTime,in endTime,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getContentListByParameterAndGenerationName</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getContentListByParameterAndGenerationName(in sessionId,in generationName,in parameterKeyType,in parameterKey,in parameterLevelIdType,in parameterLevelId,in minLevel,in maxLevel,in startTime,in endTime,out contentInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD addEventInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>addEventInfo(in sessionId,inout eventInfo)</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getLastEventInfo</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getLastEventInfo(in sessionId,in requestingServerId,out eventInfo)</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+</BR>
+<TABLE border="1" width="100%">
+    <TR style="background:#000080; color:#FFFF00; font-size:13pt;"><TD colspan=4><B>METHOD getEventInfoList</B></TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Description</TD><TD colspan=3>getEventInfoList(in sessionId,in requestingServerId,in startEventId,in maxRecords,out eventInfo[])</TD></TR>
+    <TR><TD style="width:120; background:#000000; color:#FFFFFF; font-size:11pt;">Parameters</TD><TD width=40>in</TD><TD width=150>sessionId</TD><TD>Session identifier</TD></TR>
+</TABLE>
+
+
+
+</TABLE>    
+</BODY>
+</HTML>
