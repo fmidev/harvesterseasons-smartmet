@@ -1,9 +1,0 @@
-{
-    "editor.detectIndentation": false,
-    "python.testing.pytestArgs": [
-            "-rA"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.pytestEnabled": true
-}
