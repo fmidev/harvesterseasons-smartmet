@@ -8,4 +8,5 @@
 # 4. Producer desciption
 #
 ERA5;ERA5;ERA5;Era5 data from ECMWF
+ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
 EC-SF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF

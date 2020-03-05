@@ -1,7 +1,12 @@
 FROM centos:7.6.1810
 
 LABEL maintainer "Mikko Strahlendorff mikko.strahlendorffo@fmi.fi>"
+LABEL license    "MIT License Copyright (c) 2020 FMI Open Development"
 
+ENV USER_NAME="smartmet" \
+    NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
+    GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
+	
 RUN yum clean all
 
 # Add epel repository for intalling postgis and other packages
@@ -19,20 +24,23 @@ RUN yum-config-manager --enable "pgdg95"
 
 # Install version 9.5  before postgis to prevent 9.2 from being installed
 # The version 9.5 seems to be a dependency for smartmet-tools-grid
-RUN yum -y install postgresql95
+RUN yum -y update \
+    yum -y install postgresql95 postgis librsvg2*2.40.6-3*
 
 # This should install from epel
 # Postgis requires some libraries that are installed with postgresql
 # The postgres95 should be installed before postgis to prevent wrong versions
 # being installed as a dependency
-RUN yum -y install postgis
-
+#RUN yum -y install postgis
 # gribwms plugin required librsvg2
-RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
+#RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
 
 # The order of packages installed seems to affect dependencies from working 
 RUN yum -y install smartmet-plugin-backend 
 RUN yum -y install smartmet-plugin-admin 
+RUN yum -y install smartmet-plugin-download 
+RUN yum -y install smartmet-plugin-timeseries 
+RUN yum -y install smartmet-plugin-wms 
 RUN yum -y install smartmet-plugin-gribtimeseries 
 RUN yum -y install smartmet-plugin-grid-admin 
 RUN yum -y install smartmet-plugin-grid-gui 
@@ -40,16 +48,45 @@ RUN yum -y install smartmet-plugin-gribwfs
 RUN yum -y install smartmet-plugin-gribwms 
 # For installing filesys2smartmet which is used to load grib-files to redis
 RUN yum -y install smartmet-tools-grid 
+RUN yum -y install smartmet-qdtools
 RUN yum clean all 
 # M.K. 09.01.2020: until here, installation seems to work
+ Install Google Noto fonts
+ RUN mkdir -p /usr/share/fonts/truetype/noto && \
+     for FONT in ${NOTO_FONTS}; \
+     do \
+         curl -s -S -o ${FONT}.zip https://noto-website-2.storage.googleapis.com/pkgs/${FONT}.zip && \
+         unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/noto && \
+         rm -f ${FONT}.zip ; \
+     done
 
-HEALTHCHECK --interval=5m --timeout=3s \
+# Install Google Fonts
+RUN \
+    for FONT in $GOOGLE_FONTS; \
+    do \
+        mkdir -p /usr/share/fonts/truetype/${FONT} && \
+        curl -s -S -o ${FONT}.zip "https://fonts.google.com/download?family=${FONT}" && \
+        unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/${FONT} && \
+        rm -f ${FONT}.zip ; \
+    done
+					    
+HEALTHCHECK --interval=30s --timeout=10s \
     CMD curl -f http://localhost:8080/admin?what=qengine || exit 1
+
+# Expose SmartMet Servers default port
+EXPOSE 8080
+
+#COPY smartmetconf /etc/smartmet
+#COPY wms /smartmet/share/wms
+#COPY docker-entrypoint.sh /
 
 # wms.conf defines imagecache. timeseriescache's use is yet to be found.
 # M.K. 09.01.2020: this is not working; should be checked
-RUN mkdir -p /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
-
+#RUN mkdir -p /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
+# MS 6.3.20: from new Rauhala dockerhub code
+RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chmod -R g=u /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /etc/passwd /var/log
 
 # M.K. 09.01.2020: adopted it to WEkEO paths 
 RUN mkdir -p /srv/data

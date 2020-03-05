@@ -22,7 +22,7 @@ services:
       # Wouldn't it be nice to store this some where else.
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!
     ports:
-      - "8080:80"
+      - "80:8080"
     depends_on:
       # Entrypoint has script to validate that database is ready
       - fminames-db
@@ -33,7 +33,8 @@ services:
       - ../share:/home/smartmet/share:Z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
-      - ../data/grib:/srv/data:Z
+      - ../data/grib:/srv/data/grib:Z
+      - ../data/querydata:/srv/data/querydata:Z
     entrypoint:
       # The content of 'command' is passed as an argument to entrypoint script
       - "/home/smartmet/scripts/wait-for-postgres.sh"
