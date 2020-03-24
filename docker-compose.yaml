@@ -22,7 +22,7 @@ services:
       # Wouldn't it be nice to store this some where else.
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!
     ports:
-      - "80:8080"
+      - "8080:8080"
     depends_on:
       # Entrypoint has script to validate that database is ready
       - fminames-db
@@ -74,17 +74,16 @@ services:
       # Port exposed for connecting from host (not required in production)
       - "6379:6379"
 
-  # The thing to make the things that are needed for you-know-what
-#  contouring:
-#    image: contouring:latest
-#    build: 
-#      context: ./contouring
-#      dockerfile: Dockerfile
-#    container_name: contouring
-#    depends_on:
-      # Entrypoint needs a script to validate that smartmet-server is ready
-#      - smartmet-server
-#    volumes:
-#      - ./contouring:/usr/src/app:Z
-#    entrypoint: 
-#      - "/bin/sh"
+  # https addresses for the smartmet-server 
+  nginx-ssl-proxy:
+    image: danieldent/nginx-ssl-proxy
+    restart: always
+    environment:
+      UPSTREAM: 185.213.74.67:8080
+      SERVERNAME: sm.harvesterseasons.com
+      #EXTRANAMES: harvesterseasons.com,www.harvesterseasons.com
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/letsencrypt"

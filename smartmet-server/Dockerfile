@@ -1,58 +1,50 @@
-FROM centos:7.6.1810
-
+FROM docker.io/centos:7
+#FROM centos:7.6.1810
 LABEL maintainer "Mikko Strahlendorff mikko.strahlendorffo@fmi.fi>"
 LABEL license    "MIT License Copyright (c) 2020 FMI Open Development"
 
 ENV USER_NAME="smartmet" \
     NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
-    GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
-	
-RUN yum clean all
+        GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
 
-# Add epel repository for intalling postgis and other packages
-RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-
-# Add pgdg repository for installing postgresql (but only a certain version)
-RUN rpm -ivh https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-3.noarch.rpm 
-
-# Add smartmet-open repository for installing FMI's opensource packages 
-RUN rpm -ivh https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm
-
-# Make only 9.5 version postgres repository available
-RUN yum-config-manager --disable "pgdg*" 
-RUN yum-config-manager --enable "pgdg95"
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-3.noarch.rpm \
+        https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm && \
+	sed -i 's:\]k:\]:g' /etc/yum.repos.d/pgdg-redhat-all.repo &&   yum-config-manager --disable "pgdg*" && \
+                yum-config-manager --enable "pgdg95"
 
 # Install version 9.5  before postgis to prevent 9.2 from being installed
 # The version 9.5 seems to be a dependency for smartmet-tools-grid
 RUN yum -y update \
-    yum -y install postgresql95 postgis librsvg2*2.40.6-3*
+    yum -y install postgresql95
 
 # This should install from epel
 # Postgis requires some libraries that are installed with postgresql
 # The postgres95 should be installed before postgis to prevent wrong versions
 # being installed as a dependency
-#RUN yum -y install postgis
+RUN yum -y install postgis
 # gribwms plugin required librsvg2
-#RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
+RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
 
 # The order of packages installed seems to affect dependencies from working 
-RUN yum -y install smartmet-plugin-backend 
-RUN yum -y install smartmet-plugin-admin 
-RUN yum -y install smartmet-plugin-download 
-RUN yum -y install smartmet-plugin-timeseries 
-RUN yum -y install smartmet-plugin-wms 
-RUN yum -y install smartmet-plugin-gribtimeseries 
-RUN yum -y install smartmet-plugin-grid-admin 
-RUN yum -y install smartmet-plugin-grid-gui 
-RUN yum -y install smartmet-plugin-gribwfs 
-RUN yum -y install smartmet-plugin-gribwms 
+RUN yum -y install smartmet-plugin-backend \
+  smartmet-plugin-admin \
+   smartmet-plugin-download \
+    smartmet-plugin-gribtimeseries \
+     smartmet-plugin-grid-admin \
+      smartmet-plugin-grid-gui \
+       smartmet-plugin-gribwfs \
+        smartmet-plugin-gribwms \
+	 unzip 
+#    yum -y install smartmet-plugin-timeseries && \
+#    yum -y install smartmet-plugin-wms && \
+
+
 # For installing filesys2smartmet which is used to load grib-files to redis
-RUN yum -y install smartmet-tools-grid 
-RUN yum -y install smartmet-qdtools
-RUN yum clean all 
-# M.K. 09.01.2020: until here, installation seems to work
- Install Google Noto fonts
- RUN mkdir -p /usr/share/fonts/truetype/noto && \
+RUN yum -y install smartmet-tools-grid smartmet-qdtools && yum clean all 
+
+# M.K. 09.01.2020: until here, installation seems to work Install Google Noto fonts
+RUN mkdir -p /usr/share/fonts/truetype/noto && \
      for FONT in ${NOTO_FONTS}; \
      do \
          curl -s -S -o ${FONT}.zip https://noto-website-2.storage.googleapis.com/pkgs/${FONT}.zip && \
@@ -110,6 +102,3 @@ USER smartmet
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["smartmetd"]
-
-
-
