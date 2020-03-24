@@ -16,3 +16,22 @@
 30816;1;F63-T-MAX-C;C;NormalMaxTemperatureF63 (816);1;;
 30817;1;F88-T-MAX-C;C;NormalMaxTemperatureF88 (817);1;;
 30818;1;F98-T-MAX-C;C;NormalMaxTemperatureF98 (818);1;;
+
+# New parameters for Harvestersesasons service
+# C3S key for number is to use ECMWF grib numbers plus 13000
+# mx2t24 Maximum and minimum temperature at 2 metres in the last 24 hours
+13051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours
+13052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours
+# swvl2 Volumetric Soil Water layer 2, 3, 4
+13040;1;SWVL2-M3M3;M3/M3;Volumetric Soil Water layer 2
+13041;1;SWVL3-M3M3;M3/M3;Volumetric Soil Water layer 3
+13042;1;SWVL4-M3M3;M3/M3;Volumetric Soil Water layer 4
+# tsr Top Net Solar Radation
+13178;1;TSR-J;J;Top Net Solar Radation
+# ro Runoff
+13205;1;RO-M;M;Runoff in depth of water in metres
+# ewss Eastward and northward turbulent surface stress
+13180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress
+13181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress
+
+# HOPS parameters
