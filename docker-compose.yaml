@@ -33,6 +33,7 @@ services:
       - ../share:/home/smartmet/share:Z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
+      - ../log:/var/log/smartmet:Z
       - ../data/grib:/srv/data/grib:Z
       - ../data/querydata:/srv/data/querydata:Z
     entrypoint:
@@ -77,6 +78,7 @@ services:
   # https addresses for the smartmet-server 
   nginx-ssl-proxy:
     image: danieldent/nginx-ssl-proxy
+    container_name: ssl-proxy
     restart: always
     environment:
       UPSTREAM: 185.213.74.67:8080
@@ -87,3 +89,4 @@ services:
       - "443:443"
     volumes:
       - "/etc/letsencrypt"
+      - ./ssl-conf/main_location.conf:/etc/nginx/main_location.conf

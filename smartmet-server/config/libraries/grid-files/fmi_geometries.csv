@@ -19,9 +19,9 @@
 1;25;EGRR432325;432;325;0;-90;0.833;0.555;+x+y;Seasonal global forecast model of UK Met-office.;
 1;26;GFS0250;1440;721;0;90;0.25;0.25;+x-y;Washington global 0.25 degree resolution;
 1;33;MES141241;140;240;19;59;0.1;0.05;+x+y;Suomi 5x5 km;
-1;52;ENFUSORHKI;2631;2018;24.57999992;60.36800003;0.000235651838;0.0001169468524;+x-y;Enfusor Hki metropolitan area;
-1;53;ENFUSORTAM;1790;1001;23.59700012;61.53499985;0.0001882677898;0.00008990860078;+x-y;Enfusor Tampere area;
-1;54;ENFUSORTUR;1926;1212;22.05999947;60.5;0.0001822434424;0.00008993361553;+x-y;Enfusor Turku area;
+1;52;ENFUSORHKI;2631;2018;24.58;60.368;0.000235652;0.000116947;+x-y;Enfusor Hki metropolitan area;
+1;53;ENFUSORTAM;1790;1001;23.597;61.535;0.000188268;0.0000899086;+x-y;Enfusor Tampere area;
+1;54;ENFUSORTUR;1926;1212;22.06;60.5;0.000182243;0.0000899336;+x-y;Enfusor Turku area;
 1;112;EC0730175000;73;17;180;90;5;5;+x-y;ECM 73x17_5000;
 1;123;EPSORG12144;121;44;-90;90;1.5;1.5;+x-y;ECMWF original EPS-fields;
 1;124;EPS121441500;121;44;-90;25.5;1.5;1.5;+x+y;ECMWF EPS-fields;
@@ -52,18 +52,18 @@
 1;605;ICE261221;221;261;9;53;0.1;0.05;+x+y;Area of Finnish ice observation data;
 1;606;WAM109123;166;196;9;53;0.133;0.067;+x+y;Area of MTL Wave model data;
 1;607;OAAS315363;315;363;9.45;53.8;0.067;0.033;+x+y;Area of MTL OAAS-model;
-1;608;HBM;256;258;9.041666985;53.02500153;0.08333333582;0.04999999329;+x+y;HIROMB BOOS (HBM) circulation model for Baltic Sea;
-1;609;HELMI;415;556;16.716801;56.7416;0.03333;0.01667;+x+y;Area of Helmi ice model;
+1;608;HBM;256;258;9.04167;53.025;0.0833333;0.05;+x+y;HIROMB BOOS (HBM) circulation model for Baltic Sea;
+1;609;HELMI;415;556;16.7168;56.7416;0.03333;0.01667;+x+y;Area of Helmi ice model;
 1;1005;ICON125;2880;1441;180;-90;0.125;0.125;+x+y;DWD ICON GDS global;
-1;1006;COPERNICUS;4320;2041;-180;-80;0.08333333582;0.08333333582;+x+y;Copernicus, global ocean;
+1;1006;COPERNICUS;4320;2041;-180;-80;0.0833333;0.0833333;+x+y;Copernicus, global ocean;
 1;1007;ECGLO0100;3600;1801;0;90;0.1;0.1;+x-y; ECMWF global 0.1 degrees;
 1;1047;MOSKRIGING;1414;533;-61.66;78.24;0.0999985;0.0999985;+x-y;Mos Kriging area over Europe;
 1;1048;ECERAINTERIM;500;251;0;90;0.72;0.72;+x-y;ERA-Interim Global Analysis 500 x 251 0.72 deg;
 1;1052;EGRR432324;432;324;-89.7222;0.416667;0.833;0.555;+x+y;Seasonal global forecast model of UK Met-office.;
 1;1056;ECEUR075;91;65;-22.5;75;0.75;0.75;+x-y;ECMWF europe 0.75 degrees;
-1;1059;VANADIS;2640;3120;9.004166603;53.00208282;0.008333332837;0.004166666884;+x+y;Vanadis (icemap2) geometry from 2016;
-1;1060;SILAMAQEUR;700;420;-24.95000076;30.04999924;0.1000000015;0.09999999404;+x+y;Silam AQ Europe 0.1;
-1;1061;WAMBALMFC;764;775;9.01389;53.0084;0.027777;0.016666;+x+y;Copernicus WAM(BALMFC) area 1 nautical mile resolution;
+1;1059;VANADIS;2640;3120;9.00417;53.0021;0.00833333;0.00416667;+x+y;Vanadis (icemap2) geometry from 2016;
+1;1060;SILAMAQEUR;700;420;-24.95;30.05;0.1;0.1;+x+y;Silam AQ Europe 0.1;
+1;1061;WAMBALMFC;764;775;9.01389;53.0084;0.0277767;0.0166664;+x+y;Copernicus WAM(BALMFC) area 1 nautical mile resolution;
 1;1064;ECGSEA025;265;203;-26;80.5;0.25;0.25;+x-y;ECMWF sea model europe area;
 1;1065;MOSKRIGING2;1126;461;-40;73.5;0.1;0.1;+x-y;MOS Kriging area over Europe;
 1;1074;ECGLO0200;1800;901;0;90;0.2;0.2;+x-y;ECMWF global 0.2 degrees;
@@ -71,8 +71,7 @@
 1;1082;ICONEUR00625;1097;657;336.5;29.5;0.0625;0.0625;+x+y;DWD ICON GDS europe nesting;
 1;1083;TOPLINK;720;696;335;70;0.097357;0.068345;+x-y;Area for Toplink winter products;
 1;1085;ICONGLO0125;2879;1441;180;-90;0.125;0.125;+x+y;DWD ICON GDS global;
-1;1089;ECEURSEASON075;169;95;-45.75;80.25;0.75;0.75;+x-y;ECMWF seasonal forecast for europe;
-1;1097;EC-SF;68;46;-22.000000;72.000000;1.000000;1.000000;+x-y;ECMWF C3S seasonal ensemble for Europe;
+1;1089;ECEURSEASON075;169;94;-45.75;80.25;0.75;0.75;+x-y;ECMWF seasonal forecast for europe;
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_point.x,first_point.y,di,dj,scanning_mode,south_pole.x,south_pole.y,angle,description
 2;14;SMHIMESAN;246;268;-0.4;-11.5;0.1;0.1;+x+y;-0.01;-0.03;0;SMHI mesoanalysis area;
@@ -121,21 +120,18 @@
 2;1090;ECEDIT100;201;221;-10;13;0.1;0.1;+x-y;20;-30;0;EC editing area in 0.1 deg;
 2;1091;ECEDIT100G2;201;221;350;13;0.1;0.1;+x-y;0;-30;0;EC editing area in 0.1 deg GRIB 2;
 
-# LAMBERT CONFORMAL : projection,id,name,ni,nj,first_point.x,first_point.y,di,dj,scanning_mode,orientation,latin1,latin2,south_pole.x,south_pole.y,description
-10;1050;MEPSNOFMI2500;739;949;1.639;52.041;2500;2500;+x+y;15;63;63;0;0;MEPS Scandinavia area without FMI extension;
-10;1078;MEPSSCAN2500;889;949;0.238;51.849;2500;2500;+x+y;15.0;63.0;63.0;0;0;MEPS scandinavia (including Finland) in 2500 meter grid resolution;
-10;1087;LAPSLAMBERT2500;869;929;0.504028;52.1174;2500;2500;+x+y;15;63;63;-90;15;LAPS Analysis over Scandinavia;
-10;1092;METANSCAN1000;1796;2321;1.91847;52.3027;1000;1000;+x+y;15.0;63.0;63.0;0;0;METNO Scandinavia analysis in 1000 meter grid resolution;
-10;1093;MEPS2500D;949;1069;0.278;50.32;2500;2500;+x+y;15;63;63;0;0;MEPS scandinavia 2500 meter area version D;
-10;1095;MEPSSCAN2500G2;889;949;0.238404;51.848798;2500;2500;+x+y;15;63;63;0;0;MEPS scandinavia in 2500 meter grid resolution;
+# LAMBERT CONFORMAL : projection,id,name,ni,nj,first_point.x,first_point.y,di,dj,scanning_mode,orientation,latin1,latin2,south_pole.x,south_pole.y,laD,description
+10;1050;MEPSNOFMI2500;739;949;1.639;52.041;2500;2500;+x+y;15;63;63;0;0;60.0;MEPS Scandinavia area without FMI extension;
+10;1078;MEPSSCAN2500;889;949;0.238;51.849;2500;2500;+x+y;15.0;63.0;63.0;0;0;60.0;MEPS scandinavia (including Finland) in 2500 meter grid resolution;
+10;1087;LAPSLAMBERT2500;869;929;0.504028;52.1174;2500;2500;+x+y;15;63;63;-90;15;60.0;LAPS Analysis over Scandinavia;
 
 # GAUSSIAN : projection,id,name,nj,first_point.x,first_point.y,scanning_mode,n,point_along_parallels,description
-13;1094;O80;80;0;90;+x-y;80;{20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,100,104,108,112,116,120,124,128,132,136,140,144,148,152,156,160,164,168,172,176,180,184,188,192,196,200,204,208,212,216,220,224,228,232,236,240,244,248,252,256,260,264,268,272,276,280,284,288,292,296,300,304,308,312,316,320,324,328,332,336,336,332,328,324,320,316,312,308,304,300,296,292,288,284,280,276,272,268,264,260,256,252,248,244,240,236,232,228,224,220,216,212,208,204,200,196,192,188,184,180,176,172,168,164,160,156,152,148,144,140,136,132,128,124,120,116,112,108,104,100,96,92,88,84,80,76,72,68,64,60,56,52,48,44,40,36,32,28,24,20};Octahedral test grid with 80 latitude lines between pole and equator;
 
 # POLAR STEREOGRAPHIC : projection,id,name,ni,nj,first_point.x,first_point.y,di,dj,scanning_mode,orientation,laD,description
 9;20;MTSKAPS22;94;109;6;51.3;22;22;+x+y;20;60.0;Polaaristereografinen Fennoskandian alue 22 km;
-9;40;LAPS3000;270;400;17.805054;59.379088;3000;3000;+x+y;20;60.0;LAPS Analysis Area over Finland;
-9;41;LAPSSCAN;490;560;7.178284;54.287112;3000;3000;+x+y;20;60.0;LAPS Analysis Area over Scandinavia;
+9;39;LAPS1000;400;300;20.744;59.736;1000;1000;+x+y;20;60.0;LAPS Analysis Area over Finland;
+9;40;LAPS3000;270;400;17.8051;59.3791;3000;3000;+x+y;20;60.0;LAPS Analysis Area over Finland;
+9;41;LAPSSCAN;490;560;7.17828;54.2871;3000;3000;+x+y;20;60.0;LAPS Analysis Area over Scandinavia;
 9;42;KALLAPS3;685;765;5.941;51.058;3;3;+x+y;20;60.0;Suomi 3x3 km;
 9;211;MTHIPS50;144;120;-35.7;25.6;50;50;+x+y;0;60.0;Polar stereographic area covering most of HIR;
 9;212;MTEUPS20;175;135;-12.4;49;20;20;+x+y;0;60.0;Polar stereographic area covering most of EUR;
@@ -148,16 +144,15 @@
 9;506;NKESKI1000;775;565;17.3;61.16;1;1;+x+y;0;60.0;Nordrad Keski2 565x775;
 9;507;NPOHJO2000;275;290;18.55;64.04;2;2;+x+y;0;60.0;Nordrad Pohjo2 290x275;
 9;508;NNORDEN4000;374;431;9;52.4;4;4;+x+y;0;60.0;Nordrad Finorden 431x374;
-9;610;NEMO609719;609;719;-85.97664642;41.13852692;12.5;12.5;+x+y;-45;60.0;Polar stereographic area;
+9;610;NEMO609719;609;719;-85.9766;41.1385;12.5;12.5;+x+y;-45;60.0;Polar stereographic area;
 9;901;OSI_NO_AHL;1260;900;-40.173;37.345;5000;5000;+x+y;0;60.0;OSI North Atlantic from met.no;
 9;1043;MOSLAPS;980;840;354.093;30.3273;5000;5000;+x+y;20;60.0;MOS ECMWF LAPS gridded dataset;
 9;1057;ERASCAND;28;31;6;51.3;76000;76000;+x+y;20;60.0;ERA Interim area for Smartmet Scandinavia editor;
 9;1058;MEPS10000;212;235;6;51.3;10000;10000;+x+y;20;60.0;MEPS area in 10km resolution for Smartmet Scandinavia editor;
 9;1063;MOSLAPSNC;980;840;-5.90741;30.3273;5000;5000;+x+y;20;60.0;MOS ECMWF LAPS gridded static dataset;
-9;1067;LAPSSCANLARGE;685;765;5.940857;51.057868;3000.0;3000.0;+x+y;20.0;60.0;LAPS Scandinavia extended domain;
+9;1067;LAPSSCANLARGE;685;765;5.94086;51.0579;3000.0;3000.0;+x+y;20.0;60.0;LAPS Scandinavia extended domain;
 9;1071;PEPSSCAND;735;795;7.7;52.81;2465;2473;+x+y;20;60.0;PEPS Scandinavia;
 9;1073;SMARTMET7500;270;300;6;51.3;7494.389;7479.167;+x+y;20.0;60.0;SmartMet Scandinavian area 7500km resolution;
-9;1079;IASI_L2;171;191;5.985607;51.104713;12017.543;12015.707;+x+y;20.0;60.0;IASI L2 satellite area over Europe;
+9;1079;IASI_L2;171;191;5.98561;51.1047;12017.5;12015.7;+x+y;20.0;60.0;IASI L2 satellite area over Europe;
 9;1080;KALMANSCAN3000;685;765;5.941;51.058;3000;3000;+x+y;20.0;60.0;Kalman filtered data with LAPS gridding over Scandinavia;
 9;1086;BLENDSCAN3000;685;765;5.94086;51.0579;3000;3000;+x+y;20.0;60.0;Blend Scandinavia from extended LAPS;
-9;1096;SMARTMETSMALL7500;255;280;5.44402;52.6459;7364.73;7437.52;+x+y;20.0;60.0;SmartMet Scandinavian area 7500km resolution, covering MEPS domain;

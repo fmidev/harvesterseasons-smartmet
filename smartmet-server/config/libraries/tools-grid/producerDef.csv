@@ -10,7 +10,6 @@
 ERA5;ERA5;ERA5;Era5 data from ECMWF
 ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
 ECSF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF
-HPA;HOPS-ANA;HOPS-ANA;HOPS analysis from FMI
-HPWF;HOPS-ANA;HOPS-ANA;HOPS analysis from FMI
-HPSO;HOPS-SF-O;HOPS-SF organic;HOPS seasonal forecast for organic soil from FMI
-HPSM;HOPS-SF-M;HOPS-SF mineral;HOPS seasonal forecast for mineral soil from FMI
+HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
+HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
+HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
