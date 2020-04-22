@@ -84,7 +84,7 @@ it uses cdo and grib_set command line commands to turn the HOPS output into grib
 lon projection over the same area.
 
 To be available as addressable variables the grib variables need to be mapped into SmartMet-server FMI-IDs or newbase names.
-A general guide explaining this is under [DATAMAPPING.md](DATAMAPPING).
+A general guide explaining this is under [DATAMAPPING](DATAMAPPING.md).
 
 # Using timeseries, WMS or WFS plugins of the SmartMet-server
 
