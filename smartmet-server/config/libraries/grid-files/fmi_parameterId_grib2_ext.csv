@@ -1,0 +1,64 @@
+#
+# FIELDS:
+# 1) FmiParameterId
+# 2) FmiProducerId
+# 3) GeneratingProcessIdentifier
+# 4) Centre
+# 5) Discipline
+# 6) ParameterCategory
+# 7) ParameterNumber
+# 8) FmiParameterLevelId
+# 9) GribParameterLevelId
+# 10) ParameterLevel
+#
+# New parameters for Harvestersesasons service
+# producerId are 551=HOPS-ANA 552=HOPS-WF 553=HOPS-SF 554=ECSF 555=ERA5L 556=ERA
+# C3S key for number is to use ECMWF grib numbers plus 13000
+# mx2t24 Maximum and minimum temperature at 2 metres in the last 24 hours
+#13051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours;;;1;
+#13052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;;;1;
+# swvl2 Volumetric Soil Water layer 1, 2, 3, 4 vastineet HOPS:sta
+#13039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;3;
+#13040;1;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;3;
+#13041;1;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;3;
+#13042;1;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;3;
+# ro Runoff and other hydrology related params
+#13205;1;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
+#13141;1;HSNOW-M;M;Snow depth in Water equivalent M;1;1;1;5;
+# ewss Eastward and northward turbulent surface stress
+#13180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress;1;1;1;2;
+#13181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress;1;1;1;2;
+# parameters needed for HOPS as in fmi_parameters_ext.csv
+#13228;1;RR-MM;MM;Total Precipitation Amount in mm;1;1;1;2;
+#13049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
+#13050;1;TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
+#13056;1;WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
+#13551;1;ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
+#13552;1;ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
+#13053;1;LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
+#13054;1;BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
+#13139;1;STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+#13170;1;STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+#13183;1;STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+#13236;1;STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+#13539;1;OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+#13570;1;OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+#13583;1;OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+#13536;1;OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+13039;;147;86;192;199;39;9;112;1;
+13040;;147;86;192;199;40;9;112;2;
+13041;;147;86;192;199;41;9;112;3;
+13042;;147;86;192;199;42;9;112;4;
+13205;;147;86;192;199;205;1;1;1;
+13141;;147;86;192;199;141;1;1;1;
+13228;;147;86;192;199;228;1;1;1;
+13049;;147;86;192;199;49;1;1;1;
+13050;;147;86;192;199;50;1;1;1;
+13139;;147;86;192;199;139;9;112;7
+13170;;147;86;192;199;170;9;112;1820
+13183;;147;86;192;199;183;9;112;7268
+13236;;147;86;192;199;236;9;112;25855
+13539;;147;86;192;198;139;9;112;7
+13570;;147;86;192;198;170;9;112;1820
+13583;;147;86;192;198;183;9;112;7268
+13536;;147;86;192;198;236;9;112;25855

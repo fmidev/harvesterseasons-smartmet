@@ -1,0 +1,1 @@
+/home/smartmet/bin/cds-sf-all-24h.py
