@@ -4,7 +4,6 @@
 # 1) FmiParameterId
 # 2) GribParameterId
 # 3) ConversionFunction
-# 4) ReverseConversionFunction
 #
 
 # Minimum temperature at 2m since previous post-processing
@@ -653,7 +652,7 @@
 
 # Geopotential
 # Z-M2S2 => GeopHeight
-#158;1000000002;
+158;1000000002;
 158;129;
 
 # Geopotential
@@ -4839,20 +4838,7 @@
 #30818;1;F98-T-MAX-C;C;NormalMaxTemperatureF98 (818)
 30818;1000000818;
 
-# mx2t24 Maximum and minimum temperature at 2 metres in the last 24 hours
-13051;51;
-13052;52;
-# swvl2 Volumetric Soil Water layer 2, 3, 4
-13040;40;
-13041;41;
-13042;42;
-# tsr Top Net Solar Radation
-13178;178;
-# ro Runoff
-13205;205;
-# ewss Eastward and northward turbulent surface stress
-13180;180;
-13181;181;
+
 
 ### Automatically generated
 

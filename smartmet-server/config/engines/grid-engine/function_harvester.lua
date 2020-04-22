@@ -2,7 +2,7 @@ ParamValueMissing = -16777216;
 debug = 0;
 
 -- ###########################################################################################
--- FUNCTION for and index if ensemble members are to 90 % over a threshold or only 10 %?
+-- FUNCTION for an index if ensemble members are to 90 % under a threshold or only 10 %?
 --  The function returns 0 for only 10% are over, 1 for between 10 and 90 % and 2 for over 90%
 -- ###########################################################################################
 
@@ -20,7 +20,7 @@ function HARVIDX(numOfParams,params)
     local threshold = params[1];
     for index, value in pairs(params) do
       if (value ~= ParamValueMissing and index > 1) then
-        if (value > threshold) then
+        if (value < threshold) then
 	 agree = agree + 1;
 	 count = count + 1;
 	else
@@ -34,6 +34,99 @@ function HARVIDX(numOfParams,params)
     if (agree / count >= 0.9) then
        result.value = 2;
     elseif (agree / count <= 0.1) then
+    	result.value = 0;
+    else
+	result.value = 1;
+    end
+  else
+    result.message = 'OK';
+    result.value = ParamValueMissing;
+  end
+
+  return result.value,result.message;
+end
+
+-- ################################################################################################
+-- FUNCTION for an index if ensemble members are to a given percent over a threshold or 1-percent?
+--  The function returns 0 for only (1-percent) are over, 1 for between boundaries and 2 for over
+-- calling ENSOVER{threshold;percent;parameterlist} percent as value 0..1
+-- #################################################################################################
+
+function ENSOVER(numOfParams,params)
+  local result = {};
+  if (debug == 1) then
+    for index, value in pairs(params) do
+      print(index.." : "..value);
+    end
+  end
+  if (numOfParams > 0) then 
+    local count = 0;
+    local agree = 0;
+    local disagree = 0;
+    local threshold = params[1];
+    local percent = params[2];
+    for index, value in pairs(params) do
+      if (value ~= ParamValueMissing and index > 2) then
+        if (value > threshold) then
+	 agree = agree + 1;
+	 count = count + 1;
+	else
+	 disagree = disagree + 1;
+ 	 count = count + 1;
+        end
+      end
+    end
+    result.message = 'OK';
+--    result.value = agree;
+    if (agree / count >= percent) then
+       result.value = 2;
+    elseif (agree / count <= (1 - percent)) then
+    	result.value = 0;
+    else
+	result.value = 1;
+    end
+  else
+    result.message = 'OK';
+    result.value = ParamValueMissing;
+  end
+
+  return result.value,result.message;
+end
+-- ################################################################################################
+-- FUNCTION for an index if ensemble members are to a given percent undeer a threshold or 1-percent?
+--  The function returns 0 for only (1-percent) are over, 1 for between boundaries and 2 for over
+-- calling ENSUNDER{threshold;percent;parameterlist}
+-- #################################################################################################
+
+function ENSUNDER(numOfParams,params)
+  local result = {};
+  if (debug == 1) then
+    for index, value in pairs(params) do
+      print(index.." : "..value);
+    end
+  end
+  if (numOfParams > 0) then 
+    local count = 0;
+    local agree = 0;
+    local disagree = 0;
+    local threshold = params[1];
+    local percent = params[2];
+    for index, value in pairs(params) do
+      if (value ~= ParamValueMissing and index > 2) then
+        if (value < threshold) then
+	 agree = agree + 1;
+	 count = count + 1;
+	else
+	 disagree = disagree + 1;
+ 	 count = count + 1;
+        end
+      end
+    end
+    result.message = 'OK';
+--    result.value = agree;
+    if (agree / count >= percent) then
+       result.value = 2;
+    elseif (agree / count <= (1 - percent)) then
     	result.value = 0;
     else
 	result.value = 1;
@@ -126,7 +219,7 @@ function getFunctionNames(type)
   local functionNames = '';
 
   if (type == 1) then 
-    functionNames = 'HARVIDX';
+    functionNames = 'HARVIDX,ENSOVER,ENSUNDER';
   end
   
   return functionNames;

@@ -76,25 +76,5 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
-ECSF;DewPoint;2;TD-C;5008;1;1;00000;1;1;1;0;E;;;1;
-ECSF;Evaporation;2;EVAP-KGM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;GroundTemperature;2;TG-K;5008;1;14;00007;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};1;
-ECSF;IceCover;2;IC-0TO1;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;LatentHeatFlux;2;FLLAT-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;PrecipitationAmount;2;RR-KGM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;Pressure;2;P-PA;5008;1;1;00000;1;1;1;0;E;MUL{$,0.010000};DIV{$,0.010000};;
-ECSF;RadiationGlobalAccumulation;2;RADGLOA-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;RadiationLWAccumulation;2;RADLWA-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;RadiationNetSurfaceLWAccumulation;2;RNETLWA-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;RadiationNetSurfaceSWAccumulation;2;RNETSWA-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;SensibleHeatFlux;2;FLSEN-JM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;SnowAccumulation;2;SNACC-KGM2;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;SnowDensity;2;SND-KGM3;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;SnowDepth;2;HSNOW-M;5008;1;1;00000;1;1;1;0;E;;;2;
-ECSF;Temperature;2;T-K;5008;1;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};1;
-ECSF;TemperatureSea;2;TSEA-K;5008;1;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};1;
-ECSF;TotalCloudCover;2;N-0TO1;5008;1;1;00000;1;1;1;0;E;;;;
-ECSF;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5008;1;14;00007;1;1;1;0;E;;;2;
-ECSF;WindGust;2;FFG-MS;5008;1;1;00000;1;1;1;0;E;;;1;
-ECSF;WindUMS;2;U-MS;5008;1;1;00000;2;2;2;0;E;;;1;
-ECSF;WindVMS;2;V-MS;5008;1;1;00000;2;2;2;0;E;;;1;
+HOPSSF;PrecipitationAmount;2;RR-KGM2;5012;1;0;00000;1;1;;0;E;MUL{$,1000.000000};;;
+HOPSSF;Temperature;2;T-K;5012;1;0;00000;1;1;;0;E;SUM{$,-273.15};;;

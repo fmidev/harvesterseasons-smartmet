@@ -4,7 +4,10 @@
 Harmonie;999;
 
 # "Default"
-ERA5;26;27.8km x 27.8km;
+HOPSSF;5012;5.0km x 5.0km;
+ECSF;5008;110km x 110km;
+ERA5L;5010;9.0km x 9.0km;
+ERA5;5009;27.8km x 27.8km;
 SMARTMET;1073;7.6km x 7.5km;
 SMARTMETMTA;1073;7.6km x 7.5km;
 HL2;173;7.9km x 7.2km;

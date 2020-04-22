@@ -82,7 +82,7 @@ RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartme
 
 # M.K. 09.01.2020: adopted it to WEkEO paths 
 RUN mkdir -p /srv/data
-RUN useradd smartmet
+RUN useradd -r -u 1001 smartmet
 # M.K. 09.01.2020: /srv/grid-data adopted to WEkEO setting
 #                  other paths are not created in step before TODO check!
 RUN chown -R smartmet /srv/data /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache

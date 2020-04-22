@@ -16,23 +16,30 @@ under bin you have the get-seasonal.sh for now. Similar scripts for ERA5 and ERA
 
 This should used to put data in a ~/data/grib directory, where the smartmet-server will look for new grib files read in.
 
-# Build and run postgres-database
+# Docker setup 
+## Build and run ssl-proxy
+
+For https addresses of the server, there is an ssl-proxy handling this
+
+`docker-compose up --detatch --build ssl-proxy`
+
+## Build and run postgres-database
 
 Setup database for geonames-engine because of who knows why
 
 `docker-compose up --detatch --build fminames-db`
 
-# Build and run Redis
+## Build and run Redis
 
 Setup database for storing grib-file details
 
 `docker-compose up --detatch --build redis_db`
 
-# Build and run smartmet-server
+## Build and run smartmet-server
 
 `docker-compose up --build smartmet-server`
 
-# Fire up all three services at once
+## Fire up all three services at once
 
 This will:
 
@@ -42,18 +49,44 @@ This will:
 
 `docker-compose up --detatch`
 
-# Read data to Redis to be used by SmartMet-server
+# Data ingestion and configuring on SmartMet-Server
 
-Run a `filesys-to-smartmet`-script in the smartmet-server container... once Redis is ready. The location of filesys-to-smartmet.cfg depends on where the settings-files are located at. With `docker-compose.yaml` the settings are currently stored in `/home/smartmet/config`.
+## Read data to Redis to be used by SmartMet-server
+
+Run a `filesys-to-smartmet`-script in the smartmet-server container... once Redis is ready. The location of filesys-to-smartmet.cfg depends on where
+the settings-files are located at. With `docker-compose.yaml` the settings are currently stored in `/home/smartmet/config`.
 
 `docker exec --user smartmet smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0`
 
-# HOPS forecasts and analysis as netCDF files as non-grid smartmet-server
+## HOPS forecasts and analysis into grid smartmet-server
 
-The HOPS model produces netCDF as output that has to be turned into smartmet-server query data under the ~/data/hops directory structure.
-To be available
+### HOPS initial state and forcing data retrieval
 
-# Using timeseries, WMS or WFS
+HOPS needs initial state of soil parameters in the domain it is running for and forcing data for the forecasts. In harvester-seasons the initial state is kept
+up from C3S ERA5(L) reanalysis data and the forcing is coming from C3S seasonal forecast data. Shell scripts for getting these datasets are:
+`get-seasonal.sh`
+`get-ERA5-daily.sh`
+
+The scripts run without arguments to fetch the most recent available data set or can be run with year month arguments like '2020 3' for seasonal
+and '2020 4 11' for daily ERA5(L) to retrieve older data. Within the shell scripts there are calls to cds-api python scripts and commands to move data to
+proper directories.
+
+HOPS model operation is described in [https://github/fmidev/hops](github/fmidev/hops)
+
+### HOPS output transformation to grib
+
+The HOPS model produces CF conform netCDF as output that has to be turned into smartmet-server grib files under the ~/data/grib directory structure.
+This is achieved by running the command 
+
+`bin/hops-cf_to_grib.sh hops_ens_cf_2020-04-02.nc'
+
+it uses cdo and grib_set command line commands to turn the HOPS output into grib variables and turns the Lambert-Azimtuhal-Equal-Area projection into a regular lat
+lon projection over the same area.
+
+To be available as addressable variables the grib variables need to be mapped into SmartMet-server FMI-IDs or newbase names.
+A general guide explaining this is under [DATAMAPPING.md](DATAMAPPING).
+
+# Using timeseries, WMS or WFS plugins of the SmartMet-server
 
 The aim is to have timeseries and WMS layers for the http://harvesterseasons.com/ service and WFS downloads available for data sets that will be exported to
 other service outlets of HOPS output.
