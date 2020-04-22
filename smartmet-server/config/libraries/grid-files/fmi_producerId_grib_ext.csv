@@ -1,0 +1,15 @@
+#
+# FIELDS:
+# 1) FmiProducerId
+# 2) Type
+# 3) Centre
+# 4) GeneratingProcessIdentifier
+# 5) FmiProducerName
+# 6) FmiProducerDescription
+#
+551;2;86;0;HPA;HOPS model analysis
+552;1;86;2;HPW;HOPS model NWP forecast
+553;3;86;4;HPS;HOPS model seasonal forecast
+554;3;98;4;ECSF;C3S seasonal forecasts by ECMWF
+555;2;98;0;ERA5L;C3S ERA5-Land reanalysis by ECMWF
+556;2;98;0;ERA5;C3S ERA5 reanalysis by ECMWF

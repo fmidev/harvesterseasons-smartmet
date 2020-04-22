@@ -1,0 +1,15 @@
+#
+# FIELDS:
+# 1) FmiLevelId
+# 2) FmiProducerId
+# 3) GeneratingProcessIdentifier
+# 4) Centre
+# 5) Grib2LevelIdentifier
+#
+1;553;255;86;1;
+9;551;255;86;112;
+9;552;255;86;112;
+9;553;255;86;112;
+9;554;255;86;112;
+9;555;255;86;112;
+9;556;255;86;112;
