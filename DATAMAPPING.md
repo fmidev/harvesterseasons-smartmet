@@ -5,7 +5,7 @@ Data from GRIB files need to be mapped onto variables that the SmartMet-Server s
 * Different grib variables (grib1 and grib2) need to find global grib-ids.
   * For Grib1 these grib-ids are being looked for in the  "grib1_parameters.csv" file (the parameterId = grib-id).
   * For Grib2 grib-id searching in "grib2_parameters.csv" file.
-  * Succesful searches can be checked with the  grid_dump cmd line program showing each variable  grids grib-i.
+  * Succesful searches can be checked with the  grid_dump cmd line program showing each variables' grib-id
   * If  grib-id is also listed in "grib_parameters.csv", other attributes of grib should also be set
 * When a grib-id is identified, it needs to be mapped to a FMI-ID in "fmi_parametrerId_grib.csv"
   * if FMI-ID is not yet available, these can be defined in "fmi_parameters.csv" file
