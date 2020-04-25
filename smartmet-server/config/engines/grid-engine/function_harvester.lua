@@ -139,6 +139,27 @@ function ENSUNDER(numOfParams,params)
   return result.value,result.message;
 end
 
+-- #################################################################################################
+--- FUNCTION to calculate the nth percentile
+--- call PCNTL{percentile;paramList} percentile in (range 0 to 100)
+-- #################################################################################################
+
+function PCNTL(numOfParams,params)
+	local result = {};
+	local percentile = params[1];
+	if percentile > 100 or percentile < 0 then 
+		result.value = ParamValueMissing;
+		result.message = 'Percentile value out of range 0-100';
+	else
+		local numSamples = numOfParams - 1;
+		local target = math.floor(numSamples * percentile / 100);
+		local sortedList = {unpack(params,2,numOfParams)};
+		table.sort(sortedList);
+		result.value = sortedList[target];
+		result.message = 'OK';
+	end
+	return result.value,result.message;
+end
 
 -- ***********************************************************************
 --  FUNCTION : getFunctionNames
@@ -219,7 +240,7 @@ function getFunctionNames(type)
   local functionNames = '';
 
   if (type == 1) then 
-    functionNames = 'HARVIDX,ENSOVER,ENSUNDER';
+    functionNames = 'HARVIDX,ENSOVER,ENSUNDER,PCNTL';
   end
   
   return functionNames;
