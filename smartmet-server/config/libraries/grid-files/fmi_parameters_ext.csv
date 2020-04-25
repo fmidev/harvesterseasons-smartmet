@@ -26,38 +26,83 @@
 30817;1;F88-T-MAX-C;C;NormalMaxTemperatureF88 (817);1;;
 30818;1;F98-T-MAX-C;C;NormalMaxTemperatureF98 (818);1;;
 # New parameters for Harvestersesasons service
-# C3S key for number is to use ECMWF grib parameter numbers plus 13000
+# C3S key for number is to use ECMWF grib parameter numbers plus 14000 and 2 more digits for percentiles (here 10,50,90)
 # mx2t24 Maximum and minimum temperature at 2 metres in the last 24 hours
-13051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours;;;1;
-13052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;;;1;
+14051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours;;;1;
+14052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;;;1;
 # swvl2 Volumetric Soil Water layer 2, 3, 4
-13039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;3;
-13040;1;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
-13041;1;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
-13042;1;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
+14039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;3;
+14040;1;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
+14041;1;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
+14042;1;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
 # tsr Top Net Solar Radation
-13178;1;TSR-J;J;Top Net Solar Radation;1;1;1;2;
-13141;1;HSNOW-M;M;Snow depth in Water equivalent M;1;1;1;5;
+14178;1;TSR-J;J;Top Net Solar Radation;1;1;1;2;
+14141;1;HSNOW-M;M;Snow depth in Water equivalent M;1;1;1;5;
 # ro Runoff
-13205;1;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
+14205;1;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
 # ewss Eastward and northward turbulent surface stress
-13180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress;1;1;1;2;
-13181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress;1;1;1;2;
-13182;1;EVAP-MM;MM;Evaporation in MM;1;1;1;2;
+14180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress;1;1;1;2;
+14181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress;1;1;1;2;
+14182;1;EVAP-MM;MM;Evaporation in MM;1;1;1;2;
 
 # HOPS parameters
-13049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
-13050;1;TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
-13556;1;WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
-13551;1;ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
-13552;1;ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
-13553;1;LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
-13554;1;BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
-13139;1;STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
-13170;1;STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
-13183;1;STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
-13236;1;STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
-13539;1;OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
-13570;1;OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
-13583;1;OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
-13536;1;OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+14049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
+14050;1;TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
+14556;1;WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
+14551;1;ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
+14552;1;ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
+14553;1;LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
+14554;1;BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
+14139;1;STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+14170;1;STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+14183;1;STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+14236;1;STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+14539;1;OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+14570;1;OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+14583;1;OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+14536;1;OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1404990;1;P90TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
+1405090;1;P90TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
+1455690;1;P90WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
+1455190;1;P90ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
+1455290;1;P90ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
+1455390;1;P90LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
+1455490;1;P90BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
+1413990;1;P90STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1417090;1;P90STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1418390;1;P90STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1423690;1;P90STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1453990;1;P90OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1457090;1;P90OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1458390;1;P90OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1453690;1;P90OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1404910;1;P10TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
+1405010;1;P10TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
+1455610;1;P10WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
+1455110;1;P10ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
+1455210;1;P10ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
+1455310;1;P10LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
+1455410;1;P10BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
+1413910;1;P10STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1417010;1;P10STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1418310;1;P10STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1423610;1;P10STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1453910;1;P10OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1457010;1;P10OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1458310;1;P10OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1453610;1;P10OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1404950;1;P50TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
+1405050;1;P50TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
+1455650;1;P50WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
+1455150;1;P50ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
+1455250;1;P50ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
+1455350;1;P50LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
+1455450;1;P50BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
+1413950;1;P50STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1417050;1;P50STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1418350;1;P50STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1423650;1;P50STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
+1453950;1;P50OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
+1457050;1;P50OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
+1458350;1;P50OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
+1453650;1;P50OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;

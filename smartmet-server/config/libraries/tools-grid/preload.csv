@@ -31,7 +31,9 @@
 #  7) ForecastNumber
 #  8) Preload requested (0 = No, 1 = Yes)
 #
-
+ECSF;SOILWET1-M;1:9;00007;3;-1;1;
+ECSF;TG-K;1:9;00007;3;-1;1;
+ECSF;HSNOW-M;1:1;00000;3;-1;1;
 ECG;ALBEDO-0TO1;1;1;00000;1;-1;0;
 ECG;ALBEDOSLR-0TO1;1;1;00000;1;-1;0;
 ECG;CAPE-JKG;1;1;00000;1;-1;0;
