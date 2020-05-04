@@ -44,6 +44,8 @@
 14180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress;1;1;1;2;
 14181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress;1;1;1;2;
 14182;1;EVAP-MM;MM;Evaporation in MM;1;1;1;2;
+14008;1;SRO-M;M;Surface runoff in depth of water in metres;1;1;1;5;
+14009;1;SSRO-M;M;Subsurface Runoff in depth of water in metres;1;1;1;5;
 
 # HOPS parameters
 14049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
