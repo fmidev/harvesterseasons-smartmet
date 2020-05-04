@@ -71,21 +71,27 @@ The scripts run without arguments to fetch the most recent available data set or
 and '2020 4 11' for daily ERA5(L) to retrieve older data. Within the shell scripts there are calls to cds-api python scripts and commands to move data to
 proper directories.
 
-To take in accaount bias adjustments monthly biases are calculated with the following cmds:
-`seq 0 24 | parallel -j 16 --tmpdir tmp/ --compress cdo ymonmean -sub -selvar,2d,2t,e,tp,stl1,sd,rsn,ro, era5l/era5l_2000-2019_stats-monthly-nordic.grib -remapbil,era5l-nordic-grid -daymean -selvar,2d,2t,erate,tprate,stl1,sd,rsn,var205 ens/ec-sf-2000_2019-stats-monthly-fcmean-{}.grib era5l-ecsf_2000-2019_monthly-fcmean-{}.grib`
-`cdo ensmean era5l-ecsf_2000-2019_monthly-fcmean-*.grib era5l-ecsf_2000-2019_monthly-fcmean-em.grib`
+To take in accaount bias adjustments monthly biases are calculated with the following cmds (variables which bias was calculated have added):
+* `seq 0 24 | parallel -j 16 --tmpdir tmp/ --compress cdo ymonmean -sub -selvar,2d,2t,e,tp,stl1,sd,rsn,ro, era5l/era5l_2000-2019_stats-monthly-nordic.grib -remapbil,era5l-nordic-grid -daymean -selvar,2d,2t,erate,tprate,stl1,sd,rsn,var205 ens/ec-sf-2000_2019-stats-monthly-fcmean-{}.grib era5l-ecsf_2000-2019_monthly-fcmean-{}.grib`
+* `cdo ensmean era5l-ecsf_2000-2019_monthly-fcmean-*.grib era5l-ecsf_2000-2019_monthly-fcmean-em.grib`
 Using parallel makes this faster as the 16 core system can faster calculate results for 25 ensemble members than one cdo thread doing the ensemble first and then carry on.
 And a mean of many biases seems to be a better idea than the bias of an ensemble mean.
 
 The seasonal forecast can now be interpolated on the ERA5L grid and the adjustments can be added:
-`cdo add era5l-ecsf_2000-2019_monthly-fcmean-em.grib -remapbil,era5l-nordic-grid grib/ECSF_20200402T0000_all-24h-nordic.grib`
-Again doing this 51 times in parallel is faster, so that's how it is done for real, but the above explain better the operation. In fact adding some timeshiftinf/interpolation
-is needed to complete the job successfully.
-`seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo add -seldate,2020-04-02,2020-11-02 -inttime,2020-04-02,00:00:00,1days -shifttime,1year era5l-ecsf_2000-2019_monthly-bias-fixed.grib -remapbil,era5l-nordic-grid -selvar,var168,var167,var182,var205,var33,var141,var139,var228 ens/ec-sf_20200402_all-24h-nordic-{}.grib ens/ec-bsf_20200402_all-24h-nordic-{}.grib`
+* `cdo add era5l-ecsf_2000-2019_monthly-fcmean-em.grib -remapbil,era5l-nordic-grid grib/ECSF_20200402T0000_all-24h-nordic.grib`
+Again doing this 51 times in parallel is faster, so that's how it is done for real, but the above explain better the operation. In fact adding some timeshifting/interpolation
+is needed to complete the job successfully. This was used for real, last step is needed, because cdo fails to add the ensemble attributes:
+* `seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo add -seldate,2020-04-02,2020-11-02 -inttime,2020-04-02,00:00:00,1days -shifttime,1year era5l-ecsf_2000-2019_monthly-bias-fixed.grib -remapbil,era5l-nordic-grid -selvar,var168,var167,var182,var205,var33,var141,var139,var228 ens/ec-sf_20200402_all-24h-nordic-{}.grib ens/ec-bsf_20200402_all-24h-nordic-{}.grib`
+* `cat ens/ec-bsf_20200402_all-24h-nordic-*.grib > grib/ECBSF_20200402_all-24h-nordic.grib`
+* `for f in ec-bsf_20200402_all-24h-nordic-*.grib ; do i=$(echo $f | sed s:.*nordic-::|sed s:\.grib::); grib_set -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number=$i $f ${f:0:-5}-fixed.grib; done`
+
+As only soil temperature level 1 is available in seasonal forecasts, the deeper temperatures on level 2, 3 and 4 are prodcued by using the
+ERA5L monthly statistics from 2000-2019 to give each gridpoint the relation between stl1 and the deeper temperatures. The forecasted stl1 with bias adjustement is used to produce level 2,3,4 temperatures. This data set will be used to demonstrate the added value from using HOPS.
+* `seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes add -seldate,2020-04-02,2020-11-02 -inttime,2020-04-02,00:00:00,1days -shifttime,1year -selvar,stl1,stl2,stl3 era5l-stls-diff-climate.grib -add -seldate,2020-04-02,2020-11-02 -inttime,2020-04-02,00:00:00,1days -shifttime,1year -selvar,stl1 era5l-ecsf_2000-2019_bias-monthly.grib -remapbil,era5l-nordic-grid -selvar,stl1 ens/ec-sf_20200402_all-24h-nordic-{}.grib ens/ec-bsf_20200402_stl-24h-nordic-{}.grib`
 
 The EC-BSF bias adjusted data set is then used to force the HOPS model.
 
-HOPS model operation is described in [https://github/fmidev/hops](github/fmidev/hops)
+HOPS model operation is described in [github:fmidev/hops](https://github/fmidev/hops)
 
 ### HOPS output transformation to grib
 

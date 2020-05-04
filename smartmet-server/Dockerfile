@@ -7,28 +7,24 @@ ENV USER_NAME="smartmet" \
     NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
         GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
 
-RUN yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
+RUN yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
+    	https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  \
+    	https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm && \
  yum-config-manager --disable "pgdg*" && \
  yum-config-manager --enable pgdg-common pgdg95 && \
  yum-config-manager --setopt="pgdg*.exclude=postgis*,libpqxx*" --save && \
  yum-config-manager --setopt="epel.exclude=librsvg2*" --save && \
-
-# rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-#    https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-3.noarch.rpm \
-#        https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm && \
-#	sed -i 's:\]k:\]:g' /etc/yum.repos.d/pgdg-redhat-all.repo &&   yum-config-manager --disable "pgdg*" && \
-#                yum-config-manager --enable "pgdg95"
-
+ yum -y update 
 # Install version 9.5  before postgis to prevent 9.2 from being installed
 # The version 9.5 seems to be a dependency for smartmet-tools-grid
-RUN yum -y update \
-    yum -y install postgresql95
-
+# should be drawn from a smartmet dependency later on
+#RUN yum -y install postgresql95 
+ 
 # This should install from epel
 # Postgis requires some libraries that are installed with postgresql
 # The postgres95 should be installed before postgis to prevent wrong versions
 # being installed as a dependency
-RUN yum -y install postgis
+#RUN yum -y install postgis
 # gribwms plugin required librsvg2
 RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
 
