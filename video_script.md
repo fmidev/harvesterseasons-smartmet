@@ -3,32 +3,23 @@
 # EN
 Forestry operations depend on good trafficability of terrain and dirt roads on location. The Finnish Forest Centre has produced trafficability maps based on high resolution laser scanning of most parts of Finland. These maps call for dry or winter coditions for many forests in Finland to be trafficable. Our app gives a 6 month foresight identifying good or bad conditions within the 6 classess of the trafficability map.
 
-Then you open https://harvesterseasons.com/ it can use your location information to zoom in on the surrounding area and show
-the 6 month forecast for it in a graph with summer and winter condition analysis. You can navigate the date on the map below 
-with a slider, back and forward buttons or play to go thru all dates. 
+Then you open https://harvesterseasons.com/ it can use your location information to zoom in on the surrounding area and show the 6 month forecast for it in a graph with summer and winter condition analysis. The blue circle indicates the area where the graph information is valid. You can navigate the date on the map below with a slider, back and forward buttons or play to go thru all dates. 
 
 Each date map translates the forecasted indexes into changes to trafficability classes on the map for that day. Good winter conditions allow forest machines in all terrains, good summer conditions leave out winter classes. Bad conditions are identified for areas that need dry or winter conditions and these are not predicted. Seasonal forecasts are far from certain, so we also have situations where we can't predict conditions.
 
-Below the map three graphs go into detail explaining the conditions background. The predictions use EU Copernicus climate 
-change service seasonal forecasts, which are a tool combining climatology and large scale weather pattern teleconnections to 
-indicate directions of future climate. So graphs are not daily weather forecasts, but a range of possibilities for each day 
-and our analysis is based on 90% of these to concure on a good or bad condition. The graphs show all 51 members of the 
-bias-adjusted and post processed prediction ensemble interpolated to the location on the map. It represents many square 
-kilometres, not one spot as the resolution of the models used ranges from 5 to to 100 kilometers. 
+Below the map three graphs go into detail explaining the conditions background. The predictions use EU Copernicus climate change service seasonal forecasts, which are a tool combining climatology and large scale weather pattern teleconnections to indicate directions of future climate. So graphs are not daily weather forecasts, but a range of possibilities for each day  and our analysis is based on 90% of these to concure on a good or bad condition. The graphs show all 51 members of the bias-adjusted and post processed prediction ensemble interpolated to the location on the map. It represents many square kilometres, not one spot as the resolution of the models used ranges from 5 to to 100 kilometers. 
 
-Summer good/dry conditions are based on soil wetness below 10 cm ground being under 40 % with 90% of prediction members.
-Winter good conditions are either based on soil temperature at 20 cm below ground being under 0 C or snow depth being more than 40 cm. Again 90% of prediction members have to agree.
+Summer good/dry conditions are based on soil wetness below 10 cm ground being under 40 % with 90% of prediction members. Winter good conditions are either based on soil temperature at 20 cm below ground being under 0 C or snow depth being more than 40 cm. Again 90% of prediction members have to agree.
 
 The app allows browsing the map and clicking for analysis graphs all over Northern Europe, but trafficability analysis is available only in Finland with over 80% of land area covered. In areas without trafficability analysis the map shows average soil wetness, temperature and snow depth predictions, but the information is intended to be coarse as this information should not be considered precise, it is estimating future climatology of the variable. Also good and bad trafficability is analyzed in the graphs, but it can't be translated for particular parcels on the map.
 
-Come and try the app. The service is developed with EU support and it allows this service to be available for free for a one year
-trial phase. Check it out and we welcome feedback, link is behind more information. Enjoy the service!
+Come and try the app. The service is developed with EU support and it allows this service to be available for free for a one year trial phase. Check it out and we welcome feedback, link is behind more information. Enjoy the service!
 
 # FI
 
 Onko korjuukelpoisuuskartta tuttu? Metsäkeskuksen tarjoama analyysi kattaa yli 80% Suomen metsämaista. Kuivaa kesää tai hyviä talviolosuhteita tarvitaan suuressa osassa Suomen metsiä korjuiden järjestämiseen. Uusi palvelumme antaa 6 kuukauden ennusteen hyvistä ja huonoista olosuhteissa 6 korjuukelpoisuus luokan kannalta.
 
-Kun avaat https://harvesterseasons.com/ sivuston sivu voi avautua sijaintisi ympäristöä kuvaamaan. Korjuukelpoisuus (eli trafficability) seuraavalle 6 kuukaudelle arvioidaan kuvaajassa kesä- ja talvitilanteiden kannalta. Voit ohjata alla olevan kartan päivämäärää liukukytkimellä, eteen, taakse tai play napeilla.
+Kun avaat https://harvesterseasons.com/ sivuston sivu voi avautua sijaintisi ympäristöä kuvaamaan. Korjuukelpoisuus (eli trafficability) seuraavalle 6 kuukaudelle arvioidaan kuvaajassa kesä- ja talvitilanteiden kannalta. Kuvaajan tieto pätee sinisen ympyrän sisällä. Voit ohjata alla olevan kartan päivämäärää liukukytkimellä, eteen, taakse tai play napeilla.
 
 Jokaisen päivän kartalla ennustetut indexit vaihtavat korjuukelpoisuus luokitusta hyväksi tai huonoksi. Hyvät talviolosuhteet sallivat korjuun kaikialla, hyvät kuivat kesätilanteet sallivat korjuun muualla kuin talviluokissa. Huonoja olosuhteita esitetään kuivuutta tai talviolosuhteita edellyttävissä paikoissa, jos olosuhteita ei ennusteta. Vuodenaikaisennusteet eivät ole luotettavia kuten sääennusteet, siksi on myös tilanteita, joissa emme tohdi ennustaa olosuhteita.
 
