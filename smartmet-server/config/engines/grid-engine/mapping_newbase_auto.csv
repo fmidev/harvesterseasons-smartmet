@@ -76,17 +76,3 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
-ECBSF;DewPoint;2;TD-C;5009;1;1;00000;1;1;;0;E;;;;
-ECBSF;Evaporation;2;EVAP-KGM2;5009;1;1;00000;1;1;;0;E;;;;
-ECBSF;GroundTemperature;2;TG-K;5009;1;9;00007;1;1;;0;E;SUM{$,-273.15};;;
-ECBSF;PrecipitationAmount;2;RR-KGM2;5009;1;1;00000;1;1;;0;E;MUL{$,1000.000000};;;
-ECBSF;SnowDensity;2;SND-KGM3;5009;1;1;00000;1;1;;0;E;;;;
-ECBSF;SnowDepth;2;HSNOW-M;5009;1;1;00000;1;1;;0;E;;;;
-ECBSF;Temperature;2;T-K;5009;1;1;00000;1;1;;0;E;SUM{$,-273.15};;;
-ECSF;GroundTemperature;2;TG-K;5008;1;14;00007;1;1;;0;E;SUM{$,-273.15};;;
-ERA5L;HighCloudCover;2;NH-PRCNT;5009;1;1;00000;1;1;;0;E;MUL{$,100.000000};;;
-ERA5L;ProbabilityFrostyRoad;2;PROBFRY;5009;1;1;00000;1;1;;0;E;;;;
-ERA5L;ProbabilityOfPr24Limit1;2;PROB-RR24-1;5009;1;1;00000;1;1;;0;E;MUL{$,100.000000};;;
-ERA5L;ProbabilitySnowyRoad;2;PROBSNY;5009;1;1;00000;1;1;;0;E;;;;
-HOPSSF;PrecipitationAmount;2;RR-KGM2;5012;1;0;00000;1;1;;0;E;MUL{$,1000.000000};;;
-HOPSSF;Temperature;2;T-K;5012;1;0;00000;1;1;;0;E;SUM{$,-273.15};;;

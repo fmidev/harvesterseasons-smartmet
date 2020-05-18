@@ -7,6 +7,7 @@
 # 5) FmiProducerName
 # 6) FmiProducerDescription
 #
+<<<<<<< HEAD
 551;2;86;145;HOPSANA;HOPS model analysis
 552;1;86;2;HOPSWF;HOPS model NWP forecast
 553;3;86;147;HOPSSF;HOPS model seasonal forecast
@@ -14,3 +15,12 @@
 555;2;98;255;ERA5L;C3S ERA5-Land reanalysis by ECMWF
 556;2;98;145;ERA5;C3S ERA5 reanalysis by ECMWF
 557;3;98;255;ECBSF;Bias adjusted C3S seasonal forecasts
+=======
+551;2;86;0;HOPSANA;HOPS model analysis
+552;1;86;2;HOPSWF;HOPS model NWP forecast
+553;3;86;4;HOPSSF;HOPS model seasonal forecast
+554;3;98;4;ECSF;C3S seasonal forecasts by ECMWF
+555;2;98;0;ERA5L;C3S ERA5-Land reanalysis by ECMWF
+556;2;98;0;ERA5;C3S ERA5 reanalysis by ECMWF
+557;3;98;4;ECBSF;Bias adjusted C3S seasonal forecasts
+>>>>>>> 2017772c069d7f7677071e59b5eb3652e9c2f972

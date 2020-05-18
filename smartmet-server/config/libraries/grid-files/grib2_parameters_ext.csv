@@ -28,6 +28,7 @@
 # [24] parameterDescription
 #
 # HOPS output layer 
+<<<<<<< HEAD
 198039;192;86;128;39;;;;;;;;;;;;;;;;;;M3M3;SWVL1;Volumetric soil water layer 1
 198040;192;86;128;40;;;;;;;;;;;;;;;;;;M3M3;SWVL2;Volumetric soil water layer 2
 198041;192;86;128;41;;;;;;;;;;;;;;;;;;M3M3;SWVL3;Volumetric soil water layer 3
@@ -40,3 +41,24 @@
 199170;192;86;128;170;;;;;;;;;;;;;;;;;;C;OSTL2;Soil temperature layer 2 organic soil
 199183;192;86;128;183;;;;;;;;;;;;;;;;;;C;OSTL3;Soil temperature layer 3 organic soil
 199236;192;86;128;236;;;;;;;;;;;;;;;;;;C;OSTL4;Soil temperature layer 4 organic soil
+=======
+39;192;86;128;39;;;;;;;;;;;;;;;;;;M3M3;SWVL1;Volumetric soil water layer 1
+40;192;86;128;40;;;;;;;;;;;;;;;;;;M3M3;SWVL2;Volumetric soil water layer 2
+41;192;86;128;41;;;;;;;;;;;;;;;;;;M3M3;SWVL3;Volumetric soil water layer 3
+42;192;86;128;42;;;;;;;;;;;;;;;;;;M3M3;SWVL4;Volumetric soil water layer 4
+139;192;86;128;139;;;;;;;;;;;;;;;;;;C;MSTL1;Soil temperature layer 1 mineral soil
+170;192;86;128;170;;;;;;;;;;;;;;;;;;C;MSTL2;Soil temperature layer 2 mineral soil
+183;192;86;128;183;;;;;;;;;;;;;;;;;;C;MSTL3;Soil temperature layer 3 mineral soil
+236;192;86;128;236;;;;;;;;;;;;;;;;;;c;MSTL4;Soil temperature layer 4 mineral soil
+139;192;86;128;139;;;;;;;;;;;;;;;;;;C;OSTL1;Soil temperature layer 1 organic soil
+1170;192;86;128;170;;;;;;;;;;;;;;;;;;C;OSTL2;Soil temperature layer 2 organic soil
+13183;192;86;128;183;;;;;;;;;;;;;;;;;;C;OSTL3;Soil temperature layer 3 organic soil
+13236;192;86;128;236;;;;;;;;;;;;;;;;;;C;OSTL4;Soil temperature layer 4 organic soil
+260045;0;86;0;49:;;;;;;;;;;;;;;;;;MM;TWP;Total Water Precipitation
+260046;0;86;0;50:;;;;;;;;;;;;;;;;;MM;TSP;Total Snow Precipitation
+260056;0;86;1;13:;;;;;;;;;;;;;;;;;MM;SWE;LWE Accumulated Snow Depth
+260201;2;86;3;1:;;;;;;;;;;;;;;;;;C;OSTL2;Soil temperature layer 2 organic soil
+260202;2;86;3;1:;;;;;;;;;;;;;;;;;M3M3;OSML2;Soil moisture layer 2 organic soil
+260204;2;86;3;1:;;;;;;;;;;;;;;;;;C;OSTL4;Soil temperature layer 4 organic soil
+260360;2;86;3;18;;;;;;;;;;;;;;;;;;C;OSTL3;Soil temperature layer 3 organic soil
+>>>>>>> 2017772c069d7f7677071e59b5eb3652e9c2f972
