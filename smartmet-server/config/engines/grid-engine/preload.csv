@@ -1,0 +1,35 @@
+# This file is used for indicating which content should be preloaded.
+#
+# FIELDS
+#  1) Producer name
+#  2) Parameter name (Radon name)
+#  3) GeometryId
+#  4) Parameter level id type:
+#         1 = FMI
+#         2 = GRIB1
+#         3 = GRIB2
+#  5) Level id
+#         FMI level identifiers:
+#            1 Gound or water surface
+#            2 Pressure level
+#            3 Hybrid level
+#            4 Altitude
+#            5 Top of atmosphere
+#            6 Height above ground in meters
+#            7 Mean sea level
+#            8 Entire atmosphere
+#            9 Depth below land surface
+#            10 Depth below some surface
+#            11 Level at specified pressure difference from ground to level
+#            12 Max equivalent potential temperature level
+#            13 Layer between two metric heights above ground
+#            14 Layer between two depths below land surface
+#            15 Isothermal level, temperature in 1/100 K
+#  6) Level
+#  7) ForecastType
+#  8) ForecastNumber
+#  9) Preload requested (0 = No, 1 = Yes)
+#
+ECBSF;TSOIL-K;5009;9;28;00000;1;-1;1
+ECBSF;HSNOW-M;5009;1;0;00000;1;-1;1
+ECBSF;SOILWET1-M;5009;9;7;00000;1;-1;1
