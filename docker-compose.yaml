@@ -56,13 +56,14 @@ services:
       # This silly password needs to copied into ./smartmet/geonames.conf
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!
       - POSTGRES_USER=fminames_user
-      # POSTGRES_DB: fminames  
+      #- POSTGRES_DB=fminames  
     ports:
       # Port exposed for connecting from host (not required in production)
      - "5432:5432"
-    volumes:
-    #   # Keep database stuff stored on local file system
-     - ../data/db:/var/lib/postgresql/data2:Z
+    #volumes:
+    #
+    # Keep database stuff stored on local file system
+     # ../data/db:/var/lib/postgresql/data2:Z
 
   # Redis is used for storing information for grib-data files
   redis-db:
