@@ -696,5 +696,44 @@
 	"newbaseid": 1209,
 	"name": "ClearAirTurbulence2"
     }
-
+	// Hydrological input parameters GroundTemperature, DailyMeanTemp, PoP24h, Precip24h, Precip6h
+	{
+		"gribid": 216,
+		"newbaseid": 288,
+		"name": "GroundTemperature",
+		"leveltype":"109",
+		"levelvalue":7
+	}
+	{
+		"gribid": 153,
+		"newbaseid": 427,
+		"name": "DailyMeanTemperature",
+		"templatenumber": 8,
+		"aggregatetype" : "avg",
+		"aggregatelength" : 1440
+	}
+	{
+		"gribid": ,
+		"newbaseid": 829,
+		"name": "PoP24h",
+		"templatenumber": 8,
+		"aggregatetype" : "avg",
+		"aggregatelength" : 1440
+	}
+	{
+		"gribid": 437,
+		"newbaseid": 357,
+		"name": "Precipitation24h",
+		"templatenumber": 8,
+		"aggregatetype" : "accum",
+		"aggregatelength" : 1440
+	}
+	{
+		"gribid": 181,
+		"newbaseid": 357,
+		"name": "Precipitation6h",
+		"templatenumber": 8,
+		"aggregatetype" : "accum",
+		"aggregatelength" : 360
+	}
 ]
