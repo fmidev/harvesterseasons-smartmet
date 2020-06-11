@@ -708,6 +708,8 @@
 		"gribid": 55,
 		"newbaseid": 427,
 		"name": "mean2t24",
+		"leveltype": "heightAboveGround",
+		"levelvalue":2,
 		"templatenumber": 8,
 		"aggregatetype" : "avg",
 		"aggregatelength" : 1440
