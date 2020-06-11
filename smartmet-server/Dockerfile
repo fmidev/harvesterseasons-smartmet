@@ -12,7 +12,7 @@ RUN yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x
     	https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm && \
  yum-config-manager --disable "pgdg*" && \
  yum-config-manager --enable pgdg-common pgdg95 && \
- yum-config-manager --setopt="pgdg*.exclude=postgis*,libpqxx*" --save && \
+ yum-config-manager --setopt="pgdg*.exclude=postgis*" --save && \
  yum-config-manager --setopt="epel.exclude=librsvg2*" --save && \
  yum -y update 
 # Install version 9.5  before postgis to prevent 9.2 from being installed

@@ -698,40 +698,40 @@
     }
 	// Hydrological input parameters GroundTemperature, DailyMeanTemp, PoP24h, Precip24h, Precip6h
 	{
-		"gribid": 216,
+		"gribid": 139,
 		"newbaseid": 288,
-		"name": "GroundTemperature",
-		"leveltype":"109",
+		"name": "stl1",
+		"leveltype":"depthBelowLand",
 		"levelvalue":7
 	}
 	{
-		"gribid": 153,
+		"gribid": 55,
 		"newbaseid": 427,
-		"name": "DailyMeanTemperature",
+		"name": "mean2t24",
 		"templatenumber": 8,
 		"aggregatetype" : "avg",
 		"aggregatelength" : 1440
 	}
 	{
-		"gribid": 564,
+		"gribid": 131228,
 		"newbaseid": 829,
-		"name": "PoP24h",
+		"name": "tpp",
 		"templatenumber": 8,
 		"aggregatetype" : "avg",
 		"aggregatelength" : 1440
 	}
 	{
-		"gribid": 437,
+		"gribid": 260268,
 		"newbaseid": 357,
-		"name": "Precipitation24h",
+		"name": "tp24",
 		"templatenumber": 8,
 		"aggregatetype" : "accum",
 		"aggregatelength" : 1440
 	}
 	{
-		"gribid": 181,
+		"gribid": 228,
 		"newbaseid": 357,
-		"name": "Precipitation6h",
+		"name": "tp6",
 		"templatenumber": 8,
 		"aggregatetype" : "accum",
 		"aggregatelength" : 360
