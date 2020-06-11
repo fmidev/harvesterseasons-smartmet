@@ -14,3 +14,4 @@ ECBSF;ECBSF;EC-C3S-BSF;Bias adjusted C3S seasonal forecast data
 HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
 HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
 HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
+SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
