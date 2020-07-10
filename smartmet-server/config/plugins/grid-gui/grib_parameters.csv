@@ -1453,7 +1453,7 @@
 174168;;;;;1.5m dewpoint temperature;K
 174170;;;;;Soil temperature layer 2;K
 174175;;;;;Average salinity in upper 293.4m;psu
-174183;;;;;Soil temperature layer 3;K
+174183;;;;;Soil temperature layer 3 grib;K
 174186;;;;vlca;Very low cloud amount;(0 - 1)
 174201;;;;;1.5m temperature - maximum in the last 24 hours;K
 174202;;;;;1.5m temperature - minimum in the last 24 hours;K

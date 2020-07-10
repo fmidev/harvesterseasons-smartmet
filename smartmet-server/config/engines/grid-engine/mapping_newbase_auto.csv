@@ -76,6 +76,13 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
+ECB2SF;DewPoint;2;TD-C;0;1;1;00000;1;1;;0;E;;;;
+ECB2SF;Evaporation;2;EVAP-KGM2;0;1;1;00000;1;1;;0;E;;;;
+ECB2SF;GroundTemperature;2;TG-K;0;1;9;00007;1;1;;0;E;SUM{$,-273.15};;;
+ECB2SF;PrecipitationAmount;2;RR-KGM2;0;1;1;00000;1;1;;0;E;MUL{$,1000.000000};;;
+ECB2SF;SnowDensity;2;SND-KGM3;0;1;1;00000;1;1;;0;E;;;;
+ECB2SF;SnowDepth;2;HSNOW-M;0;1;1;00000;1;1;;0;E;;;;
+ECB2SF;Temperature;2;T-K;0;1;1;00000;1;1;;0;E;SUM{$,-273.15};;;
 ECBSF;DewPoint;2;TD-C;5009;1;1;00000;1;1;;0;E;;;;
 ECBSF;Evaporation;2;EVAP-KGM2;5009;1;1;00000;1;1;;0;E;;;;
 ECBSF;GroundTemperature;2;TG-K;5009;1;9;00007;1;1;;0;E;SUM{$,-273.15};;;
@@ -110,8 +117,6 @@ ERA5L;HighCloudCover;2;NH-PRCNT;5009;1;1;00000;1;1;;0;E;MUL{$,100.000000};;;
 ERA5L;ProbabilityFrostyRoad;2;PROBFRY;5009;1;1;00000;1;1;;0;E;;;;
 ERA5L;ProbabilityOfPr24Limit1;2;PROB-RR24-1;5009;1;1;00000;1;1;;0;E;MUL{$,100.000000};;;
 ERA5L;ProbabilitySnowyRoad;2;PROBSNY;5009;1;1;00000;1;1;;0;E;;;;
-HOPSSF;PrecipitationAmount;2;RR-KGM2;5012;1;0;00000;1;1;;0;E;MUL{$,1000.000000};;;
-HOPSSF;Temperature;2;T-K;5012;1;0;00000;1;1;;0;E;SUM{$,-273.15};;;
 SMARTMET;Evaporation;2;EVAP-KGM2;13;1;0;00000;1;1;;0;E;;;;
 SMARTMET;GroundTemperature;2;TG-K;1073;1;0;00007;1;1;;0;E;SUM{$,-273.15};;;
 SMARTMET;PrecipitationAmount;2;RR-KGM2;1073;1;0;00000;1;1;;0;E;MUL{$,1000.000000};;;
