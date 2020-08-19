@@ -45,7 +45,7 @@ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonmul \
     ens/ec-b2sf_$year${month}_bound-24h-eu-{}.grib
 ## Make stl2,3,4 from stl1
 seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes add \
-    -seldate,$year-$month-02,$eyear-$emonth-02 -inttime,$year-$month-02,00:00:00,1days -shifttime,1year -selvar,stl1,stl2,stl3 era5/era5-stls-diff-climate-eu.grib \
+    -seldate,$year-$month-02,$eyear-$emonth-02 -inttime,$year-$month-02,00:00:00,1days -shifttime,1year -selvar,stl1,stl2,stl3,stl4 era5/era5-stls-diff-climate-eu.grib \
     -add -seldate,$year-$month-02,$eyear-$emonth-02 -inttime,$year-$month-02,00:00:00,1days -shifttime,1year -selvar,stl1 era5/era5-ecsf_2000-2019_unbound_bias.grib \
     -remapbil,era5-eu-grid -selvar,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     ens/ec-b2sf_$year${month}_stl-24h-eu-{}.grib
@@ -55,7 +55,7 @@ seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDef
     ens/ec-b2sf_$year${month}_unbound-24h-eu-{}-fixed.grib
 seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_bound-24h-eu-{}.grib \
     ens/ec-b2sf_$year${month}_bound-24h-eu-{}-fixed.grib
-seq 0 50 | parallel -j 16 grib_set -r -s yearOfCentury=0,centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_stl-24h-eu-{}.grib \
+seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_stl-24h-eu-{}.grib \
     ens/ec-b2sf_$year${month}_stl-24h-eu-{}-fixed.grib
 
 ## join ensemble members and move to grib folder

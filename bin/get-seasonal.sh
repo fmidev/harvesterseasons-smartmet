@@ -44,10 +44,9 @@ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonmul \
     -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,e,tp,sd era5l/era5l-ecsf_2000-2019_bound_bias.grib \
     ens/ec-bsf_$year${month}_bound-24h-eu-{}.grib
 ## Make stl2,3,4 from stl1
-seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes add \
-    -seldate,$year-$month-02,$eyear-$emonth-02 -inttime,$year-$month-02,00:00:00,1days -shifttime,1year -selvar,stl1,stl2,stl3 era5l/era5l-stls-diff-climate-eu.grib \
-    -add -seldate,$year-$month-02,$eyear-$emonth-02 -inttime,$year-$month-02,00:00:00,1days -shifttime,1year -selvar,stl1 era5l/era5l-ecsf_2000-2019_unbound_bias.grib \
-    -remapbil,era5l-eu-grid -selvar,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonadd \
+    -aexpr,'stl2=stl1;stl3=stl1;stl4=stl1;' -remapbil,era5l-eu-grid -selvar,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selvar,stl1,stl2,stl3,stl4 era5l/era5l-stls-diff+bias-climate-eu.grib \
     ens/ec-bsf_$year${month}_stl-24h-eu-{}.grib
 
 ## fix grib attributes
