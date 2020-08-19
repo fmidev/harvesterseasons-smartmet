@@ -41,10 +41,8 @@ c.retrieve(
             '1', '2', '3',
             '4', '5', '6',
         ],
-        'area': [
-            74, 0, 51,
-            42,
+        'area': [ 75, -30, 25, 50
         ],
         'year': years,
     },
-    '/home/smartmet/data/ec-sf-'+year+'-stats-monthly-fcmean.grib')
+    '/home/smartmet/data/ec-sf-'+year+'-stats-monthly-euro-fcmean.grib')

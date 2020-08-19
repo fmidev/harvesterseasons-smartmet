@@ -9,7 +9,7 @@ c.retrieve(
     'reanalysis-era5-single-levels-monthly-means',
     {
         'format': 'grib',
-        'area' : '74/0/51/42',
+        'area' : '75/-30/25/50',
         'product_type': 'monthly_averaged_reanalysis',
         'variable': [
             'maximum_2m_temperature_in_the_last_24_hours','minimum_2m_temperature_in_the_last_24_hours',
@@ -26,10 +26,10 @@ c.retrieve(
             'total_precipitation'
         ],
         'year': [
-            '2000', '2001', '2002',
-            '2003', '2004', '2005',
-            '2006', '2007', '2008',
-            '2009',
+            '2010', '2011', '2012',
+            '2013', '2014', '2015',
+            '2016', '2017', '2018',
+            '2019',
         ],
         'month': [
             '01', '02', '03',
@@ -39,4 +39,4 @@ c.retrieve(
         ],
         'time': '00:00',
     },
-    '/home/smartmet/data/era5_2000-2009_stats-nordic.grib')
+    '/home/smartmet/data/era5_2010-2009_stats-euro.grib')

@@ -1,1 +1,0 @@
-/home/smartmet/bin/get-seasonal.sh
