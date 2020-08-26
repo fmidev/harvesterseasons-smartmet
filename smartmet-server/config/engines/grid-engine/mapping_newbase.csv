@@ -76,6 +76,7 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
+ECB2SF;Evaporation;2;EVAP-KGM2;5021;1;1;00000;1;1;;0;E;;;;
 ECSF;DewPoint;2;TD-C;5008;1;1;00000;1;1;;0;E;;;;
 ECSF;Evaporation;2;EVAP-KGM2;5008;1;1;00000;1;1;;0;E;;;;
 ECSF;GroundTemperature;2;TG-K;5008;1;9;00007;1;1;;0;D;SUM{$,-273.15};;;

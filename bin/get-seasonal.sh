@@ -39,8 +39,8 @@ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonadd \
     -remapbil,era5l-eu-grid -selvar,2d,2t,rsn,stl1,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,2d,2t,rsn,stl1,swvl1,swvl2,swvl3,swvl4 era5l/era5l-ecsf_2000-2019_unbound_bias.grib \
     ens/ec-bsf_$year${month}_unbound-24h-eu-{}.grib
-seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonmul \
-    -remapbil,era5l-eu-grid -selvar,e,tp,sd ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonmul \
+    -remapbil,era5l-eu-grid -selvar,e,tp,sd,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,e,tp,sd era5l/era5l-ecsf_2000-2019_bound_bias.grib \
     ens/ec-bsf_$year${month}_bound-24h-eu-{}.grib
 ## Make stl2,3,4 from stl1
