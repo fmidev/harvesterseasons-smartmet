@@ -40,8 +40,8 @@ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonadd \
     -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,2d,2t,rsn,stl1,swvl1,swvl2,swvl3,swvl4 era5l/era5l-ecsf_2000-2019_unbound_bias.grib \
     ens/ec-bsf_$year${month}_unbound-24h-eu-{}.grib
 seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonmul \
-    -remapbil,era5l-eu-grid -aexpr,'ws=sqrt(10u^2+10v^2);' -selvar,e,tp,sd,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -aexpr,'10u=ws;10v=ws;' -selvar,e,tp,sd,ws era5l/era5l-ecsf_2000-2019_bound_bias.grib \
+    -remapbil,era5l-eu-grid -selvar,e,tp,sd,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,e,tp,sd era5l/era5l-ecsf_2000-2019_bound_bias.grib \
     ens/ec-bsf_$year${month}_bound-24h-eu-{}.grib
 ## Make stl2,3,4 from stl1
 seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonadd \
@@ -62,7 +62,7 @@ grib_copy ens/ec-bsf_$year${month}_unbound-24h-eu-*-fixed.grib grib/ECBSF_$year$
 grib_copy ens/ec-bsf_$year${month}_bound-24h-eu-*-fixed.grib grib/ECBSF_$year${month}01T0000_bound-24h-eu.grib
 grib_copy ens/ec-bsf_$year${month}_stl-24h-eu-*-fixed.grib grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib
 
-#grib_set -s edition=2 ec-sf-$year$month-all-24h.grib grib/EC-SF-${year}${month}01T0000-all-24h.grib2-
-cdo --eccodes -f nc4 merge grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib grib/ECBSF_$year${month}01T0000_bound-24h-eu.grib -selvar,stl2,stl3,stl4 grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-ball-24h-eu.nc--
+#grib_set -s edition=2 ec-sf-$year$month-all-24h.grib grib/EC-SF-${year}${month}01T0000-all-24h.grib2
+cdo -eccodes -f nc4 copy grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib grib/ECBSF_$year${month}01T0000_bound-24h-eu.grib grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-ball-24h-eu.nc
 #grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
 sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
