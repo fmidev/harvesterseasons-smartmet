@@ -36,8 +36,8 @@ conda activate xr
 ## Make bias-adjustement
 [ -f ens/ec-sf_$year${month}_all-24h-eu-6.grib ] && echo "Ensemble member files ready" || grib_copy ec-sf-$year$month-all-24h-euro.grib ens/ec-sf_$year${month}_all-24h-eu-[number].grib
 seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes ymonadd \
-    -remapbil,era5-eu-grid -selvar,2d,2t,rsn,stl1,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,2d,2t,rsn,stl1,swvl1,swvl2,swvl3,swvl4 era5/era5-ecsf_2000-2019_unbound_bias.grib \
+    -remapbil,era5-eu-grid -selvar,2d,2t,e,rsn,stl1,swvl1,swvl2,swvl3,swvl4,sd ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selmonth,$mon1,$mon2,$mon3,$mon4,$mon5,$mon6,$mon7,$mon8 -selvar,2d,2t,e,rsn,stl1,swvl1,swvl2,swvl3,swvl4,sd era5/era5-ecsf_2000-2019_unbound_bias.grib \
     ens/ec-b2sf_$year${month}_unbound-24h-eu-{}.grib
 seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonmul \
     -remapbil,era5-eu-grid -aexpr,'ws=sqrt(10u^2+10v^2);' -selvar,e,tp,sd,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
