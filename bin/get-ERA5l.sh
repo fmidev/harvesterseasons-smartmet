@@ -20,4 +20,4 @@ cds-era5l.py $year $month
 #cdo sellonlatbox,-22,45,27,72 ec-sf-$year$month-all-24h.grib EC-SF_$year${month}01T0000_all-24h-euro+y.grib
 #grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
 mv era5-$year$month-sfc-1h.grib grib/ERA5L_$year${month}01T000_euro_1h.grib
-sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

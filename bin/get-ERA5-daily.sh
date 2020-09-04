@@ -18,4 +18,4 @@ cd /home/smartmet/data
 echo "fetch ERA5 for y: $year m: $month d: $day"
 cds-era5.py $year $month $day
 
-sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
