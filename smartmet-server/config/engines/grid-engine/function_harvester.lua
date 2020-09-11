@@ -114,11 +114,11 @@ function ENSUNDER(numOfParams,params)
     for index, value in pairs(params) do
       if (value ~= ParamValueMissing and index > 2) then
         if (value < threshold) then
-	 agree = agree + 1;
-	 count = count + 1;
-	else
-	 disagree = disagree + 1;
- 	 count = count + 1;
+      	  agree = agree + 1;
+	        count = count + 1;
+      	else
+	        disagree = disagree + 1;
+ 	        count = count + 1;
         end
       end
     end
@@ -158,6 +158,33 @@ function PCNTL(numOfParams,params)
 		result.value = sortedList[target];
 		result.message = 'OK';
 	end
+	return result.value,result.message;
+end
+
+-- ###########################################################################################
+-- FUNCTION for calculating snow depth (elevation) from Snow water equivalent and snow denisty
+--  The function returns snow depth in m; inputs HSNOW-M and RSN (solution from ERA5 / ECMWF)
+-- ###########################################################################################
+
+function SNOWDEPTH(numOfParams,params)
+  local result = {};
+  if (debug == 1) then
+    for index, value in pairs(params) do
+      print(index.." : "..value);
+    end
+  end
+  if (numOfParams > 0) then 
+    local snowdepth = 0;
+    local swe = params[1];
+    local rsn = params[2];
+  
+    snowdepth = 1000 * swe / (rsn * math.min(1, (1000 * swe / rsn) / 0.1)) ;
+
+		result.value = snowdepth;
+		result.message = 'OK';
+	else
+    result.message = 'error in parameters';
+  end
 	return result.value,result.message;
 end
 
@@ -240,7 +267,7 @@ function getFunctionNames(type)
   local functionNames = '';
 
   if (type == 1) then 
-    functionNames = 'HARVIDX,ENSOVER,ENSUNDER,PCNTL';
+    functionNames = 'HARVIDX,ENSOVER,ENSUNDER,PCNTL,SNOWDEPTH';
   end
   
   return functionNames;

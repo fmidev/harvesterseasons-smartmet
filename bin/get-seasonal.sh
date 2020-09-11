@@ -55,7 +55,7 @@ rm disacc-tmp-*.grib
 ## Make stl2,3,4 from stl1
 seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonadd \
     -aexpr,'stl2=stl1;stl3=stl1;stl4=stl1;' -remapbil,era5l-eu-grid -selvar,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selvar,stl1,stl2,stl3,stl4 era5l/era5l-stls-diff+bias-climate-eu.grib \
+    -selvar,stl1,stl2,stl3,stl4 era5l/era5l-stls-filled-diff+bias-climate-eu.grib \
     ens/ec-bsf_$year${month}_stl-24h-eu-{}.grib
 
 ## fix grib attributes
