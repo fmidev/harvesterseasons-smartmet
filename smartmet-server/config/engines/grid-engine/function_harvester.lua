@@ -173,17 +173,21 @@ function SNOWDEPTH(numOfParams,params)
       print(index.." : "..value);
     end
   end
-  if (numOfParams > 0) then 
+  if (numOfParams >= 2) then 
     local snowdepth = 0;
     local swe = params[1];
     local rsn = params[2];
-  
-    snowdepth = 1000 * swe / (rsn * math.min(1, (1000 * swe / rsn) / 0.1)) ;
+    if (rsn < 100) then 
+      rsn = 100; 
+    end
+    if (swe > 0.000) then 
+      snowdepth = 1000.0 * swe / (rsn * math.min(1, 10000.0 * swe / rsn));
+    end
 
 		result.value = snowdepth;
 		result.message = 'OK';
 	else
-    result.message = 'error in parameters';
+    result.message = 'error in parameters - need 2';
   end
 	return result.value,result.message;
 end

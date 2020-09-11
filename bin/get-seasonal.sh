@@ -35,7 +35,7 @@ echo "y: $year m: $month ending $eyear-$emonth $mon1,$mon2,$mon3,$mon4,$mon5,$mo
 conda activate xr
 ## Make bias-adjustement
 [ -f ens/ec-sf_$year${month}_all-24h-eu-6.grib ] && echo "Ensemble member files ready" || grib_copy ec-sf-$year$month-all-24h-euro.grib ens/ec-sf_$year${month}_all-24h-eu-[number].grib
-seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes -ymonadd \
+seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes aexprf,ec-sde.instr -ymonadd \
     -remapbil,era5l-eu-grid -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 era5l/era5l-ecsf_2000-2019_unbound-filled_bias.grib \
     ens/ec-bsf_$year${month}_unbound-24h-eu-{}.grib
@@ -74,7 +74,7 @@ grib_copy ens/ec-bsf_$year${month}_bound-24h-eu-*-fixed.grib grib/ECBSF_$year${m
 grib_copy ens/ec-bsf_$year${month}_acc-24h-eu-*-fixed.grib grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib &
 grib_copy ens/ec-bsf_$year${month}_stl-24h-eu-*-fixed.grib grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib &
 wait
-
+rm ens/ec-bsf_$year${month}_*-24h-eu-*.grib
 #grib_set -s edition=2 ec-sf-$year$month-all-24h.grib grib/EC-SF-${year}${month}01T0000-all-24h.grib2-
 cdo --eccodes -f nc2 merge -sellonlatbox,0,42,74,51 -selvar,2t,sd,swvl2 grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib \
     -sellonlatbox,0,42,74,51 grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib -sellonlatbox,0,42,74,51 -selvar,stl2 grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib \
