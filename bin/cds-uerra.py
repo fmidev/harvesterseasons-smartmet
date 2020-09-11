@@ -47,6 +47,7 @@ c.retrieve(
             '00:00', '06:00', '12:00',
             '18:00',
         ],
+        'area': '75/-30/25/50',
         'format': 'grib',
     },
     '/home/smartmet/data/grib/uerra_{:0>4}{:0>2}{:0>2}T0000_soil.grib'.format(year,month,day)
