@@ -11,5 +11,6 @@ wget -O ~/data/fmi-smartmet-$date-swvl2.grib "http://data.fmi.fi/fmi-apikey/$fmi
 wget -O ~/data/fmi-smartmet-$date-TG.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=GroundTemperature&timestep=$timestep&format=grib2&producer=pal_skandinavia_frost&projection=stereographic"
 #wget -O ~/data/fmi-smartmet-$date-rr6h.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=Precipitation6h&timestep=360&format=grib1&producer=pal_skandinavia_precipitation6h"
 cd ~/data
-grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date}T0000_[shortName].grib
+grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:6}01T0000_${date}T0000_[shortName].grib
+mv fmi-smartmet-* smartmet/
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

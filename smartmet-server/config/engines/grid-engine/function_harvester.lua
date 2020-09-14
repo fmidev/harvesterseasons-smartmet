@@ -180,8 +180,10 @@ function SNOWDEPTH(numOfParams,params)
     if (rsn < 100) then 
       rsn = 100; 
     end
-    if (swe > 0.000) then 
-      snowdepth = 1000.0 * swe / (rsn * math.min(1, 10000.0 * swe / rsn));
+    if (swe > 0.0001) then 
+      snowdepth = 1000.0 * swe / rsn;
+    else
+      snowdepth = 0;
     end
 
 		result.value = snowdepth;

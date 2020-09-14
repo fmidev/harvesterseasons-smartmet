@@ -5,7 +5,7 @@ import cdsapi
 year= int(sys.argv[1])
 #month= sys.argv[2]
 
-print('/home/smartmet/data/ec-sf_%s-%s_all-24h-euro.grib'%(year,year+3))
+print('/home/smartmet/data/ec-sf_%s-%s_all-24h-euro.grib'%(year,year+2))
 c = cdsapi.Client()
 
 c.retrieve(

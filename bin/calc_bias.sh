@@ -8,49 +8,66 @@ obsfile=${obspath##*/}
 modfile=${modpath##*/}
 otags=(${obsfile//_/ })
 mtags=(${modfile//-/ })
-unbound=2d,2t,stl1,swvl1,swvl2,swvl3,swvl4,rsn,sd
+unbound="2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4"
+prefix="${otags[0]}"-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"
+ending="eu.grib"
 
+echo ${prefix}_unbound_bias_"${otags[-1]}"
 conda activate xr
 # BIAS substraction method for unbounded variables
 cdo --eccodes sub \
     -ymonmean -selvar,$unbound $obspath \
     -ymonmean -remapbil,${otags[0]}-eu-grid -selvar,$unbound $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2:0:2}$mtags[1]"_"${otags[1]}"_unbound_bias_"${otags[-1]}" &
+    ${prefix}_unbound_bias_$ending &
 # division method for bounded variables
 cdo --eccodes div \
     -ymonmean -expr,'ws=sqrt(10u^2+10v^2)' -selvar,10u,10v $obspath \
     -ymonmean -remapbil,${otags[0]}-eu-grid -chname,10si,ws -selvar,10si $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_ws_bias_"${otags[-1]}" &
+    ${prefix}_ws_bias_$ending &
 # division method for tp- and erate variables
 cdo --eccodes div \
     -ymonmean -selvar,tp $obspath \
     -ymonmean -remapbil,${otags[0]}-eu-grid -expr,'tp=tprate*3600*24;tp=((tp<0.0001)?0:tp);' -selvar,tprate $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_tp_bias_"${otags[-1]}" &
+    ${prefix}_tp_bias_$ending &
 cdo --eccodes div \
     -ymonmean -selvar,e $obspath \
     -ymonmean -remapbil,${otags[0]}-eu-grid -expr,'e=erate*3600*24;' -selvar,erate $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_e_bias_"${otags[-1]}" &
+    ${prefix}_e_bias_$ending &
 # VARIANCE division also for unbounded variables
 cdo --eccodes div  \
     -ymonvar1 -selvar,$unbound $obspath \
     -ymonvar1 -remapbil,${otags[0]}-eu-grid -selvar,$unbound $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_unbound_varc_"${otags[-1]}" &
+    ${prefix}_unbound_varc_$ending &
 # division method for bounded variables
 cdo --eccodes div \
     -ymonvar1 -expr,'ws=sqrt(10u^2+10v^2)' -selvar,10u,10v $obspath \
     -ymonvar1 -remapbil,${otags[0]}-eu-grid -chname,10si,ws -selvar,10si $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_ws_varc_"${otags[-1]}" &
+    ${prefix}_ws_varc_$ending &
 # division method for tp- and erate variables
 cdo --eccodes div \
     -ymonvar1 -selvar,tp $obspath \
     -ymonvar1 -remapbil,${otags[0]}-eu-grid -expr,'tp=tprate*3600*24;tp=((tp<0.0001)?0:tp);' -selvar,tprate $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_tp_varc_"${otags[-1]}" &
+    ${prefix}_tp_varc_$ending &
 cdo --eccodes div \
     -ymonvar1 -selvar,e $obspath \
     -ymonvar1 -remapbil,${otags[0]}-eu-grid -expr,'e=erate*3600*24' -selvar,erate $modpath \
-    "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_e_varc_"${otags[-1]}" &
+    ${prefix}_e_varc_$ending &
 wait
-cdo --eccodes merge "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_e_bias_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_tp_bias_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_ws_bias_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_bound_bias_"${otags[-1]}" &
-cdo --eccodes merge "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_e_varc_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_tp_varc_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_ws_varc_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_bound_varc_"${otags[-1]}" &
+cdo --eccodes merge ${prefix}_e_bias_$ending ${prefix}_tp_bias_$ending ${prefix}_ws_bias_$ending ${prefix}_bound_bias_$ending &
+cdo --eccodes merge ${prefix}_e_varc_$ending ${prefix}_tp_varc_$ending ${prefix}_ws_varc_$ending ${prefix}_bound_varc_$ending &
 wait
-cdo --eccodes mul "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_bound_bias_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_bound_varc_"${otags[-1]}" "${otags[0]}"-"${mtags[0]:0:2}${mtags[1]}"_"${otags[1]}"_bound_bias+varc_"${otags[-1]}" 
+if [ ${otags[0]} -eq 'era5l' ] 
+then
+    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
+     era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending
+    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending \
+     era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending
+    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
+     era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_bias_$ending
+    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending \
+     era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending
+    cdo --eccodes mul era5l/${prefix}_bound_bias_$ending era5l/${prefix}_bound_varc_$ending era5l/${prefix}_bound_bias+varc_$ending
+else
+    cdo --eccodes mul ${prefix}_bound_bias_$ending ${prefix}_bound_varc_$ending ${prefix}_bound_bias+varc_$ending 
+    mv ${prefix}_*_$ending era5/
+fi
