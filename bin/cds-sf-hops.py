@@ -7,8 +7,7 @@ c.retrieve(
     {
         'originating_centre':'ecmwf',
         'variable':[
-            '2m_temperature','evaporation','runoff',
-            'snow_depth','soil_temperature_level_1','total_precipitation'
+            '2m_temperature','evaporation','runoff','snow_depth','40.128','soil_temperature_level_1','total_precipitation'
         ],
         'year':'2020',
         'month':'03',

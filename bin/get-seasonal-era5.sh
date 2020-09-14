@@ -66,6 +66,9 @@ grib_copy ens/ec-b2sf_$year${month}_stl-24h-eu-*-fixed.grib grib/ECB2SF_$year${m
 wait
 rm ens/ec-b2sf_$year${month}_*-24h-eu-*.grib
 #grib_set -s edition=2 ec-sf-$year$month-all-24h.grib grib/EC-SF-${year}${month}01T0000-all-24h.grib2
-cdo --eccodes -f nc2 merge grib/ECB2SF_$year${month}01T0000_unbound-24h-eu.grib grib/ECB2SF_$year${month}01T0000_bound-24h-eu.grib grib/ECB2SF_$year${month}01T0000_acc-24h-eu.grib -selvar,stl2,stl3,stl4 grib/ECB2SF_$year${month}01T0000_stl-24h-eu.grib ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-b2all-24h-eu.nc
+cdo --eccodes -f nc2 merge -sellonlatbox,0,42,74,51 -selvar,2t,sde,swvl2 grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib \
+    -sellonlatbox,0,42,74,51 grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib -sellonlatbox,0,42,74,51 -selvar,stl2 grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib \
+    ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-b2all-24h-nordic.nc
+
 #grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
