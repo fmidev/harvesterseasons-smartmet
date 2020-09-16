@@ -95,7 +95,7 @@ end
 -- ################################################################################################
 -- FUNCTION for an index if ensemble members are to a given percent undeer a threshold or 1-percent?
 --  The function returns 0 for only (1-percent) are over, 1 for between boundaries and 2 for over
--- calling ENSUNDER{threshold;percent;parameterlist}
+-- calling ENSUNDER{threshold;percent;parameterlist} percent as number between 0-1
 -- #################################################################################################
 
 function ENSUNDER(numOfParams,params)
