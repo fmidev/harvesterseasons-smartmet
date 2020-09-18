@@ -16,27 +16,35 @@ function HARVIDX(numOfParams,params)
   if (numOfParams > 0) then 
     local count = 0;
     local agree = 0;
+    local nans = 0;
     local disagree = 0;
     local threshold = params[1];
     for index, value in pairs(params) do
       if (value ~= ParamValueMissing and index > 1) then
-        if (value < threshold) then
-	 agree = agree + 1;
-	 count = count + 1;
-	else
-	 disagree = disagree + 1;
- 	 count = count + 1;
+        if (value ~= value) then
+          nans = nans + 1;
+        elseif (value < threshold) then
+	        agree = agree + 1;
+	        count = count + 1;
+	      else
+	        disagree = disagree + 1;
+ 	        count = count + 1;
         end
+      else
+        nans = nans + 1;
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (agree / count >= 0.9) then
+    if (count <= nans) then
+      result.message = 'Too many NaNs '+ nans;
+      result.value = ParamValueMissing;
+    elseif (agree / count >= 0.9) then
        result.value = 2;
     elseif (agree / count <= 0.1) then
     	result.value = 0;
     else
-	result.value = 1;
+    	result.value = 1;
     end
   else
     result.message = 'OK';
@@ -62,28 +70,36 @@ function ENSOVER(numOfParams,params)
   if (numOfParams > 0) then 
     local count = 0;
     local agree = 0;
+    local nans = 0;
     local disagree = 0;
     local threshold = params[1];
     local percent = params[2];
     for index, value in pairs(params) do
       if (value ~= ParamValueMissing and index > 2) then
-        if (value > threshold) then
-	 agree = agree + 1;
-	 count = count + 1;
-	else
-	 disagree = disagree + 1;
- 	 count = count + 1;
+        if (value ~= value) then
+          nans = nans + 1;
+        elseif (value > threshold) then
+      	  agree = agree + 1;
+	        count = count + 1;
+      	else
+	        disagree = disagree + 1;
+ 	        count = count + 1;
         end
+      else 
+        nans = nans + 1;
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (agree / count >= percent) then
+    if (count <= nans) then
+      result.message = 'Too many NaNs '+ nans;
+      result.value = ParamValueMissing;
+    elseif (agree / count >= percent) then
        result.value = 2;
     elseif (agree / count <= (1 - percent)) then
     	result.value = 0;
     else
-	result.value = 1;
+    	result.value = 1;
     end
   else
     result.message = 'OK';
@@ -108,6 +124,7 @@ function ENSUNDER(numOfParams,params)
   if (numOfParams > 0) then 
     local count = 0;
     local agree = 0;
+    local nans = 0;
     local disagree = 0;
     local threshold = params[1];
     local percent = params[2];
@@ -115,21 +132,26 @@ function ENSUNDER(numOfParams,params)
       if (value ~= ParamValueMissing and index > 2) then
         if (value < threshold) then
       	  agree = agree + 1;
-	        count = count + 1;
+          count = count + 1;
       	else
 	        disagree = disagree + 1;
  	        count = count + 1;
         end
+      else
+        nans = nans + 1;
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (agree / count >= percent) then
+    if (count <= nans) then
+      result.message = 'Too many NaNs '+ nans;
+      result.value = ParamValueMissing;
+    elseif (agree / count >= percent) then
        result.value = 2;
     elseif (agree / count <= (1 - percent)) then
-    	result.value = 0;
+      result.value = 0;
     else
-	result.value = 1;
+    	result.value = 1;
     end
   else
     result.message = 'OK';

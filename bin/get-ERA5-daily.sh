@@ -16,7 +16,7 @@ else
 fi
 cd /home/smartmet/data
 echo "fetch ERA5 for y: $year m: $month d: $day"
-cds-era5.py $year $month $day
+../bin/cds-era5.py $year $month $day
 conda activate xr
 cdo --eccodes aexprf,ec-sde.instr ERA5_$year$month${day}T0000_base+soil.grib grib/ERA5_$year${month}01T0000_$year$month${day}T0000_base+soil.grib
 
