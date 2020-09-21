@@ -449,11 +449,11 @@ function LIST(language,numOfParams,params)
 
   if (numOfParams > 0) then
     for index, value in pairs(params) do
-      if (value ~= ParamValueMissing) then
+      --if (value ~= ParamValueMissing) then
         str = str..value;
-      else
-        str = str..";"
-      end
+      --else
+      --  str = str..";"
+      --end
       if (index < numOfParams) then
         str = str..";"
       end

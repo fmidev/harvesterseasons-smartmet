@@ -37,7 +37,7 @@ function HARVIDX(numOfParams,params)
     result.message = 'OK';
 --    result.value = agree;
     if (count <= nans) then
-      result.message = 'Too many NaNs '+ nans;
+--      result.message = 'Too many NaNs ' .. nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= 0.9) then
        result.value = 2;
@@ -92,7 +92,7 @@ function ENSOVER(numOfParams,params)
     result.message = 'OK';
 --    result.value = agree;
     if (count <= nans) then
-      result.message = 'Too many NaNs '+ nans;
+--      result.message = 'Too many NaNs '+ nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= percent) then
        result.value = 2;
@@ -144,7 +144,7 @@ function ENSUNDER(numOfParams,params)
     result.message = 'OK';
 --    result.value = agree;
     if (count <= nans) then
-      result.message = 'Too many NaNs '+ nans;
+--      result.message = 'Too many NaNs '+ nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= percent) then
        result.value = 2;

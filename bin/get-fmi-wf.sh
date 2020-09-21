@@ -20,7 +20,7 @@ wget -O ~/data/fmi-smartmet-$date-TG.grib "http://data.fmi.fi/fmi-apikey/$fmiapi
 # observations
 #wget -O ~/data/fmi-smartmet-$date-synop-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=Temperature,Evaporation,WindSpeedMS&timestep=data&format=grib1&producer=kriging_suomi_synop"
 #wget -O ~/data/fmi-smartmet-$date-sd-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=Lumensyvyys&timestep=data&format=grib1&producer=kriging_suomi_snow"
-#wget -O ~/data/fmi-smartmet-$date-snowacc.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=WaterAccumulation,SnowAccumulation,SnowWaterRatio&timestep=720&format=grib2&producer=snow_accumulation&projection=epsg:4326"
+wget -O ~/data/fmi-smartmet-$date-snowacc.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=WaterAccumulation,SnowAccumulation,SnowWaterRatio&timestep=720&format=grib2&producer=snow_accumulation&projection=epsg:4326"
 cd ~/data
 grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:6}01T0000_${date}T0000_[shortName].grib
 mv fmi-smartmet-* smartmet/
