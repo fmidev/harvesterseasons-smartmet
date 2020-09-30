@@ -38,6 +38,7 @@
 # tsr Top Net Solar Radation
 14178;1;TSR-J;J;Top Net Solar Radation;1;1;1;2;
 14141;1;HSNOW-M;M;Snow depth in Water equivalent M;1;1;1;5;
+14144;1;SFA-MM;MM;Snow fall rate accumulated;1;1;1;2;
 # ro Runoff
 14205;1;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
 # ewss Eastward and northward turbulent surface stress

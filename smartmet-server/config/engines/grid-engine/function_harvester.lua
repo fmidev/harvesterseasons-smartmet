@@ -30,13 +30,15 @@ function HARVIDX(numOfParams,params)
 	        disagree = disagree + 1;
  	        count = count + 1;
         end
-      else
-        nans = nans + 1;
+      else 
+        if (index > 1) then 
+          nans = nans +1;
+        end
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (count <= nans) then
+    if (count < nans) then
 --      result.message = 'Too many NaNs ' .. nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= 0.9) then
@@ -78,7 +80,7 @@ function ENSOVER(numOfParams,params)
       if (value ~= ParamValueMissing and index > 2) then
         if (value ~= value) then
           nans = nans + 1;
-        elseif (value > threshold) then
+        elseif (value >= threshold) then
       	  agree = agree + 1;
 	        count = count + 1;
       	else
@@ -86,12 +88,14 @@ function ENSOVER(numOfParams,params)
  	        count = count + 1;
         end
       else 
-        nans = nans + 1;
+        if (index > 2) then 
+          nans = nans +1;
+        end
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (count <= nans) then
+    if (count < nans) then
 --      result.message = 'Too many NaNs '+ nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= percent) then
@@ -130,20 +134,24 @@ function ENSUNDER(numOfParams,params)
     local percent = params[2];
     for index, value in pairs(params) do
       if (value ~= ParamValueMissing and index > 2) then
-        if (value < threshold) then
+        if (value ~= value) then
+          nans = nans + 1;
+        elseif (value <= threshold) then
       	  agree = agree + 1;
           count = count + 1;
       	else
 	        disagree = disagree + 1;
  	        count = count + 1;
         end
-      else
-        nans = nans + 1;
+      else 
+        if (index > 2) then 
+          nans = nans +1;
+        end
       end
     end
     result.message = 'OK';
 --    result.value = agree;
-    if (count <= nans) then
+    if (count < nans) then
 --      result.message = 'Too many NaNs '+ nans;
       result.value = ParamValueMissing;
     elseif (agree / count >= percent) then

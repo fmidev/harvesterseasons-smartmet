@@ -56,8 +56,7 @@ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo -O --eccodes ymonmul \
 ### adjust evaporation and total precip or other accumulating variables
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50.grib ] && \
 seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ "cdo --eccodes -O mergetime -seltimestep,1 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-     -sub -seltimestep,2/215 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-      -seltimestep,1/214 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib disacc-tmp-{}.grib && \
+     -deltat -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib disacc-tmp-{}.grib && \
     cdo --eccodes ymonmul -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc disacc-tmp-{}.grib \
      -selvar,e,tp $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib && \

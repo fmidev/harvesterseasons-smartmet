@@ -13,4 +13,10 @@
 554;3;98;147;ECSF;C3S seasonal forecasts by ECMWF
 555;2;98;255;ERA5L;C3S ERA5-Land reanalysis by ECMWF
 556;2;98;145;ERA5;C3S ERA5 reanalysis by ECMWF
-557;3;98;255;ECBSF;Bias adjusted C3S seasonal forecasts
+557;3;98;255;ECBSF;Bias adjusted with ERA5-Land C3S seasonal forecasts
+558;3;98;255;ECB2SF;Bias adjusted with ERA5 C3S seasonal forecasts
+559;3;98;255;ECBUSF;Bias adjusted with UERRA C3S seasonal forecasts
+560;2;98;145;UERRA;UERRA reanalysis
+561;1;98;127;SMARTMET;FMI forecasts
+562;2;98;127;SMARTOBS;FMI kriging analysis
+563;3;98;127;SMARTMET;FMI ensembles

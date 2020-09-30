@@ -14,59 +14,30 @@
 # New parameters for Harvestersesasons service
 # producerId are 551=HOPS-ANA 552=HOPS-WF 553=HOPS-SF 554=ECSF 555=ERA5L 556=ERA
 # C3S key for number is to use ECMWF grib numbers plus 14000
-# mx2t24 Maximum and minimum temperature at 2 metres in the last 24 hours
-#14051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours;;;1;
-#14052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;;;1;
-# swvl2 Volumetric Soil Water layer 1, 2, 3, 4 vastineet HOPS:sta
-#14039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;3;
-#14040;1;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;3;
-#14041;1;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;3;
-#14042;1;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;3;
-# ro Runoff and other hydrology related params
-#14205;1;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
-#14141;1;HSNOW-M;M;Snow depth in Water equivalent M;1;1;1;5;
-# ewss Eastward and northward turbulent surface stress
-#14180;1;EWSS-NM2S;NM-2S;Eastward turbulent surface stress;1;1;1;2;
-#14181;1;NWSS-NM2S;NM-2S;Northward turbulent surface stress;1;1;1;2;
-# parameters needed for HOPS as in fmi_parameters_ext.csv
-#14228;1;RR-MM;MM;Total Precipitation Amount in mm;1;1;1;2;
-#14049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
-#14050;1;TSNOWP-MM;MM;Total Snow Precipitation;1;1;1;2;
-#14056;1;WESD-MM;MM;Snow Depth in Water Equivalent mm;1;1;1;2;
-#14551;1;ULST-C;C;Upper Layer Soil Temperature in Celsius;1;1;1;1;
-#14552;1;ULSM-M3M3;M3M3;Upper Layer Soil Moisture in M3M3;1;1;1;3;
-#14053;1;LOWLST-M3M3;M3M3;Lower Layer Soil Moisture in M3M3;1;1;1;3;
-#14054;1;BLST-C;C;Bottom Layer Soil Temperature in Celsius;1;1;1;1;
-#14139;1;STL1-C;C;Soil Temperature in Layer 1 in Celsius;1;1;1;1;
-#14170;1;STL2-C;C;Soil Temperature in Layer 2 in Celsius;1;1;1;1;
-#14183;1;STL3-C;C;Soil Temperature in Layer 3 in Celsius;1;1;1;1;
-#14236;1;STL4-C;C;Soil Temperature in Layer 4 in Celsius;1;1;1;1;
-#14539;1;OSTL1-C;C;Organic Soil Temperature in Layer 1 in Celsius;1;1;1;1;
-#14570;1;OSTL2-C;C;Organic Soil Temperature in Layer 2 in Celsius;1;1;1;1;
-#14583;1;OSTL3-C;C;Organic Soil Temperature in Layer 3 in Celsius;1;1;1;1;
-#14536;1;OSTL4-C;C;Organic Soil Temperature in Layer 4 in Celsius;1;1;1;1;
-14141;;;86;0;1;13;;;;
+14141;;;;0;1;13;;;;
 14040;;;98;192;128;40;;;;
-14039;;;86;192;198;39;9;106;25;
-14040;;;86;192;198;40;9;106;75;
-14041;;;86;192;198;41;9;106;150;
-14042;;;86;192;198;42;9;106;600;
-14205;;;86;192;198;205;1;1;1;
-14141;;;86;192;198;141;1;1;1;
-14228;;;86;192;198;228;1;1;1;
-14049;;;86;192;198;49;1;1;1;
-14050;;;86;192;198;50;1;1;1;
-14139;;;86;192;198;139;9;106;7;
-14170;;;86;192;198;170;9;106;1820;
-14183;;;86;192;198;183;9;106;7268;
-14236;;;86;192;198;236;9;106;25855;
-14539;;;86;192;199;139;9;106;7;
-14570;;;86;192;199;170;9;106;1820;
-14583;;;86;192;199;183;9;106;7268;
-14536;;;86;192;199;236;9;106;25855;
-14539;;;86;192;128;35;9;106;7;
-14570;;;86;192;128;36;9;106;1820;
-14583;;;86;192;128;37;9;106;7268;
-14536;;;86;192;128;38;9;106;25855;
-40;;;;192;128;40;;;;
-153,553,147,86,0,0,192,0,0,0;
+14039;;;;192;198;39;9;106;25;
+14040;;;;192;198;40;9;106;75;
+14041;;;;192;198;41;9;106;150;
+14042;;;;192;198;42;9;106;600;
+14205;;;;192;198;205;1;1;1;
+14141;;;;192;198;141;1;1;1;
+14228;;;;192;198;228;1;1;1;
+14049;;;;192;198;49;1;1;1;
+14050;;;;192;198;50;1;1;1;
+14139;;;;192;198;139;9;106;7;
+14170;;;;192;198;170;9;106;1820;
+14183;;;;192;198;183;9;106;7268;
+14236;;;;192;198;236;9;106;25855;
+14539;;;;192;199;139;9;106;7;
+14570;;;;192;199;170;9;106;1820;
+14583;;;;192;199;183;9;106;7268;
+14536;;;;192;199;236;9;106;25855;
+14539;;;;192;128;35;9;106;7;
+14570;;;;192;128;36;9;106;1820;
+14583;;;;192;128;37;9;106;7268;
+14536;;;;192;128;38;9;106;25855;
+14040;;;;192;128;40;;;;
+14040;;;;127;128;40;;;;
+14144;;;;;228;144;;;;
+153;553;147;;0;0;192;0;00;

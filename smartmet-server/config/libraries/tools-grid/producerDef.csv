@@ -8,11 +8,14 @@
 # 4. Producer desciption
 #
 ERA5;ERA5;ERA5;Era5 data from ECMWF
+UERRA;UERRA;UERRA;UERRA regional reanalysis data
 ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
 ECSF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF
 ECBSF;ECBSF;EC-C3S-BSF;Bias adjusted C3S seasonal forecast data
 ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
+ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
 HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
 HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
 HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
 SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
+SMARTOBS;SMARTOBS;SMARTOBS;FMI official weather observation based parameters
