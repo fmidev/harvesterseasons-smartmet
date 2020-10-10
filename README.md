@@ -5,6 +5,9 @@ Mainly for showing ERA5 Land grib datasets and HOPS hydrological forecasts from 
 This entails a mix of GRID and non-grid smartmet-server plugins to run. It is now being run on a WEkEO cloud server running Ubuntu.
 ... let's see how it works:
 
+First prepare a data directory at the same level as this cloned directory (../data) and `ln -s smartmet-server/config ../config`
+Then you can let docker-compose build and run everything else.
+
 # Start all services (even with --detatch the build process will wait until finished)
 docker-compose up --detatch
 
@@ -52,11 +55,16 @@ This will:
 # Data ingestion and configuring on SmartMet-Server
 
 ## Read data to Redis to be used by SmartMet-server
+Then docker and its four instances (smartmet-server, fminames-db, redis and ssl-proxy), put grib files with data in the ../data directory.
+Filenames will have to match the pattern (dataproducer)_(YYYYMMDDTHHMM)_(description as you like).grib
+Dataproducer needs to be something defined in the ../config/engines/grid-engine/producers.csv. For mapping data into the server refer to [MAPPING.md](MAPPING.md)
 
 Run a `filesys-to-smartmet`-script in the smartmet-server container... once Redis is ready. The location of filesys-to-smartmet.cfg depends on where
 the settings-files are located at. With `docker-compose.yaml` the settings are currently stored in `/home/smartmet/config`.
 
 `docker exec --user smartmet smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0`
+
+This should tell you how the grib data was ingested. you can check also by going to https://[yourserver]/grid-gui
 
 ## HOPS forecasts and analysis into grid smartmet-server
 
