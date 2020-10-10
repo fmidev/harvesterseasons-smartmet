@@ -1,0 +1,90 @@
+[
+    {
+        "attributes": {
+            "class": "Soilwetness_10"
+        },
+        "lolimit": 1.0,
+        "qid": "Soilwetness_10"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_9_10"
+        },
+        "hilimit": 1.0,
+        "lolimit": 0.9,
+        "qid": "Soilwetness_9_10"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_8_9"
+        },
+        "hilimit": 0.9,
+        "lolimit": 0.8,
+        "qid": "Soilwetness_8_9"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_7_8"
+        },
+        "hilimit": 0.8,
+        "lolimit": 0.7,
+        "qid": "Soilwetness_7_8"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_6_7"
+        },
+        "hilimit": 0.7,
+        "lolimit": 0.6,
+        "qid": "Soilwetness_6_7"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_5_6"
+        },
+        "hilimit": 0.6,
+        "lolimit": 0.5,
+        "qid": "Soilwetness_5_6"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_4_5"
+        },
+        "hilimit": 0.5,
+        "lolimit": 0.4,
+        "qid": "Soilwetness_4_5"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_3_4"
+        },
+        "hilimit": 0.4,
+        "lolimit": 0.3,
+        "qid": "Soilwetness_3_4"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_2_3"
+        },
+        "hilimit": 0.3,
+        "lolimit": 0.2,
+        "qid": "Soilwetness_2_3"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_1_2"
+        },
+        "hilimit": 0.2,
+        "lolimit": 0.1,
+        "qid": "Soilwetness_1_2"
+    },
+    {
+        "attributes": {
+            "class": "Soilwetness_0_1"
+        },
+        "hilimit": 0.1,
+        "lolimit": 0.0,
+        "qid": "Soilwetness_0_2"
+    }
+]
+

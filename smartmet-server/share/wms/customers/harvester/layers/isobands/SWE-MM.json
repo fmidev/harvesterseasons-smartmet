@@ -1,0 +1,170 @@
+[
+    {
+        "attributes": {
+            "class": "Snowthickness_20"
+        },
+        "lolimit": 400,
+        "qid": "Snowthickness_20"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_19_20"
+        },
+        "hilimit": 400,
+        "lolimit": 380,
+        "qid": "Snowthickness_19_20"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_18_19"
+        },
+        "hilimit": 380,
+        "lolimit": 360,
+        "qid": "Snowthickness_18_19"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_17_18"
+        },
+        "hilimit": 360,
+        "lolimit": 340,
+        "qid": "Snowthickness_17_18"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_16_17"
+        },
+        "hilimit": 340,
+        "lolimit": 320,
+        "qid": "Snowthickness_16_17"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_15_16"
+        },
+        "hilimit": 320,
+        "lolimit": 300,
+        "qid": "Snowthickness_15_16"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_14_15"
+        },
+        "hilimit": 1300,
+        "lolimit": 128,
+        "qid": "Snowthickness_14_15"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_13_14"
+        },
+        "hilimit": 280,
+        "lolimit": 260,
+        "qid": "Snowthickness_13_14"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_12_13"
+        },
+        "hilimit": 260,
+        "lolimit": 240,
+        "qid": "Snowthickness_12_13"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_11_12"
+        },
+        "hilimit": 240,
+        "lolimit": 220,
+        "qid": "Snowthickness_11_12"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_10_11"
+        },
+        "hilimit": 220,
+        "lolimit": 200,
+        "qid": "Snowthickness_10_11"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_9_10"
+        },
+        "hilimit": 200,
+        "lolimit": 180,
+        "qid": "Snowthickness_9_10"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_8_9"
+        },
+        "hilimit": 180,
+        "lolimit": 160,
+        "qid": "Snowthickness_8_9"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_7_8"
+        },
+        "hilimit": 160,
+        "lolimit": 140,
+        "qid": "Snowthickness_7_8"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_6_7"
+        },
+        "hilimit": 140,
+        "lolimit": 120,
+        "qid": "Snowthickness_6_7"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_5_6"
+        },
+        "hilimit": 120,
+        "lolimit": 100,
+        "qid": "Snowthickness_5_6"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_4_5"
+        },
+        "hilimit": 100,
+        "lolimit": 80,
+        "qid": "Snowthickness_4_5"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_3_4"
+        },
+        "hilimit": 80,
+        "lolimit": 60,
+        "qid": "Snowthickness_3_4"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_2_3"
+        },
+        "hilimit": 60,
+        "lolimit": 40,
+        "qid": "Snowthickness_2_3"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_1_2"
+        },
+        "hilimit": 40,
+        "lolimit": 20,
+        "qid": "Snowthickness_1_2"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_0_1"
+        },
+        "hilimit": 20,
+        "lolimit": 0,
+        "qid": "Snowthickness_0_1"
+    }
+]
+

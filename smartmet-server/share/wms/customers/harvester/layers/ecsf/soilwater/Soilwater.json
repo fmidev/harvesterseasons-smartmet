@@ -1,0 +1,42 @@
+[
+    {
+        "attributes": {
+            "class": "Soilwater_0_2"
+        },
+        "hilimit": 0.2,
+        "lolimit": 0,
+        "qid": "Soilwater_0_2"
+    },
+    {
+        "attributes": {
+            "class": "Soilwater_2_4"
+        },
+        "hilimit": 0.4,
+        "lolimit": 0.2,
+        "qid": "Soilwater_2_4"
+    },
+    {
+        "attributes": {
+            "class": "Soilwater_4_6"
+        },
+        "hilimit": 0.6,
+        "lolimit": 0.4,
+        "qid": "Soilwater_4_6"
+    },
+    {
+        "attributes": {
+            "class": "Soilwater_6_8"
+        },
+        "hilimit": 0.8,
+        "lolimit": 0.6,
+        "qid": "Soilwater_6_8"
+    },
+    {
+        "attributes": {
+            "class": "Soilwater_8_10"
+        },
+        "hilimit": 1,
+        "lolimit": 0.8,
+        "qid": "Soilwater_8_10"
+    }
+]

@@ -1,0 +1,71 @@
+[
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_52"
+    },
+    "lolimit": 0.52,
+    "qid": "VolumetricSoilWaterLayer28_52"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_43_52"
+    },
+    "hilimit": 0.52,
+    "lolimit": 0.43,
+    "qid": "VolumetricSoilWaterLayer28_43_52"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_35_43"
+    },
+    "hilimit": 0.43,
+    "lolimit": 0.35,
+    "qid": "VolumetricSoilWaterLayer28_35_43"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_28_35"
+    },
+    "hilimit": 0.35,
+    "lolimit": 0.28,
+    "qid": "VolumetricSoilWaterLayer28_28_35"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_21_28"
+    },
+    "hilimit": 0.28,
+    "lolimit": 0.21,
+    "qid": "VolumetricSoilWaterLayer28_21_28"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_16_21"
+    },
+    "hilimit": 0.21,
+    "lolimit": 0.16,
+    "qid": "VolumetricSoilWaterLayer28_16_21"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_12_16"
+    },
+    "hilimit": 0.16,
+    "lolimit": 0.12,
+    "qid": "VolumetricSoilWaterLayer28_12_16"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_12"
+    },
+    "hilimit": 0.12,
+    "qid": "VolumetricSoilWaterLayer28_12"
+  },
+  {
+    "attributes": {
+      "class": "VolumetricSoilWaterLayer28_missing"
+    },
+    "qid": "VolumetricSoilWaterLayer28_missing"
+  }
+]
+

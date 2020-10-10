@@ -1,0 +1,289 @@
+[
+    {
+        "attributes": {
+            "class": "Pressure_isolines_9000"
+        },
+        "qid": "Pressure_isolines_9000",
+        "value": 900.0
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_90487804878"
+        },
+        "qid": "Pressure_isolines_90487804878",
+        "value": 904.8780487804878
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_909756097561"
+        },
+        "qid": "Pressure_isolines_909756097561",
+        "value": 909.7560975609755
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_914634146341"
+        },
+        "qid": "Pressure_isolines_914634146341",
+        "value": 914.6341463414635
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_919512195122"
+        },
+        "qid": "Pressure_isolines_919512195122",
+        "value": 919.5121951219513
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_924390243902"
+        },
+        "qid": "Pressure_isolines_924390243902",
+        "value": 924.390243902439
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_929268292683"
+        },
+        "qid": "Pressure_isolines_929268292683",
+        "value": 929.2682926829268
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_934146341463"
+        },
+        "qid": "Pressure_isolines_934146341463",
+        "value": 934.1463414634145
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_939024390244"
+        },
+        "qid": "Pressure_isolines_939024390244",
+        "value": 939.0243902439025
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_943902439024"
+        },
+        "qid": "Pressure_isolines_943902439024",
+        "value": 943.9024390243903
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_948780487805"
+        },
+        "qid": "Pressure_isolines_948780487805",
+        "value": 948.780487804878
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_953658536585"
+        },
+        "qid": "Pressure_isolines_953658536585",
+        "value": 953.6585365853658
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_958536585366"
+        },
+        "qid": "Pressure_isolines_958536585366",
+        "value": 958.5365853658536
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_963414634146"
+        },
+        "qid": "Pressure_isolines_963414634146",
+        "value": 963.4146341463415
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_968292682927"
+        },
+        "qid": "Pressure_isolines_968292682927",
+        "value": 968.2926829268292
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_973170731707"
+        },
+        "qid": "Pressure_isolines_973170731707",
+        "value": 973.1707317073171
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_978048780488"
+        },
+        "qid": "Pressure_isolines_978048780488",
+        "value": 978.0487804878048
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_982926829268"
+        },
+        "qid": "Pressure_isolines_982926829268",
+        "value": 982.9268292682927
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_987804878049"
+        },
+        "qid": "Pressure_isolines_987804878049",
+        "value": 987.8048780487806
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_992682926829"
+        },
+        "qid": "Pressure_isolines_992682926829",
+        "value": 992.6829268292684
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_99756097561"
+        },
+        "qid": "Pressure_isolines_99756097561",
+        "value": 997.5609756097562
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_100243902439"
+        },
+        "qid": "Pressure_isolines_100243902439",
+        "value": 1002.4390243902438
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_100731707317"
+        },
+        "qid": "Pressure_isolines_100731707317",
+        "value": 1007.3170731707316
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_101219512195"
+        },
+        "qid": "Pressure_isolines_101219512195",
+        "value": 1012.1951219512196
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_101707317073"
+        },
+        "qid": "Pressure_isolines_101707317073",
+        "value": 1017.0731707317073
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_102195121951"
+        },
+        "qid": "Pressure_isolines_102195121951",
+        "value": 1021.9512195121952
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_102682926829"
+        },
+        "qid": "Pressure_isolines_102682926829",
+        "value": 1026.829268292683
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_103170731707"
+        },
+        "qid": "Pressure_isolines_103170731707",
+        "value": 1031.7073170731708
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_103658536585"
+        },
+        "qid": "Pressure_isolines_103658536585",
+        "value": 1036.5853658536585
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_104146341463"
+        },
+        "qid": "Pressure_isolines_104146341463",
+        "value": 1041.4634146341464
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_104634146341"
+        },
+        "qid": "Pressure_isolines_104634146341",
+        "value": 1046.341463414634
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_10512195122"
+        },
+        "qid": "Pressure_isolines_10512195122",
+        "value": 1051.219512195122
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_105609756098"
+        },
+        "qid": "Pressure_isolines_105609756098",
+        "value": 1056.09756097561
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_106097560976"
+        },
+        "qid": "Pressure_isolines_106097560976",
+        "value": 1060.9756097560976
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_106585365854"
+        },
+        "qid": "Pressure_isolines_106585365854",
+        "value": 1065.8536585365853
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_107073170732"
+        },
+        "qid": "Pressure_isolines_107073170732",
+        "value": 1070.7317073170732
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_10756097561"
+        },
+        "qid": "Pressure_isolines_10756097561",
+        "value": 1075.6097560975609
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_108048780488"
+        },
+        "qid": "Pressure_isolines_108048780488",
+        "value": 1080.4878048780488
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_108536585366"
+        },
+        "qid": "Pressure_isolines_108536585366",
+        "value": 1085.3658536585367
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_109024390244"
+        },
+        "qid": "Pressure_isolines_109024390244",
+        "value": 1090.2439024390244
+    },
+    {
+        "attributes": {
+            "class": "Pressure_isolines_109512195122"
+        },
+        "qid": "Pressure_isolines_109512195122",
+        "value": 1095.1219512195123
+    }
+]

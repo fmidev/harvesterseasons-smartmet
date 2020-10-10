@@ -1,0 +1,90 @@
+[
+    {
+        "attributes": {
+            "class": "Snowthickness_10"
+        },
+        "lolimit": 1,
+        "qid": "Snowthickness_10"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_9_10"
+        },
+        "hilimit": 1,
+        "lolimit": 0.9,
+        "qid": "Snowthickness_9_10"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_8_9"
+        },
+        "hilimit": 0.9,
+        "lolimit": 0.8,
+        "qid": "Snowthickness_8_9"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_7_8"
+        },
+        "hilimit": 0.8,
+        "lolimit": 0.7,
+        "qid": "Snowthickness_7_8"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_6_7"
+        },
+        "hilimit": 0.7,
+        "lolimit": 0.6,
+        "qid": "Snowthickness_6_7"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_5_6"
+        },
+        "hilimit": 0.6,
+        "lolimit": 0.5,
+        "qid": "Snowthickness_5_6"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_4_5"
+        },
+        "hilimit": 0.5,
+        "lolimit": 0.4,
+        "qid": "Snowthickness_4_5"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_3_4"
+        },
+        "hilimit": 0.4,
+        "lolimit": 0.3,
+        "qid": "Snowthickness_3_4"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_2_3"
+        },
+        "hilimit": 0.3,
+        "lolimit": 0.2,
+        "qid": "Snowthickness_2_3"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_1_2"
+        },
+        "hilimit": 0.2,
+        "lolimit": 0.1,
+        "qid": "Snowthickness_1_2"
+    },
+    {
+        "attributes": {
+            "class": "Snowthickness_0_1"
+        },
+        "hilimit": 0.1,
+        "lolimit": 0,
+        "qid": "Snowthickness_0_2"
+    }
+]
+

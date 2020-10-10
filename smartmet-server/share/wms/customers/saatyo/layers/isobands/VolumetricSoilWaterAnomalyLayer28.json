@@ -1,0 +1,81 @@
+[
+
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_missing"
+        },
+        "qid": "VolumetricSoilWateriAnomalyLayer28_missing"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_0175"
+        },
+        "lolimit": 0.175,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_0175"
+    },
+
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_0125_0175"
+        },
+        "hilimit": 0.175,
+        "lolimit": 0.125,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_0125_0175"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_0075_0125"
+        },
+        "hilimit": 0.125,
+        "lolimit": 0.075,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_0075_0125"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_0025_0075"
+        },
+        "hilimit": 0.075,
+        "lolimit": 0.025,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_0025_0075"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_m0025_0025"
+        },
+        "hilimit": 0.025,
+        "lolimit": -0.025,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_m0025_0025"
+    },
+
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_m0075_m0025"
+        },
+        "hilimit": -0.025,
+        "lolimit": -0.075,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_m0075_m0025"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_m0125_m0075"
+        },
+        "hilimit": -0.075,
+        "lolimit": -0.125,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_m0125_m0075"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_m0175_m0125"
+        },
+        "hilimit": -0.125,
+        "lolimit": -0.175,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_m0175_m0125"
+    },
+    {
+        "attributes": {
+            "class": "VolumetricSoilWaterAnomalyLayer28_m0175"
+        },
+        "hilimit": -0.175,
+        "qid": "VolumetricSoilWaterAnomalyLayer28_m0175"
+    }
+]

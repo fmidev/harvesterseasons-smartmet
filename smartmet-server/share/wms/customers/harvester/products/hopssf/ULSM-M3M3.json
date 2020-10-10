@@ -1,0 +1,22 @@
+{
+    "title" : "HOPS Soil Wetness",
+    "abstract" : "Seasonal forecast data from HOPS.",
+    "projection": {},
+    "producer": "HOPSSF",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/ULSM-M3M3.json",
+            "css": "isobands/SOILWET1-M.css",
+            "parameter": "ULSM-M3M3:HOPSSF:5026::0:1:0",
+	    "sampling": { 
+		"relativeresolution": 4
+	    },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

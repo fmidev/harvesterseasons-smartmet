@@ -1,0 +1,623 @@
+[
+    {
+        "attributes": {
+            "class": "Precipitation24h_missing"
+        },
+        "qid": "Precipitation24h_missing"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_01_02"
+        },
+        "hilimit": 0.2,
+        "lolimit": 0.1,
+        "qid": "Precipitation24h_01_02"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_02_03"
+        },
+        "hilimit": 0.3,
+        "lolimit": 0.2,
+        "qid": "Precipitation24h_02_03"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_03_04"
+        },
+        "hilimit": 0.4,
+        "lolimit": 0.3,
+        "qid": "Precipitation24h_03_04"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_04_05"
+        },
+        "hilimit": 0.5,
+        "lolimit": 0.4,
+        "qid": "Precipitation24h_04_05"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_05_06"
+        },
+        "hilimit": 0.6,
+        "lolimit": 0.5,
+        "qid": "Precipitation24h_05_06"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_06_07"
+        },
+        "hilimit": 0.7,
+        "lolimit": 0.6,
+        "qid": "Precipitation24h_06_07"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_07_08"
+        },
+        "hilimit": 0.8,
+        "lolimit": 0.7,
+        "qid": "Precipitation24h_07_08"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_08_09"
+        },
+        "hilimit": 0.9,
+        "lolimit": 0.8,
+        "qid": "Precipitation24h_08_09"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_09_10"
+        },
+        "hilimit": 1.0,
+        "lolimit": 0.9,
+        "qid": "Precipitation24h_09_10"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_10_15"
+        },
+        "hilimit": 1.5,
+        "lolimit": 1.0,
+        "qid": "Precipitation24h_10_15"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_15_20"
+        },
+        "hilimit": 2.0,
+        "lolimit": 1.5,
+        "qid": "Precipitation24h_15_20"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_20_25"
+        },
+        "hilimit": 2.5,
+        "lolimit": 2.0,
+        "qid": "Precipitation24h_20_25"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_25_30"
+        },
+        "hilimit": 3.0,
+        "lolimit": 2.5,
+        "qid": "Precipitation24h_25_30"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_30_35"
+        },
+        "hilimit": 3.5,
+        "lolimit": 3.0,
+        "qid": "Precipitation24h_30_35"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_35_40"
+        },
+        "hilimit": 4.0,
+        "lolimit": 3.5,
+        "qid": "Precipitation24h_35_40"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_40_45"
+        },
+        "hilimit": 4.5,
+        "lolimit": 4.0,
+        "qid": "Precipitation24h_40_45"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_45_50"
+        },
+        "hilimit": 5.0,
+        "lolimit": 4.5,
+        "qid": "Precipitation24h_45_50"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_50_55"
+        },
+        "hilimit": 5.5,
+        "lolimit": 5.0,
+        "qid": "Precipitation24h_50_55"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_55_60"
+        },
+        "hilimit": 6.0,
+        "lolimit": 5.5,
+        "qid": "Precipitation24h_55_60"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_60_65"
+        },
+        "hilimit": 6.5,
+        "lolimit": 6.0,
+        "qid": "Precipitation24h_60_65"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_65_70"
+        },
+        "hilimit": 7.0,
+        "lolimit": 6.5,
+        "qid": "Precipitation24h_65_70"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_70_75"
+        },
+        "hilimit": 7.5,
+        "lolimit": 7.0,
+        "qid": "Precipitation24h_70_75"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_75_80"
+        },
+        "hilimit": 8.0,
+        "lolimit": 7.5,
+        "qid": "Precipitation24h_75_80"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_80_85"
+        },
+        "hilimit": 8.5,
+        "lolimit": 8.0,
+        "qid": "Precipitation24h_80_85"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_85_90"
+        },
+        "hilimit": 9.0,
+        "lolimit": 8.5,
+        "qid": "Precipitation24h_85_90"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_90_95"
+        },
+        "hilimit": 9.5,
+        "lolimit": 9.0,
+        "qid": "Precipitation24h_90_95"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_95_100"
+        },
+        "hilimit": 10.0,
+        "lolimit": 9.5,
+        "qid": "Precipitation24h_95_100"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_100_105"
+        },
+        "hilimit": 10.5,
+        "lolimit": 10.0,
+        "qid": "Precipitation24h_100_105"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_105_110"
+        },
+        "hilimit": 11.0,
+        "lolimit": 10.5,
+        "qid": "Precipitation24h_105_110"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_110_115"
+        },
+        "hilimit": 11.5,
+        "lolimit": 11.0,
+        "qid": "Precipitation24h_110_115"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_115_120"
+        },
+        "hilimit": 12.0,
+        "lolimit": 11.5,
+        "qid": "Precipitation24h_115_120"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_120_125"
+        },
+        "hilimit": 12.5,
+        "lolimit": 12.0,
+        "qid": "Precipitation24h_120_125"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_125_130"
+        },
+        "hilimit": 13.0,
+        "lolimit": 12.5,
+        "qid": "Precipitation24h_125_130"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_130_135"
+        },
+        "hilimit": 13.5,
+        "lolimit": 13.0,
+        "qid": "Precipitation24h_130_135"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_135_140"
+        },
+        "hilimit": 14.0,
+        "lolimit": 13.5,
+        "qid": "Precipitation24h_135_140"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_140_145"
+        },
+        "hilimit": 14.5,
+        "lolimit": 14.0,
+        "qid": "Precipitation24h_140_145"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_145_150"
+        },
+        "hilimit": 15.0,
+        "lolimit": 14.5,
+        "qid": "Precipitation24h_145_150"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_15_16"
+        },
+        "hilimit": 16,
+        "lolimit": 15,
+        "qid": "Precipitation24h_15_16"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_16_17"
+        },
+        "hilimit": 17,
+        "lolimit": 16,
+        "qid": "Precipitation24h_16_17"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_17_18"
+        },
+        "hilimit": 18,
+        "lolimit": 17,
+        "qid": "Precipitation24h_17_18"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_18_19"
+        },
+        "hilimit": 19,
+        "lolimit": 18,
+        "qid": "Precipitation24h_18_19"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_19_20"
+        },
+        "hilimit": 20,
+        "lolimit": 19,
+        "qid": "Precipitation24h_19_20"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_20_21"
+        },
+        "hilimit": 21,
+        "lolimit": 20,
+        "qid": "Precipitation24h_20_21"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_21_22"
+        },
+        "hilimit": 22,
+        "lolimit": 21,
+        "qid": "Precipitation24h_21_22"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_22_23"
+        },
+        "hilimit": 23,
+        "lolimit": 22,
+        "qid": "Precipitation24h_22_23"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_23_24"
+        },
+        "hilimit": 24,
+        "lolimit": 23,
+        "qid": "Precipitation24h_23_24"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_24_25"
+        },
+        "hilimit": 25,
+        "lolimit": 24,
+        "qid": "Precipitation24h_24_25"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_25_275"
+        },
+        "hilimit": 27.5,
+        "lolimit": 25,
+        "qid": "Precipitation24h_25_275"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_275_30"
+        },
+        "hilimit": 30,
+        "lolimit": 27.5,
+        "qid": "Precipitation24h_275_30"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_30_325"
+        },
+        "hilimit": 32.5,
+        "lolimit": 30,
+        "qid": "Precipitation24h_30_325"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_325_35"
+        },
+        "hilimit": 35,
+        "lolimit": 32.5,
+        "qid": "Precipitation24h_325_35"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_35_375"
+        },
+        "hilimit": 37.5,
+        "lolimit": 35,
+        "qid": "Precipitation24h_35_375"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_375_40"
+        },
+        "hilimit": 40,
+        "lolimit": 37.5,
+        "qid": "Precipitation24h_375_40"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_40_425"
+        },
+        "hilimit": 42.5,
+        "lolimit": 40,
+        "qid": "Precipitation24h_40_425"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_425_45"
+        },
+        "hilimit": 45,
+        "lolimit": 42.5,
+        "qid": "Precipitation24h_425_45"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_45_475"
+        },
+        "hilimit": 47.5,
+        "lolimit": 45,
+        "qid": "Precipitation24h_45_475"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_475_50"
+        },
+        "hilimit": 50,
+        "lolimit": 47.5,
+        "qid": "Precipitation24h_475_50"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_50_55"
+        },
+        "hilimit": 55,
+        "lolimit": 50,
+        "qid": "Precipitation24h_50_55"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_55_60"
+        },
+        "hilimit": 60,
+        "lolimit": 55,
+        "qid": "Precipitation24h_55_60"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_60_65"
+        },
+        "hilimit": 65,
+        "lolimit": 60,
+        "qid": "Precipitation24h_60_65"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_65_70"
+        },
+        "hilimit": 70,
+        "lolimit": 65,
+        "qid": "Precipitation24h_65_70"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_70_75"
+        },
+        "hilimit": 75,
+        "lolimit": 70,
+        "qid": "Precipitation24h_70_75"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_75_80"
+        },
+        "hilimit": 80,
+        "lolimit": 75,
+        "qid": "Precipitation24h_75_80"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_80_85"
+        },
+        "hilimit": 85,
+        "lolimit": 80,
+        "qid": "Precipitation24h_80_85"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_85_90"
+        },
+        "hilimit": 90,
+        "lolimit": 85,
+        "qid": "Precipitation24h_85_90"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_90_95"
+        },
+        "hilimit": 95,
+        "lolimit": 90,
+        "qid": "Precipitation24h_90_95"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_95_100"
+        },
+        "hilimit": 100,
+        "lolimit": 95,
+        "qid": "Precipitation24h_95_100"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_100_110"
+        },
+        "hilimit": 110,
+        "lolimit": 100,
+        "qid": "Precipitation24h_100_110"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_110_120"
+        },
+        "hilimit": 120,
+        "lolimit": 110,
+        "qid": "Precipitation24h_110_120"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_120_130"
+        },
+        "hilimit": 130,
+        "lolimit": 120,
+        "qid": "Precipitation24h_120_130"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_130_140"
+        },
+        "hilimit": 140,
+        "lolimit": 130,
+        "qid": "Precipitation24h_130_140"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_140_150"
+        },
+        "hilimit": 150,
+        "lolimit": 140,
+        "qid": "Precipitation24h_140_150"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_150_160"
+        },
+        "hilimit": 160,
+        "lolimit": 150,
+        "qid": "Precipitation24h_150_160"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_160_170"
+        },
+        "hilimit": 170,
+        "lolimit": 160,
+        "qid": "Precipitation24h_160_170"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_170_180"
+        },
+        "hilimit": 180,
+        "lolimit": 170,
+        "qid": "Precipitation24h_170_180"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_180_190"
+        },
+        "hilimit": 190,
+        "lolimit": 180,
+        "qid": "Precipitation24h_180_190"
+    },
+    {
+        "attributes": {
+            "class": "Precipitation24h_190"
+        },
+        "lolimit": 190,
+        "qid": "Precipitation24h_190"
+    }
+]
