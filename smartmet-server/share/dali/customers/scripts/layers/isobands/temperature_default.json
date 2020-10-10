@@ -1,0 +1,114 @@
+[
+  {
+    "qid": "temperature_30_inf",
+    "lolimit": 30,
+    "hilimit": 999,
+    "attributes": {
+      "class": "Temperature_30_inf "
+    }
+  },
+  {
+    "qid": "temperature_25_30",
+    "lolimit": 25,
+    "hilimit": 30,
+    "attributes": {
+      "class": "Temperature_25_30 "
+    }
+  },
+  {
+    "qid": "temperature_20_25",
+    "lolimit": 20,
+    "hilimit": 25,
+    "attributes": {
+      "class": "Temperature_20_25 "
+    }
+  },
+  {
+    "qid": "temperature_15_20",
+    "lolimit": 15,
+    "hilimit": 20,
+    "attributes": {
+      "class": "Temperature_15_20 "
+    }
+  },
+  {
+    "qid": "temperature_10_15",
+    "lolimit": 10,
+    "hilimit": 15,
+    "attributes": {
+      "class": "Temperature_10_15 "
+    }
+  },
+  {
+    "qid": "temperature_5_10",
+    "lolimit": 5,
+    "hilimit": 10,
+    "attributes": {
+      "class": "Temperature_5_10 "
+    }
+  },
+  {
+    "qid": "temperature_0_5",
+    "lolimit": 0,
+    "hilimit": 5,
+    "attributes": {
+      "class": "Temperature_0_5"
+    }
+  },
+  {
+    "qid": "temperature_n5_0",
+    "lolimit": -5,
+    "hilimit": 0,
+    "attributes": {
+      "class": "Temperature_n5_0 "
+    }
+  },
+  {
+    "qid": "temperature_n10_n5",
+    "lolimit": -10,
+    "hilimit": -5,
+    "attributes": {
+      "class": "Temperature_n10_n5"
+    }
+  },
+  {
+    "qid": "temperature_n15_n10",
+    "lolimit": -15,
+    "hilimit": -10,
+    "attributes": {
+      "class": "Temperature_n15_n10"
+    }
+  },
+  {
+    "qid": "temperature_n20_n15",
+    "lolimit": -20,
+    "hilimit": -15,
+    "attributes": {
+      "class": "Temperature_n20_n15 "
+    }
+  },
+  {
+    "qid": "temperature_n25_n20",
+    "lolimit": -25,
+    "hilimit": -20,
+    "attributes": {
+      "class": "Temperature_n25_n20 "
+    }
+  },
+  {
+    "qid": "temperature_n30_n25",
+    "lolimit": -30,
+    "hilimit": -25,
+    "attributes": {
+      "class": "Temperature_n30_n25 "
+    }
+  },
+  {
+    "qid": "temperature_n30_inf",
+    "lolimit": -999,
+    "hilimit": -30,
+    "attributes": {
+      "class": "Temperature_n30_inf "
+    }
+  }
+]

@@ -1,0 +1,286 @@
+{
+  "title": "Sadesumma",
+  "producer": "kriging_suomi_daily06",
+  "refs": {
+    "projection": "json:maps/frontpage_finlandprojection.json",
+    "finland": {
+      "schema": "esri",
+      "table": "finland_country_wgs84",
+      "minarea": 10,
+      "mindistance": 1
+    }
+  },
+  "defs": {
+    "layers": [
+      {
+        "tag": "symbol",
+        "attributes": {
+          "id": "rect"
+        },
+        "layers": [
+          {
+            "tag": "rect",
+            "attributes": {
+              "width": "35",
+              "height": "50",
+              "stroke": "black",
+              "stroke-width": "1px"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "clipPath",
+        "attributes": {
+          "id": "cutNorwayRussia"
+        },
+        "layers": [
+          {
+            "tag": "path",
+            "attributes": {
+              "d": "M200,450 900,450 900,1300 0,1300z"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_zero"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_zero",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_zero",
+                "hilimit": 1,
+                "attributes": {
+                  "class": "precipitation_road"
+                }
+              }
+            ],
+            "parameter": "Precipitation5d",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_dark"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_dark",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_dark",
+                "lolimit": 1,
+                "hilimit": 30,
+                "attributes": {
+                  "class": "precipitation_road"
+                }
+              }
+            ],
+            "parameter": "Precipitation5d",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_light"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_light",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_light",
+                "lolimit": 30,
+                "attributes": {
+                  "class": "precipitation_road"
+                }
+              }
+            ],
+            "parameter": "Precipitation5d",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "projection": "ref:refs.projection",
+  "views": [
+    {
+      "qid": "v1-",
+      "attributes": {
+        "id": "view1"
+      },
+      "layers": [
+        {
+          "qid": "europe_country",
+          "layer_type": "map",
+          "map": {
+            "lines": 1,
+            "schema": "esri",
+            "table": "europe_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "europe_country_lines",
+            "clip-path": "url(#cutNorwayRussia)",
+            "fill": "none",
+            "stroke": "#999",
+            "stroke-width": "0.5pt"
+          }
+        },
+        {
+          "qid": "finland_country",
+          "layer_type": "map",
+          "map": {
+            "schema": "esri",
+            "table": "finland_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "finland_country_lines",
+            "fill": "white",
+            "stroke": "#000",
+            "stroke-width": "0.5pt",
+            "filter": "url(#shadow3)"
+          }
+        },
+        {
+          "qid": "precipitation_isoband",
+          "layer_type": "isoband",
+          "isobands": "json:isobands/frontpage_precipitation.json",
+          "css": "isobands/frontpage_precipitation.css",
+          "parameter": "Precipitation5d",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "clip-path": "url(#borderclip)",
+            "shape-rendering": "geometricPrecision"
+          }
+        },
+        {
+          "qid": "finland_roads_zero",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#ccc",
+            "mask": "url(#road_mask_zero)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_dark",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#888",
+            "mask": "url(#road_mask_dark)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_light",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#bbb",
+            "mask": "url(#road_mask_light)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "layer_type": "time",
+          "timestamp": ["-120h", "endtime"],
+          "timezone": "EET",
+          "formatter": "strftime",
+          "format": ["%-d.%-m. %-H:%M -", " %-d.%-m. %-H:%M"],
+          "x": 40,
+          "y": 70,
+          "attributes": {
+            "text-anchor": "left",
+            "font-family": "Roboto, Arial",
+            "font-size": "45px"
+          }
+        },
+        {
+          "layer_type": "legend",
+          "x": 0,
+          "y": 160,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/frontpage_precipitation.json",
+          "symbols": {
+            "css": "isobands/frontpage_precipitation.css",
+            "symbol": "rect",
+            "attributes": {
+            }
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "60": "\u003E60",
+              "40": "40...60",
+              "30": "30...40",
+              "20": "20...30",
+              "10": "10...20",
+              "5": "5...10",
+              "1": "1...5"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px"
+            }
+          },
+          "layers": [
+            {
+              "tag": "text",
+              "cdata": "mm",
+              "attributes": {
+                "x": 60,
+                "y": 150,
+                "class": "Units",
+                "font-family": "Roboto, Arial",
+                "font-size": "35px"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,695 @@
+[
+        {
+        "qid": "rr_accumulation_20000_inf",
+            "lolimit": 20000,
+        "attributes":
+        {
+        "class": "rr_accumulation_20000_inf"
+        }
+        },
+        {
+        "qid": "rr_accumulation_18000_19000",
+            "lolimit": 18000,
+            "hilimit": 19000,
+        "attributes":
+        {
+        "class": "rr_accumulation_18000_19000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_17000_18000",
+            "lolimit": 17000,
+            "hilimit": 18000,
+        "attributes":
+        {
+        "class": "rr_accumulation_17000_18000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_16000_17000",
+            "lolimit": 16000,
+            "hilimit": 17000,
+        "attributes":
+        {
+        "class": "rr_accumulation_16000_17000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_15000_16000",
+            "lolimit": 15000,
+            "hilimit": 16000,
+        "attributes":
+        {
+        "class": "rr_accumulation_15000_16000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_14000_15000",
+            "lolimit": 14000,
+            "hilimit": 15000,
+        "attributes":
+        {
+        "class": "rr_accumulation_14000_15000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_13000_14000",
+            "lolimit": 13000,
+            "hilimit": 14000,
+        "attributes":
+        {
+        "class": "rr_accumulation_13000_14000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_12000_13000",
+            "lolimit": 12000,
+            "hilimit": 13000,
+        "attributes":
+        {
+        "class": "rr_accumulation_12000_13000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_11000_12000",
+            "lolimit": 11000,
+            "hilimit": 12000,
+        "attributes":
+        {
+        "class": "rr_accumulation_11000_12000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_10000_11000",
+            "lolimit": 10000,
+            "hilimit": 11000,
+        "attributes":
+        {
+        "class": "rr_accumulation_10000_11000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_9500_10000",
+            "lolimit": 9500,
+            "hilimit": 10000,
+        "attributes":
+        {
+        "class": "rr_accumulation_9500_10000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_9000_9500",
+            "lolimit": 9000,
+            "hilimit": 9500,
+        "attributes":
+        {
+        "class": "rr_accumulation_9000_9500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_8500_9000",
+            "lolimit": 8500,
+            "hilimit": 9000,
+        "attributes":
+        {
+        "class": "rr_accumulation_8500_9000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_8000_8500",
+            "lolimit": 8000,
+            "hilimit": 8500,
+        "attributes":
+        {
+        "class": "rr_accumulation_8000_8500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_7500_8000",
+            "lolimit": 7500,
+            "hilimit": 8000,
+        "attributes":
+        {
+        "class": "rr_accumulation_7500_8000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_7000_7500",
+            "lolimit": 7000,
+            "hilimit": 7500,
+        "attributes":
+        {
+        "class": "rr_accumulation_7000_7500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_6500_7000",
+            "lolimit": 6500,
+            "hilimit": 7000,
+        "attributes":
+        {
+        "class": "rr_accumulation_6500_7000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_6000_6500",
+            "lolimit": 6000,
+            "hilimit": 6500,
+        "attributes":
+        {
+        "class": "rr_accumulation_6000_6500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_5500_6000",
+            "lolimit": 5500,
+            "hilimit": 6000,
+        "attributes":
+        {
+        "class": "rr_accumulation_5500_6000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_5000_5500",
+            "lolimit": 5000,
+            "hilimit": 5500,
+        "attributes":
+        {
+        "class": "rr_accumulation_5000_5500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_4750_5000",
+            "lolimit": 4750,
+            "hilimit": 5000,
+        "attributes":
+        {
+        "class": "rr_accumulation_4750_5000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_4500_4750",
+            "lolimit": 4500,
+            "hilimit": 4750,
+        "attributes":
+        {
+        "class": "rr_accumulation_4500_4750"
+        }
+        },
+        {
+        "qid": "rr_accumulation_4250_4500",
+            "lolimit": 4250,
+            "hilimit": 4500,
+        "attributes":
+        {
+        "class": "rr_accumulation_4250_4500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_4000_4250",
+            "lolimit": 4000,
+            "hilimit": 4250,
+        "attributes":
+        {
+        "class": "rr_accumulation_4000_4250"
+        }
+        },
+        {
+        "qid": "rr_accumulation_3750_4000",
+            "lolimit": 3750,
+            "hilimit": 4000,
+        "attributes":
+        {
+        "class": "rr_accumulation_3750_4000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_3500_3750",
+            "lolimit": 3500,
+            "hilimit": 3750,
+        "attributes":
+        {
+        "class": "rr_accumulation_3500_3750"
+        }
+        },
+        {
+        "qid": "rr_accumulation_3250_3500",
+            "lolimit": 3250,
+            "hilimit": 3500,
+        "attributes":
+        {
+        "class": "rr_accumulation_3250_3500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_3000_3500",
+            "lolimit": 3000,
+            "hilimit": 3500,
+        "attributes":
+        {
+        "class": "rr_accumulation_3000_3500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2750_3000",
+            "lolimit": 2750,
+            "hilimit": 3000,
+        "attributes":
+        {
+        "class": "rr_accumulation_2750_3000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2500_2750",
+            "lolimit": 2500,
+            "hilimit": 2750,
+        "attributes":
+        {
+        "class": "rr_accumulation_2500_2750"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2400_2500",
+            "lolimit": 2400,
+            "hilimit": 2500,
+        "attributes":
+        {
+        "class": "rr_accumulation_2400_2500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2300_2400",
+            "lolimit": 2300,
+            "hilimit": 2400,
+        "attributes":
+        {
+        "class": "rr_accumulation_2300_2400"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2200_2300",
+            "lolimit": 2200,
+            "hilimit": 2300,
+        "attributes":
+        {
+        "class": "rr_accumulation_2200_2300"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2100_2200",
+            "lolimit": 2100,
+            "hilimit": 2200,
+        "attributes":
+        {
+        "class": "rr_accumulation_2100_2200"
+        }
+        },
+        {
+        "qid": "rr_accumulation_2000_2100",
+            "lolimit": 2000,
+            "hilimit": 2100,
+        "attributes":
+        {
+        "class": "rr_accumulation_2000_2100"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1900_2000",
+            "lolimit": 1900,
+            "hilimit": 2000,
+        "attributes":
+        {
+        "class": "rr_accumulation_1900_2000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1800_1900",
+            "lolimit": 1800,
+            "hilimit": 1900,
+        "attributes":
+        {
+        "class": "rr_accumulation_1800_1900"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1700_1800",
+            "lolimit": 1700,
+            "hilimit": 1800,
+        "attributes":
+        {
+        "class": "rr_accumulation_1700_1800"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1600_1700",
+            "lolimit": 1600,
+            "hilimit": 1700,
+        "attributes":
+        {
+        "class": "rr_accumulation_1600_1700"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1500_1600",
+            "lolimit": 1500,
+            "hilimit": 1600,
+        "attributes":
+        {
+        "class": "rr_accumulation_1500_1600"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1450_1500",
+            "lolimit": 1450,
+            "hilimit": 1500,
+        "attributes":
+        {
+        "class": "rr_accumulation_1450_1500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1400_1450",
+            "lolimit": 1400,
+            "hilimit": 1450,
+        "attributes":
+        {
+        "class": "rr_accumulation_1400_1450"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1350_1400",
+            "lolimit": 1350,
+            "hilimit": 1400,
+        "attributes":
+        {
+        "class": "rr_accumulation_1350_1400"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1300_1350",
+            "lolimit": 1300,
+            "hilimit": 1350,
+        "attributes":
+        {
+        "class": "rr_accumulation_1300_1350"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1250_1300",
+            "lolimit": 1250,
+            "hilimit": 1300,
+        "attributes":
+        {
+        "class": "rr_accumulation_1250_1300"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1200_1250",
+            "lolimit": 1200,
+            "hilimit": 1250,
+        "attributes":
+        {
+        "class": "rr_accumulation_1200_1250"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1150_1200",
+            "lolimit": 1150,
+            "hilimit": 1200,
+        "attributes":
+        {
+        "class": "rr_accumulation_1150_1200"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1100_1150",
+            "lolimit": 1100,
+            "hilimit": 1150,
+        "attributes":
+        {
+        "class": "rr_accumulation_1100_1150"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1050_1100",
+            "lolimit": 1050,
+            "hilimit": 1100,
+        "attributes":
+        {
+        "class": "rr_accumulation_1050_1100"
+        }
+        },
+        {
+        "qid": "rr_accumulation_1000_1050",
+            "lolimit": 1000,
+            "hilimit": 1050,
+        "attributes":
+        {
+        "class": "rr_accumulation_1000_1050"
+        }
+        },
+        {
+        "qid": "rr_accumulation_950_1000",
+            "lolimit": 950,
+            "hilimit": 1000,
+        "attributes":
+        {
+        "class": "rr_accumulation_950_1000"
+        }
+        },
+        {
+        "qid": "rr_accumulation_900_950",
+            "lolimit": 900,
+            "hilimit": 950,
+        "attributes":
+        {
+        "class": "rr_accumulation_900_950"
+        }
+        },
+        {
+        "qid": "rr_accumulation_850_900",
+            "lolimit": 850,
+            "hilimit": 900,
+        "attributes":
+        {
+        "class": "rr_accumulation_850_900"
+        }
+        },
+        {
+        "qid": "rr_accumulation_800_850",
+            "lolimit": 800,
+            "hilimit": 850,
+        "attributes":
+        {
+        "class": "rr_accumulation_800_850"
+        }
+        },
+        {
+        "qid": "rr_accumulation_750_800",
+            "lolimit": 750,
+            "hilimit": 800,
+        "attributes":
+        {
+        "class": "rr_accumulation_750_800"
+        }
+        },
+        {
+        "qid": "rr_accumulation_700_750",
+            "lolimit": 700,
+            "hilimit": 750,
+        "attributes":
+        {
+        "class": "rr_accumulation_700_750"
+        }
+        },
+        {
+        "qid": "rr_accumulation_650_700",
+            "lolimit": 650,
+            "hilimit": 700,
+        "attributes":
+        {
+        "class": "rr_accumulation_650_700"
+        }
+        },
+        {
+        "qid": "rr_accumulation_600_650",
+            "lolimit": 600,
+            "hilimit": 650,
+        "attributes":
+        {
+        "class": "rr_accumulation_600_650"
+        }
+        },
+        {
+        "qid": "rr_accumulation_550_600",
+            "lolimit": 550,
+            "hilimit": 600,
+        "attributes":
+        {
+        "class": "rr_accumulation_550_600"
+        }
+        },
+        {
+        "qid": "rr_accumulation_500_550",
+            "lolimit": 500,
+            "hilimit": 550,
+        "attributes":
+        {
+        "class": "rr_accumulation_500_550"
+        }
+        },
+        {
+        "qid": "rr_accumulation_450_500",
+            "lolimit": 450,
+            "hilimit": 500,
+        "attributes":
+        {
+        "class": "rr_accumulation_450_500"
+        }
+        },
+        {
+        "qid": "rr_accumulation_400_450",
+            "lolimit": 400,
+            "hilimit": 450,
+        "attributes":
+        {
+        "class": "rr_accumulation_400_450"
+        }
+        },
+        {
+        "qid": "rr_accumulation_350_400",
+            "lolimit": 350,
+            "hilimit": 400,
+        "attributes":
+        {
+        "class": "rr_accumulation_350_400"
+        }
+        },
+        {
+        "qid": "rr_accumulation_300_350",
+            "lolimit": 300,
+            "hilimit": 350,
+        "attributes":
+        {
+        "class": "rr_accumulation_300_350"
+        }
+        },
+        {
+        "qid": "rr_accumulation_250_300",
+            "lolimit": 250,
+            "hilimit": 300,
+        "attributes":
+        {
+        "class": "rr_accumulation_250_300"
+        }
+        },
+        {
+        "qid": "rr_accumulation_200_250",
+            "lolimit": 200,
+            "hilimit": 250,
+        "attributes":
+        {
+        "class": "rr_accumulation_200_250"
+        }
+        },
+        {
+        "qid": "rr_accumulation_150_200",
+            "lolimit": 150,
+            "hilimit": 200,
+        "attributes":
+        {
+        "class": "rr_accumulation_150_200"
+        }
+        },
+        {
+        "qid": "rr_accumulation_100_150",
+            "lolimit": 100,
+            "hilimit": 150,
+        "attributes":
+        {
+        "class": "rr_accumulation_100_150"
+        }
+        },
+        {
+        "qid": "rr_accumulation_90_100",
+            "lolimit": 90,
+            "hilimit": 100,
+        "attributes":
+        {
+        "class": "rr_accumulation_90_100"
+        }
+        },
+        {
+        "qid": "rr_accumulation_80_90",
+            "lolimit": 80,
+            "hilimit": 90,
+        "attributes":
+        {
+        "class": "rr_accumulation_80_90"
+        }
+        },
+        {
+        "qid": "rr_accumulation_70_80",
+            "lolimit": 70,
+            "hilimit": 80,
+        "attributes":
+        {
+        "class": "rr_accumulation_70_80"
+        }
+        },
+        {
+        "qid": "rr_accumulation_60_70",
+            "lolimit": 60,
+            "hilimit": 70,
+        "attributes":
+        {
+        "class": "rr_accumulation_60_70"
+        }
+        },
+        {
+        "qid": "rr_accumulation_50_60",
+            "lolimit": 50,
+            "hilimit": 60,
+        "attributes":
+        {
+        "class": "rr_accumulation_50_60"
+        }
+        },
+        {
+        "qid": "rr_accumulation_40_50",
+            "lolimit": 40,
+            "hilimit": 50,
+        "attributes":
+        {
+        "class": "rr_accumulation_40_50"
+        }
+        },
+        {
+        "qid": "rr_accumulation_30_40",
+            "lolimit": 30,
+            "hilimit": 40,
+        "attributes":
+        {
+        "class": "rr_accumulation_30_40"
+        }
+        },
+        {
+        "qid": "rr_accumulation_20_30",
+            "lolimit": 20,
+            "hilimit": 30,
+        "attributes":
+        {
+        "class": "rr_accumulation_20_30"
+        }
+        },
+        {
+        "qid": "rr_accumulation_10_20",
+            "lolimit": 10,
+            "hilimit": 20,
+        "attributes":
+        {
+        "class": "rr_accumulation_10_20"
+        }
+        }
+]
+        

@@ -1,0 +1,54 @@
+
+.whiteLine {stroke: white; stroke-width: 0.75pt;}
+
+/**
+ * From high to low 
+ * c0 m60 y30 k0
+ * c0 m45 y50 k0
+ * c0 m35 y70 k0
+ * c0 m20 y60 k0
+ * c0 m10 y50 k0
+ * c40 m0 y55 k0
+ * c23 m0 y33 k0
+ * c10 m0 y0 k0
+ * c25 m0 y0 k0
+ * c40 m0 y0 k0
+ * c60 m5 y0 k0
+ * c70 m25 y0 k0
+ * c80 m50 y0 k0
+ * c90 m80 y0 k0
+ * 
+ * After http://www.rapidtables.com/convert/color/cmyk-to-rgb.htm
+ * 255,102,179
+ * 255,140,128
+ *  255,166,77
+ * 255,204,102
+ * 255,230,128
+ * 153,255,115
+ * 196,255,171
+ * 230,255,255
+ * 191,255,255
+ * 153,255,255
+ * 102,242,255
+ *  77,191,255
+ *  51,128,255
+ *   25,51,255
+ */
+
+/* Color settings for spring begin */
+.EffectiveTemperatureSum_1	{ fill: rgb( 25,51,255); }
+.EffectiveTemperatureSum_2	{ fill: rgb( 51,128,255); }
+/* Color settings for summer begin */
+.EffectiveTemperatureSum_3	{ fill: rgb( 77,191,255); }
+.EffectiveTemperatureSum_4	{ fill: rgb(102,242,255); }
+.EffectiveTemperatureSum_5	{ fill: rgb(153,255,255); }
+.EffectiveTemperatureSum_6  { fill: rgb(191,255,255); }
+/* Color settings for autumn begin */
+.EffectiveTemperatureSum_7	{ fill: rgb(230,255,255); }
+.EffectiveTemperatureSum_8	{ fill: rgb(196,255,171); }
+.EffectiveTemperatureSum_9	{ fill: rgb(153,255,115); }
+.EffectiveTemperatureSum_10	{ fill: rgb(255,230,128); }
+.EffectiveTemperatureSum_11	{ fill: rgb(255,204,102); }
+.EffectiveTemperatureSum_12	{ fill: rgb( 255,166,77); }
+.EffectiveTemperatureSum_13	{ fill: rgb(255,140,128); }
+.EffectiveTemperatureSum_14 { fill: rgb(255,102,179); }

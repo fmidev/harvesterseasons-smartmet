@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*.Temperature_30_inf {fill: rgb(244,105,137) }*/
+/*.Temperature_25_30 {fill: rgb(247,143,110) }*/
+/*.Temperature_20_25 {fill: rgb(249,167,73) }*/
+/*.Temperature_15_20 {fill: rgb(252,201,97) }*/
+/*.Temperature_10_15 {fill: rgb(254,225,124) }*/
+/*.Temperature_5_10 {fill: rgb(255,250,153) }*/
+/*.Temperature_0_5 {fill: rgb(255,253,204) }*/
+/*.Temperature_n5_0 {fill: rgb(217,243,253) }*/
+/*.Temperature_n10_n5 {fill: rgb(166,227,250) }*/
+/*.Temperature_n15_n10 {fill: rgb(103,197,241) }*/
+/*.Temperature_n20_n15 {fill: rgb(29,168,231) }*/
+/*.Temperature_n25_n20 {fill: rgb(57,159,223) }*/
+/*.Temperature_n30_n25 {fill: rgb(60,144,213) }*/
+/*.Temperature_n30_inf {fill: rgb(67,144,194) }*/
+
+/*.Temperature_30_inf {fill: rgb(204, 0, 0) }*/
+/*.Temperature_25_30 {fill: rgb(230, 92, 0) }*/
+/*.Temperature_20_25 {fill: rgb(255, 117, 26) }*/
+/*.Temperature_15_20 {fill: rgb(251, 186, 55) }*/
+/*.Temperature_10_15 {fill: rgb(254,225,124) }*/
+/*.Temperature_5_10 {fill: rgb(255,250,153) }*/
+/*.Temperature_0_5 {fill: rgb(255,253,204) }*/
+/*.Temperature_n5_0 {fill: rgb(193, 209, 240) }*/
+/*.Temperature_n10_n5 {fill: rgb(152, 178, 230) }*/
+/*.Temperature_n15_n10 {fill: rgb(111, 148, 220) }*/
+/*.Temperature_n20_n15 {fill: rgb(70, 117, 210) }*/
+/*.Temperature_n25_n20 {fill: rgb(45, 91, 185) }*/
+/*.Temperature_n30_n25 {fill: rgb(35, 71, 144) }*/
+/*.Temperature_n30_inf {fill: rgb(25, 51, 102) }*/
+
+.Temperature_30_inf {fill: rgb(149, 16, 8) }
+.Temperature_25_30 {fill: rgb(198, 48, 15) }
+.Temperature_20_25 {fill: rgb(236, 53, 12) }
+.Temperature_15_20 {fill: rgb(240, 97, 18) }
+.Temperature_10_15 {fill: rgb(244,162,57) }
+.Temperature_5_10 {fill: rgb(251,223,101) }
+.Temperature_0_5 {fill: rgb(254,254,189) }
+.Temperature_n5_0 {fill: rgb(215, 243, 235) }
+.Temperature_n10_n5 {fill: rgb(167, 227, 215) }
+.Temperature_n15_n10 {fill: rgb(102, 207, 183) }
+.Temperature_n20_n15 {fill: rgb(2, 179, 198) }
+.Temperature_n25_n20 {fill: rgb(0, 150, 206) }
+.Temperature_n30_n25 {fill: rgb(19, 98, 139) }
+.Temperature_n30_inf {fill: rgb(18, 62, 89) }
+
+.BelowZero { fill: url(#frontpage_below_zero) }
+
+.Empty { fill: rgb(255,255,255)}
+
+/* for road masks*/
+.temp_road {fill: rgb(255, 255, 255) }

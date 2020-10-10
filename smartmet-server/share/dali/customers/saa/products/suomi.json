@@ -1,0 +1,374 @@
+{
+    "title": "Temperature",
+    "producer": "pal_skandinavia",
+    "refs":
+    {
+	"myprojection": "json:maps/finlandprojection.json",
+	"finland":
+	{
+	    "schema": "esri",
+	    "table": "finland_country_wgs84",
+	    "minarea": 100,
+	    "mindistance": 1
+	}
+    },
+    "defs":
+    {
+	"layers": [
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "rect"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+			    "width": "10",
+			    "height": "14",
+			    "stroke": "black",
+			    "stroke-width": "0.7px"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "uptriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 9,7 0,14 9Z"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "downtriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 0,7 9,14 0Z"
+			}
+		    }
+		]
+	    }
+	]
+    },
+    "projection": "ref:refs.myprojection",
+    "views": [
+	{
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+	    "layers": [
+		{
+		    "qid": "sd-",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/temperature.json",
+		    "css": "isobands/temperature.css",
+		    "parameter": "Temperature",
+		    "inside": "ref:refs.finland",
+		    "attributes" :
+		    {
+			"clip-path" : "url(#borderclip)",
+			"shape-rendering": "crispEdges"
+		    }
+		},
+		{
+		    "qid": "l4",
+		    "layer_type": "map",
+		    "map":
+		    {
+			"schema": "esri",
+			"table": "finland_country_wgs84",
+			"minarea": 80,
+			"mindistance": 5
+		    },
+		    "attributes":
+		    {
+			"id": "europe_country_lines",
+			"fill": "none",
+			"stroke": "#666",
+			"stroke-width": "0.5pt"
+		    }
+		},
+		{
+		    "qid": "l2",
+		    "layer_type": "number",
+		    "css": "numbers/integers.css",
+		    "parameter": "Temperature",
+		    "attributes": {
+			"class": "Number",
+			"id": "t2m_numbers"
+		    },
+		    "label": "json:numbers/integers.json",
+		    "positions": {
+			"layout": "latlon",
+			"locations": [
+			    {
+				"longitude": 24.93417, // Helsinki
+				"latitude": 60.17556
+			    },
+			    {
+				"longitude": 28.27838, // Lappeenranta
+				"latitude": 61.02292
+			    },
+			    {
+				"longitude": 21.85943, // Pori
+				"latitude": 61.57477,
+				"dx": -3,
+				"dy": 0
+			    },
+			    {
+				"longitude": 25.60742, // Jyväskylä
+				"latitude": 62.20806,
+				"dx": 0,
+				"dy": 5
+			    },
+			    {
+				"longitude": 28.15568, // Kuopio
+				"latitude": 63.00718
+			    },
+			    {
+				"longitude": 23.13066, // Kokkola
+				"latitude": 63.83847
+			    },
+			    {
+				"longitude": 27.40756, // Kajaani
+				"latitude": 64.13355,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.56371, // Kemi
+				"latitude": 65.73641
+			    },
+			    {
+				"longitude": 28.15806, // Savukoski
+				"latitude": 67.2925,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.15138, // Äkäslompolo
+				"latitude": 67.60517
+			    },
+			    {
+				"longitude": 27.02881, // Inari
+				"latitude": 68.90596
+			    },
+			    {
+				"longitude": 20.5, // Kilpisjärvi
+				"latitude": 68.85
+			    }
+			],
+			"dx": 22,
+			"dy": -13
+		    }
+		},
+		{
+		    "qid": "lnight",
+		    "layer_type": "number",
+		    "css": "numbers/integers.css",
+		    "parameter": "Temperature",
+		    "attributes": {
+			"class": "Number",
+			"id": "t2m_numbers_night"
+		    },
+		    "label": "json:numbers/integers.json",
+		    "time": "2016-03-16T20:00:00Z",
+		    "positions": {
+			"layout": "latlon",
+			"locations": [
+			    {
+				"longitude": 24.93417, // Helsinki
+				"latitude": 60.17556
+			    },
+			    {
+				"longitude": 28.27838, // Lappeenranta
+				"latitude": 61.02292
+			    },
+			    {
+				"longitude": 21.85943, // Pori
+				"latitude": 61.57477,
+				"dx": -3,
+				"dy": 0
+			    },
+			    {
+				"longitude": 25.60742, // Jyväskylä
+				"latitude": 62.20806,
+				"dx": 0,
+				"dy": 5
+			    },
+			    {
+				"longitude": 28.15568, // Kuopio
+				"latitude": 63.00718
+			    },
+			    {
+				"longitude": 23.13066, // Kokkola
+				"latitude": 63.83847
+			    },
+			    {
+				"longitude": 27.40756, // Kajaani
+				"latitude": 64.13355,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.56371, // Kemi
+				"latitude": 65.73641
+			    },
+			    {
+				"longitude": 28.15806, // Savukoski
+				"latitude": 67.2925,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.15138, // Äkäslompolo
+				"latitude": 67.60517
+			    },
+			    {
+				"longitude": 27.02881, // Inari
+				"latitude": 68.90596
+			    },
+			    {
+				"longitude": 20.5, // Kilpisjärvi
+				"latitude": 68.85
+			    }
+			],
+			"dx": 22,
+			"dy": 7
+		    }
+		},
+		{
+		    "qid": "l2",
+		    "layer_type": "symbol",
+		    "css": "symbols/smartsymbol.css",
+		    "symbols": "json:symbols/smartsymbol.json",
+		    "parameter": "SmartSymbol",
+		    "scale": 1.2,
+		    "positions":
+		    {
+			"layout": "latlon",
+			"locations": [
+			    {
+				"longitude": 24.93417, // Helsinki
+				"latitude": 60.17556
+			    },
+			    {
+				"longitude": 28.27838, // Lappeenranta
+				"latitude": 61.02292
+			    },
+			    {
+				"longitude": 21.85943, // Pori
+				"latitude": 61.57477,
+				"dx": -3,
+				"dy": 0
+			    },
+			    {
+				"longitude": 25.60742, // Jyväskylä
+				"latitude": 62.20806,
+				"dx": 0,
+				"dy": 5
+			    },
+			    {
+				"longitude": 28.15568, // Kuopio
+				"latitude": 63.00718
+			    },
+			    {
+				"longitude": 23.13066, // Kokkola
+				"latitude": 63.83847
+			    },
+			    {
+				"longitude": 27.40756, // Kajaani
+				"latitude": 64.13355,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.56371, // Kemi
+				"latitude": 65.73641
+			    },
+			    {
+				"longitude": 28.15806, // Savukoski
+				"latitude": 67.2925,
+				"dx": 15,
+				"dy": 0
+			    },
+			    {
+				"longitude": 24.15138, // Äkäslompolo
+				"latitude": 67.60517
+			    },
+			    {
+				"longitude": 27.02881, // Inari
+				"latitude": 68.90596
+			    },
+			    {
+				"longitude": 20.5, // Kilpisjärvi
+				"latitude": 68.85
+			    }
+			],
+			"dx": -10,
+			"dy": -5
+		    }/*,
+		    "attributes":
+		    {
+			"id": "weather",
+			"class": "Weather"
+		    }*/
+		},
+		{
+		    "layer_type": "legend",
+		    "x": 10,
+		    "y": 30,
+		    "dx": 0,
+		    "dy": 14,
+		    "isobands": "json:isobands/temperature.json",
+		    "symbols":
+		    {
+			"css": "isobands/temperature.css",
+			"symbol": "rect",
+			/*"start": "uptriangle",
+			/"end": "downtriangle",*/
+			"attributes":
+			{
+			}
+		    },
+		    "labels":
+		    {
+			"type": "lolimit",
+			"dx": 18,
+			"dy": 16,
+			"conversions":
+			{
+			    "38": "&#62; 38",
+			    "-38": "&#60; -38"
+			},
+			"attributes":
+			{
+			    "font-family": "Arial",
+			    "font-size": "10px"
+			}
+		    }
+		}
+	    ]
+	}
+    ]
+}

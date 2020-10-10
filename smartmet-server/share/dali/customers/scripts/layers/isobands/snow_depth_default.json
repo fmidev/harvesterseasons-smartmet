@@ -1,0 +1,66 @@
+[
+  {
+    "qid": "snow_125_inf",
+    "lolimit": 125,
+    "hilimit": 999,
+    "attributes": {
+      "class": "snow_125_inf"
+    }
+  },
+  {
+    "qid": "snow_100_125",
+    "lolimit": 100,
+    "hilimit": 125,
+    "attributes": {
+      "class": "snow_100_125"
+    }
+  },
+  {
+    "qid": "snow_75_100",
+    "lolimit": 75,
+    "hilimit": 100,
+    "attributes": {
+      "class": "snow_75_100"
+    }
+  },
+  {
+    "qid": "snow_50_75",
+    "lolimit": 50,
+    "hilimit": 75,
+    "attributes": {
+      "class": "snow_50_75"
+    }
+  },
+  {
+    "qid": "snow_25_50",
+    "lolimit": 25,
+    "hilimit": 50,
+    "attributes": {
+      "class": "snow_25_50"
+    }
+  },
+  {
+    "qid": "snowe_10_25",
+    "lolimit": 10,
+    "hilimit": 25,
+    "attributes": {
+      "class": "snow_10_25"
+    }
+  },
+  {
+    "qid": "snow_1_10",
+    "lolimit": 1,
+    "hilimit": 10,
+    "attributes": {
+      "class": "snow_1_10"
+    }
+  },
+  {
+    "qid": "snow_inf_1",
+    "lolimit": 0,
+    "hilimit": 1,
+    "attributes": {
+      "class": "snow_inf_1"
+    }
+  }
+]

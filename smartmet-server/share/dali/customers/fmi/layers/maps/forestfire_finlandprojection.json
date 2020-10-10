@@ -1,0 +1,10 @@
+ // This is use in forestfire, temperaturesum, nosnow and grassfire
+{
+  "xsize": 900,
+  "ysize": 1300,       
+  "crs": "EPSG:2393", // YKJ
+  "bboxcrs": "EPSG:4326", // WGS84
+  "cy": 65.5,//64.5,
+  "cx": 23.4,
+  "resolution": 1.02
+}

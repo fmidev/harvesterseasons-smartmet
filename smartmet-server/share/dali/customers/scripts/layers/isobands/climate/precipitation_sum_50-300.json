@@ -1,0 +1,57 @@
+[
+  {
+    "qid": "rainsum_6_inf",
+    "lolimit": 300,
+    "hilimit": 999,
+    "attributes": {
+      "class": "rainsum_6_inf"
+    }
+  },
+  {
+    "qid": "rainsum_5_6",
+    "lolimit": 250,
+    "hilimit": 300,
+    "attributes": {
+      "class": "rainsum_5_6"
+    }
+  },
+  {
+    "qid": "rainsum_4_5",
+    "lolimit": 200,
+    "hilimit": 250,
+    "attributes": {
+      "class": "rainsum_4_5"
+    }
+  },
+  {
+    "qid": "rainsum_3_4",
+    "lolimit": 150,
+    "hilimit": 200,
+    "attributes": {
+      "class": "rainsum_3_4"
+    }
+  },
+  {
+    "qid": "rainsum_2_3",
+    "lolimit": 100,
+    "hilimit": 150,
+    "attributes": {
+      "class": "rainsum_2_3"
+    }
+  },
+  {
+    "qid": "rainsum_1_2",
+    "lolimit": 50,
+    "hilimit": 100,
+    "attributes": {
+      "class": "rainsum_1_2"
+    }
+  },
+  {
+    "qid": "rainsum_inf_1",
+    "hilimit": 50,
+    "attributes": {
+      "class": "rainsum_inf_1"
+    }
+  }
+]

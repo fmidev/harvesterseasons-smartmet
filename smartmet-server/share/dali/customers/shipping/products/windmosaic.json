@@ -1,0 +1,825 @@
+{
+    "title": "Wind mosaic",
+    "width" : 1200,
+    "height" : 400,
+    "producer" : "ecmwf_maailma_pinta",
+    "sampling" : 
+    {
+	"resolution" : 15
+    },
+    "refs":
+    {
+	"norwegian_sea":
+	{
+	    "xsize": 300,
+	    "ysize": 200,
+	    "crs": "EPSG:4326",
+	    "bboxcrs": "EPSG:4326",	// WGS84
+	    "x1" : -15,
+	    "y1" : 62.5,
+	    "x2" : 37.5,
+	    "y2" : 75
+	},
+	"backgroundmap" : 
+	{
+	    "qid": "europe",
+	    "layer_type": "map",
+	    "css": "maps/map.css",
+	    "map":
+	    {
+		"schema": "vmap",
+		"table": "world_country2009_wgs84"
+	    },
+	    "attributes":
+	    {
+		"class": "Europe"
+	    }
+	},
+	"sea" : 
+	{
+	    "qid": "sea",
+	    "layer_type": "background",
+	    "css": "maps/map.css",
+	    "attributes":
+	    {
+		"class": "Sea"
+	    }
+	}
+    },
+    "projection": "ref:refs.norwegian_sea", //Default
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-1",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-1",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-1",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-1",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-1",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v2-",
+	    "attributes":
+	    {
+		"id": "view2",
+		"transform" : "translate(300,0)"
+	    },
+	    "time_offset" : 360,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-2",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-2",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-2",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-2",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-2",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-3",
+	    "attributes":
+	    {
+		"id": "view-2",
+		"transform" : "translate(600,0)"
+	    },
+	    "time_offset" : 720,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-3",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-3",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-3",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-3",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-3",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-4",
+	    "attributes":
+	    {
+		"id": "view-4",
+		"transform" : "translate(900,0)"
+	    },
+	    "time_offset" : 1080,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-4",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-4",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-4",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-4",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-4",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "format" : "%d.%m. %H:%M UTC",
+		    "timestamp": "validtime",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-5",
+	    "attributes":
+	    {
+		"id": "view-5",
+		"transform" : "translate(0,200)"
+	    },
+	    "time_offset" : 1440,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-5",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-5",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-5",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-5",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-5",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "format" : "%d.%m. %H:%M UTC",
+		    "timestamp": "validtime",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-6",
+	    "attributes":
+	    {
+		"id": "view-6",
+		"transform" : "translate(300,200)"
+	    },
+	    "time_offset" : 2880,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-6",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-6",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-6",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-6",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-6",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "format" : "%d.%m. %H:%M UTC",
+		    "timestamp": "validtime",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-7",
+	    "attributes":
+	    {
+		"id": "view-7",
+		"transform" : "translate(600,200)"
+	    },
+	    "time_offset" : 4320,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-7",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-7",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-7",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-7",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-7",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "format" : "%d.%m. %H:%M UTC",
+		    "timestamp": "validtime",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+        {
+	    "qid": "v-8",
+	    "attributes":
+	    {
+		"id": "view-8",
+		"transform" : "translate(900,200)"
+	    },
+	    "time_offset" : 5760,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-8",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    }
+		},
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "press-8",
+		    "layer_type": "isoline",
+		    "isolines": "json:isolines/pressure.json",
+		    "css": "isolines/pressure.css",
+                    "parameter": "Pressure",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+		    "smoother":
+		    {
+			"degree" : 1,
+			"size" : 2
+		    },
+		    "attributes" : 
+		    {
+			"id" : "press-8",
+			"class" : "Pressure"
+		    }
+		},
+		{
+                    "qid": "arr-8",
+                    "layer_type": "arrow",
+		    "symbol" : "windarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WindDirection",
+		    "sampling":
+		    {
+			"resolution" : 15
+		    },
+                    "attributes":
+                    {
+                        "id": "wind_arrows-8",
+                        "class": "WindArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "dx": 30,
+                        "dy": 30,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "format" : "%d.%m. %H:%M UTC",
+		    "timestamp": "validtime",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	}
+    ]
+}

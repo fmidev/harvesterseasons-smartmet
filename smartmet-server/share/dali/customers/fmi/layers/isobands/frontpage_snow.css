@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* for road masks*/
+.snow_road {fill: rgb(255, 255, 255) }
+
+/* for values */
+.snow_125_inf {fill: #1b004d }
+.snow_100_125 {fill: #3a226a }
+.snow_75_100 {fill: #5a4488 }
+.snow_50_75 {fill: #7a66a6 }
+.snow_25_50 {fill: #9988c3 }
+.snow_10_25 {fill: #b9aae1 }
+.snow_1_10 {fill: #d9ccff }
+.snow_inf_1 {fill: #ffffff }

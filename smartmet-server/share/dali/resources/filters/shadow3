@@ -1,0 +1,5 @@
+<filter id="shadow3" width="130%" height="130%">
+ <feOffset in="SourceAlpha" result="offsetted" dx="2" dy="4"/>
+ <feGaussianBlur in="offsetted" result="blurred" stdDeviation="4"/>
+ <feBlend in="SourceGraphic" in2="blurred" mode="normal"/>
+</filter>

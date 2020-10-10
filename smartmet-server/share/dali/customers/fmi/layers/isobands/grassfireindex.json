@@ -1,0 +1,76 @@
+[
+    {
+        "qid": "grassfire_60_70",
+        "lolimit": 6.0,
+        "hilimit": 7.0, 
+        "attributes":
+        {
+            "class": "Grassfire_60_70 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_56_60",
+        "lolimit": 5.59,
+        "hilimit": 6.0,
+        "attributes":
+        {
+            "class": "Grassfire_56_60 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_50_55",
+        "lolimit": 4.99,
+        "hilimit": 5.59,
+        "attributes":
+        {
+            "class": "Grassfire_50_55 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_40_49",
+        "lolimit": 3.99,
+        "hilimit": 4.99,
+        "attributes":
+	  {
+		  "class": "Grassfire_40_49 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_30_39",
+    "lolimit": 2.99,
+    "hilimit": 3.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_30_39 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_20_29",
+    "lolimit": 1.99,
+    "hilimit": 2.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_20_29 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_10_19",
+    "lolimit": 0.99,
+    "hilimit": 1.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_10_19 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_0_09",
+    "lolimit": 0,
+    "hilimit": 0.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_0_09 NoBorders"
+	  }
+  }
+
+
+]

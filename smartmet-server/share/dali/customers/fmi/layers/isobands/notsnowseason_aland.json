@@ -1,0 +1,32 @@
+//Ahvenanmaan alueen json:it (sama tyylitys kuin forestfireindex.json lukuunottamatta gid:tä, joka näemmä pitää olla eri layerillä erilainen)
+[
+    {
+        "qid": "NotSnowSeason_14_aland",
+        "lolimit": 13.99,
+        //"hilimit": 7.0, 
+        "attributes":
+        {
+            "class": "NotSnowSeason_14 NoBorders"
+        }
+    },
+    {
+        "qid": "NotSnowSeason_10_14_aland",
+        "lolimit": 9.99,
+        "hilimit": 13.99,
+        "attributes":
+        {
+            "class": "NotSnowSeason_10_14 Bordered"
+        }
+    },
+    {
+        "qid": "NotSnowSeason_0_10_aland",
+        "lolimit": 0,
+        "hilimit": 9.99,
+        "attributes":
+        {
+            "class": "NotSnowSeason_0_10 NoBorders"
+        }
+    }
+   
+
+]

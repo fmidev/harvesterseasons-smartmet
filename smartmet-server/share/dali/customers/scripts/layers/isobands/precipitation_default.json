@@ -1,0 +1,66 @@
+[
+  {
+    "qid": "precipitation_60_inf",
+    "lolimit": 60,
+    "hilimit": 999,
+    "attributes": {
+      "class": "precipitation_60_inf"
+    }
+  },
+  {
+    "qid": "precipitation_40_60",
+    "lolimit": 40,
+    "hilimit": 60,
+    "attributes": {
+      "class": "precipitation_40_60"
+    }
+  },
+  {
+    "qid": "precipitation_30_40",
+    "lolimit": 30,
+    "hilimit": 40,
+    "attributes": {
+      "class": "precipitation_30_40"
+    }
+  },
+  {
+    "qid": "precipitation_20_30",
+    "lolimit": 20,
+    "hilimit": 30,
+    "attributes": {
+      "class": "precipitation_20_30"
+    }
+  },
+  {
+    "qid": "precipitation_10_20",
+    "lolimit": 10,
+    "hilimit": 20,
+    "attributes": {
+      "class": "precipitation_10_20"
+    }
+  },
+  {
+    "qid": "precipitatione_5_10",
+    "lolimit": 5,
+    "hilimit": 10,
+    "attributes": {
+      "class": "precipitation_5_10"
+    }
+  },
+  {
+    "qid": "precipitation_1_5",
+    "lolimit": 1,
+    "hilimit": 5,
+    "attributes": {
+      "class": "precipitation_1_5"
+    }
+  },
+  {
+    "qid": "precipitation_inf_1",
+    "lolimit": 0,
+    "hilimit": 1,
+    "attributes": {
+      "class": "precipitation_inf_1"
+    }
+  }
+]

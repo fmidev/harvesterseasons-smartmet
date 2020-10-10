@@ -1,0 +1,38 @@
+[
+{
+        "qid": "echotop_10_inf",
+            "lolimit": 10,
+        "attributes":
+        {
+        "class": "echotop_10_inf",
+        "format": "eee"
+        }
+        },
+        {
+        "qid": "echotop_9_10",
+            "lolimit": 9,
+            "hilimit": 10, 
+        "attributes":
+        {
+        "class": "echotop_9_10"
+        }
+        },
+        {
+        "qid": "echotop_8_9",
+            "lolimit": 8,
+            "hilimit": 9,
+        "attributes":
+        {
+        "class": "echotop_8_9"
+        }
+        },
+        {
+        "qid": "echotop_7_8",
+            "lolimit": 7,
+            "hilimit": 8,
+        "attributes":
+        {
+        "class": "echotop_7_8"
+        }
+        }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "lolimit": 0,
+    "attributes": {
+      "class": "Number"
+    }
+  },
+  {
+    "hilimit": 0,
+    "attributes": {
+      "display":"none"
+    }
+  }
+]

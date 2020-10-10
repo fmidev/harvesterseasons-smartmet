@@ -1,0 +1,77 @@
+//Ahvenanmaan alueen json:it (sama tyylitys kuin grassfireindex.json lukuunottamatta gid:tä, joka näemmä pitää olla eri layerillä erilainen)
+[
+    {
+        "qid": "grassfire_60_70_aland",
+        "lolimit": 6.0,
+        "hilimit": 7.0, 
+        "attributes":
+        {
+            "class": "Grassfire_60_70 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_56_60_aland",
+        "lolimit": 5.59,
+        "hilimit": 6.0,
+        "attributes":
+        {
+            "class": "Grassfire_56_60 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_50_55_aland",
+        "lolimit": 4.99,
+        "hilimit": 5.59,
+        "attributes":
+        {
+            "class": "Grassfire_50_55 NoBorders"
+        }
+    },
+    {
+        "qid": "grassfire_40_49_aland",
+        "lolimit": 3.99,
+        "hilimit": 4.99,
+        "attributes":
+	  {
+		  "class": "Grassfire_40_49 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_30_39_aland",
+    "lolimit": 2.99,
+    "hilimit": 3.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_30_39 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_20_29_aland",
+    "lolimit": 1.99,
+    "hilimit": 2.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_20_29 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_10_19_aland",
+    "lolimit": 0.99,
+    "hilimit": 1.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_10_19 NoBorders"
+	  }
+  },
+  {
+	  "qid": "grassfire_0_09_aland",
+    "lolimit": 0,
+    "hilimit": 0.99,
+	  "attributes":
+	  {
+		  "class": "Grassfire_0_09 NoBorders"
+	  }
+  }
+
+
+]

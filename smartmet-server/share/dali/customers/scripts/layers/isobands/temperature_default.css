@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.Temperature_30_inf {fill: rgb(149, 16, 8) }
+.Temperature_25_30 {fill: rgb(198, 48, 15) }
+.Temperature_20_25 {fill: rgb(236, 53, 12) }
+.Temperature_15_20 {fill: rgb(240, 97, 18) }
+.Temperature_10_15 {fill: rgb(244,162,57) }
+.Temperature_5_10 {fill: rgb(251,223,101) }
+.Temperature_0_5 {fill: rgb(254,254,189) }
+.Temperature_n5_0 {fill: rgb(215, 243, 235) }
+.Temperature_n10_n5 {fill: rgb(167, 227, 215) }
+.Temperature_n15_n10 {fill: rgb(102, 207, 183) }
+.Temperature_n20_n15 {fill: rgb(2, 179, 198) }
+.Temperature_n25_n20 {fill: rgb(0, 150, 206) }
+.Temperature_n30_n25 {fill: rgb(19, 98, 139) }
+.Temperature_n30_inf {fill: rgb(18, 62, 89) }

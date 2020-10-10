@@ -1,0 +1,452 @@
+[
+        {
+            "value": 1,
+            "symbol": "weather/1",
+            "attributes":
+            {
+                "class": "Sunny",
+                "scale": 0.7
+            }
+        },
+        {
+            "value": 2,
+            "symbol": "weather/2",
+            "attributes":
+            {
+                "class": "PartlyCloudy",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 3,
+            "symbol": "weather/3",
+            "attributes":
+            {
+                "class": "Cloudy",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 21,
+            "symbol": "weather/21",
+            "attributes":
+            {
+                "class": "LightShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 22,
+            "symbol": "weather/22",
+            "attributes":
+            {
+                "class": "Showers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 23,
+            "symbol": "weather/23",
+            "attributes":
+            {
+                "class": "HeavyShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 31,
+            "symbol": "weather/31",
+            "attributes":
+            {
+                "class": "LightRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 32,
+            "symbol": "weather/32",
+            "attributes":
+            {
+                "class": "Rain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 33,
+            "symbol": "weather/33",
+            "attributes":
+            {
+                "class": "HeavyRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 41,
+            "symbol": "weather/41",
+            "attributes":
+            {
+                "class": "LightSnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 42,
+            "symbol": "weather/42",
+            "attributes":
+            {
+                "class": "SnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 43,
+            "symbol": "weather/43",
+            "attributes":
+            {
+                "class": "HeavySnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 51,
+            "symbol": "weather/51",
+            "attributes":
+            {
+                "class": "LightSnowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 52,
+            "symbol": "weather/52",
+            "attributes":
+            {
+                "class": "Snowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 53,
+            "symbol": "weather/53",
+            "attributes":
+            {
+                "class": "HeavySnowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 61,
+            "symbol": "weather/61",
+            "attributes":
+            {
+                "class": "ThunderShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 62,
+            "symbol": "weather/62",
+            "attributes":
+            {
+                "class": "HeavyThunderShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 63,
+            "symbol": "weather/63",
+            "attributes":
+            {
+                "class": "Thunder",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 64,
+            "symbol": "weather/64",
+            "attributes":
+            {
+                "class": "HeavyThunder",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 71,
+            "symbol": "weather/71",
+            "attributes":
+            {
+                "class": "LightSleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 72,
+            "symbol": "weather/72",
+            "attributes":
+            {
+                "class": "SleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 73,
+            "symbol": "weather/73",
+            "attributes":
+            {
+                "class": "HeavySleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 81,
+            "symbol": "weather/81",
+            "attributes":
+            {
+                "class": "LightSleetRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 82,
+            "symbol": "weather/82",
+            "attributes":
+            {
+                "class": "SleetRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 83,
+            "symbol": "weather/83",
+            "attributes":
+            {
+                "class": "HeavySleetRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 101,
+            "symbol": "weather/1",
+            "attributes":
+            {
+                "class": "Sunny",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 102,
+            "symbol": "weather/2",
+            "attributes":
+            {
+                "class": "PartlyCloudy",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 103,
+            "symbol": "weather/3",
+            "attributes":
+            {
+                "class": "Cloudy",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 121,
+            "symbol": "weather/21",
+            "attributes":
+            {
+                "class": "LightShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 122,
+            "symbol": "weather/22",
+            "attributes":
+            {
+                "class": "Showers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 123,
+            "symbol": "weather/23",
+            "attributes":
+            {
+                "class": "HeavyShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 131,
+            "symbol": "weather/31",
+            "attributes":
+            {
+                "class": "LightRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 132,
+            "symbol": "weather/32",
+            "attributes":
+            {
+                "class": "Rain",
+                         "scale": 0.6
+            }
+        },
+        {
+            "value": 133,
+            "symbol": "weather/33",
+            "attributes":
+            {
+                "class": "HeavyRain",
+                         "scale": 0.6
+            }
+        },
+        {
+            "value": 141,
+            "symbol": "weather/41",
+            "attributes":
+            {
+                "class": "LightSnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 142,
+            "symbol": "weather/42",
+            "attributes":
+            {
+                "class": "SnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 143,
+            "symbol": "weather/43",
+            "attributes":
+            {
+                "class": "HeavySnowShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 151,
+            "symbol": "weather/51",
+            "attributes":
+            {
+                "class": "LightSnowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 152,
+            "symbol": "weather/52",
+            "attributes":
+            {
+                "class": "Snowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 153,
+            "symbol": "weather/53",
+            "attributes":
+            {
+                "class": "HeavySnowfall",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 161,
+            "symbol": "weather/61",
+            "attributes":
+            {
+                "class": "ThunderShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 162,
+            "symbol": "weather/62",
+            "attributes":
+            {
+                "class": "HeavyThunderShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 163,
+            "symbol": "weather/63",
+            "attributes":
+            {
+                "class": "Thunder",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 164,
+            "symbol": "weather/64",
+            "attributes":
+            {
+                "class": "HeavyThunder",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 171,
+            "symbol": "weather/71",
+            "attributes":
+            {
+                "class": "LightSleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 172,
+            "symbol": "weather/72",
+            "attributes":
+            {
+                "class": "SleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 173,
+            "symbol": "weather/73",
+            "attributes":
+            {
+                "class": "HeavySleetShowers",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 181,
+            "symbol": "weather/81",
+            "attributes":
+            {
+                "class": "LightSleetRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 182,
+            "symbol": "weather/82",
+            "attributes":
+            {
+                "class": "SleetRain",
+                "scale": 0.6
+            }
+        },
+        {
+            "value": 183,
+            "symbol": "weather/83",
+            "attributes":
+            {
+                "class": "HeavySleetRain",
+                "scale": 0.6
+            }
+        }
+]

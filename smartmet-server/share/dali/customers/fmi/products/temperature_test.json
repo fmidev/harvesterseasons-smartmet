@@ -1,0 +1,239 @@
+{
+    "title": "Temperature",
+    "projection" : {},
+    "defs":
+    {
+	"styles":
+	{
+	    ".Label":
+	    {
+		"font": "Arial",
+		"font-size": 9
+	    },
+	    ".Units":
+	    {
+		"font": "Arial",
+		"font-size": 14
+	    }
+	},
+	"layers": [
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "rect"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+			    "width": "14",
+			    "height": "9"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "uptriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 9,7 0,14 9Z"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "downtriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 0,7 9,14 0Z"
+			}
+		    }
+		]
+	    }
+	]
+    },
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+            "layers": [
+		{
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/temperature.json",
+		    "css": "isobands/temperature.css",
+		    "parameter": "Temperature",
+		    "attributes":
+		    {
+			"shape-rendering": "crispEdges"
+                    }
+		},
+			{
+			    "qid": "finland-roads",
+			    "layer_type": "map",
+			    "map":
+			    {
+				"schema": "esri",
+				"table": "europe_roads_eureffin",
+				"where": "cntryname='Finland'",
+				"lines" : true
+			    },
+			    "attributes":
+			    {
+				"class": "Road"
+			    }
+			},
+			{
+			    "qid": "finland-railroads",
+			    "layer_type": "map",
+			    "map":
+			    {
+				"schema": "mml",
+				"table": "finland_railway_1m_eureffin"
+			    },
+			    "attributes":
+			    {
+				"class": "RailRoad"
+			    }
+			},
+			{
+			    "qid": "borders",
+			    "layer_type": "map",
+			    "css": "maps/map.css",
+			    "map":
+			    {
+				"lines": true,
+				"schema": "esri",
+				"table": "europe_country_wgs84",
+				"minarea" : 0
+			    },
+			    "attributes":
+			    {
+				"class": "Border"
+			    }
+			},
+                	{
+			    "qid": "cities",
+	                    "layer_type": "location",
+    	                    "keyword" : "ely_cities",
+               		    "css": "maps/map.css",
+ 			    "symbols":
+                            {
+       				"default":
+ 				[
+			       	    {
+                               		"symbol": "city"
+                                    }
+         			]
+                	    }
+			},
+		/*{
+		    "tag": "g",
+		    "qid" : "legend-rect-1",
+		    "attributes":
+		    {
+			"id": "legendmask"
+		    },
+		    "layers": [
+			{
+			    "tag": "rect",
+			    "qid" : "lrect",
+			    "attributes":
+			    {
+				"fill": "white",
+				"width": "46px",
+				"height": "415px",
+				"rx" : "3"
+			    }
+			}
+		    ]
+		},
+		{
+		    "layer_type": "legend",
+		    "x": 10,
+		    "y": 10,
+		    "dx": 0,
+		    "dy": 9,
+		    "isobands": "json:isobands/temperature.json",
+		    "symbols":
+		    {
+			"css": "isobands/temperature.css",
+			"symbol": "rect",
+			"start": "uptriangle",
+			"end": "downtriangle",
+			"attributes":
+			{
+			    "stroke": "black",
+			    "stroke-width": "0.5"
+			}
+		    },
+		    "labels":
+		    {
+			"type": "lolimit",
+			"dx": 18,
+			"dy": 12,
+			"conversions":
+			{
+			    "38": "&#62; 38",
+			    "-38": "&#60; -38"
+			}
+		    },
+		    "attributes":
+		    {
+			"id": "temperaturelegend",
+			"class": "Label",
+			"transform": "translate(-6 5)"
+		    },
+		    "layers": [
+			{
+			    "tag": "text",
+			    "cdata": "&#176;C",
+			    "attributes":
+			    {
+				"x": 20,
+				"y": 13,
+				"class": "Units"
+			    }
+			}
+		    ]
+		},*/
+		{
+		    //"qid" : "time-",
+		    "layer_type" : "time",
+			//"timestamp" : "validtime",
+			//"timezone" : "Europe/Helsinki",
+			//"format" : "Lämpötila %d-%m %H.%M",
+			//"x" : -5,
+			//"y" : -10,
+			"attributes": {
+			//"text-anchor": "end",
+			//   "font-family": "Verdana",
+			//    "font-size": 15
+			    }
+
+		}
+
+		    ]
+		}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+.Grassfire_60_70 {fill: rgb(130,0,254) }
+.Grassfire_56_60 {fill: rgb(254,0,130) }
+.Grassfire_50_55 {fill: rgb(254,0,0) }
+.Grassfire_40_49 {fill: rgb(254,130,0) }
+.Grassfire_30_39 {fill: rgb(190,190,65) }
+.Grassfire_20_29 {fill: rgb(65,189,65) }
+.Grassfire_10_19 {fill: rgb(1,254,254) }
+.Grassfire_0_09 {fill: rgb(250,250,250) }
+
+.NoBorders {stroke: rgb(255,255,255); stroke-width: 0pt;}
+.Bordered {stroke: rgb(250,250,250); stroke-width: 0.8pt;}

@@ -1,0 +1,16 @@
+.Temperature_30_inf {fill: rgb(244,105,137) }
+.Temperature_25_30 {fill: rgb(247,143,110) }
+.Temperature_20_25 {fill: rgb(249,167,73) }
+.Temperature_15_20 {fill: rgb(252,201,97) }
+.Temperature_10_15 {fill: rgb(254,225,124) }
+.Temperature_5_10 {fill: rgb(255,250,153) }
+.Temperature_0_5 {fill: rgb(255,253,204) }
+.Temperature_n5_0 {fill: rgb(217,243,253) }
+.Temperature_n10_n5 {fill: rgb(166,227,250) }
+.Temperature_n15_n10 {fill: rgb(103,197,241) }
+.Temperature_n20_n15 {fill: rgb(29,168,231) }
+.Temperature_n25_n20 {fill: rgb(57,159,223) }
+.Temperature_n30_n25 {fill: rgb(60,144,213) }
+.Temperature_n30_inf {fill: rgb(67,144,194) }
+
+.Bordered {stroke: rgb(255,255,255); stroke-width: 1pt;}

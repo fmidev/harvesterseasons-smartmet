@@ -1,0 +1,21 @@
+{
+    "title": "Precipitation",
+    "projection": {},
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+            "layers": [
+		{
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/precipitation.json",
+		    "css": "isobands/precipitation.css",
+		    "parameter": "Precipitation1h"
+		}
+            ]
+        }
+    ]
+}

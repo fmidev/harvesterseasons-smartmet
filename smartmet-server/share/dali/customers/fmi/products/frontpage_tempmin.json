@@ -1,0 +1,323 @@
+{
+  "title": "Minimi lämpötila",
+  "producer": "kriging_suomi_lampominmax",
+  "refs": {
+    "projection": "json:maps/frontpage_finlandprojection.json",
+    "finland": {
+      "schema": "esri",
+      "table": "finland_country_wgs84",
+      "minarea": 10,
+      "mindistance": 1
+    }
+  },
+  "defs": {
+    "layers": [
+      {
+        "tag": "symbol",
+        "attributes": {
+          "id": "rect"
+        },
+        "layers": [
+          {
+            "tag": "rect",
+            "attributes": {
+              "width": "35",
+              "height": "50",
+              "stroke": "black",
+              "stroke-width": "1px"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "clipPath",
+        "attributes": {
+          "id": "cutNorwayRussia"
+        },
+        "layers": [
+          {
+            "tag": "path",
+            "attributes": {
+              "d": "M200,450 900,450 900,1300 0,1300z"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_zero"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_zero",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_zero",
+                "lolimit": -5,
+                "hilimit": 5,
+                "attributes": {
+                  "class": "temp_road"
+                }
+              }
+            ],
+            "parameter": "MinimumTemperature",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_dark"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_dark",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_dark_plus",
+                "lolimit": 5,
+                "hilimit": 20,
+                "attributes": {
+                  "class": "temp_road"
+                }
+              },
+              {
+                "qid": "limit_road_dark_minus",
+                "lolimit": -20,
+                "hilimit": -5,
+                "attributes": {
+                  "class": "temp_road"
+                }
+              }
+            ],
+            "parameter": "MinimumTemperature",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_light"
+        },
+        "layers": [
+          {
+            "qid": "temp_isoband_light",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "limit_road_light_plus",
+                "lolimit": 20,
+                "attributes": {
+                  "class": "temp_road"
+                }
+              },
+              {
+                "qid": "limit_road_light_minus",
+                "hilimit": -20,
+                "attributes": {
+                  "class": "temp_road"
+                }
+              }
+            ],
+            "parameter": "MinimumTemperature",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "projection": "ref:refs.projection",
+  "views": [
+    {
+      "qid": "v1-",
+      "attributes": {
+        "id": "view1"
+      },
+      "layers": [
+        {
+          "qid": "europe_country",
+          "layer_type": "map",
+          "map": {
+            "lines": 1,
+            "schema": "esri",
+            "table": "europe_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "europe_country_lines",
+            "clip-path": "url(#cutNorwayRussia)",
+            "fill": "none",
+            "stroke": "#999",
+            "stroke-width": "0.5pt"
+          }
+        },
+        {
+          "qid": "finland_country",
+          "layer_type": "map",
+          "map": {
+            "schema": "esri",
+            "table": "finland_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "finland_country_lines",
+            "fill": "white",
+            "stroke": "#000",
+            "stroke-width": "0.5pt",
+            "filter": "url(#shadow3)"
+          }
+        },
+        {
+          "qid": "temp_isoband",
+          "layer_type": "isoband",
+          "isobands": "json:isobands/frontpage_temperature.json",
+          "css": "isobands/frontpage_temperature.css",
+          "parameter": "MinimumTemperature",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "clip-path": "url(#borderclip)",
+            "shape-rendering": "geometricPrecision"
+          }
+        },
+        {
+          "layer_type": "isoline",
+          "isolines": "json:isolines/frontpage_temperature.json",
+          "css": "isolines/frontpage_temperature.css",
+          "parameter": "MinimumTemperature",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "class": "Temperature_zero_line",
+            "clip-path": "url(#borderclip)",
+            "shape-rendering": "geometricPrecision"
+          }
+        },
+        {
+          "qid": "finland_roads_zero",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#ccc",
+            "mask": "url(#road_mask_zero)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_dark",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#888",
+            "mask": "url(#road_mask_dark)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_light",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#bbb",
+            "mask": "url(#road_mask_light)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "layer_type": "legend",
+          "x": 0,
+          "y": 160,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/frontpage_temperature.json",
+          "symbols": {
+            "css": "isobands/frontpage_temperature.css",
+            "symbol": "rect",
+            "attributes": {
+            }
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "30": "&#62;30",
+              "25": "25...30",
+              "20": "20...25",
+              "15": "15...20",
+              "10": "10...15",
+              "5": "5...10",
+              "0": "0...5",
+              "-5": "0...-5",
+              "-10": "-5...-10",
+              "-15": "-10...-15",
+              "-20": "-15...-20",
+              "-25": "-20...-25",
+              "-30": "-25...-30",
+              "-999": "&#60;-30"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px"
+            }
+          },
+          "layers": [
+            {
+              "tag": "text",
+              "cdata": "\u2103",
+              "attributes": {
+                "x": 55,
+                "y": 150,
+                "class": "Units",
+                "font-family": "Roboto, Arial",
+                "font-size": "35px"
+              }
+            }
+          ]
+        },
+        {
+          "layer_type": "time",
+          "timestamp": "endtime",
+          "timezone": "EET",
+          "formatter": "strftime",
+          "format": [
+            "%-d.%-m. 0:00 - %-H:%M"
+          ],
+          "x": 40,
+          "y": 70,
+          "attributes": {
+            "text-anchor": "left",
+            "font-family": "Roboto, Arial",
+            "font-size": "45px"
+          }
+        }
+      ]
+    }
+  ]
+}

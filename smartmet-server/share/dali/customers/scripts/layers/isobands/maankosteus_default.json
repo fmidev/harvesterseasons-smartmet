@@ -1,0 +1,50 @@
+[
+  {
+    "qid": "indeksi_inf_2",
+    "lolimit": -999,
+    "hilimit": 2,
+    "attributes": {
+      "class": "indeksi_inf_2"
+    }
+  },
+  {
+    "qid": "indeksi_2_3",
+    "lolimit": 2,
+    "hilimit": 3,
+    "attributes": {
+      "class": "indeksi_2_3"
+    }
+  },
+  {
+    "qid": "indeksi_3_4",
+    "lolimit": 3,
+    "hilimit": 4,
+    "attributes": {
+      "class": "indeksi_3_4"
+    }
+  },
+  {
+    "qid": "indeksi_4_5",
+    "lolimit": 4,
+    "hilimit": 5,
+    "attributes": {
+      "class": "indeksi_4_5"
+    }
+  },
+  {
+    "qid": "indeksi_5_59",
+    "lolimit": 5,
+    "hilimit": 5.9,
+    "attributes": {
+      "class": "indeksi_5_59"
+    }
+  },
+  {
+    "qid": "indeksi_59_inf",
+    "lolimit": 5.9,
+    "hilimit": 999,
+    "attributes": {
+      "class": "indeksi_59_inf"
+    }
+  }
+]

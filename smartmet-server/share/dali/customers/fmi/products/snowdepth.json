@@ -1,0 +1,127 @@
+{
+    "title": "Snow Depth",
+    "producer": "kriging_suomi_snow",
+    "refs":
+    {
+	"myprojection": "json:maps/finlandprojection.json",
+	"finland":
+	{
+	    "schema": "esri",
+	    "table": "finland_country_wgs84",
+	    "minarea": 80,
+	    "mindistance": 5
+	}
+    },
+    "defs":
+    {
+	"layers": [
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "rect"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+			    "width": "14",
+			    "height": "20",
+			    "stroke": "black",
+			    "stroke-width": "0.5px"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "uptriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 9,7 0,14 9Z"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "downtriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 0,7 9,14 0Z"
+			}
+		    }
+		]
+	    }
+	]
+    },
+    "projection": "ref:refs.myprojection",
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+            "layers": [
+		{
+		    "qid": "sd-",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/snowdepth.json",
+		    "css": "isobands/snowdepth.css",
+		    "parameter": "WaterEquivalentOfSnow",
+		    "inside": "ref:refs.finland",
+		    "attributes" : 
+		    {
+			"clip-path" : "url(#borderclip)",
+			"shape-rendering": "crispEdges"
+		    }
+		},
+		{
+		    "qid": "l4",
+		    "layer_type": "map",
+		    "map":
+		    {
+			"schema": "esri",
+			"table": "finland_country_wgs84",
+			"minarea": 80,
+			"mindistance": 5
+		    },
+		    "attributes":
+		    {
+			"id": "europe_country_lines",
+			"fill": "none",
+			"stroke": "#606c71",
+			"stroke-width": "0.5pt"
+		    }
+		},
+		{	
+		    "layer_type": "time",
+		    "format": "%d.%m.",
+
+		    "attributes":
+		    {
+			"x": 20,
+			"y": 35,
+			"font-size": 35,
+			"font-family": "Arial",
+			"text-anchor": "start"
+		    }
+		}
+            ]
+        }
+    ]
+}

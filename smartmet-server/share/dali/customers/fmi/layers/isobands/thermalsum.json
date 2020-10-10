@@ -1,0 +1,49 @@
+[
+    {
+        "qid": "thermalsum_70",
+        "lolimit": 69.99,
+        //"hilimit": , 
+        "attributes":
+        {
+            "class": "Thermalsum_70 NoBorders"
+        }
+    },
+    {
+        "qid": "thermalsum_50_70",
+        "lolimit": 49.99,
+        "hilimit": 69.99,
+        "attributes":
+        {
+            "class": "Thermalsum_50_70 NoBorders"
+        }
+    },
+    {
+        "qid": "thermalsum_30_50",
+        "lolimit": 29.99,
+        "hilimit": 49.99,
+        "attributes":
+        {
+            "class": "Thermalsum_30_50 NoBorders"
+        }
+    },
+    {
+        "qid": "thermalsum_10_30",
+        "lolimit": 9.99,
+        "hilimit": 29.99,
+        "attributes":
+	  {
+		  "class": "Thermalsum_10_30 NoBorders"
+	  }
+  },
+  {
+	  "qid": "thermalsum_0_10",
+    "lolimit": 0,
+    "hilimit": 9.99,
+	  "attributes":
+	  {
+		  "class": "Thermalsum_0_10 NoBorders"
+	  }
+  }
+  
+
+]

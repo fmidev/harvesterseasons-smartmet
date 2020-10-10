@@ -1,0 +1,265 @@
+{
+    "title": "Without snow season map",
+    "producer": "notsnowseason_analysis_grid",
+    "refs":
+    {
+	    "myprojection": "json:maps/forestfire_finlandprojection.json",
+	    "finland":
+	    {
+	        "schema": "esri",
+	        "table": "finland_country_wgs84",
+	        "minarea": 60,
+	        "mindistance": 0.1
+	    },
+        "backgroundmap" :
+        {
+            "qid": "europe",
+            "layer_type": "map",
+            "css": "maps/map.css",
+            "map":
+            {
+                "schema": "esri",
+                "table": "europe_country_wgs84"
+            },
+            "attributes":
+            {
+                "class": "Europe",
+                "id" : "backgroundmap"
+            }
+        }
+    },
+    
+    "defs":
+    {
+        //Legendsin varimaaritykset
+	    "layers": [
+	    {
+		    "tag": "symbol",            
+		    "attributes":
+		    {
+		        "id": "rect"                
+		    },
+		    "layers": [
+		    {
+			    "tag": "rect",
+			    "attributes":
+			    {
+			        "width": "35",
+			        "height": "35",
+			        "stroke": "black",
+                    "stroke-width": "0.05"
+                    //"filter": "url(#shadow2)"
+			    }
+		    }
+		    ]
+	    },
+           
+            
+        //Leikkausalue ahvenanmaalle        
+        {
+            "tag": "clipPath",
+            "attributes": {
+            "id": "cutAland"
+            },
+            "layers": [
+            {
+                "tag": "path",
+                "attributes": {
+                "d": "M50,1050 400,1050 400,1300 50,1300 50,1050z"
+                }
+            }
+            ]
+        }
+
+	   ]
+    },
+    
+    "projection": "ref:refs.myprojection",
+    "views": [
+	{
+	    "qid": "v1-",
+        
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+        
+	    "layers": [                    
+    
+        //taustalla background: säädettävissä urlissa: &bg.attributes.fill=[haluttuväri]
+        {
+          "layer_type": "background",
+          "qid": "bg",
+          "attributes":
+          {
+             "stroke":"none",
+             "fill": "transparent"
+          }
+        }, 
+            
+            
+        //Otsikkoteksti
+        {
+            "qid": "heading_text",
+            "tag": "text",
+            "cdata": "",            
+            "attributes":
+            {
+                "x":"20",
+                "y":"65",
+                "font-size": "50"
+            }
+        },
+       
+        
+        //Suomen rajaviiva
+		{
+		    "qid": "Finland_boundaries",
+		    "layer_type": "map",
+		    "map":
+		    {
+                "pgname": "gis",
+                "schema": "public",
+                "table": "varoalue",                                
+                "mindistance": 0
+		    },
+		    "attributes":
+		    {
+                "id": "finland_country_lines",
+                "fill": "none",
+                "stroke": "#000",
+                "stroke-width": "1.0pt",
+                "filter": "url(#shadow3)"
+		    }
+		},
+            
+        //Legendsin maarittely ja tulostus
+		{
+		    "layer_type": "legend",
+		    "x": 220,
+		    "y": 570,
+		    "dx": 0,
+		    "dy": 43,
+            "format": "%.1f",
+		    "isobands": "json:isobands/notsnowseason.json",            
+		    "symbols":
+		    {
+			    "css": "isobands/notsnowseason.css",
+			    "symbol": "rect",                        
+			    "attributes":
+			    {
+			    }
+		    },
+		    "labels":
+		    {
+			    "type": "lolimit",
+			    "dx": 52,
+			    "dy": 33,
+			    "conversions":
+			    {
+			        "13.99": "yli 14",
+                    "9.99": "10 - 14",
+                    "0": "alle 10"
+                    
+			    },
+			    "attributes":
+			    {
+			        "font-family": "Arial",
+			        "font-size": "30px"
+			    }
+		    }
+		},        
+           
+         
+        //Metsapalo sisalto (pohja: Suomen alue leikattuna rajoista)
+        {
+            "qid": "notSnowSeason",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/notsnowseason.json",
+            "css": "isobands/notsnowseason.css",
+            "parameter": "Day",
+            "inside": "ref:refs.finland",    
+            "extrapolation": 1,
+            "attributes": {
+                "shape-rendering": "geometricPrecision"                
+            }
+        },    
+        
+        //Metsapalo sisalto (päällys: Ahvenanmaan alue merineen)
+        {
+            "qid": "notSnowSeasonAland",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/notsnowseason_aland.json",
+            "css": "isobands/notsnowseason.css",
+            "parameter": "Day",            
+            "attributes": {
+                "shape-rendering": "geometricPrecision",
+                "clip-path": "url(#cutAland)"                
+            }
+        },
+        /*    
+        //Ääriviiva 5.0-5.5 ja 5.6-6.0 legends määrittelyjen väliin
+        {
+          "layer_type": "isoline",
+          "isolines": "json:isolines/forestfire_content_line.json",
+          "css": "isolines/forestfire_content_line.css",
+          "parameter": "ForestFireIndex",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "class": "Content_between_55_56_line",
+            "shape-rendering": "geometricPrecision"
+          }
+        },
+        */
+           
+        //Maakuntarajat
+        {
+            "qid": "Province_boundaries",
+            "layer_type": "map",
+            "map":
+            {
+                "lines":true,
+                "pgname": "gis",
+                "schema": "fminames",
+                "table": "maakunnat_maa",
+                //"where": "gid NOT IN ('18')",
+                "minarea": 50
+            },
+            "attributes":
+            {
+                "id": "finland_province_lines",
+                "fill": "none",
+                "stroke": "#000",
+                "stroke-width": "0.3pt"
+            }
+        }
+        /*    
+        //Lentoreitit
+        {
+            "qid": "planeroutes",
+            "layer_type": "map",
+            "map":
+            {
+                "schema": "customer_data",
+                "table": "palolentoreitit_unbuffered",
+                "minarea": 80,
+                "mindistance": 5
+            },
+            "attributes":
+            {
+                "id": "finland_airplanes_routes",
+                "fill": "none",
+                "stroke": "#fff",
+                "stroke-width": "1.0pt"
+            }
+        }  
+          */  
+        ]
+    }
+
+
+    
+]
+}
+]
+}

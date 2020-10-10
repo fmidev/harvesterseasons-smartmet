@@ -1,0 +1,796 @@
+{
+    "title": "Wave mosaic",
+    "width" : 1200,
+    "height" : 400,
+    "producer" : "ecmwf_maailma_aalto",
+    "refs":
+    {
+	"norwegian_sea":
+	{
+	    "xsize": 300,
+	    "ysize": 200,
+	    "crs": "EPSG:4326",
+	    "bboxcrs": "EPSG:4326",	// WGS84
+	    "x1" : -15,
+	    "y1" : 62.5,
+	    "x2" : 37.5,
+	    "y2" : 75
+	},
+	"backgroundmap" : 
+	{
+	    "qid": "europe",
+	    "layer_type": "map",
+	    "css": "maps/map.css",
+	    "map":
+	    {
+		"schema": "vmap",
+		"table": "world_country2009_wgs84"
+	    },
+	    "attributes":
+	    {
+		"class": "Europe"
+	    }
+	},
+	"sea" : 
+	{
+	    "qid": "sea",
+	    "layer_type": "background",
+	    "css": "maps/map.css",
+	    "attributes":
+	    {
+		"class": "Sea"
+	    }
+	}
+    },
+    "defs" : 
+    {
+	"layers" : 
+	[
+	    {
+		"tag": "clipPath",
+		"attributes":
+		{
+		    "id": "view-clip-5"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+			    "fill": "black",
+			    "width": "300",
+			    "height": "200"
+			}
+		    }
+		]
+	    }
+	]
+    },
+    "projection": "ref:refs.norwegian_sea", //Default
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1",
+		"clip-path" : "url(#view-clip-5)"
+	    },
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-1",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-1",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-1",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+
+	    ]
+	},
+	{
+	    "qid": "v2-",
+	    "attributes":
+	    {
+		"id": "view2",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(300,0)"
+	    },
+	    "time_offset" : 360,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-2",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-2",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-2",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-2",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-2",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+
+	    ]
+	},
+	{
+	    "qid": "v3-",
+	    "attributes":
+	    {
+		"id": "view-3",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(600,0)"
+	    },
+	    "time_offset" : 720,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-3",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-3",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-3",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-3",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-3",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+	    ]
+	},
+	{
+	    "qid": "v4-",
+	    "attributes":
+	    {
+		"id": "view-4",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(900,0)"
+	    },
+	    "time_offset" : 1080,
+	    "layers" : 
+	    [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-4",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-4",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-4",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-4",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-4",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+	    ]
+	},
+	{
+	    "qid": "v-5",
+	    "attributes":
+	    {
+		"id": "view-5",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(0,200)"
+	    },
+	    "time_offset" : 1440,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-5",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-5",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-5",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-5",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-5",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+	    ]
+	},
+	{
+	    "qid": "v-6",
+	    "attributes":
+	    {
+		"id": "view-6",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(300,200)"
+	    },
+	    "time_offset" : 2880,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-6",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-6",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-6",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-6",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-6",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+
+	    ]
+	},
+	{
+	    "qid": "v-7",
+	    "attributes":
+	    {
+		"id": "view-7",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(600,200)"
+	    },
+	    "time_offset" : 4320,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-7",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-7",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-7",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-7",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-7",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+	    ]
+	},
+	{
+	    "qid": "v-8",
+	    "attributes":
+	    {
+		"id": "view-8",
+		"clip-path" : "url(#view-clip-5)",
+		"transform" : "translate(900,200)"
+	    },
+	    "time_offset" : 5760,
+            "layers": [
+		"ref:refs.sea",
+		{
+		    "qid" : "wind-8",
+		    "layer_type": "isoband",
+		    "producer" : "ecmwf_eurooppa_pinta",
+		    "isobands": "json:isobands/wind.json",
+		    "css": "isobands/wind.css",
+                    "parameter": "WindSpeedMS"
+		},
+		"ref:refs.backgroundmap",
+		{
+                    "qid": "number-8",
+                    "layer_type": "number",
+		    "css" : "numbers/numbers.css", 
+                    "parameter": "SigWaveHeight",
+                    "attributes":
+                    {
+                        "id": "wind_numbers-8",
+                        "class": "WindNumber"
+                    },
+                    "positions":
+                    {
+                        "x": 10,
+                        "y": 10,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+                    "qid": "arr-8",
+                    "layer_type": "arrow",
+		    "symbol" : "bubblecurrentarrow",
+		    "css" : "arrows/arrow.css",
+                    "direction": "WaveDirection",
+                    "attributes":
+                    {
+                        "id": "current_arrows-8",
+			"transform" : "translate(-0.5,-25.0)",
+                        "class": "BubbleArrow"
+                    },
+                    "positions":
+                    {
+                        "x": 12,
+                        "y": 30,
+                        "dx": 40,
+                        "dy": 40,
+			"ddx" : 5
+                    }
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+
+	    ]
+	}
+    ]
+}

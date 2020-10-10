@@ -1,0 +1,487 @@
+{
+  "title": "Lumitilanne",
+  "refs": {
+    "projection": "json:maps/frontpage_finlandprojection.json",
+    "finland": {
+      "schema": "esri",
+      "table": "finland_country_wgs84",
+      "minarea": 10,
+      "mindistance": 1
+    }
+  },
+  "defs": {
+    "layers": [
+      {
+        "tag": "symbol",
+        "attributes": {
+          "id": "rect"
+        },
+        "layers": [
+          {
+            "tag": "rect",
+            "attributes": {
+              "width": "35",
+              "height": "50",
+              "stroke": "black",
+              "stroke-width": "1px"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "clipPath",
+        "attributes": {
+          "id": "cutNorwayRussia"
+        },
+        "layers": [
+          {
+            "tag": "path",
+            "attributes": {
+              "d": "M200,450 900,450 900,1300 0,1300z"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_zero"
+        },
+        "layers": [
+          {
+            "qid": "snow_isoband_zero",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "hilimit_road_zero",
+                "hilimit": 1,
+                "attributes": {
+                  "class": "snow_road"
+                }
+              }
+            ],
+            "producer": "kriging_suomi_snow",
+            "parameter": "WaterEquivalentOfSnow",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_dark"
+        },
+        "layers": [
+          {
+            "qid": "snow_isoband_dark",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "lolimit_road_dark",
+                "lolimit": 1,
+                "hilimit": 25,
+                "attributes": {
+                  "class": "snow_road"
+                }
+              }
+            ],
+            "producer": "kriging_suomi_snow",
+            "parameter": "WaterEquivalentOfSnow",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "road_mask_light"
+        },
+        "layers": [
+          {
+            "qid": "snow_isoband_light",
+            "layer_type": "isoband",
+            "isobands": [
+              {
+                "qid": "hilimit_road_light",
+                "lolimit": 25,
+                "attributes": {
+                  "class": "snow_road"
+                }
+              }
+            ],
+            "producer": "kriging_suomi_snow",
+            "parameter": "WaterEquivalentOfSnow",
+            "inside": "ref:refs.finland",
+            "attributes": {
+              "clip-path": "url(#borderclip)",
+              "shape-rendering": "geometricPrecision"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "projection": "ref:refs.projection",
+  "views": [
+    {
+      "qid": "v1-",
+      "attributes": {
+        "id": "view1"
+      },
+      "layers": [
+        {
+          "qid": "europe_country",
+          "layer_type": "map",
+          "map": {
+            "lines": 1,
+            "schema": "esri",
+            "table": "europe_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "europe_country_lines",
+            "clip-path": "url(#cutNorwayRussia)",
+            "fill": "none",
+            "stroke": "#999",
+            "stroke-width": "0.5pt"
+          }
+        },
+        {
+          "qid": "finland_country",
+          "layer_type": "map",
+          "map": {
+            "schema": "esri",
+            "table": "finland_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "finland_country_lines",
+            "fill": "white",
+            "stroke": "#000",
+            "stroke-width": "0.5pt",
+            "filter": "url(#shadow3)"
+          }
+        },
+        {
+          "qid": "snow_isoband",
+          "layer_type": "isoband",
+          "isobands": "json:isobands/frontpage_snow.json",
+          "css": "isobands/frontpage_snow.css",
+          "producer": "kriging_suomi_snow",
+          "parameter": "WaterEquivalentOfSnow",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "clip-path": "url(#borderclip)",
+            "shape-rendering": "geometricPrecision"
+          }
+        },
+        {
+          "qid": "finland_roads_zero",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#ccc",
+            "mask": "url(#road_mask_zero)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_dark",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#888",
+            "mask": "url(#road_mask_dark)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "finland_roads_light",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#bbb",
+            "mask": "url(#road_mask_light)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "pohjat",
+          "layer_type": "symbol",
+          "symbols": "json:symbols/frontpage_background.json",
+          "producer": "observations_fmi",
+          "parameter": "SND_PT1M_INSTANT",
+          "scale": 0.25,
+          "positions": {
+            "layout": "latlon",
+            "dx": -36,
+            "dy": -59,
+            "locations": [
+              {
+                // Artukainen / Turku
+                "longitude": 22.1787,
+                "latitude": 60.45439
+              },
+              {
+                // Haapaniemi / Viitasaari
+                "longitude": 25.85862,
+                "latitude": 63.08225
+              },
+              {
+                // Härmälä / Tampere
+                "longitude": 23.74678,
+                "latitude": 61.46561
+              },
+              {
+                // Jomalaby / Jomala
+                "longitude": 19.98686,
+                "latitude": 60.17824
+              },
+              {
+                // Kaamanen / Inari
+                "longitude": 27.26567,
+                "latitude": 69.14089
+              },
+              {
+                // Kaisaniemi / Helsinki
+                "longitude": 24.94459,
+                "latitude": 60.17523
+              },
+              {
+                // Kilpisjärvi kk / Enontekiö
+                "longitude": 20.79115,
+                "latitude": 69.04948
+              },
+              {
+                // Klemettilä / Vaasa
+                "longitude": 21.63952,
+                "latitude": 63.09875
+              },
+              //              {
+              //                // Kuolaniemi / Sotkamo
+              //                "longitude": 28.33639,
+              //                "latitude": 64.11197
+              //              },
+              {
+                // Suomussalmi Pesiö
+                "longitude": 28.7467217,
+                "latitude": 64.93125195
+              },
+              {
+                //  Mikkeli lentoasema
+                "longitude": 27.20219,
+                "latitude": 61.6886
+              },
+              {
+                // Koivuniemi / Virolahti
+                "longitude": 27.67274,
+                "latitude": 60.5272
+              },
+              {
+                // Linnunlahti / Joensuu
+                "longitude": 29.7238,
+                "latitude": 62.60155
+              },
+              {
+                // Lokka / Sodankylä
+                "longitude": 27.74635,
+                "latitude": 67.82151
+              },
+              {
+                // Pellonpää / Oulu
+                "longitude": 25.37299,
+                "latitude": 64.937
+              },
+              {
+                //  Rovaniemi lentoasema
+                "longitude": 25.83814,
+                "latitude": 66.56236
+              }
+            ]
+          },
+          "attributes": {
+            "class": "Weather",
+            "filter": "url(#shadow3)"
+          }
+        },
+        {
+          "qid": "Snow Depth",
+          "layer_type": "number",
+          "css": "numbers/frontpage_integers.css",
+          "numbers": "json:numbers/frontpage_snow.json",
+          "producer": "observations_fmi",
+          "parameter": "SND_PT1M_INSTANT",
+          "label": {
+            "missing": "-"
+          },
+          "positions": {
+            "layout": "latlon",
+            "dx": 0,
+            "dy": -19,
+            "locations": [
+              {
+                // Artukainen / Turku
+                "longitude": 22.1787,
+                "latitude": 60.45439
+              },
+              {
+                // Haapaniemi / Viitasaari
+                "longitude": 25.85862,
+                "latitude": 63.08225
+              },
+              {
+                // Härmälä / Tampere
+                "longitude": 23.74678,
+                "latitude": 61.46561
+              },
+              {
+                // Jomalaby / Jomala
+                "longitude": 19.98686,
+                "latitude": 60.17824
+              },
+              {
+                // Kaamanen / Inari
+                "longitude": 27.26567,
+                "latitude": 69.14089
+              },
+              {
+                // Kaisaniemi / Helsinki
+                "longitude": 24.94459,
+                "latitude": 60.17523
+              },
+              {
+                // Kilpisjärvi kk / Enontekiö
+                "longitude": 20.79115,
+                "latitude": 69.04948
+              },
+              {
+                // Klemettilä / Vaasa
+                "longitude": 21.63952,
+                "latitude": 63.09875
+              },
+              //              {
+              //                // Kuolaniemi / Sotkamo
+              //                "longitude": 28.33639,
+              //                "latitude": 64.11197
+              //              },
+              {
+                // Suomussalmi Pesiö
+                "longitude": 28.7467217,
+                "latitude": 64.93125195
+              },
+              {
+                //  Mikkeli lentoasema
+                "longitude": 27.20219,
+                "latitude": 61.6886
+              },
+              {
+                // Koivuniemi / Virolahti
+                "longitude": 27.67274,
+                "latitude": 60.5272
+              },
+              {
+                // Linnunlahti / Joensuu
+                "longitude": 29.7238,
+                "latitude": 62.60155
+              },
+              {
+                // Lokka / Sodankylä
+                "longitude": 27.74635,
+                "latitude": 67.82151
+              },
+              {
+                // Pellonpää / Oulu
+                "longitude": 25.37299,
+                "latitude": 64.937
+              },
+              {
+                //  Rovaniemi lentoasema
+                "longitude": 25.83814,
+                "latitude": 66.56236
+              }
+            ]
+          }
+        },
+        {
+          "layer_type": "time",
+          "timezone": "EET",
+          "formatter": "strftime",
+          "format": "%-d.%-m. %-H:%M",
+          "x": 40,
+          "y": 70,
+          "attributes": {
+            "text-anchor": "left",
+            "font-family": "Roboto, Arial",
+            "font-size": "45px"
+          }
+        },
+        {
+          "layer_type": "legend",
+          "x": 0,
+          "y": 160,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/frontpage_snow.json",
+          "symbols": {
+            "css": "isobands/frontpage_snow.css",
+            "symbol": "rect",
+            "attributes": {
+            }
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "125": "&#62;125",
+              "100": "100...125",
+              "75": "75...100",
+              "50": "50...75",
+              "25": "25...50",
+              "10": "10...25",
+              "1": "1...10",
+              "0": "&#60;1"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px"
+            }
+          },
+          "layers": [
+            {
+              "tag": "text",
+              "cdata": "cm",
+              "attributes": {
+                "x": 60,
+                "y": 150,
+                "class": "Units",
+                "font-family": "Roboto, Arial",
+                "font-size": "35px"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

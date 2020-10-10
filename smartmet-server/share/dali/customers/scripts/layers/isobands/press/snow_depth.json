@@ -1,0 +1,66 @@
+[
+  {
+    "qid": "snowdepth_125_inf",
+    "lolimit": 125,
+    "hilimit": 999,
+    "attributes": {
+      "class": "Snowdepth_125_inf Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_100_125",
+    "lolimit": 100,
+    "hilimit": 125,
+    "attributes": {
+      "class": "Snowdepth_100_125 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_75_100",
+    "lolimit": 75,
+    "hilimit": 100,
+    "attributes": {
+      "class": "Snowdepth_75_100 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_50_75",
+    "lolimit": 50,
+    "hilimit": 75,
+    "attributes": {
+      "class": "Snowdepth_50_75 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_25_50",
+    "lolimit": 25,
+    "hilimit": 50,
+    "attributes": {
+      "class": "Snowdepth_25_50 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_10_25",
+    "lolimit": 10,
+    "hilimit": 25,
+    "attributes": {
+      "class": "Snowdepth_10_25 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_1_10",
+    "lolimit": 1,
+    "hilimit": 10,
+    "attributes": {
+      "class": "Snowdepth_1_10 Bordered"
+    }
+  },
+  {
+    "qid": "snowdepth_0_1",
+    "lolimit": 0,
+    "hilimit": 1,
+    "attributes": {
+      "class": "Snowdepth_0_1 Bordered"
+    }
+  }
+]

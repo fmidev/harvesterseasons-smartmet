@@ -1,0 +1,100 @@
+[
+{
+        "qid": "echotop_10_inf",
+            "lolimit": 10,
+        "attributes":
+        {
+        "class": "echotop_10_inf"
+        }
+        },
+        {
+        "qid": "echotop_9_10",
+            "lolimit": 9,
+            "hilimit": 10, 
+        "attributes":
+        {
+        "class": "echotop_9_10"
+        }
+        },
+        {
+        "qid": "echotop_8_9",
+            "lolimit": 8,
+            "hilimit": 9,
+        "attributes":
+        {
+        "class": "echotop_8_9"
+        }
+        },
+        {
+        "qid": "echotop_7_8",
+            "lolimit": 7,
+            "hilimit": 8,
+        "attributes":
+        {
+        "class": "echotop_7_8"
+        }
+        },
+        {
+        "qid": "echotop_6_7",
+            "lolimit": 6,
+            "hilimit": 7,
+        "attributes":
+        {
+        "class": "echotop_6_7"
+        }
+        },
+        {
+        "qid": "echotop_5_6",
+            "lolimit": 5,
+            "hilimit": 6,
+        "attributes":
+        {
+        "class": "echotop_5_6"
+        }
+        },
+        {
+        "qid": "echotop_4_5",
+            "lolimit": 4,
+            "hilimit": 5,
+        "attributes":
+        {
+        "class": "echotop_4_5"
+        }
+        },
+        {
+        "qid": "echotop_3_4",
+            "lolimit": 3,
+            "hilimit": 4,
+        "attributes":
+        {
+        "class": "echotop_3_4"
+        }
+        },
+        {
+        "qid": "echotop_2_3",
+            "lolimit": 2,
+            "hilimit": 3,
+        "attributes":
+        {
+        "class": "echotop_2_3"
+        }
+        },
+        {
+        "qid": "echotop_1_2",
+            "lolimit": 1,
+            "hilimit": 2,
+        "attributes":
+        {
+        "class": "echotop_1_2"
+        }
+        },
+        {
+        "qid": "echotop_0_1",
+            "lolimit": 0,
+            "hilimit": 1,
+        "attributes":
+        {
+        "class": "echotop_0_1"
+        }
+        }
+]

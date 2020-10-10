@@ -1,0 +1,130 @@
+{
+    "title": "SeaDirection",
+    "producer": "copernicus_marine_global_mallipinta",
+    "refs":
+    {
+	"myprojection":
+	{
+	    "xsize": 500,
+	    "ysize": 500,
+	    "crs": "+proj=laea +lat_0=60 +lon_0=20 +units=m +ellps=WGS84",
+	    "bboxcrs": "EPSG:4326",
+	    "cy": 61,
+	    "cx": 16,
+	    "resolution": 5
+	}
+    },
+    "projection": "ref:refs.myprojection",
+    "defs":
+    {
+    	"styles":
+    	{
+    	    ".Label":
+    	    {
+    		"font": "Arial",
+    		"font-size": 9
+    	    },
+    	    ".Units":
+    	    {
+    		"font": "Arial",
+    		"font-size": 11
+    	    }
+    	},
+    	"layers":
+	[
+    	]
+    },
+    "views": [
+	{
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+	    "layers": [
+		{
+		    "qid": "sea",
+		    "layer_type": "background",
+		    "css": "maps/map.css",
+		    "attributes":
+		    {
+			"class": "Sea"
+		    }
+		},
+		{
+		    "qid": "europe",
+		    "layer_type": "map",
+		    "map":
+		    {
+			"schema": "esri",
+			"table": "europe_country_wgs84"
+		    },
+		    "attributes":
+		    {
+			"class": "Europe"
+		    }
+		},
+		{
+		    "qid": "lakes",
+		    "layer_type": "map",
+		    "map":
+		    {
+			"schema": "esri",
+			"table": "europe_mjwater_eureffin"
+		    },
+		    "attributes":
+		    {
+			"class": "Lake"
+		    }
+		},
+		{
+		    "qid": "borders",
+		    "layer_type": "map",
+		    "map":
+		    {
+			"lines": true,
+			"schema": "esri",
+			"table": "europe_country_wgs84",
+			"minarea": 200
+		    },
+		    "attributes":
+		    {
+			"class": "Border"
+		    }
+		},
+		{
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/currentspeed.json",
+		    "css": "isobands/currentspeed.css",
+		    "parameter": "CurrentSpeed",
+		    "attributes":
+		    {
+			"shape-rendering": "crispEdges"
+		    }
+		},
+		{
+		    "qid": "arr-",
+		    "layer_type": "arrow",
+		    "css": "arrows/currentarrow.css",
+		    "direction": "CurrentDirection",
+		    "speed": "CurrentSpeed",
+		    "attributes":
+		    {
+			"id": "current_arrows",
+			"class": "CurrentArrow",
+			"mask": "url(#currentlegendmask)"
+		    },
+		    "arrows": "json:arrows/currentarrow.json",
+		    "positions":
+		    {
+			"x": 10,
+			"y": 10,
+			"dx": 20,
+			"dy": 20,
+			"ddx": 0
+		    }
+		}
+	    ]
+	}
+    ]
+}

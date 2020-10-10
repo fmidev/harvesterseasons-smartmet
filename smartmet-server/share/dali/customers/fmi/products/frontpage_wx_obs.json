@@ -1,0 +1,436 @@
+{
+  "title": "Havainto",
+  "producer": "opendata",
+  "language": "fi",
+  "refs": {
+    "projection": "json:maps/frontpage_finlandprojection.json",
+    "finland": {
+      "schema": "esri",
+      "table": "finland_country_wgs84",
+      "minarea": 10,
+      "mindistance": 1
+    }
+  },
+  "defs": {
+    "layers": [
+      {
+        "tag": "symbol",
+        "attributes": {
+          "id": "rect"
+        },
+        "layers": [
+          {
+            "tag": "rect",
+            "attributes": {
+              "width": "25",
+              "height": "50",
+              "stroke": "black",
+              "stroke-width": "1px"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "mask",
+        "attributes": {
+          "id": "finland-mask"
+        },
+        "layers": [
+          {
+            "qid": "finland-map-mask",
+            "layer_type": "map",
+            "map": {
+              "schema": "esri",
+              "table": "finland_country_wgs84"
+            },
+            "attributes": {
+              "fill": "white",
+              "width": "100%",
+              "height": "100%"
+            }
+          }
+        ]
+      },
+      {
+        "tag": "clipPath",
+        "attributes": {
+          "id": "cutNorwayRussia"
+        },
+        "layers": [
+          {
+            "tag": "path",
+            "attributes": {
+              "d": "M200,450 900,450 900,1300 0,1300z"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "projection": "ref:refs.projection",
+  "views": [
+    {
+      "qid": "v1-",
+      "attributes": {
+        "id": "view1"
+      },
+      "layers": [
+        {
+          "qid": "europe_country",
+          "layer_type": "map",
+          "map": {
+            "lines": 1,
+            "schema": "esri",
+            "table": "europe_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "europe_country_lines",
+            "clip-path": "url(#cutNorwayRussia)",
+            "fill": "none",
+            "stroke": "#999",
+            "stroke-width": "0.5pt"
+          }
+        },
+        {
+          "qid": "finland_country",
+          "layer_type": "map",
+          "map": {
+            "schema": "esri",
+            "table": "finland_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "finland_country_lines",
+            "fill": "white",
+            "stroke": "#000",
+            "stroke-width": "0.1pt",
+            "filter": "url(#shadow2)"
+          }
+        },
+        {
+          "qid": "finland_roads",
+          "layer_type": "map",
+          "attributes": {
+            "fill": "none",
+            "stroke": "#ccc",
+            "mask": "url(#finland-mask)"
+          },
+          "map": {
+            "schema": "esri",
+            "table": "europe_roads_eureffin"
+          }
+        },
+        {
+          "qid": "time_label",
+          "tag": "text",
+          "cdata": "",
+          "attributes": {
+            "x": 40,
+            "y": 70,
+            "text-anchor": "left",
+            "font-family": "Roboto, Arial",
+            "font-size": "45px"
+          }
+        },
+        {
+          "qid": "temp_numbers",
+          "layer_type": "number",
+          "numbers": "json:numbers/frontpage_temperatures.json",
+          "css": "numbers/frontpage_integers.css",
+          "parameter": "temperature",
+          "minvalues": 10,
+          "attributes": {
+            "class": "Number",
+            "id": "temp_numbers"
+          },
+          "label": "json:numbers/frontpage_integers.json",
+          "positions": {
+            "layout": "station",
+            "stations": [
+              {
+                // Enontekiö Näkkälä
+                "fmisid": 102019,
+                "dx": 20,
+                "dy": 25
+              },
+              {
+                // Hanko Tvärminne
+                "fmisid": 100953,
+                "dx": -5,
+                "dy": 25
+              },
+              {
+                // Inari Nellim
+                "fmisid": 102052,
+                "dx": -40,
+                "dy": -5
+              },
+              {
+                // Jomala Jomalby
+                "fmisid": 100917,
+                "dx": 25,
+                "dy": -35
+              },
+              {
+                // Lahti Sopenkorpi
+                "fmisid": 104796,
+                "dx": 5,
+                "dy": -5
+              },
+              {
+                // Viitasaari Haapaniemi
+                "fmisid": 101537,
+                "dx": -10,
+                "dy": -5
+              },
+              {
+                // Lieksa Lampela
+                "fmisid": 101636,
+                "dx": -15,
+                "dy": 5
+              },
+              {
+                // Oulu Oulunsalo Pellonpää
+                "fmisid": 101799,
+                "dx": 35,
+                "dy": -5
+              },
+              {
+                // Parikkala Koitsanlahti
+                "fmisid": 101254,
+                "dx": -15,
+                "dy": -30
+              },
+              {
+                // Pello Kirkonkylä
+                "fmisid": 101914,
+                "dx": 35
+              },
+              {
+                // Pori Rautatienasema
+                "fmisid": 101064,
+                "dx": 20
+              },
+              {
+                // Salla Kirkonkylä
+                "fmisid": 101959,
+                "dx": -25,
+                "dy": 0
+              },
+              {
+                // Ranua Lentokenttä
+                "fmisid": 101873,
+                "dx": 20
+              },
+              {
+                // Suomussalmi Pesiö
+                "fmisid": 101826,
+                "dx": 10,
+                "dy": 10
+              },
+              {
+                // Vaasa Klemettilä
+                "fmisid": 101485,
+                "dx": 30,
+                "dy": 25
+              },
+              {
+                // Varkaus Kosulanniemi
+                "fmisid": 101421
+              }
+            ]
+          }
+        },
+        {
+          "qid": "wxsymbols",
+          "layer_type": "symbol",
+          "symbols": "json:symbols/frontpage_smartweather.json",
+          "parameter": "smartsymbol",
+          "minvalues": 8,
+          "scale": 2.4,
+          "positions": {
+            "layout": "station",
+            "stations": [
+              {
+                // Utsjoki Kevo
+                "fmisid": 102035,
+                "dx": 20,
+                "dy": 10
+              },
+              {
+                // Enontekiö Kilpisjärvi Kyläkeskus
+                "fmisid": 102016,
+                "dx": 30,
+                "dy": -5
+              },
+              {
+                // Muonio KK
+                "fmisid": 106435,
+                "dx": 30,
+                "dy": 30
+              },
+              {
+                // Sodankylä Tähtelä
+                "fmisid": 101932,
+                "dx": 30,
+                "dy": -30
+              },
+              {
+                // Tornio Torppi
+                "fmisid": 101851,
+                "dx": 20,
+                "dy": -30
+              },
+              {
+                // Kuusamo Lentokenttä
+                "fmisid": 101886,
+                "dx": -10
+              },
+              {
+                // Ylivieska Lentokenttä
+                "fmisid": 101690,
+                "dy": 20
+              },
+              {
+                // Vieremä Kaarakkala
+                "fmisid": 101726,
+                "dx": 20
+              },
+              {
+                // Turku Artukainen
+                "fmisid": 100949,
+                "dx": 40,
+                "dy": -30
+              },
+              {
+                // Kaskinen Sälgrund
+                "fmisid": 101256,
+                "dx": 60,
+                "dy": 10
+              },
+              {
+                // Jyväskylä Lentoasema
+                "fmisid": 101339
+              },
+              {
+                // Ilomantsi Mekrijärvi
+                "fmisid": 101651,
+                "dx": -40,
+                "dy": 20
+              },
+              {
+                // Lappeenranta Lentoasema
+                "fmisid": 101237,
+                "dx": -20,
+                "dy": -10
+              },
+              {
+                // Tampere Härmälä
+                "fmisid": 101124,
+                "dx": 20,
+                "dy": -10
+              },
+              {
+                // Helsinki Kaisaniemi
+                "fmisid": 100971,
+                "dy": -10
+              }
+            ]
+          }
+        },
+        {
+          "qid": "wind_symbols",
+          "layer_type": "arrow",
+          "arrows": "json:arrows/frontpage_wind_dir.json",
+          "direction": "WindDirection",
+          "speed": "WindSpeedMS",
+          "scale": 1.6,
+          "minrotationspeed": 0.5,
+          "positions": {
+            "layout": "station",
+            "stations": [
+              {
+                // Kemi I Majakkka
+                "fmisid": 101783,
+                "dx": -30,
+                "dy": 10
+              },
+              {
+                // Maalahti Strömmingsbåda
+                "fmisid": 101481,
+                "dx": -30,
+                "dy": -10
+              },
+              {
+                // Parainen Utö
+                "fmisid": 100908,
+                "dy": 30
+              },
+              {
+                // Kotka Haapasaari
+                "fmisid": 101042,
+                "dy": 30
+              }
+              //            ,
+              //              {
+              //                // Pietarsaari Kallan
+              //                "fmisid": 101660,
+              //                "dx": -20,
+              //                "dy": -40
+              //              }
+            ]
+          }
+        },
+        {
+          "qid": "wind_numbers",
+          "layer_type": "number",
+          "css": "numbers/frontpage_integers.css",
+          "parameter": "WindSpeedMS",
+          "minvalues": 2,
+          "attributes": {
+            "class": "Number",
+            "id": "wind_speed"
+          },
+          "label": "json:numbers/frontpage_integers.json",
+          "positions": {
+            "layout": "station",
+            "stations": [
+              {
+                // Kemi I Majakkka
+                "fmisid": 101783,
+                "dx": -30,
+                "dy": 10
+              },
+              {
+                // Maalahti Strömmingsbåda
+                "fmisid": 101481,
+                "dx": -30,
+                "dy": -10
+              },
+              {
+                // Parainen Utö
+                "fmisid": 100908,
+                "dy": 30
+              },
+              {
+                // Kotka Haapasaari
+                "fmisid": 101042,
+                "dy": 30
+              }
+              //            ,
+              //              {
+              //                // Pietarsaari Kallan
+              //                "fmisid": 101660,
+              //                "dx": -20,
+              //                "dy": -40
+              //              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

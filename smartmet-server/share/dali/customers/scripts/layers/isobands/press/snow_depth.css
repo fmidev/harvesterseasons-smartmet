@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.Snowdepth_0_1 { fill: #e5f7fd }
+.Snowdepth_1_10 { fill: #b2e6fa }
+.Snowdepth_10_25 { fill: #80d6f7 }
+.Snowdepth_25_50 { fill: #82b0e2 }
+.Snowdepth_50_75 { fill: #6e87cd }
+.Snowdepth_75_100 { fill: #4763b8 }
+.Snowdepth_100_125 { fill:#774198 }
+.Snowdepth_125_inf { fill: #5c3781 }
+.Bordered {stroke: rgb(255,255,255); stroke-width: 1pt;}

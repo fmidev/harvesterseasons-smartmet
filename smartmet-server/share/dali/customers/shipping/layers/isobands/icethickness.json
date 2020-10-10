@@ -1,0 +1,110 @@
+[
+        {
+	    "qid": "icethickness_60_inf",
+            "lolimit": 6.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_60_inf"
+	    }
+        },
+        {
+	    "qid": "icethickness_40_60",
+            "lolimit": 4.0,
+	    "hilimit": 6.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_40_60"
+	    }
+        },
+        {
+	    "qid": "icethickness_30_40",
+            "lolimit": 3.0,
+	    "hilimit": 4.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_30_40"
+	    }
+        },
+        {
+	    "qid": "icethickness_20_30",
+            "lolimit": 2.0,
+            "hilimit": 3.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_20_30"
+	    }
+        },
+        {
+	    "qid": "icethickness_15_20",
+            "lolimit": 1.5,
+            "hilimit": 2.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_15_20"
+	    }
+        },
+        {
+	    "qid": "icethickness_1_15",
+            "lolimit": 1.0,
+            "hilimit": 1.5,
+	    "attributes":
+	    {
+		"class": "Icethickness_1_15"
+	    }
+        },
+        {
+	    "qid": "icethickness_08_1",
+            "lolimit": 0.8,
+            "hilimit": 1.0,
+	    "attributes":
+	    {
+		"class": "Icethickness_08_1"
+	    }
+        },
+        {
+	    "qid": "icethickness_06_08",
+            "lolimit": 0.6,
+            "hilimit": 0.8,
+	    "attributes":
+	    {
+		"class": "Icethickness_06_08"
+	    }
+        },
+        {
+	    "qid": "icethickness_04_06",
+            "lolimit": 0.4,
+            "hilimit": 0.6,
+	    "attributes":
+	    {
+		"class": "Icethickness_04_06"
+	    }
+        },
+        {
+	    "qid": "icethickness_02_04",
+            "lolimit": 0.2,
+            "hilimit": 0.4,
+	    "attributes":
+	    {
+		"class": "Icethickness_02_04"
+	    }
+        },
+        {
+	    "qid": "icethickness_01_02",
+            "lolimit": 0.1,
+            "hilimit": 0.2,
+	    "attributes":
+	    {
+		"class": "Icethickness_01_02"
+	    }
+        },
+        {
+	    "qid": "icethickness_001_01",
+            "lolimit": 0.001,
+            "hilimit": 0.1,
+	    "attributes":
+	    {
+		"class": "Icethickness_001_01"
+	    }
+        }
+]
+

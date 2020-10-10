@@ -1,0 +1,92 @@
+[
+        {
+	    "qid": "iceconcentration_09_inf",
+            "lolimit": 90.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_09_inf"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_08_09",
+            "hilimit": 90.0,
+            "lolimit": 80.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_08_09"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_07_08",
+            "hilimit": 80.0,
+            "lolimit": 70.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_07_08"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_06_07",
+            "hilimit": 70.0,
+            "lolimit": 60.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_06_07"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_05_06",
+            "hilimit": 60.0,
+            "lolimit": 50.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_05_06"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_04_05",
+            "hilimit": 50.0,
+            "lolimit": 40.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_04_05"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_03_04",
+            "hilimit": 40.0,
+            "lolimit": 30.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_03_04"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_02_03",
+            "hilimit": 30.0,
+            "lolimit": 20.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_02_03"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_01_02",
+            "hilimit": 20.0,
+            "lolimit": 10.0,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_01_02"
+	    }
+        },
+        {
+	    "qid": "iceconcentration_001_01",
+            "hilimit": 10.0,
+            "lolimit": 0.1,
+	    "attributes":
+	    {
+		"class": "Iceconcentration_001_01"
+	    }
+        }
+]
+

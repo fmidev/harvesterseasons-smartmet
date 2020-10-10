@@ -1,0 +1,31 @@
+[
+    {
+        "qid": "NotSnowSeason_14",
+        "lolimit": 13.99,
+        //"hilimit": 7.0, 
+        "attributes":
+        {
+            "class": "NotSnowSeason_14 NoBorders"
+        }
+    },
+    {
+        "qid": "NotSnowSeason_10_14",
+        "lolimit": 9.99,
+        "hilimit": 13.99,
+        "attributes":
+        {
+            "class": "NotSnowSeason_10_14 NoBorders"
+        }
+    },
+    {
+        "qid": "NotSnowSeason_0_10",
+        "lolimit": 0,
+        "hilimit": 9.99,
+        "attributes":
+        {
+            "class": "NotSnowSeason_0_10 NoBorders"
+        }
+    }
+  
+
+]

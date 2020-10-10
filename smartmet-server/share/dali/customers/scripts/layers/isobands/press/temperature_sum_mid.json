@@ -1,0 +1,65 @@
+[
+  {
+    "qid": "EffectiveTemperatureSum_10",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_10 whiteLine"
+    },
+    "lolimit": 900
+  },
+  {
+    "qid": "EffectiveTemperatureSum_9",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_9 whiteLine"
+    },
+    "lolimit": 800,
+    "hilimit": 900
+  },
+  {
+    "qid": "EffectiveTemperatureSum_8",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_8 whiteLine"
+    },
+    "lolimit": 700,
+    "hilimit": 800
+  },
+  {
+    "qid": "EffectiveTemperatureSum_7",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_7 whiteLine"
+    },
+    "lolimit": 600,
+    "hilimit": 700
+  },
+  {
+    "qid": "EffectiveTemperatureSum_6",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_6 whiteLine"
+    },
+    "lolimit": 500,
+    "hilimit": 600
+  },
+  {
+    "qid": "EffectiveTemperatureSum_5",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_5 whiteLine"
+    },
+    "lolimit": 400,
+    "hilimit": 500
+  },
+  {
+    "qid": "EffectiveTemperatureSum_4",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_4 whiteLine"
+    },
+    "lolimit": 300,
+    "hilimit": 400
+  },
+  {
+    "qid": "EffectiveTemperatureSum_3",
+    "attributes": {
+      "class": "EffectiveTemperatureSum_3 whiteLine"
+    },
+    "lolimit": 0,
+    "hilimit": 300
+  }
+]

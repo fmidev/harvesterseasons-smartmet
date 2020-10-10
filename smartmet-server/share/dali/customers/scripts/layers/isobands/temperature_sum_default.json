@@ -1,0 +1,65 @@
+[
+  {
+    "qid": "temperature_42_inf",
+    "lolimit": 42,
+    "hilimit": 999,
+    "attributes": {
+      "class": "Temperature_42_inf"
+    }
+  },
+  {
+    "qid": "temperature_36_42",
+    "lolimit": 36,
+    "hilimit": 42,
+    "attributes": {
+      "class": "Temperature_36_42"
+    }
+  },
+  {
+    "qid": "temperature_30_36",
+    "lolimit": 30,
+    "hilimit": 36,
+    "attributes": {
+      "class": "Temperature_30_36"
+    }
+  },
+  {
+    "qid": "temperature_24_30",
+    "lolimit": 24,
+    "hilimit": 30,
+    "attributes": {
+      "class": "Temperature_24_30"
+    }
+  },
+  {
+    "qid": "temperature_18_24",
+    "lolimit": 18,
+    "hilimit": 24,
+    "attributes": {
+      "class": "Temperature_18_24"
+    }
+  },
+  {
+    "qid": "temperature_12_18",
+    "lolimit": 12,
+    "hilimit": 18,
+    "attributes": {
+      "class": "Temperature_12_18"
+    }
+  },
+  {
+    "qid": "temperature_6_12",
+    "lolimit": 6,
+    "hilimit": 12,
+    "attributes": {
+      "class": "Temperature_6_12"
+    }
+  },
+  {
+    "qid": "temperature_inf_6",
+    "hilimit": 6,
+    "attributes": {
+      "class": "Temperature_inf_6"
+    }
+  }
+]

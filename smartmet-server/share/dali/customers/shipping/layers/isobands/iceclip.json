@@ -1,0 +1,11 @@
+[
+    {
+	"qid": "iceclip-1-ib",
+        "lolimit": 0.001,
+        "hilimit": 0.8,
+	"attributes":
+	{
+	    "class": "clippath"
+	}
+    }
+]

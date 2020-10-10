@@ -1,0 +1,16 @@
+[
+  {
+    "lolimit": 0,
+    "attributes":
+    {
+      "class": "PlusTemperature"
+    }
+  },
+  {
+    "hilimit": 0,
+    "attributes":
+    {
+      "class": "MinusTemperature"
+    }
+  }
+]

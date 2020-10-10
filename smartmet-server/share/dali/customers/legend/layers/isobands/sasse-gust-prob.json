@@ -1,0 +1,73 @@
+[
+{
+        "qid": "echotop_10_inf",
+            "lolimit": 90,
+        "attributes":
+        {
+        "class": "echotop_10_inf"
+        }
+        },
+        {
+        "qid": "echotop_9_10",
+            "lolimit": 80,
+            "hilimit": 90, 
+        "attributes":
+        {
+        "class": "echotop_9_10"
+        }
+        },
+        {
+        "qid": "echotop_8_9",
+            "lolimit": 70,
+            "hilimit": 80,
+        "attributes":
+        {
+        "class": "echotop_8_9"
+        }
+        },
+        {
+        "qid": "echotop_7_8",
+            "lolimit": 60,
+            "hilimit": 70,
+        "attributes":
+        {
+        "class": "echotop_7_8"
+        }
+        },
+        {
+        "qid": "echotop_6_7",
+            "lolimit": 50,
+            "hilimit": 60,
+        "attributes":
+        {
+        "class": "echotop_6_7"
+        }
+        },
+        {
+        "qid": "echotop_5_6",
+            "lolimit": 40,
+            "hilimit": 50,
+        "attributes":
+        {
+        "class": "echotop_5_6"
+        }
+        },
+        {
+        "qid": "echotop_4_5",
+            "lolimit": 30,
+            "hilimit": 40,
+        "attributes":
+        {
+        "class": "echotop_4_5"
+        }
+        },
+        {
+        "qid": "echotop_3_4",
+            "lolimit": 20,
+            "hilimit": 30,
+        "attributes":
+        {
+        "class": "echotop_3_4"
+        }
+        }
+]

@@ -1,0 +1,27 @@
+.Temperature_20_inf {
+    fill: rgb(243, 54, 2)
+}
+
+.Temperature_15_20 {
+    fill: rgb(250, 142, 20)
+}
+
+.Temperature_10_15 {
+    fill: rgb(250, 222, 100)
+}
+
+.Temperature_5_10 {
+    fill: rgb(254, 243, 195)
+}
+
+.Temperature_0_5 {
+    fill: rgb(150, 207, 170)
+}
+
+.Temperature_-4_0 {
+    fill: rgb(175, 201, 226)
+}
+
+.Temperature_inf_-4 {
+    fill: rgb(66, 117, 190)
+}

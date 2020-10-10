@@ -1,0 +1,259 @@
+{
+  "title": "",
+  "refs": {
+    "projection": "json:maps/script_default_finlandprojection.json",
+    "finland": {
+      "schema": "esri",
+      "table": "finland_country_wgs84",
+      "minarea": 10,
+      "mindistance": 1
+    }
+  },
+  "defs": {
+    "layers": [
+      // SYMBOL LAYERS
+      {
+        "tag": "symbol",
+        "attributes": {
+          "id": "rect"
+        },
+        "layers": [
+          {
+            "tag": "rect",
+            "attributes": {
+              "width": "35",
+              "height": "50",
+              "stroke": "black",
+              "stroke-width": "1px"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "projection": "ref:refs.projection",
+  "views": [
+    {
+      "qid": "v1",
+      "attributes": {
+        "id": "view1"
+      },
+      "layers": [
+        // MAP LAYERS
+        {
+          "qid": "map_finland_country",
+          "layer_type": "map",
+          "map": {
+            "schema": "esri",
+            "table": "finland_country_wgs84",
+            "minarea": 10,
+            "mindistance": 1
+          },
+          "attributes": {
+            "id": "finland_country_lines",
+            "fill": "white",
+            "stroke": "#000",
+            "stroke-width": "0.5pt",
+            "filter": "url(#shadow3)",
+            "display": "true"
+          }
+        },
+        // === DATA LAYERS === \\
+        // ISOBAND LAYERS
+        {
+          "qid": "isoband_kriging_suomi_daily06",
+          "layer_type": "isoband",
+          "producer": "kriging_suomi_daily06",
+          "isobands": "json:isobands/temperature_ground_default.json",
+          "css": "isobands/temperature_ground_default.css",
+          "parameter": "MinimumGroundTemperature06",
+          "inside": "ref:refs.finland",
+          "attributes": {
+            "clip-path": "url(#borderclip)",
+            "shape-rendering": "geometricPrecision",
+            "display": "none"
+          }
+        },
+        // ===================== \\
+
+        // === STATIC LAYERS === \\
+        // LEGEND LAYERS
+        {
+          "qid": "legend_temperature_ground",
+          "layer_type": "legend",
+          "x": 20,
+          "y": 280,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/temperature_ground_default.json",
+          "symbols": {
+            "css": "isobands/temperature_ground_default.css",
+            "symbol": "rect"
+          },
+          "labels": {
+            "type": "hilimit",
+            "dx": 95,
+            "dy": 40,
+            "conversions": {
+              "999": " &#62;20",
+              "20": " 15...20",
+              "15": " 10...15",
+              "10": "   5...10",
+              "5": " 0...5",
+              "0": "-4...0",
+              "-4": "&#60;-4"
+            },
+            "attributes": {
+              "text-anchor": "middle",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px",
+              "xml:space": "preserve"
+            }
+          },
+          "attributes": {
+            "display": "none"
+          }
+        },
+        {
+          "qid": "legend_precipitation",
+          "layer_type": "legend",
+          "x": 20,
+          "y": 280,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/precipitation_default.json",
+          "symbols": {
+            "css": "isobands/precipitation_default.css",
+            "symbol": "rect"
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "60": "   &#62;60",
+              "40": "40...60",
+              "30": "30...40",
+              "20": "20...30",
+              "10": "10...20",
+              "5": "  5...10",
+              "1": "  1...5",
+              "0": "    &#60;1"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px",
+              "xml:space": "preserve"
+            }
+          },
+          "attributes": {
+            "display": "none"
+          }
+        },
+        {
+          "qid": "legend_precipitation_7d",
+          "layer_type": "legend",
+          "x": 20,
+          "y": 280,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/climate/precipitation_7d.json",
+          "symbols": {
+            "css": "isobands/climate/precipitation_7d.css",
+            "symbol": "rect"
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "80": "   &#62;80",
+              "60": "60...80",
+              "40": "40...60",
+              "20": "20...40",
+              "10": "10...20",
+              "5": "  5...10",
+              "1": "  1...5",
+              "0": "    &#60;1"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px",
+              "xml:space": "preserve"
+            }
+          },
+          "attributes": {
+            "display": "none"
+          }
+        },
+        {
+          "qid": "legend_precipitation_30d",
+          "layer_type": "legend",
+          "x": 20,
+          "y": 280,
+          "dx": 0,
+          "dy": 50,
+          "isobands": "json:isobands/climate/precipitation_30d.json",
+          "symbols": {
+            "css": "isobands/climate/precipitation_30d.css",
+            "symbol": "rect"
+          },
+          "labels": {
+            "type": "lolimit",
+            "dx": 45,
+            "dy": 40,
+            "conversions": {
+              "100": "  &#62;100",
+              "80": "80...100",
+              "60": " 60...80",
+              "40": " 40...60",
+              "30": " 30...40",
+              "20": " 20...30",
+              "10": " 10...20",
+              "0": "   &#60;10"
+            },
+            "attributes": {
+              "text-anchor": "left",
+              "font-family": "Roboto, Arial",
+              "font-size": "35px",
+              "xml:space": "preserve"
+            }
+          },
+          "attributes": {
+            "display": "none"
+          }
+        },
+        // TEXT LAYERS
+        {
+          "qid": "text_legend_units",
+          "tag": "text",
+          "cdata": "",
+          "attributes": {
+            "x": 80,
+            "y": 270,
+            "class": "Units",
+            "font-family": "Roboto, Arial",
+            "font-size": "35px",
+            "display": "none"
+          }
+        },
+        {
+          "qid": "text_title_label",
+          "tag": "text",
+          "cdata": "",
+          "attributes": {
+            "x": 20,
+            "y": 50,
+            "text-anchor": "left",
+            "font-family": "Roboto, Arial",
+            "font-size": "45px",
+            "display": "none"
+          }
+        }
+        // ===================== \\
+      ]
+    }
+  ]
+}

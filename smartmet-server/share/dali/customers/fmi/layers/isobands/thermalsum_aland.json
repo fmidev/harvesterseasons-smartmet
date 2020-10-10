@@ -1,0 +1,52 @@
+
+
+//Ahvenanmaan alueen json:it (sama tyylitys kuin thermalsum.json lukuunottamatta gid:tä, joka näemmä pitää olla eri layerillä erilainen)
+[
+    {
+        "qid": "thermalsum_70_aland",
+        "lolimit": 69.99,
+        //"hilimit": 7.0, 
+        "attributes":
+        {
+            "class": "Thermalsum_70 NoBorders"
+        }
+    },
+    {
+        "qid": "thermalsum_50_70_aland",
+        "lolimit": 49.99,
+        "hilimit": 69.99,
+        "attributes":
+        {
+            "class": "Thermalsum_50_70 Bordered"
+        }
+    },
+    {
+        "qid": "thermalsum_30_50_aland",
+        "lolimit": 29.99,
+        "hilimit": 49.99,
+        "attributes":
+        {
+            "class": "Thermalsum_30_50 NoBorders"
+        }
+    },
+    {
+        "qid": "thermalsum_10_30_aland",
+        "lolimit": 9.99,
+        "hilimit": 29.99,
+        "attributes":
+	  {
+		  "class": "Thermalsum_10_30 NoBorders"
+	  }
+  },
+  {
+	  "qid": "thermalsum_0_10_aland",
+    "lolimit": 0,
+    "hilimit": 9.99,
+	  "attributes":
+	  {
+		  "class": "Thermalsum_0_10 NoBorders"
+	  }
+  }
+
+
+]

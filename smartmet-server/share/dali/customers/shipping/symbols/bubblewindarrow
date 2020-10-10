@@ -1,0 +1,5 @@
+<symbol id="bubblewindarrow">
+ <desc>Bubble windarrow (north)</desc>
+ <circle cx="0" cy="0" r="10" fill="none" stroke="black" stroke-width="2"/>
+ <line x1="0" y1="10" x2="0" y2="17.5" stroke="black" stroke-width="3" />
+</symbol>

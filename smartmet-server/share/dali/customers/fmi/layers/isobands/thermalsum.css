@@ -1,0 +1,8 @@
+.Thermalsum_70 {fill: rgb(65,190,65) }
+.Thermalsum_50_70 {fill: rgb(130,254,0) }
+.Thermalsum_30_50 {fill: rgb(64,191,191) }
+.Thermalsum_10_30 {fill: rgb(190,190,63) }
+.Thermalsum_0_10 {fill: rgb(250,250,250) }
+
+.NoBorders {stroke: rgb(255,255,255); stroke-width: 0pt;}
+.Bordered {stroke: rgb(250,250,250); stroke-width: 1.2pt;}

@@ -1,0 +1,11 @@
+// Default map of Finland. Designed so there is room for map, legend and title with approximately
+// 20px whitespace borders around the image (left side depends on legend positioning though).
+{
+  "xsize": 750,
+  "ysize": 1200,
+  "crs": "EPSG:2393", // YKJ
+  "bboxcrs": "EPSG:4326", // WGS84
+  "cy": 64.95,
+  "cx": 24.6,
+  "resolution": 1
+}

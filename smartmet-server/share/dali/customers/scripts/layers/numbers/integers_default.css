@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.Number {
+    fill: black;
+    font-family: Roboto, Arial;
+    font-size: 40px;
+    text-anchor: middle;
+}
+
+.NumberSmall {
+    fill: black;
+    font-family: Roboto, Arial;
+    font-size: 20px;
+    text-anchor: middle;
+}
+
+.PlusTemperature {
+    fill: red;
+}
+
+.MinusTemperature {
+    fill: blue;
+}

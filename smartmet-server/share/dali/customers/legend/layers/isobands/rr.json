@@ -1,0 +1,82 @@
+[
+        {
+        "qid": "rr_25_inf",
+            "lolimit": 25,
+        "attributes":
+        {
+        "class": "rr_10_inf"
+        }
+        },
+        {
+        "qid": "rr_10_25",
+            "lolimit": 10,
+            "hilimit": 25,
+        "attributes":
+        {
+        "class": "rr_10_25"
+        }
+        },
+        {
+        "qid": "rr_4_10",
+            "lolimit": 4,
+            "hilimit": 10,
+        "attributes":
+        {
+        "class": "rr_4_10"
+        }
+        },
+        {
+        "qid": "rr_22_4",
+            "lolimit": 2.2,
+            "hilimit": 4,
+        "attributes":
+        {
+        "class": "rr_22_4"
+        }
+        },
+        {
+        "qid": "rr_09_22",
+            "lolimit": 0.9,
+            "hilimit": 2.2,
+        "attributes":
+        {
+        "class": "rr_09_22"
+        }
+        },
+        {
+        "qid": "rr_03_09",
+            "lolimit": 0.3,
+            "hilimit": 0.9,
+        "attributes":
+        {
+        "class": "rr_03_09"
+        }
+        },
+        {
+        "qid": "rr_01_03",
+            "lolimit": 0.1,
+            "hilimit": 0.3,
+        "attributes":
+        {
+        "class": "rr_01_03"
+        }
+        },
+        {
+        "qid": "rr_007_01",
+            "lolimit": 0.07,
+            "hilimit": 0.1,
+        "attributes":
+        {
+        "class": "rr_007_01"
+        }
+        },
+        {
+        "qid": "rr_007_007",
+            "lolimit": 0.07,
+            "hilimit": 0.07,
+        "attributes":
+        {
+        "class": "rr_007_007"
+        }
+        }
+]

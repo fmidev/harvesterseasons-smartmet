@@ -1,0 +1,31 @@
+.Temperature_42_inf {
+    fill: rgb(198, 15, 31)
+}
+
+.Temperature_36_42 {
+    fill: rgb(238, 112, 47)
+}
+
+.Temperature_30_36 {
+    fill: rgb(254, 198, 117)
+}
+
+.Temperature_24_30 {
+    fill: rgb(254, 247, 186)
+}
+
+.Temperature_18_24 {
+    fill: rgb(210, 230, 206)
+}
+
+.Temperature_12_18 {
+    fill: rgb(125, 197, 147)
+}
+
+.Temperature_6_12 {
+    fill: rgb(109, 181, 230)
+}
+
+.Temperature_inf_6 {
+    fill: rgb(1, 93, 170)
+}

@@ -1,0 +1,20 @@
+{
+    "projection": {},
+    "views": [
+        {
+            "layers": [
+		{
+		    "qid": "l",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/temperature.json",
+		    "css": "isobands/temperature.css",
+		    "parameter": "Temperature",
+		    "attributes":
+		    {
+			"shape-rendering": "crispEdges"
+                    }
+		}
+            ]
+        }
+    ]
+}

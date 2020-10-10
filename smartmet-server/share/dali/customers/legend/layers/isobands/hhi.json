@@ -1,0 +1,128 @@
+[
+        {
+        "qid": "hhi_1_2",
+            "lolimit": 1,
+            "hilimit": 2,
+        "attributes":
+        {
+        "class": "hhi_1_2"
+        }
+        },
+        {
+        "qid": "hhi_2_3",
+            "lolimit": 2,
+            "hilimit": 3,
+        "attributes":
+        {
+        "class": "hhi_2_3"
+        }
+        },
+        {
+        "qid": "hhi_3_4",
+            "lolimit": 3,
+            "hilimit": 4,
+        "attributes":
+        {
+        "class": "hhi_3_4"
+        }
+        },
+        {
+        "qid": "hhi_4_5",
+            "lolimit": 4,
+            "hilimit": 5,
+        "attributes":
+        {
+        "class": "hhi_4_5"
+        }
+        },
+        {
+        "qid": "hhi_5_6",
+            "lolimit": 5,
+            "hilimit": 6,
+        "attributes":
+        {
+        "class": "hhi_5_6"
+        }
+        },
+        {
+        "qid": "hhi_6_7",
+            "lolimit": 6,
+            "hilimit": 7,
+        "attributes":
+        {
+        "class": "hhi_6_7"
+        }
+        },
+        {
+        "qid": "hhi_7_8",
+            "lolimit": 7,
+            "hilimit": 8,
+        "attributes":
+        {
+        "class": "hhi_7_8"
+        }
+        },
+        {
+        "qid": "hhi_8_9",
+            "lolimit": 8,
+            "hilimit": 9,
+        "attributes":
+        {
+        "class": "hhi_8_9"
+        }
+        },
+        {
+        "qid": "hhi_9_10",
+            "lolimit": 9,
+            "hilimit": 10,
+        "attributes":
+        {
+        "class": "hhi_9_10"
+        }
+        },
+        {
+        "qid": "hhi_10_11",
+            "lolimit": 10,
+            "hilimit": 11,
+        "attributes":
+        {
+        "class": "hhi_10_11"
+        }
+        },
+        {
+        "qid": "hhi_11_12",
+            "lolimit": 11,
+            "hilimit": 12,
+        "attributes":
+        {
+        "class": "hhi_11_12"
+        }
+        },
+        {
+        "qid": "hhi_12_13",
+            "lolimit": 12,
+            "hilimit": 13,
+        "attributes":
+        {
+        "class": "hhi_12_13"
+        }
+        },
+        {
+        "qid": "hhi_13_14",
+            "lolimit": 13,
+            "hilimit": 14,
+        "attributes":
+        {
+        "class": "hhi_13_14"
+        }
+        },
+        {
+        "qid": "hhi_14_15",
+            "lolimit": 14,
+            "hilimit": 15,
+        "attributes":
+        {
+        "class": "hhi_14_15"
+        }
+        }
+]

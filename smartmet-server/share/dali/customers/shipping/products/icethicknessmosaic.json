@@ -1,0 +1,245 @@
+{
+    "title": "Ice thickness mosaic",
+    "width" : 1200,
+    "height" : 200,
+    "producer" : "copernicus_marine_global_mallipinta",
+    "refs":
+    {
+	"norwegian_sea":
+	{
+	    "xsize": 300,
+	    "ysize": 200,
+	    "crs": "EPSG:4326",
+	    "bboxcrs": "EPSG:4326",	// WGS84
+	    "x1" : -15,
+	    "y1" : 62.5,
+	    "x2" : 37.5,
+	    "y2" : 75
+	},
+	"backgroundmap" : 
+	{
+	    "qid": "europe",
+	    "layer_type": "map",
+	    "css": "maps/map.css",
+	    "map":
+	    {
+		"schema": "esri",
+		"table": "world_country_2008_wgs84"
+	    },
+	    "attributes":
+	    {
+		"class": "Europe"
+	    }
+	},
+	"sea" : 
+	{
+	    "qid": "sea",
+	    "layer_type": "background",
+	    "css": "maps/map.css",
+	    "attributes":
+	    {
+		"class": "Sea"
+	    }
+	}
+    },
+    "projection": "ref:refs.norwegian_sea", //Default
+    "views": [
+        {
+	    "qid": "v1-",
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+            "layers": [
+		"ref:refs.sea",
+		"ref:refs.backgroundmap",
+		{
+		    "qid" : "ice-1",
+		    "layer_type": "isoband",
+		    "isobands": "json:isobands/icethickness.json",
+		    "css": "isobands/icethickness.css",
+                    "parameter": "IceThickness"
+		},
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+	    ]
+	},
+	{
+	    "qid": "v2-",
+	    "attributes":
+	    {
+		"id": "view2",
+		"transform" : "translate(300,0)"
+
+	    },
+	    "time_offset" : 1440,
+            "layers": [
+		"ref:refs.sea",
+		"ref:refs.backgroundmap",
+                {
+		    "qid" : "ice-2",
+                    "layer_type": "isoband",
+                    "isobands": "json:isobands/icethickness.json",
+                    "css": "isobands/icethickness.css",
+                    "parameter": "IceThickness"
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+            ]
+	},
+	{
+	    "qid": "v3-",
+	    "attributes":
+	    {
+		"id": "view3",
+		"transform" : "translate(600,0)"
+
+	    },
+	    "time_offset" : 2880,
+            "layers": [
+		"ref:refs.sea",
+		"ref:refs.backgroundmap",
+                {
+		    "qid" : "ice-3",
+                    "layer_type": "isoband",
+                    "isobands": "json:isobands/icethickness.json",
+                    "css": "isobands/icethickness.css",
+                    "parameter": "IceThickness"
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+	    ]
+	},
+	{
+	    "qid": "v4-",
+	    "attributes":
+	    {
+		"id": "view4",
+		"transform" : "translate(900,0)"
+
+	    },
+	    "time_offset" : 4320,
+            "layers": [
+		"ref:refs.sea",
+		"ref:refs.backgroundmap",
+                {
+		    "qid" : "ice-4",
+                    "layer_type": "isoband",
+                    "isobands": "json:isobands/icethickness.json",
+                    "css": "isobands/icethickness.css",
+                    "parameter": "IceThickness"
+                },
+		{
+		    "layer_type": "time",
+		    "x": 10,
+		    "y": -10,
+		    "timestamp": "validtime",
+		    "format" : "%d.%m. %H:%M UTC",
+		    "attributes":
+		    {
+			"text-anchor": "start",
+			"font-size" : 20,
+			"fill" : "white",
+			"filter" : "url(#highlightshadow)"
+
+		    }
+		}
+		,
+		{
+		    "tag" : "rect",
+		    "attributes" : 
+		    {
+			"fill": "none",
+			"stroke" : "black",
+			"stroke-width" : "2px",
+                        "width": "300",
+                        "height": "200"
+
+		    }
+		}
+
+            ]
+	}
+    ]
+}

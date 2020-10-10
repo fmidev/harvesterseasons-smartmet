@@ -1,0 +1,100 @@
+{
+    "title":"sasse",
+    "defs":{
+        "styles":{
+            ".Label":{
+                "font":"Arial",
+                "font-size":16
+            },
+            ".Units":{
+                "font":"Arial",
+                "font-size":18
+            }
+        },
+        "layers":[
+            {
+                "tag":"symbol",
+                "attributes":{
+                    "id":"rect"
+                },
+                "layers":[
+                    {
+                        "tag":"rect",
+                        "attributes":{
+                            "width":"10",
+                            "height":"100"
+                        }
+                    }
+                ]
+            },
+            {
+                "tag":"symbol",
+                "attributes":{
+                    "id":"uptriangle"
+                },
+                "layers":[
+                    {
+                        "tag":"path",
+                        "attributes":{
+                            "d":"M0 20,10 0,20 20Z"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "views":[
+        {
+            "qid":"v1-",
+            "attributes":{
+                "id":"view1"
+            },
+            "layers":[
+                {
+                    "layer_type":"legend",
+                    "x":10,
+                    "y":20,
+                    "dx":0,
+                    "dy":100,
+                    "isobands":"json:isobands/sasse.json",
+                    "symbols":{
+                        "css":"isobands/sasse.css",
+                        "symbol":"rect",
+                        "start":"rect",
+                        "attributes":{
+                            "stroke":"black",
+                            "stroke-width":"0.5"
+                        }
+                    },
+                    "labels":{
+                        "type": "lolimit",
+                        "conversions": { 
+                            "10": "Suuri",
+                            "9": "Kohonnut",
+                            "8": "Pieni",
+                            "7": "Erittäin pieni"
+                        },
+                        "dx":25,
+                        "dy":50,
+                        "format":"%.2f"
+                    },
+                    "attributes":{
+                        "id":"rrlegend",
+                        "class":"Label"
+                    },
+                    "layers":[
+                        {
+                            "tag":"text",
+                            "cdata":"Vahinkojen todennäköisyys",
+                            "attributes":{
+                                "x":0,
+                                "y":15,
+                                "class":"Units"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

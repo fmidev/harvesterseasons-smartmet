@@ -1,0 +1,55 @@
+[
+    {
+	"qid": "friction_60_70",
+	"lolimit": 0.6,
+	"hilimit": 0.7,
+	"attributes":
+	{
+	    "class": "Friction_60_70"
+	}
+    },
+    {
+	"qid": "friction_50_60",
+	"lolimit": 0.5,
+	"hilimit": 0.6,
+	"attributes":
+	{
+	    "class": "Friction_50_60"
+	}
+    },
+    {
+	"qid": "friction_40_50",
+	"lolimit": 0.4,
+	"hilimit": 0.5,
+	"attributes":
+	{
+	    "class": "Friction_40_50"
+	}
+    },
+    {
+	"qid": "friction_30_40",
+	"lolimit": 0.3,
+	"hilimit": 0.4,
+	"attributes":
+	{
+	    "class": "Friction_30_40"
+	}
+    },
+    {
+	"qid": "friction_15_30",
+	"lolimit": 0.15,
+	"hilimit": 0.30,
+	"attributes":
+	{
+	    "class": "Friction_15_30"
+	}
+    },
+    {
+	"qid": "friction_0_15",
+	"hilimit": 0.15,
+	"attributes":
+	{
+	    "class": "Friction_0_15"
+	}
+    }
+]

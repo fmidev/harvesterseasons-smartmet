@@ -1,0 +1,308 @@
+{
+    "title": "Grass Fire Warnings map",
+    "producer": "grassfire_forecast_point",
+    "refs":
+    {
+	    "myprojection": "json:maps/forestfire_finlandprojection.json",
+	    "finland":
+	    {
+	        "schema": "esri",
+	        "table": "finland_country_wgs84",
+	        "minarea": 100,
+	        "mindistance": 1
+	    },
+        "backgroundmap" :
+        {
+            "qid": "europe",
+            "layer_type": "map",
+            "css": "maps/map.css",
+            "map":
+            {
+                "schema": "esri",
+                "table": "europe_country_wgs84"
+            },
+            "attributes":
+            {
+                "class": "Europe",
+                "id" : "backgroundmap"
+            }
+        }
+    },
+    
+    "defs":
+    {
+        //Legendsin varimaaritykset
+	    "layers": [
+	    {
+		    "tag": "symbol",            
+		    "attributes":
+		    {
+		        "id": "rect"                
+		    },
+		    "layers": [
+		    {
+			    "tag": "rect",
+			    "attributes":
+			    {
+			        "width": "35",
+			        "height": "35",
+			        "stroke": "black",
+                    "stroke-width": "0.05"                    
+			    }
+		    }
+		    ]
+	    },
+    
+        //Leikkausalue ahvenanmaalle        
+        {
+            "tag": "clipPath",
+            "attributes": {
+            "id": "cutAland"
+            },
+            "layers": [
+            {
+                "tag": "path",
+                "attributes": {
+                "d": "M50,1050 400,1050 400,1300 50,1300 50,1050z"
+                }
+            }
+            ]
+        }
+
+	   ]
+    },
+    
+    
+    "projection": "ref:refs.myprojection",
+    "views": [
+	{
+	    "qid": "v1-",
+        
+	    "attributes":
+	    {
+		"id": "view1"
+	    },
+        
+	    "layers": [                    
+        
+        //taustalla background: säädettävissä urlissa: &bg.attributes.fill=[haluttuväri]
+        {
+          "layer_type": "background",
+          "qid": "bg",
+          "attributes":
+          {
+             "stroke":"none",
+             "fill": "transparent"
+          }
+        }, 
+            
+        //Otsikkoteksti
+        {
+            "qid": "heading_text",
+            "tag": "text",
+            "cdata":"",            
+            "attributes":
+            {
+                "x":"20",
+                "y":"65",
+                "font-size": "50"
+            }
+        },
+        
+                
+        //Suomen rajaviiva
+		{
+		    "qid": "Finland_boundaries",
+		    "layer_type": "map",
+		    "map":
+		    {
+                "pgname": "gis",
+                "schema": "public",
+                "table": "varoalue",                
+                "mindistance": 0
+		    },
+		    "attributes":
+		    {
+                "id": "finland_country_lines",
+                "fill": "none",
+                "stroke": "#000",
+                "stroke-width": "1.0pt",
+                "filter": "url(#shadow3)"
+		    }
+		},
+            
+        //Legendsin maarittely ja tulostus
+		{
+		    "layer_type": "legend",
+		    "x": 50,
+		    "y": 570,
+		    "dx": 0,
+		    "dy": 43,
+            "format": "%.1f",
+		    "isobands": "json:isobands/grassfireindex.json",            
+		    "symbols":
+		    {
+			    "css": "isobands/grassfireindex.css",
+			    "symbol": "rect",                        
+			    "attributes":
+			    {
+			    }
+		    },
+		    "labels":
+		    {
+			    "type": "lolimit",
+			    "dx": 52,
+			    "dy": 33,
+			    "conversions":
+			    {
+			        "6": "yli 5.5 ja puuska yli 15m/s",
+                    "5.59": "5.6 - 6.0",
+                    "4.99": "5.0 - 5.5",
+                    "3.99": "4.0 - 4.9",
+                    "2.99": "3.0 - 3.9",
+                    "1.99": "2.0 - 2.9",
+                    "0.99": "1.0 - 1.9",
+			        "0": "lunta"
+			    },
+			    "attributes":
+			    {
+			        "font-family": "Arial",
+			        "font-size": "30px"
+			    }
+		    }
+		},        
+           
+         
+            
+            
+        //Ruohikko sisalto (pohja: Suomen alue leikattuna rajoista)
+        {
+            "qid": "grassfire_forecast_point",
+            "layer_type": "map",
+            "map":
+            {
+                "pgname": "gis",
+                "schema": "public",
+                "table": "varoalueet"
+            },
+            //"isobands": "json:isobands/grassfireindex.json",
+            //"css": "isobands/grassfireindex.css",
+            "inside": "ref:refs.finland",
+            "attributes": {
+                "shape-rendering": "geometricPrecision"                
+            },
+            "parameter": "GrassFireIndex",
+            "styles":
+		    {
+			    "parameter": "GrassFireIndex",
+			    "field": "numero",
+			    "attributes":
+			    [
+			        {
+				        "lolimit": 0,
+				        "hilimit": 0.99,
+				        "attributes":
+				        {
+				             "fill": "rgb(250,250,250)"
+				        }
+			        },
+                    {
+				        "lolimit": 1,
+				        "hilimit": 1.99,
+				        "attributes":
+				        {
+				            "fill": "rgb(1,254,254)"
+				        }
+			        },
+                    {
+				        "lolimit": 2,
+				        "hilimit": 2.99,
+				        "attributes":
+				        {
+				            "fill": "rgb(65,189,65)"
+				        }
+			        },
+                    {
+				        "lolimit": 3,
+				        "hilimit": 3.99,
+				        "attributes":
+				        {
+				            "fill": "rgb(190,190,65)"
+				        }
+			        },
+                    {
+				        "lolimit": 4,
+				        "hilimit": 4.99,
+				        "attributes":
+				        {
+				            "fill": "rgb(254,130,0)"
+				        }
+			        },
+                    {
+				        "lolimit": 4.99,
+				        "hilimit": 5.59,
+				        "attributes":
+				        {
+				            "fill": "rgb(254,0,0)"
+				        }
+			        },
+                    {
+				        "lolimit": 5.59,
+				        "hilimit": 6.0,
+				        "attributes":
+				        {
+				            "fill": "rgb(254,0,130)"
+				        }
+			        },
+                    {
+				        "lolimit": 6.0,
+				        "hilimit": 7.0,
+				        "attributes":
+				        {
+				            "fill": "rgb(130,0,254)"
+				        }
+			        }
+                ]
+            }
+        },
+               
+            
+        
+                        
+           
+            
+            
+        //Varoaluerajat
+        {
+            "qid": "Province_boundaries",
+            "layer_type": "map",
+            "map":
+            {
+                "lines":true,
+                "pgname": "gis",
+                //"schema": "fminames",
+                //"table": "maakunnat_maa",
+                "schema":"public",
+                "table":"varorajat"                
+                //"where": "gid NOT IN ('18')",                
+            },
+            "attributes":
+            {
+                "id": "finland_province_lines",
+                "fill": "none",
+                "stroke": "#000",
+                "stroke-width": "0.5pt"                
+                
+            }
+        }     
+       
+            
+        ]
+    }
+
+
+    
+]
+}
+]
+}

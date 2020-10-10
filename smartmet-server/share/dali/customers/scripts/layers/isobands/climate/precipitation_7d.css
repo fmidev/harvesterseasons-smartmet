@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.precipitation_80_inf {fill: rgb(8,69,148) }
+.precipitation_60_80 {fill: rgb(33,113,181) }
+.precipitation_40_60 {fill: rgb(66,146,198) }
+.precipitation_20_40 {fill: rgb(107,174,214) }
+.precipitation_10_20 {fill: rgb(158,202,225) }
+.precipitation_5_10 {fill: rgb(198,219,239) }
+.precipitation_1_5 {fill: rgb(222,235,247) }
+.precipitation_inf_1 {fill: rgb(255,255,255) }

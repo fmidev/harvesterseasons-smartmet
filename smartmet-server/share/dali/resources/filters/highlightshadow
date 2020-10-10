@@ -1,0 +1,4 @@
+<filter id="highlightshadow" width="110%" height="130%">
+ <feGaussianBlur in="SourceAlpha" result="blurred" stdDeviation="2.5"/>
+ <feBlend in="SourceGraphic" in2="blurred" mode="normal"/>
+</filter>
