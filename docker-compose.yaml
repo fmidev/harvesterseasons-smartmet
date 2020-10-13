@@ -15,8 +15,8 @@ services:
       core:
         hard: -1
         soft: -1
-      cap_add:
-        - SYS_PTRACE
+    cap_add:
+      - SYS_PTRACE
     environment:
       # Settings for grib files are here
       # Some of these may be need to be copied to config files
