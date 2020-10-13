@@ -44,8 +44,8 @@ conda activate xr
 ### adjust unbound variables
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50.grib ] && \
 seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -O --eccodes aexprf,ec-sde.instr -ymonadd \
-    -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
+    -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
     ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib || echo "NOT adj unbound seasonal forecast input missing or already produced"
 ### adjust wind
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50.grib ] && \
@@ -99,4 +99,4 @@ wait
 
 # RETIRED code...
 #grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#

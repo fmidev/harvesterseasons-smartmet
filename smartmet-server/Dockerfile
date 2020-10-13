@@ -43,9 +43,11 @@ RUN yum -y install smartmet-plugin-backend \
 
 
 # For installing filesys2smartmet which is used to load grib-files to redis
-RUN yum -y install smartmet-tools-grid smartmet-qdtools && yum clean all 
+RUN yum -y install smartmet-tools-grid smartmet-qdtools \
+    gdb yum-utils
+RUN debuginfo-install -y $(rpm -qa | grep smartmet)
+RUN yum clean all && yum -y install perf
 
-# M.K. 09.01.2020: until here, installation seems to work Install Google Noto fonts
 RUN mkdir -p /usr/share/fonts/truetype/noto && \
      for FONT in ${NOTO_FONTS}; \
      do \
