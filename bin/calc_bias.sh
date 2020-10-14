@@ -58,13 +58,13 @@ cdo --eccodes merge ${prefix}_e_varc_$ending ${prefix}_tp_varc_$ending ${prefix}
 wait
 if [ ${otags[0]} -eq 'era5l' ] 
 then
-    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
+    cdo --eccodes setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
      era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending
-    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending \
+    cdo --eccodes setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending \
      era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending
-    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
+    cdo --eccodes setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending \
      era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_bias_$ending
-    cdo --eccodes setmiss era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending \
+    cdo --eccodes setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending \
      era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending
     cdo --eccodes mul era5l/${prefix}_bound_bias_$ending era5l/${prefix}_bound_varc_$ending era5l/${prefix}_bound_bias+varc_$ending
 else

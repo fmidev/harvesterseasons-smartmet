@@ -6,6 +6,8 @@ services:
     build: 
       context: ./smartmet-server
       dockerfile: Dockerfile
+    security_opt:
+      - seccomp:unconfined
     container_name: smartmet-server
     ulimits:
       nproc: 65535
