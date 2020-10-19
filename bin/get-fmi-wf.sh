@@ -1,5 +1,5 @@
 #!/bin/bash
-#eval "$(conda shell.bash hook)"
+eval "$(conda shell.bash hook)"
 if [ $# -ne 0 ]
 then
     date=$1
@@ -26,13 +26,16 @@ wget -O /home/smartmet/data/fmi-smartmet-$ydate-synop-krg.grib "http://data.fmi.
 wget -O /home/smartmet/data/fmi-smartmet-$ydate-sd-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=WaterEquivalentOfSnow&timestep=data&starttime=${ydate}T000000&format=grib1&producer=kriging_suomi_snow&projection=epsg:4326"
 wget -O /home/smartmet/data/fmi-smartmet-$ydate-tg-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=GroundTemperature&timestep=data&starttime=${ydate}T000000&format=grib2&producer=roadkriging_suomi&projection=epsg:4326"
 cd /home/smartmet/data
+conda activate xr
 grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:6}01T0000_${date}T0000_[shortName].grib
 mv fmi-smartmet-$ydate-swvl2-cum.grib grib/SMARTOBS_${date:0:6}01T0000_${date}T0900_swvl2.grib
 rm grib/SMARTOBS_${ydate:0:6}01T0000_${ydate}T0900_swvl2.grib
 grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:6}01T0000_${ydate}T0000_[shortName].grib
 # calculate snow depth forecast from snow fall accumulation data
-cdo chparam,144.173.192,11.1.0 -mergetime -seltimestep,1 grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sfara.grib -deltat grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sfara.grib grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sde.grib
+cdo --eccodes chparam,144.173.192,11.1.0 -add -mulc,0.001 grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sfara.grib \
+    -seltimestep,2 grib/SMARTMET_${ydate:0:6}01T0000_${ydate}T0000_sde.grib \
+    grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sde.grib
 # calculate snow depth obs from swe kriging data
-cdo aexprf,fmi-sde.instr fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:6}01T0000_${date}T0000_sde.grib
+cdo --eccodes aexprf,fmi-sde.instr fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:6}01T0000_${date}T0000_sde.grib
 mv fmi-smartmet-* smartmet/
 sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
