@@ -8,214 +8,214 @@
 
 # Minimum temperature at 2m since previous post-processing
 # MINT2M-C => UNKNOWN
-#1;1000000000;
+#1;1000000000;;
 
 # Precipitation form
 # PRECFORM-N => PrecipitationForm
-2;1000000057;
-2;129146;
+2;1000000057;;
+2;129146;;
 
 # Precipitation form
 # PRECFORM-N => PrecipitationForm2
-2;1000001205;
+2;1000001205;;
 
 # Road temperature in C
 # TROAD-C => RoadTemperature
-3;1000000648;
+3;1000000648;;
 
 # Road condition
 # CONDROAD-N => RoadCondition
-4;1000000641;
+4;1000000641;;
 
 # Probability of dry road
 # PROBDRY => ProbabilityDryRoad
-5;1000000642;
+5;1000000642;;
 
 # Probability of wet road
 # PROBWET => ProbabilityWetRoad
-6;1000000643;
+6;1000000643;;
 
 # Probability of moist road
 # PROBMST => ProbabilityMoistRoad
-7;1000000644;
+7;1000000644;;
 
 # Probability of snowy road
 # PROBSNY => ProbabilitySnowyRoad
-8;1000000645;
+8;1000000645;;
 
 # Probability of frosty road
 # PROBFRY => ProbabilityFrostyRoad
-9;1000000646;
+9;1000000646;;
 
 # Probability of icy road
 # PROBICY => ProbabilityIcyRoad
-10;1000000647;
+10;1000000647;;
 
 # Precipitation type, large scale or convective
 # PRECTYPE-N => PrecipitationType
-11;1000000056;
-11;260015;
+11;1000000056;;
+11;260015;;
 
 # Precipitation type, large scale or convective
 # PRECTYPE-N => PrecipitationForm
-11;1000000057;
-11;129145;;PRECTYPE-N
+11;1000000057;;
+11;129145;;
 
 # Precipitation over 5 days in mm
 # RR-5D-MM => Precipitation5d
-12;1000000537;
+12;1000000537;;
 
 # Growth period deviation from normal in days
 # GROWDEV-D => GrowthPeriodDeviationInDays
-13;1000000649;
+13;1000000649;;
 
 # Loose snow depth in cm
 # LSSN-M100 => UNKNOWN
-#14;1000000000;
+#14;1000000000;;
 
 # Growth period deviation from normal in percent
 # GROWDEV-PCT => GrowthPeriodDeviationInPrcnt
-15;1000000650;
+15;1000000650;;
 
 # Growth period precipitation in kgm-2
 # GPPREC-KGM2 => GrowthPeriodPrecipitation
-16;1000000651;
+16;1000000651;;
 
 # Effective temperature sum
 # EFFTS-C => EffectiveTemperatureSum
-17;1000000652;
+17;1000000652;;
 
 # Total ozone in kg/m**2
 # TOZONE-KGM2 => TotalOzone
-18;1000000441;
-18;206;
-18;260130;
+18;1000000441;;
+18;206;;
+18;260130;;
 
 # Road Condition Index
 # ROADIDX-N => RoadConditionSeverity
-19;1000000653;
+19;1000000653;;
 
 # Low and middle cloud cover
 # NLM-PRCNT => MiddleAndLowCloudCover
-20;1000000271;
+20;1000000271;;
 
 # Road condition, sensor 2
 # CONDROAD2-N => RoadConditionAlternative
-21;1000000657;
+21;1000000657;;
 
 # Ice concentration
 # ICNCT-PRCNT => IceConcentration
-24;1000000384;
+24;1000000384;;
 
 # Ice concentration
 # ICNCT-PRCNT => IceConcentration
-24;1000000384;
+24;1000000384;;
 
 # Ice thickness
 # ITHK-CM => IceThickness
-25;1000000385;
+25;1000000385;;
 
 # Ice thickness
 # ITHK-CM => MeanIceThickness
-25;1000001154;
+25;1000001154;;
 
 # Ice minimum thickness
 # IMINTHK-CM => IceMinThickness
-26;1000000386;
+26;1000000386;;
 
 # Ice maximum thickness
 # IMAXTHK-CM => IceMaxThickness
-27;1000000387;
+27;1000000387;;
 
 # Ice degree of ridging
 # IRIDGE-PRCNT => IceDegreeOfRidging
-28;1000000388;
+28;1000000388;;
 
 # Coefficient of drag
 # DRAG-N => UNKNOWN
-#29;1000000000;
+#29;1000000000;;
 
 # Height of 0 C level in hPa
 # H0C-HPA => UNKNOWN
-#30;1000000000;
+#30;1000000000;;
 
 # Testiparametri LW
 # RADTSTLW => UNKNOWN
-#31;1000000000;
+#31;1000000000;;
 
 # Testiparametri SW
 # RADTSTSW => UNKNOWN
-#32;1000000000;
+#32;1000000000;;
 
 # Specific Humidity over land in kg/kg
 # QOL-KGKG => QOL
-33;1000000241;
-33;133;
+33;1000000241;;
+33;133;;
 
 # Temperature over land in Kelvins
 # TOL-K => TOL
-34;1000000240;
+34;1000000240;;
 
 # Ground frost in volumetric proportion
 # GRFROST-M3M3 => GroundFrost
-35;1000000393;
+35;1000000393;;
 
 # Probability of reaching wind gust speed of 15 m/s in EPS
 # PROB-WG-1 => ProbabilityOfGustLimit1
-36;1000000583;
+36;1000000583;;
 
 # Probability of reaching wind gust speed of 20 m/s in EPS
 # PROB-WG-2 => ProbabilityOfGustLimit2
-37;1000000584;
+37;1000000584;;
 
 # Probability of reaching wind gust speed of 25 m/s in EPS
 # PROB-WG-3 => ProbabilityOfGustLimit3
-38;1000000585;
+38;1000000585;;
 
 # Net long wave radiation, top of athmosphere
 # RTOPLW-WM2 => RadiationNetTopAtmLW
-39;1000000314;
+39;1000000314;;
 
 # Net short wave radiation, top of athmosphere
 # RTOPSW-WM2 => RadiationNetTopAtmSW
-40;1000000313;
+40;1000000313;;
 
 # Time to next Road Maintenance Measure
 # ROADMMT-S => TimeToNextMeasure
-41;1000000638;
+41;1000000638;;
 
 # Road Maintenance Measure Code
 # ROADMM-N => RoadMaintenanceMeasure
-42;1000000637;
+42;1000000637;;
 
 # Water equivalent of frost cover in mm
 # FD-MM => RoadFrostCover
-43;1000000635;
+43;1000000635;;
 
 # Water equivalent of snow cover in mm
 # SD-KGM2 => WaterEquivalentOfSnow
-44;1000000266;
+44;1000000266;;
 
 # Seven days¿ precipitation in kgm-2
 # PREC7D-KGM2 => Precipitation7Days
-45;1000000495;
+45;1000000495;;
 
 # Ten days precipitation in kgm-2
 # PREC10-KGM2 => Precipitation10Days
-46;1000000496;
+46;1000000496;;
 
 # Thirty days precipitation in kgm-2
 # PREC30-KGM2 => Precipitation30Days
-47;1000000497;
+47;1000000497;;
 
 # Pressure on ground
 # PGR-PA => UNKNOWN
-#48;1000000000;
-48;134;
+#48;1000000000;;
+48;134;;
 
 # Total column water vapour
 # TOTCWV-KGM2 => UNKNOWN
-#49;1000000000;
+#49;1000000000;;
 49;137;;TOTCWV-KGM2
 
 # Maximum temperature on ambiguous level

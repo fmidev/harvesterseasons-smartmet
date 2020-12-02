@@ -93,10 +93,12 @@ wait
 # add snow depth to ECSF
 [ -f ec-sf_$year${month}_all-24h-eu.grib ] && cdo --eccodes aexprf,ec-sde.instr ec-sf-$year$month-all-24h.grib grib/ECSF-${year}${month}01T0000-all-24h.grib
 # produce forcing file for HOPS
-[ -f grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib ] && cdo --eccodes -f nc2 merge -sellonlatbox,0,42,74,51 -selvar,2t,sde,swvl2 grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib \
-    -sellonlatbox,0,42,74,51 grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib -sellonlatbox,0,42,74,51 -selvar,stl2 grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib \
-    ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-z$bsf-24h-nordic.nc
+/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh ${year} ${month}
+# old HOPS production 
+#[ -f grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib ] && cdo --eccodes -f nc2 merge -sellonlatbox,0,42,74,51 -selvar,2t,sde,swvl2 grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib \
+#    -sellonlatbox,0,42,74,51 grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib -sellonlatbox,0,42,74,51 -selvar,stl2 grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib \
+ #   ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-z$bsf-24h-nordic.nc
 
 # RETIRED code...
 #grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
-#
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
