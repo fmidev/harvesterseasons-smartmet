@@ -32,9 +32,13 @@ mv fmi-smartmet-$ydate-swvl2-cum.grib grib/SMARTOBS_${date:0:6}01T0000_${date}T0
 rm grib/SMARTOBS_${ydate:0:6}01T0000_${ydate}T0900_swvl2.grib
 grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:6}01T0000_${ydate}T0000_[shortName].grib
 # calculate snow depth forecast from snow fall accumulation data
+# need snow state: ERA5 (5 days old) will be accumulated by the forecast from same day in past with ERA5 analysis
+edate=$(date -d "$ydate 5 days ago" +%Y%m%d)
+cdo --eccodes -O chparam,144.173.192,11.1.0 -mulc,0.001 -add grib/SMARTMET_${edate:0:6}01T0000_${edate}T0000_sfara.grib \
+    -remapbil,smartmet-sk-grid -selname,sd -seltimestep,1 grib/ERA5_${edate:0:6}01T0000_${edate}T0000_base+soil.grib sde-state.grib
+# add new forecast to sde-state
 cdo --eccodes chparam,144.173.192,11.1.0 -add -mulc,0.001 grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sfara.grib \
-    -seltimestep,2 grib/SMARTMET_${ydate:0:6}01T0000_${ydate}T0000_sde.grib \
-    grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sde.grib
+    -seltimestep,8 sde-state.grib grib/SMARTMET_${date:0:6}01T0000_${date}T0000_sde.grib
 # calculate snow depth obs from swe kriging data
 cdo --eccodes aexprf,fmi-sde.instr fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:6}01T0000_${date}T0000_sde.grib
 mv fmi-smartmet-* smartmet/
