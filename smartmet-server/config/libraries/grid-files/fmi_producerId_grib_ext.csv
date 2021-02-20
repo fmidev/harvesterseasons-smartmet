@@ -20,3 +20,4 @@
 561;1;98;127;SMARTMET;FMI forecasts
 562;2;98;127;SMARTOBS;FMI kriging analysis
 563;3;98;127;SMARTMET;FMI ensembles
+567;2;98;255;SWI;Soil Wetness index

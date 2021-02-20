@@ -19,3 +19,4 @@ HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
 HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
 SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
 SMARTOBS;SMARTOBS;SMARTOBS;FMI official weather observation based parameters
+SWI;SWI;SWI;Copernicus land Soil wetness index
