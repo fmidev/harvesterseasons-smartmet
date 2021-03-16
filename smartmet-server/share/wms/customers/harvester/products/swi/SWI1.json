@@ -1,16 +1,16 @@
 {
-    "title" : "ECSF Soil Temperature",
-    "abstract" : "C3S seasonal forecast data from ECMWF.",
+    "title" : "SWI",
+    "abstract" : "SWI",
     "projection": {},
-    "producer": "ECBSF",
+    "producer": "SWI",
     "source":"grid",
     "views": [{
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/TSOIL-K.json",
-            "css": "isobands/TSOIL-K.css",
-            "parameter": "TSOIL-K:ECBSF:5022:9:28:1",
+            "isobands": "json:isobands/SWI.json",
+            "css": "isobands/SOILWET1-M.css",
+            "parameter": "SWI1-%:SWI:5029:1:0:1",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },
