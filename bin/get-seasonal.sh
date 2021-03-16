@@ -43,13 +43,13 @@ conda activate xr
 ## Make bias-adjustement
 ### adjust unbound variables
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50.grib ] && \
- seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -O --eccodes aexprf,ec-sde.instr -ymonadd \
+ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -b P12 -O --eccodes aexprf,ec-sde.instr -ymonadd \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,2d,2t,rsn,sd,stl1,swvl1,swvl2 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selname,2d,2t,rsn,sd,stl1,swvl1,swvl2 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
     ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib || echo "NOT adj unbound seasonal forecast input missing or already produced"
 ### adjust wind
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50.grib ] && \
- seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo -O --eccodes ymonmul \
+ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo -b P8 -O --eccodes ymonmul \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -aexpr,'ws=sqrt(10u^2+10v^2);' -selname,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
     ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
@@ -60,14 +60,16 @@ conda activate xr
     cdo --eccodes ymonmul -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc disacc-tmp-{}.grib \
      -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib && \
-    cdo --eccodes timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-eu-{}.grib" && \
-    rm disacc-tmp-*.grib || echo "NOT adj acc - seasonal forecast input missing or already produced"
+    cdo --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-eu-{}.grib" \
+    && rm disacc-tmp-*.grib || echo "NOT adj acc - seasonal forecast input missing or already produced"
+
 ## Make stl2,3,4 from stl1
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50.grib ] && \
- seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes -O ymonadd \
-    -aexpr,'stl2=stl1;stl3=stl1;stl4=stl1;' -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selname,stl1,stl2,stl3,stl4 $era/$era-stls-diff+bias-climate-eu.grib \
-    ens/ec-${bsf}_$year${month}_stl-24h-eu-{}.grib  || echo "NOT making stl levels 2,3,4 - seasonal forecast input missing or already produced"
+ seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes -O -b P8 ymonadd -aexpr,'stl2=stl1;stl3=stl1;stl4=stl1;' -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selname,stl1,stl2,stl3,stl4 $era/$era-stls-diff+bias-climate-eu.grib ens/ec-${bsf}_$year${month}_stl-24h-eu-{}.grib \
+    || echo "NOT making stl levels 2,3,4 - seasonal forecast input missing or already produced"
+# cdo correcting levels for stl2,3,4 segfaults with the below operator:
+# changemulti,\'$'(170;*;7|170;*;28);(183;*;7|183;*;100);(236;*;7|236;*;289);'\'
 
 ## fix grib attributes
 [ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && \
@@ -84,15 +86,22 @@ conda activate xr
     ens/ec-${bsf}_$year${month}_stl-24h-eu-{}-fixed.grib || echo "NOT fixing stl gribs attributes - no input or already produced"
 
 ## join ensemble members and move to grib folder
-[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && grib_copy ens/ec-${bsf}_$year${month}_bound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && grib_copy ens/ec-${bsf}_$year${month}_acc-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_bound-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_bound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_acc-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib &
 wait
 #rm ens/ec-${bsf}_$year${month}_*-24h-eu-*.grib
 # add snow depth to ECSF
-[ -f ec-sf_$year${month}_all-24h-eu.grib ] && cdo --eccodes aexprf,ec-sde.instr ec-sf-$year$month-all-24h.grib grib/ECSF-${year}${month}01T0000-all-24h.grib
+[ -f ec-sf-$year$month-all-24h-euro.grib ] && [ ! -f grib/ECSF_$year${month}01T0000_all-24h-euro.grib ] && \
+cdo --eccodes -O aexprf,ec-sde.instr ec-sf-$year$month-all-24h-euro.grib grib/ECSF_$year${month}01T0000_all-24h-euro.grib || \
+echo "NOT adding ECSF snow - no input or already produced"
+
 # produce forcing file for HOPS
-/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh ${year} ${month}
+/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
