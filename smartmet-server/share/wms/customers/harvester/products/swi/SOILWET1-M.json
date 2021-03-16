@@ -1,5 +1,5 @@
 {
-    "title" : "ECSF Soil Temperature",
+    "title" : "ECSF Soil Wetness",
     "abstract" : "C3S seasonal forecast data from ECMWF.",
     "projection": {},
     "producer": "ECBSF",
@@ -8,9 +8,9 @@
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/TSOIL-K.json",
-            "css": "isobands/TSOIL-K.css",
-            "parameter": "TSOIL-K:ECBSF:5022:9:28:1",
+            "isobands": "json:isobands/SOILWET1-M.json",
+            "css": "isobands/SOILWET1-M.css",
+            "parameter": "SOILWET1-M:ECBSF:5022:9:7:1",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

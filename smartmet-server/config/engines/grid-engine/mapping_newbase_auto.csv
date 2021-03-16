@@ -76,49 +76,10 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
-ERA5;DewPoint;2;TD-C;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;Evaporation;2;EVAP-KGM2;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;GroundTemperature;2;TG-K;0;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5;GroundTemperature;2;TG-K;5021;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5;PrecipitationAmount;2;RR-KGM2;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;SkinTemperature;2;SKT-K;0;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5;SkinTemperature;2;SKT-K;5021;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5;SnowAccumulation;2;SNACC-KGM2;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;SnowDensity;2;SND-KGM3;0;1;1;00000;1;1;;0;E;;;;
-ERA5;SnowDensity;2;SND-KGM3;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;SnowDepth;2;HSNOW-M;0;1;1;00000;1;1;;0;E;;;;
-ERA5;SnowDepth;2;HSNOW-M;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;SnowDepth;2;SD-M;5010;1;1;00000;1;1;;0;E;;;;
-ERA5;Temperature;2;T-K;5021;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5;VolumetricSoilWaterLayer1;2;SOILWET1-M;0;1;9;00007;1;1;;0;E;;;;
-ERA5;VolumetricSoilWaterLayer1;2;SOILWET1-M;5010;1;9;00007;1;1;;0;E;;;;
-ERA5;VolumetricSoilWaterLayer1;2;SOILWET1-M;5021;1;9;00007;1;1;;0;E;;;;
-ERA5;WindUMS;2;U-MS;5021;1;1;00000;1;1;;0;E;;;;
-ERA5;WindVMS;2;V-MS;5021;1;1;00000;1;1;;0;E;;;;
-ERA5L;DewPoint;2;TD-C;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;Evaporation;2;EVAP-KGM2;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;GroundTemperature;2;TG-K;0;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;GroundTemperature;2;TG-K;5009;1;9;00700;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;GroundTemperature;2;TG-K;5022;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;PrecipitationAmount;2;RR-KGM2;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;SkinTemperature;2;SKT-K;0;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;SkinTemperature;2;SKT-K;5022;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;SnowAccumulation;2;SNACC-KGM2;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;SnowDensity;2;SND-KGM3;0;1;1;00000;1;1;;0;E;;;;
-ERA5L;SnowDensity;2;SND-KGM3;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;SnowDepth;2;HSNOW-M;0;1;1;00000;1;1;;0;E;;;;
-ERA5L;SnowDepth;2;HSNOW-M;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;SnowDepth;2;SD-M;5024;1;0;00000;1;1;;0;E;;;;
-ERA5L;Temperature;2;T-K;5022;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ERA5L;VolumetricSoilWaterLayer1;2;SOILWET1-M;0;1;9;00007;1;1;;0;E;;;;
-ERA5L;VolumetricSoilWaterLayer1;2;SOILWET1-M;5009;1;9;00700;1;1;;0;E;;;;
-ERA5L;VolumetricSoilWaterLayer1;2;SOILWET1-M;5022;1;9;00007;1;1;;0;E;;;;
-ERA5L;WindUMS;2;U-MS;5022;1;1;00000;1;1;;0;E;;;;
-ERA5L;WindVMS;2;V-MS;5022;1;1;00000;1;1;;0;E;;;;
 ECSF;CrossSectionDirection;2;RADGLOA-JM2;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;DewPoint;2;TD-C;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;Evaporation;2;EVAP-KGM2;5014;1;1;00000;1;1;;0;E;;;;
-ECSF;GroundTemperature;2;TG-K;5014;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
+ECSF;GroundTemperature;2;TG-K;5014;1;14;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 ECSF;IceConcentration;2;IC-0TO1;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;LatentHeatFlux;2;FLLAT-JM2;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;PrecipitationAmount;2;RR-KGM2;5014;1;1;00000;1;1;;0;E;;;;
@@ -130,11 +91,10 @@ ECSF;SensibleHeatFlux;2;FLSEN-JM2;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;SnowAccumulation;2;SNACC-KGM2;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;SnowDensity;2;SND-KGM3;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;SnowDepth;2;HSNOW-M;5014;1;1;00000;1;1;;0;E;;;;
-ECSF;SnowDepth;2;SD-M;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;Temperature;2;T-K;5014;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 ECSF;TemperatureSea;2;TSEA-K;5014;1;1;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 ECSF;TotalCloudCover;2;N-0TO1;5014;1;1;00000;1;1;;0;E;;;;
-ECSF;VolumetricSoilWaterLayer1;2;SOILWET1-M;5014;1;9;00007;1;1;;0;E;;;;
+ECSF;VolumetricSoilWaterLayer1;2;SOILWET1-M;5014;1;14;00007;1;1;;0;E;;;;
 ECSF;WindGust;2;FFG-MS;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;WindUMS;2;U-MS;5014;1;1;00000;1;1;;0;E;;;;
 ECSF;WindVMS;2;V-MS;5014;1;1;00000;1;1;;0;E;;;;
@@ -150,6 +110,7 @@ ECBSF;VolumetricSoilWaterLayer1;2;SOILWET1-M;5022;1;9;00007;1;1;;0;E;;;;
 ECBSF;WindSpeedMS;2;FF-MS;5022;1;1;00000;1;1;;0;E;;;;
 ECBSF;WindUMS;2;U-MS;5022;1;1;00000;1;1;;0;E;;;;
 ECBSF;WindVMS;2;V-MS;5022;1;1;00000;1;1;;0;E;;;;
+<<<<<<< HEAD
 ECB2SF;DewPoint;2;TD-C;5021;1;1;00000;1;1;;0;E;;;;
 ECB2SF;GroundTemperature;2;TG-K;5021;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 ECB2SF;PrecipitationAmount;2;RR-KGM2;5021;1;1;00000;1;1;;0;E;;;;
@@ -164,23 +125,26 @@ ECB2SF;WindVMS;2;V-MS;5021;1;1;00000;1;1;;0;E;;;;
 HOPSSF;Evaporation;2;EVAP-KGM2;5026;1;0;00000;1;1;;0;E;;;;
 HOPSSF;GroundTemperature;2;TG-K;5026;1;0;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 HOPSSF;Temperature;2;T-K;5026;1;0;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
+=======
+>>>>>>> 025cd3240e803a779e200471bf916be94ef8cf80
 SMARTMET;Evaporation;2;EVAP-KGM2;13;1;7;00000;1;1;;0;E;;;;
-SMARTMET;Evaporation;2;EVAP-KGM2;13;1;7;00002;1;1;;0;D;;;;
 SMARTMET;GroundTemperature;2;TG-K;1073;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-SMARTMET;GroundTemperature;2;TG-K;5015;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 SMARTMET;PrecipitationAmount;2;RR-KGM2;1073;1;0;00000;1;1;;0;E;;;;
 SMARTMET;PrecipitationAmount;2;RR-KGM2;1073;1;1;00002;1;1;;0;D;;;;
 SMARTMET;SnowDepth;2;SD-M;5027;1;1;00000;1;1;;0;E;;;;
 SMARTMET;SpecificHumidity;2;Q-KGKG;13;1;7;00000;1;1;;0;E;;;;
 SMARTMET;Temperature;2;T-K;1073;1;6;00002;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
 SMARTMET;VerticalVelocityMMS;2;VV-MMS;13;1;7;00000;1;1;;0;E;;;;
-SMARTMET;WaterEquivalentOfSnow;2;SD-KGM2;13;1;7;00000;1;1;;0;E;;;;
 SMARTOBS;Evaporation;2;EVAP-KGM2;13;1;4;00002;1;1;;0;D;;;;
+<<<<<<< HEAD
 SMARTOBS;Evaporation;2;EVAP-KGM2;13;1;7;00002;1;1;;0;D;;;;
 SMARTOBS;GroundTemperature;2;TG-K;5015;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
+=======
+>>>>>>> 025cd3240e803a779e200471bf916be94ef8cf80
 SMARTOBS;SnowDepth;2;HSNOW-M;13;1;4;00000;1;1;;0;D;;;;
-SMARTOBS;SnowDepth;2;SD-M;13;1;4;00000;1;1;;0;D;;;;
 SMARTOBS;Temperature;2;T-K;13;1;4;00002;1;1;;0;D;SUM{$,-273.15};SUM{$,273.15};;
-SMARTOBS;Temperature;2;T-K;13;1;7;00002;1;1;;0;D;SUM{$,-273.15};SUM{$,273.15};;
 SMARTOBS;WindSpeedMS;2;FF-MS;13;1;4;00002;1;1;;0;D;;;;
+<<<<<<< HEAD
 SMARTOBS;WindSpeedMS;2;FF-MS;13;1;7;00002;1;1;;0;D;;;;
+=======
+>>>>>>> 025cd3240e803a779e200471bf916be94ef8cf80
