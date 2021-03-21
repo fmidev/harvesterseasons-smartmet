@@ -46,5 +46,5 @@ c.retrieve(
             "4872", "4896", "4920", "4944", "4968", "4992", "5016", "5040", "5064", "5088", "5112", "5136", "5160"            
         ],
     },
-    '/home/smartmet/data/ec-sf_%s-%s_tp-24h-euro.grib'%(year,year+2)
+    '/mnt/data/ens/ec-sf_%s-%s_tp-24h-euro.grib'%(year,year+2)
 )

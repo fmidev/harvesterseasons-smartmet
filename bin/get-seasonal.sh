@@ -54,11 +54,12 @@ conda activate xr
     -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
     ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
 ### adjust evaporation and total precip or other accumulating variables
+### due to a clearly too strong variance term in tp adjustment is only done with bias for now
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50.grib ] && \
  seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ "cdo --eccodes -O mergetime -seltimestep,1 -selname,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
      -deltat -selname,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib disacc-tmp-{}.grib && \
     cdo --eccodes ymonmul -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc disacc-tmp-{}.grib \
-     -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
+     -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_eu.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib && \
     cdo --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-eu-{}.grib" \
     && rm disacc-tmp-*.grib || echo "NOT adj acc - seasonal forecast input missing or already produced"
@@ -102,6 +103,7 @@ cdo --eccodes -O aexprf,ec-sde.instr ec-sf-$year$month-all-24h-euro.grib grib/EC
 echo "NOT adding ECSF snow - no input or already produced"
 
 # produce forcing file for HOPS
-/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month
+# mod. M.Kosmale 18.03.2021: called now independently from cron (v3)
+#/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
