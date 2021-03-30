@@ -87,13 +87,13 @@ conda activate xr
     ens/ec-${bsf}_$year${month}_stl-24h-eu-{}-fixed.grib || echo "NOT fixing stl gribs attributes - no input or already produced"
 
 ## join ensemble members and move to grib folder
-[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib ] &&\
+[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib ] &&\
  grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_bound-24h-eu.grib ] &&\
+[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib ] &&\
  grib_copy ens/ec-${bsf}_$year${month}_bound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib ] &&\
+[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib ] &&\
  grib_copy ens/ec-${bsf}_$year${month}_acc-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib ] &&\
+[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib ] &&\
  grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib &
 wait
 #rm ens/ec-${bsf}_$year${month}_*-24h-eu-*.grib
