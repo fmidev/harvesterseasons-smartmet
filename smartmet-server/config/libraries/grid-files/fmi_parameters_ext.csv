@@ -49,10 +49,10 @@
 14009;1;SSRO-M;M;Subsurface Runoff in depth of water in metres;1;1;1;5;
 
 # SWI parameters
-15040;1;SWI1-%;%;Soil wetness index;1;1;1;3;
-15041;1;SWI2-%;%;Soil Wetness index layer 2;1;1;1;5;
-15042;1;SWI3-%;%;Soil Wetness index layer 3;1;1;1;5;
-15043;1;SWI4-%;%;Soil Wetness index layer 4;1;1;1;5;
+15040;1;SWI1;%;Soil wetness index;1;1;1;3;
+15041;1;SWI2;%;Soil Wetness index layer 2;1;1;1;5;
+15042;1;SWI3;%;Soil Wetness index layer 3;1;1;1;5;
+15043;1;SWI4;%;Soil Wetness index layer 4;1;1;1;5;
 
 # HOPS parameters
 14049;1;TWATERP-MM;MM;Total Water Precipitation;1;1;1;2;
