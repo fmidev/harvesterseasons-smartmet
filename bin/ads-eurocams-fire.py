@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/home/smartmet/anaconda3/envs/xr/bin/python
+#/usr/bin/env python
 import sys
 import cdsapi
 if ( len(sys.argv) > 2):

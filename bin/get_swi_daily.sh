@@ -4,7 +4,7 @@ conda activate xr
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
 else
-    yday=`date -d '4 days ago' +%Y%m%d`
+    yday=`date -d '10 days ago' +%Y%m%d`
 fi
 incoming=/home/smartmet/data/copernicus
 mkdir -p $incoming

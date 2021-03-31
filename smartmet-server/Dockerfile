@@ -7,47 +7,29 @@ ENV USER_NAME="smartmet" \
     NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
         GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
 
-RUN yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm \
-    	https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  \
-    	https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-17.9.28-1.el7.fmi.noarch.rpm && \
- yum-config-manager --disable "pgdg*" && \
- yum-config-manager --enable pgdg-common pgdg95 && \
- yum-config-manager --setopt="pgdg*.exclude=postgis*" --save && \
- yum-config-manager --setopt="epel.exclude=librsvg2*" --save && \
- yum -y update 
-# Install version 9.5  before postgis to prevent 9.2 from being installed
-# The version 9.5 seems to be a dependency for smartmet-tools-grid
-# should be drawn from a smartmet dependency later on
-#RUN yum -y install postgresql95 
- 
-# This should install from epel
-# Postgis requires some libraries that are installed with postgresql
-# The postgres95 should be installed before postgis to prevent wrong versions
-# being installed as a dependency
-#RUN yum -y install postgis
-# gribwms plugin required librsvg2
-RUN yum -y install librsvg2-2.40.6-3.el7.x86_64
+# install smartmet-server including grid-engine grid-admin grid-gui and tools
+RUN yum -y install https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-21.3.26-2.el7.fmi.noarch.rpm && \
+    yum -y update && \
+    yum -y install epel-release && \
+    yum-config-manager --setopt="epel.exclude=librsvg2*" --save && \
+    yum-config-manager --setopt="base.exclude=librsvg2*" --save && \
+    yum-config-manager --disable epel-source && \ 
+    yum -y install \
+    smartmet-plugin-backend \
+    smartmet-plugin-admin \
+    smartmet-plugin-download \
+    smartmet-plugin-timeseries \
+    smartmet-plugin-wms \
+    smartmet-engine-grid \
+    smartmet-plugin-grid-admin \
+    smartmet-plugin-grid-gui \
+    smartmet-tools-grid \
+    smartmet-qdtools \
+    unzip && \
+    yum -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
+    yum clean all 
 
-# The order of packages installed seems to affect dependencies from working 
-RUN yum -y install smartmet-plugin-backend \
-  smartmet-plugin-admin \
-   smartmet-plugin-download \
-    smartmet-plugin-gribtimeseries \
-     smartmet-plugin-grid-admin \
-      smartmet-plugin-grid-gui \
-       smartmet-plugin-gribwfs \
-        smartmet-plugin-gribwms \
-	 unzip 
-#    yum -y install smartmet-plugin-timeseries && \
-#    yum -y install smartmet-plugin-wms && \
-
-
-# For installing filesys2smartmet which is used to load grib-files to redis
-RUN yum -y install smartmet-tools-grid smartmet-qdtools \
-    gdb yum-utils
-RUN debuginfo-install -y $(rpm -qa | grep smartmet)
-RUN yum clean all && yum -y install perf
-
+# Install Google Noto fonts
 RUN mkdir -p /usr/share/fonts/truetype/noto && \
      for FONT in ${NOTO_FONTS}; \
      do \
@@ -77,8 +59,6 @@ EXPOSE 8080
 #COPY docker-entrypoint.sh /
 
 # wms.conf defines imagecache. timeseriescache's use is yet to be found.
-# M.K. 09.01.2020: this is not working; should be checked
-#RUN mkdir -p /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
 # MS 6.3.20: from new Rauhala dockerhub code
 RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
     chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
