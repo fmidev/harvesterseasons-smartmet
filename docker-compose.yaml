@@ -95,8 +95,8 @@ services:
     restart: always
     environment:
       UPSTREAM: 185.213.74.67:8080
-      SERVERNAME: sm.harvesterseasons.com
-      EXTRANAMES: harvesterseasons.com,smdev.harvesterseasons.com
+      SERVERNAME: sm1.harvesterseasons.com
+      #EXTRANAMES: harvesterseasons.com #,smdev.harvesterseasons.com
     ports:
       - "80:80"
       - "443:443"
