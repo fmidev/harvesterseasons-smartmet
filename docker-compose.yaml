@@ -46,6 +46,7 @@ services:
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
       - ../log:/var/log/smartmet:Z
+      #- ../content:/tmp/content:Z
       - ../data/grib:/srv/data/grib:Z
       - ../data/querydata:/srv/data/querydata:Z
     entrypoint:

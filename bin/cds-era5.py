@@ -12,7 +12,7 @@ c.retrieve(
     {
         'product_type':'reanalysis',
         'format':'grib',
-	'area' : '74/0/51/42',
+	    'area' : '75/-30/25/50',
         'variable':[
             '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_dewpoint_temperature',
             '2m_temperature', 'evaporation', 'high_vegetation_cover',

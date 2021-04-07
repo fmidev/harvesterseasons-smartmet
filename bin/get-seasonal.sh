@@ -43,15 +43,21 @@ conda activate xr
 ## Make bias-adjustement
 ### adjust unbound variables
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50.grib ] && \
- seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -b P12 -O --eccodes aexprf,ec-sde.instr -ymonadd \
-    -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,2d,2t,rsn,sd,stl1,swvl1,swvl2 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selname,2d,2t,rsn,sd,stl1,swvl1,swvl2 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
+ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -b P8 -O --eccodes ymonadd \
+    -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,2d,2t,stl1,swvl1,swvl2 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selname,2d,2t,stl1,swvl1,swvl2 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
     ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib || echo "NOT adj unbound seasonal forecast input missing or already produced"
+### adjust snow variables
+[ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_snow-24h-eu-50.grib ] && \
+ seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo -O -b P12 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
+    -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,rsn,sd ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
+    -selname,rsn,sd $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
+    ens/ec-${bsf}_$year${month}_snow-24h-eu-{}.grib || echo "NOT adj snow seasonal forecast input missing or already produced"
 ### adjust wind
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50.grib ] && \
  seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo -b P8 -O --eccodes ymonmul \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -aexpr,'ws=sqrt(10u^2+10v^2);' -selname,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias+varc_eu.grib \
+    -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias_eu.grib \
     ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
 ### adjust evaporation and total precip or other accumulating variables
 ### due to a clearly too strong variance term in tp adjustment is only done with bias for now
@@ -76,6 +82,9 @@ conda activate xr
 [ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && \
  seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib \
     ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}-fixed.grib || echo "NOT fixing unbound gribs attributes - no input or already produced"
+[ -f ens/ec-${bsf}_$year${month}_snow-24h-eu-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_snow-24h-eu-50-fixed.grib ] && \
+ seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_snow-24h-eu-{}.grib \
+    ens/ec-${bsf}_$year${month}_snow-24h-eu-{}-fixed.grib || echo "NOT fixing snow gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && \
  seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib \
     ens/ec-${bsf}_$year${month}_bound-24h-eu-{}-fixed.grib || echo "NOT fixing bound gribs attributes - no input or already produced"
@@ -87,19 +96,21 @@ conda activate xr
     ens/ec-${bsf}_$year${month}_stl-24h-eu-{}-fixed.grib || echo "NOT fixing stl gribs attributes - no input or already produced"
 
 ## join ensemble members and move to grib folder
-[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib ] &&\
- grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_unbound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib ] &&\
- grib_copy ens/ec-${bsf}_$year${month}_bound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_bound-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib ] &&\
- grib_copy ens/ec-${bsf}_$year${month}_acc-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_acc-24h-eu.grib &
-[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib ] &&\
- grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_stl-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_unbound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_unbound-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_unbound-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_snow-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_snow-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_snow-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T0000_snow-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_bound-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_bound-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_bound-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_acc-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_acc-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_acc-24h-eu.grib &
+[ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_stl-24h-eu.grib ] &&\
+ grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_stl-24h-eu.grib &
 wait
 #rm ens/ec-${bsf}_$year${month}_*-24h-eu-*.grib
 # add snow depth to ECSF
-[ -f ec-sf-$year$month-all-24h-euro.grib ] && [ ! -f grib/ECSF_$year${month}01T0000_all-24h-euro.grib ] && \
-cdo --eccodes -O aexprf,ec-sde.instr ec-sf-$year$month-all-24h-euro.grib grib/ECSF_$year${month}01T0000_all-24h-euro.grib || \
+[ -f ec-sf-$year$month-all-24h-euro.grib ] && [ ! -f grib/ECSF_$year${month}01T000000_all-24h-euro.grib ] && \
+cdo --eccodes -O aexprf,ec-sde.instr ec-sf-$year$month-all-24h-euro.grib grib/ECSF_$year${month}01T000000_all-24h-euro.grib || \
 echo "NOT adding ECSF snow - no input or already produced"
 
 # produce forcing file for HOPS
