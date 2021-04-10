@@ -107,7 +107,7 @@ conda activate xr
 [ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50-fixed.grib ] && [ ! -f grib/EC${bsf}_$year${month}01T000000_stl-24h-eu.grib ] &&\
  grib_copy ens/ec-${bsf}_$year${month}_stl-24h-eu-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_stl-24h-eu.grib &
 wait
-#rm ens/ec-${bsf}_$year${month}_*-24h-eu-*.grib
+rm ens/ec-${bsf}_$year${month}_*-24h-eu-*.grib
 # add snow depth to ECSF
 [ -f ec-sf-$year$month-all-24h-euro.grib ] && [ ! -f grib/ECSF_$year${month}01T000000_all-24h-euro.grib ] &&\
  cdo -s --eccodes -O aexprf,ec-sde.instr ec-sf-$year$month-all-24h-euro.grib grib/ECSF_$year${month}01T000000_all-24h-euro.grib ||\
