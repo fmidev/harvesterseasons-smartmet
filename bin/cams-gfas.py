@@ -16,7 +16,7 @@ server.retrieve({
     "param": "92.210/97.210/99.210/100.210",
     "step": "0-24",
     "stream": "gfas",
-    "target": "GFAS_%s%s01T0000_%s%s%sT0000_fire.grib" % (year,month,year,month,day),
+    "target": "GFAS_%s%s01T0000_%s%s%sT000000_fire.grib" % (year,month,year,month,day),
     "time": "0000",
     "type": "ga",
 })
