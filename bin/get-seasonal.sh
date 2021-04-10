@@ -46,19 +46,19 @@ conda activate xr
  seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,2d,2t,stl1,swvl1,swvl2 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selname,2d,2t,stl1,swvl1,swvl2 $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
-    ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib || echo "NOT adj unbound seasonal forecast input missing or already produced"
+    ens/ec-${bsf}_$year${month}_unbound-24h-eu-{}.grib || echo "NOT adj unbound - seasonal forecast input missing or already produced"
 ### adjust snow variables
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_snow-24h-eu-50.grib ] && \
  seq 0 50 | parallel cdo -s -O -b P12 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -selname,rsn,sd ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -selname,rsn,sd $era/$era-ecsf_2000-2019_unbound_bias_eu.grib \
-    ens/ec-${bsf}_$year${month}_snow-24h-eu-{}.grib || echo "NOT adj snow seasonal forecast input missing or already produced"
+    ens/ec-${bsf}_$year${month}_snow-24h-eu-{}.grib || echo "NOT adj snow - seasonal forecast input missing or already produced"
 ### adjust wind
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_bound-24h-eu-50.grib ] && \
  seq 0 50 | parallel -q cdo -s -b P8 -O --eccodes ymonmul \
     -remap,$era-eu-grid,ec-sf-$era-eu-weights.nc -aexpr,'ws=sqrt(10u^2+10v^2);' -selname,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
     -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias_eu.grib \
-    ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib || echo "NOT adj wind seasonal forecast input missing or already produced"
+    ens/ec-${bsf}_$year${month}_bound-24h-eu-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
 ### adjust evaporation and total precip or other accumulating variables
 ### due to a clearly too strong variance term in tp adjustment is only done with bias for now
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_acc-24h-eu-50.grib ] && \
@@ -68,7 +68,7 @@ conda activate xr
      -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_eu.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib && \
     cdo -s --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-eu-{}.grib" \
-    && rm disacc-tmp-*.grib || echo "NOT adj acc seasonal forecast input missing or already produced"
+    && rm disacc-tmp-*.grib || echo "NOT adj acc - seasonal forecast input missing or already produced"
 
 ## Make stl2,3,4 from stl1
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50.grib ] && \

@@ -1,6 +1,7 @@
 fminames-db/data
 dev/
 .fmi-apikey
+.vscode/
 .pytest_cache
 __pycache__
 *.egg-info
