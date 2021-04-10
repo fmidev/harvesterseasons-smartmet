@@ -39,4 +39,4 @@ c.retrieve(
                         '21:00', '22:00', '23:00',
         ]
     },
-    '/home/smartmet/data/ERA5_{:0>4}{:0>2}{:0>2}T0000_base+soil.grib'.format(year,month,day))
+    '/home/smartmet/data/ERA5_{:0>4}{:0>2}{:0>2}T000000_base+soil.grib'.format(year,month,day))

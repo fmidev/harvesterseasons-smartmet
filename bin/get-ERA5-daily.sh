@@ -17,8 +17,8 @@ else
 fi
 cd /home/smartmet/data
 echo "fetch ERA5 for y: $year m: $month d: $day"
-[ -f ERA5_$year$month${day}T0000_base+soil.grib ] || ../bin/cds-era5.py $year $month $day
+[ -f ERA5_$year$month${day}T000000_base+soil.grib ] || ../bin/cds-era5.py $year $month $day
 #conda activate xr
-/home/smartmet/anaconda3/envs/xr/bin/cdo --eccodes aexprf,ec-sde.instr ERA5_$year$month${day}T0000_base+soil.grib grib/ERA5_$year${month}01T0000_$year$month${day}T0000_base+soil.grib
-rm ERA5_$year$month${day}T0000_base+soil.grib
+/home/smartmet/anaconda3/envs/xr/bin/cdo --eccodes aexprf,ec-sde.instr ERA5_$year$month${day}T000000_base+soil.grib grib/ERA5_${year}0101T000000_$year$month${day}T0000_base+soil.grib
+rm ERA5_$year$month${day}T000000_base+soil.grib
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
