@@ -23,4 +23,4 @@ c.retrieve(
         'leadtime_hour': ['0','12', '24','36', '48', '60','72', '84', '96'],
         'format': 'grib',
     },
-    '/home/smartmet/data/grib/CAMSE_%s%s01T0000_%s%s%s_WFPM10_12h.grib' % (year,month,year,month,day))
+    '/home/smartmet/data/grib/CAMSE_%s0101T000000_%s%s%s_WFPM10_12h.grib' % (year,year,month,day))
