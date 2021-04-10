@@ -6,4 +6,5 @@ dev/
 __pycache__
 *.egg-info
 *~
-smartmet-server/config/engine/grid-engine/*_auto.csv
+smartmet-server/config/engine/grid-engine/mapping_fmi_auto.csv
+smartmet-server/config/engine/grid-engine/mapping_newbase_auto.csv
