@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# monthly script for fetching ERA5 Land reanalysis data from cdsapi, cutting out the Nordic domain
+# monthly script for fetching ERA5 Land reanalysis data from cdsapi
 # and setting it up in the smartmet-server
 #
 # 14.1.2020 Mikko Strahlendorff
