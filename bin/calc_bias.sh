@@ -59,13 +59,13 @@ wait
 if [ ${otags[0]} -eq 'era5l' ] 
 then
     cdo --eccodes -O setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending -remap,era5l-eu-grid,era5-era5l-eu-weights.nc \
-     era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_filled_bias_$ending
+     era5/era5-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_filled_bias_$ending
     cdo --eccodes -O setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending -remap,era5l-eu-grid,era5-era5l-eu-weights.nc \
-     era5/era5-"${mtags[1]}"_"${otags[1]}"_unbound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_filled_varc_$ending
+     era5/era5-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_unbound_filled_varc_$ending
     cdo --eccodes -O setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_bias_$ending -remap,era5l-eu-grid,era5-era5l-eu-weights.nc \
-     era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_filled_bias_$ending
+     era5/era5-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_bias_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_filled_bias_$ending
     cdo --eccodes -O setmiss era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending -remap,era5l-eu-grid,era5-era5l-eu-weights.nc \
-     era5/era5-"${mtags[1]}"_"${otags[1]}"_bound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_filled_varc_$ending
+     era5/era5-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_varc_$ending era5l/era5l-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"_bound_filled_varc_$ending
     cdo --eccodes -O mul ${prefix}_bound_filled_bias_$ending era5l/${prefix}_bound_filled_varc_$ending era5l/${prefix}_bound_bias+varc_$ending
     cdo --eccodes -O mul ${prefix}_unbound_filled_bias_$ending era5l/${prefix}_unbound_filled_varc_$ending era5l/${prefix}_unbound_bias+varc_$ending
     parallel mv {} {= s:_filled:: =} ::: ${prefix}_*_filled*
