@@ -31,7 +31,7 @@
 14051;1;MX2T24-K;K;Maximum temperature at 2 metres in the last 24 hours;;;1;
 14052;1;MN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;;;1;
 # swvl2 Volumetric Soil Water layer 2, 3, 4
-14039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;3;
+14039;1;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;5;
 14040;1;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 14041;1;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 14042;1;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
@@ -49,7 +49,7 @@
 14009;1;SSRO-M;M;Subsurface Runoff in depth of water in metres;1;1;1;5;
 
 # SWI parameters
-15040;1;SWI1;%;Soil wetness index;1;1;1;3;
+15040;1;SWI1;%;Soil wetness index;1;1;1;5;
 15041;1;SWI2;%;Soil Wetness index layer 2;1;1;1;5;
 15042;1;SWI3;%;Soil Wetness index layer 3;1;1;1;5;
 15043;1;SWI4;%;Soil Wetness index layer 4;1;1;1;5;
