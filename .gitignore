@@ -1,8 +1,9 @@
 fminames-db/data
 dev/
 .fmi-apikey
+.vscode/
 .pytest_cache
 __pycache__
 *.egg-info
 *~
-smartmet-server/config/engine/grid-engine/*_auto.csv
+smartmet-server/config/engines/grid-engine/mapping_*_auto.csv
