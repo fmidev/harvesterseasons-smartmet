@@ -20,5 +20,6 @@ HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
 SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
 SMARTOBS;SMARTOBS;SMARTOBS;FMI official weather observation based parameters
 SWI;SWI;SWI;Copernicus land Soil wetness index
+SWI10;SWI10;SWI10;Copernicus global land Soil wetness index
 ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
