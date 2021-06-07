@@ -1,5 +1,5 @@
 
-# SmartMet-server for Harvester Sesaons service
+# SmartMet-server for Harvester Seasons service
 
 Mainly for showing ERA5 Land grib datasets and HOPS hydrological forecasts from seasonal and weather forecast data.
 This entails a mix of GRID and non-grid smartmet-server plugins to run. It is now being run on a WEkEO cloud server running Ubuntu.
