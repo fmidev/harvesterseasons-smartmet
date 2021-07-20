@@ -1,5 +1,5 @@
 
-# SmartMet-server for Harvester Sesaons service
+# SmartMet-server for Harvester Seasons service
 
 Mainly for showing ERA5 Land grib datasets and HOPS hydrological forecasts from seasonal and weather forecast data.
 This entails a mix of GRID and non-grid smartmet-server plugins to run. It is now being run on a WEkEO cloud server running Ubuntu.
@@ -57,7 +57,7 @@ This will:
 ## Read data to Redis to be used by SmartMet-server
 Then docker and its four instances (smartmet-server, fminames-db, redis and ssl-proxy), put grib files with data in the ../data directory.
 Filenames will have to match the pattern (dataproducer)_(YYYYMMDDTHHMM)_(description as you like).grib
-Dataproducer needs to be something defined in the ../config/engines/grid-engine/producers.csv. For mapping data into the server refer to [MAPPING.md](MAPPING.md)
+Dataproducer needs to be something defined in the ../config/engines/grid-engine/producers.csv. For mapping data into the server refer to [DATAMAPPING.md](DATAMAPPING.md)
 
 Run a `filesys-to-smartmet`-script in the smartmet-server container... once Redis is ready. The location of filesys-to-smartmet.cfg depends on where
 the settings-files are located at. With `docker-compose.yaml` the settings are currently stored in `/home/smartmet/config`.
