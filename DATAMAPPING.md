@@ -20,4 +20,4 @@ Many of the csv files can be automatically updated from a FMI database. The _ext
 
 In the end it should be possible to query daya in timeseries requests or WMS layer definitions with newbase names or strings with FMI-ID:::: names. Those names are in the fmi_parameters.csv
 
-![](https://github.com/fmidev/chile-smartmet/blob/master/parameter-mapping.png)
+![](https://github.com/fmidev/harvesterseasons-smartmet/blob/master/parameter-mapping.png)
