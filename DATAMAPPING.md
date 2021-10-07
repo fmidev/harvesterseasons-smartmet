@@ -19,3 +19,6 @@ Data from GRIB files need to be mapped onto variables that the SmartMet-Server s
 Many of the csv files can be automatically updated from a FMI database. The _ext versions are used to bypass this database update, so it will not overwrite local configurations. So it is recommended to add own settings mainly into the _ext.csv files.
 
 In the end it should be possible to query daya in timeseries requests or WMS layer definitions with newbase names or strings with FMI-ID:::: names. Those names are in the fmi_parameters.csv
+
+![](https://github.com/fmidev/harvesterseasons-smartmet/blob/master/parameter-mapping.png)
+Note: All the file names mentioned in the flowchart above are ”default names” which can be changed in the ’grid-files.conf’ if necessary. Additionally, all the definitions in question can be distributed to several files. The idea is that a set of ”standard files” are included in the installation and the user can easily add own definitions without them disappearing with the next installation.
