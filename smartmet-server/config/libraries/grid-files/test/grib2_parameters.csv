@@ -1,0 +1,3691 @@
+#################################################################################
+#
+# This file defines grib parameter identifiers for GRIB2 files. The main purpose
+# of this file is to identify grib parameters according to their fields so that we
+# will get unique grib identifiers for them.
+#
+# Notice that this file is used for testing purposes. Currently our testing file
+# contains such identification field values that have nothing to do with 
+# "standard mapping". In practice, "parameterCategory" and "parameterNumber"
+# fields are used for encoding newbase identifiers: 
+#
+#   newbase-id = parameterCategory * 256 + parameterNumber. 
+#
+# Global grib identifiers are encoded as: 
+#
+#   grib-id = 1000000000 + newbase-id.
+#
+# Fields:
+#   1 Grib-id
+#   2 Fields used for identification
+#
+#################################################################################
+
+# Pressure
+1000000001;discipline=192,parameterCategory=0,parameterNumber=1;
+
+# GeopHeight
+1000000002;discipline=192,parameterCategory=0,parameterNumber=2;
+
+# GeomHeight
+1000000003;discipline=192,parameterCategory=0,parameterNumber=3;
+
+# Temperature
+1000000004;discipline=192,parameterCategory=0,parameterNumber=4;
+
+# MaximumTemperature
+1000000005;discipline=192,parameterCategory=0,parameterNumber=5;
+
+# MinimumTemperature
+1000000006;discipline=192,parameterCategory=0,parameterNumber=6;
+
+# TemperatureAnomaly
+1000000007;discipline=192,parameterCategory=0,parameterNumber=7;
+
+# PotentialTemperature
+1000000008;discipline=192,parameterCategory=0,parameterNumber=8;
+
+# PseudoAdiabaticPotentialTemperature
+1000000009;discipline=192,parameterCategory=0,parameterNumber=9;
+
+# DewPoint
+1000000010;discipline=192,parameterCategory=0,parameterNumber=10;
+
+# DewPointDeficit
+1000000011;discipline=192,parameterCategory=0,parameterNumber=11;
+
+# SpecificHumidity
+1000000012;discipline=192,parameterCategory=0,parameterNumber=12;
+
+# Humidity
+1000000013;discipline=192,parameterCategory=0,parameterNumber=13;
+
+# MixingRatio
+1000000014;discipline=192,parameterCategory=0,parameterNumber=14;
+
+# StabilityIndex
+1000000015;discipline=192,parameterCategory=0,parameterNumber=15;
+
+# SaturationDeficit
+1000000016;discipline=192,parameterCategory=0,parameterNumber=16;
+
+# TopoGraf
+1000000017;discipline=192,parameterCategory=0,parameterNumber=17;
+
+# TotalWindMS
+1000000019;discipline=192,parameterCategory=0,parameterNumber=19;
+
+# WindDirection
+1000000020;discipline=192,parameterCategory=0,parameterNumber=20;
+
+# WindSpeedMS
+1000000021;discipline=192,parameterCategory=0,parameterNumber=21;
+
+# WindVectorMS
+1000000022;discipline=192,parameterCategory=0,parameterNumber=22;
+
+# WindUMS
+1000000023;discipline=192,parameterCategory=0,parameterNumber=23;
+
+# WindVMS
+1000000024;discipline=192,parameterCategory=0,parameterNumber=24;
+
+# WindGustU
+1000000025;discipline=192,parameterCategory=0,parameterNumber=25;
+
+# WindGustV
+1000000026;discipline=192,parameterCategory=0,parameterNumber=26;
+
+# HeightMinus20C
+1000000028;discipline=192,parameterCategory=0,parameterNumber=28;
+
+# StreamFunction
+1000000029;discipline=192,parameterCategory=0,parameterNumber=29;
+
+# VorticityRelative
+1000000030;discipline=192,parameterCategory=0,parameterNumber=30;
+
+# VorticityAbsolute
+1000000031;discipline=192,parameterCategory=0,parameterNumber=31;
+
+# VorticityAdvectionRelative
+1000000032;discipline=192,parameterCategory=0,parameterNumber=32;
+
+# VorticityAdvectionAbsolute
+1000000033;discipline=192,parameterCategory=0,parameterNumber=33;
+
+# VelocityDivergenceHoriz
+1000000034;discipline=192,parameterCategory=0,parameterNumber=34;
+
+# MoistureDivergenceHoriz
+1000000035;discipline=192,parameterCategory=0,parameterNumber=35;
+
+# VorticityGeostrophic
+1000000036;discipline=192,parameterCategory=0,parameterNumber=36;
+
+# VorticityAdvectionGeostr
+1000000037;discipline=192,parameterCategory=0,parameterNumber=37;
+
+# VelocityPotential
+1000000039;discipline=192,parameterCategory=0,parameterNumber=39;
+
+# VerticalVelocityCBS
+1000000040;discipline=192,parameterCategory=0,parameterNumber=40;
+
+# VerticalVelocityCB12H
+1000000041;discipline=192,parameterCategory=0,parameterNumber=41;
+
+# VerticalVelocityHPAH
+1000000042;discipline=192,parameterCategory=0,parameterNumber=42;
+
+# VerticalVelocityMMS
+1000000043;discipline=192,parameterCategory=0,parameterNumber=43;
+
+# WindShearMS
+1000000044;discipline=192,parameterCategory=0,parameterNumber=44;
+
+# WindShearKT
+1000000045;discipline=192,parameterCategory=0,parameterNumber=45;
+
+# LapseRate
+1000000046;discipline=192,parameterCategory=0,parameterNumber=46;
+
+# PrecipitableWater
+1000000047;discipline=192,parameterCategory=0,parameterNumber=47;
+
+# PrecipitationConv
+1000000048;discipline=192,parameterCategory=0,parameterNumber=48;
+
+# PrecipitationRate
+1000000049;discipline=192,parameterCategory=0,parameterNumber=49;
+
+# PrecipitationAmount
+1000000050;discipline=192,parameterCategory=0,parameterNumber=50;
+
+# SnowDepth
+1000000051;discipline=192,parameterCategory=0,parameterNumber=51;
+
+# RadiationOutLW
+1000000052;discipline=192,parameterCategory=0,parameterNumber=52;
+
+# RadiationOutSW
+1000000053;discipline=192,parameterCategory=0,parameterNumber=53;
+
+# RadiationInSW
+1000000054;discipline=192,parameterCategory=0,parameterNumber=54;
+
+# PrecipitationLarge
+1000000055;discipline=192,parameterCategory=0,parameterNumber=55;
+
+# PrecipitationType
+1000000056;discipline=192,parameterCategory=0,parameterNumber=56;
+
+# PrecipitationForm
+1000000057;discipline=192,parameterCategory=0,parameterNumber=57;
+
+# GolfIndex
+1000000058;discipline=192,parameterCategory=0,parameterNumber=58;
+
+# CAPE
+1000000059;discipline=192,parameterCategory=0,parameterNumber=59;
+
+# SeaLevel
+1000000060;discipline=192,parameterCategory=0,parameterNumber=60;
+
+# TemperatureSea
+1000000061;discipline=192,parameterCategory=0,parameterNumber=61;
+
+# Salinity
+1000000062;discipline=192,parameterCategory=0,parameterNumber=62;
+
+# Density
+1000000063;discipline=192,parameterCategory=0,parameterNumber=63;
+
+# SeaLevelMinimum
+1000000064;discipline=192,parameterCategory=0,parameterNumber=64;
+
+# SeaLevelMaximum
+1000000065;discipline=192,parameterCategory=0,parameterNumber=65;
+
+# CIN
+1000000066;discipline=192,parameterCategory=0,parameterNumber=66;
+
+# Helicity
+1000000067;discipline=192,parameterCategory=0,parameterNumber=67;
+
+# LCL
+1000000068;discipline=192,parameterCategory=0,parameterNumber=68;
+
+# LNB
+1000000069;discipline=192,parameterCategory=0,parameterNumber=69;
+
+# TotalCloudCover
+1000000079;discipline=192,parameterCategory=0,parameterNumber=79;
+
+# KIndex
+1000000080;discipline=192,parameterCategory=0,parameterNumber=80;
+
+# RoadT1Derivative
+1000000081;discipline=192,parameterCategory=0,parameterNumber=81;
+
+# RoadT2Derivative
+1000000082;discipline=192,parameterCategory=0,parameterNumber=82;
+
+# FreezingPoint1
+1000000083;discipline=192,parameterCategory=0,parameterNumber=83;
+
+# FreezingPoint2
+1000000084;discipline=192,parameterCategory=0,parameterNumber=84;
+
+# Conductivity1
+1000000085;discipline=192,parameterCategory=0,parameterNumber=85;
+
+# Conductivity2
+1000000086;discipline=192,parameterCategory=0,parameterNumber=86;
+
+# SensorFault
+1000000087;discipline=192,parameterCategory=0,parameterNumber=87;
+
+# SaltSpread1
+1000000088;discipline=192,parameterCategory=0,parameterNumber=88;
+
+# SaltSpread2
+1000000089;discipline=192,parameterCategory=0,parameterNumber=89;
+
+# SaltConcentration1
+1000000090;discipline=192,parameterCategory=0,parameterNumber=90;
+
+# SaltConcentration2
+1000000091;discipline=192,parameterCategory=0,parameterNumber=91;
+
+# RoadStatus
+1000000092;discipline=192,parameterCategory=0,parameterNumber=92;
+
+# Friction3
+1000000093;discipline=192,parameterCategory=0,parameterNumber=93;
+
+# WaterContent
+1000000094;discipline=192,parameterCategory=0,parameterNumber=94;
+
+# SnowContent
+1000000095;discipline=192,parameterCategory=0,parameterNumber=95;
+
+# IceContent
+1000000096;discipline=192,parameterCategory=0,parameterNumber=96;
+
+# Thickness
+1000000101;discipline=192,parameterCategory=0,parameterNumber=101;
+
+# RadarBorder
+1000000108;discipline=192,parameterCategory=0,parameterNumber=108;
+
+# RadarProducer
+1000000109;discipline=192,parameterCategory=0,parameterNumber=109;
+
+# RadarParameter
+1000000110;discipline=192,parameterCategory=0,parameterNumber=110;
+
+# RadarLevelType
+1000000111;discipline=192,parameterCategory=0,parameterNumber=111;
+
+# ElevationAngle
+1000000112;discipline=192,parameterCategory=0,parameterNumber=112;
+
+# CAPPIHeight
+1000000113;discipline=192,parameterCategory=0,parameterNumber=113;
+
+# RadarRadius
+1000000114;discipline=192,parameterCategory=0,parameterNumber=114;
+
+# RadarLayer
+1000000115;discipline=192,parameterCategory=0,parameterNumber=115;
+
+# AzimuthalLayer
+1000000116;discipline=192,parameterCategory=0,parameterNumber=116;
+
+# CrossSectionDirection
+1000000117;discipline=192,parameterCategory=0,parameterNumber=117;
+
+# AccumulationTime
+1000000118;discipline=192,parameterCategory=0,parameterNumber=118;
+
+# MindBZ
+1000000119;discipline=192,parameterCategory=0,parameterNumber=119;
+
+# MinRange
+1000000120;discipline=192,parameterCategory=0,parameterNumber=120;
+
+# MaxRange
+1000000121;discipline=192,parameterCategory=0,parameterNumber=121;
+
+# ColumnNumber
+1000000122;discipline=192,parameterCategory=0,parameterNumber=122;
+
+# RowNumber
+1000000123;discipline=192,parameterCategory=0,parameterNumber=123;
+
+# HorizontalResolution
+1000000124;discipline=192,parameterCategory=0,parameterNumber=124;
+
+# ZResolution
+1000000125;discipline=192,parameterCategory=0,parameterNumber=125;
+
+# CorrectedReflectivity
+1000000126;discipline=192,parameterCategory=0,parameterNumber=126;
+
+# EchoTop
+1000000127;discipline=192,parameterCategory=0,parameterNumber=127;
+
+# RainfallDepth
+1000000128;discipline=192,parameterCategory=0,parameterNumber=128;
+
+# RawRadarData
+1000000129;discipline=192,parameterCategory=0,parameterNumber=129;
+
+# RadialWind
+1000000130;discipline=192,parameterCategory=0,parameterNumber=130;
+
+# WindAndReflectivity
+1000000131;discipline=192,parameterCategory=0,parameterNumber=131;
+
+# MaxLayerHeight
+1000000132;discipline=192,parameterCategory=0,parameterNumber=132;
+
+# MaxElevation
+1000000133;discipline=192,parameterCategory=0,parameterNumber=133;
+
+# ProjectionID
+1000000134;discipline=192,parameterCategory=0,parameterNumber=134;
+
+# GridOrientation
+1000000135;discipline=192,parameterCategory=0,parameterNumber=135;
+
+# VelocityPotentialM2S
+1000000139;discipline=192,parameterCategory=0,parameterNumber=139;
+
+# VerticalVelocityHPAS
+1000000140;discipline=192,parameterCategory=0,parameterNumber=140;
+
+# VerticalVelocityDPAS
+1000000141;discipline=192,parameterCategory=0,parameterNumber=141;
+
+# VerticalVelocityMS
+1000000143;discipline=192,parameterCategory=0,parameterNumber=143;
+
+# WindShearMS2
+1000000144;discipline=192,parameterCategory=0,parameterNumber=144;
+
+# LogNatOfPressure
+1000000145;discipline=192,parameterCategory=0,parameterNumber=145;
+
+# LapseRate2
+1000000146;discipline=192,parameterCategory=0,parameterNumber=146;
+
+# PrecipitableWater2
+1000000147;discipline=192,parameterCategory=0,parameterNumber=147;
+
+# PrecipitationRate2
+1000000148;discipline=192,parameterCategory=0,parameterNumber=148;
+
+# PrecipitationAmount2
+1000000150;discipline=192,parameterCategory=0,parameterNumber=150;
+
+# SnowDepth2
+1000000151;discipline=192,parameterCategory=0,parameterNumber=151;
+
+# RadiationOutLW2
+1000000152;discipline=192,parameterCategory=0,parameterNumber=152;
+
+# RadiationOutSW2
+1000000153;discipline=192,parameterCategory=0,parameterNumber=153;
+
+# RadiationInSW2
+1000000154;discipline=192,parameterCategory=0,parameterNumber=154;
+
+# BatteryVoltage
+1000000155;discipline=192,parameterCategory=0,parameterNumber=155;
+
+# SeaLevelAnomaly
+1000000160;discipline=192,parameterCategory=0,parameterNumber=160;
+
+# TemperatureSea2
+1000000161;discipline=192,parameterCategory=0,parameterNumber=161;
+
+# TemperatureSeaSurface
+1000000162;discipline=192,parameterCategory=0,parameterNumber=162;
+
+# CurrentSpeed
+1000000163;discipline=192,parameterCategory=0,parameterNumber=163;
+
+# CurrentDirection
+1000000164;discipline=192,parameterCategory=0,parameterNumber=164;
+
+# SigWaveHeight
+1000000165;discipline=192,parameterCategory=0,parameterNumber=165;
+
+# SigWavePeriod
+1000000166;discipline=192,parameterCategory=0,parameterNumber=166;
+
+# WaveDirection
+1000000167;discipline=192,parameterCategory=0,parameterNumber=167;
+
+# WaveSpread
+1000000168;discipline=192,parameterCategory=0,parameterNumber=168;
+
+# MaxWaveHeight
+1000000169;discipline=192,parameterCategory=0,parameterNumber=169;
+
+# MaxWavePeriod
+1000000170;discipline=192,parameterCategory=0,parameterNumber=170;
+
+# WavePeriod
+1000000171;discipline=192,parameterCategory=0,parameterNumber=171;
+
+# SigWaveHeightBandB
+1000000172;discipline=192,parameterCategory=0,parameterNumber=172;
+
+# SigWavePeriodBandB
+1000000173;discipline=192,parameterCategory=0,parameterNumber=173;
+
+# WaveDirectionBandB
+1000000174;discipline=192,parameterCategory=0,parameterNumber=174;
+
+# SigWaveHeightBandC
+1000000175;discipline=192,parameterCategory=0,parameterNumber=175;
+
+# SigWavePeriodBandC
+1000000176;discipline=192,parameterCategory=0,parameterNumber=176;
+
+# WaveDirectionBandC
+1000000177;discipline=192,parameterCategory=0,parameterNumber=177;
+
+# UnidirectivityIndex
+1000000178;discipline=192,parameterCategory=0,parameterNumber=178;
+
+# SigWaveLength
+1000000179;discipline=192,parameterCategory=0,parameterNumber=179;
+
+# MixedLayerDepth
+1000000180;discipline=192,parameterCategory=0,parameterNumber=180;
+
+# SigWaveHeightSwell0
+1000000181;discipline=192,parameterCategory=0,parameterNumber=181;
+
+# SigWaveHeightSwell1
+1000000182;discipline=192,parameterCategory=0,parameterNumber=182;
+
+# SigWaveHeightSwell2
+1000000183;discipline=192,parameterCategory=0,parameterNumber=183;
+
+# SigWavePeriodSwell0
+1000000184;discipline=192,parameterCategory=0,parameterNumber=184;
+
+# SigWavePeriodSwell1
+1000000185;discipline=192,parameterCategory=0,parameterNumber=185;
+
+# SigWavePeriodSwell2
+1000000186;discipline=192,parameterCategory=0,parameterNumber=186;
+
+# WaveDirectionSwell0
+1000000187;discipline=192,parameterCategory=0,parameterNumber=187;
+
+# WaveDirectionSwell1
+1000000188;discipline=192,parameterCategory=0,parameterNumber=188;
+
+# WaveDirectionSwell2
+1000000189;discipline=192,parameterCategory=0,parameterNumber=189;
+
+# SeaSprayIcing
+1000000190;discipline=192,parameterCategory=0,parameterNumber=190;
+
+# NO2Contents
+1000000191;discipline=192,parameterCategory=0,parameterNumber=191;
+
+# COContents
+1000000192;discipline=192,parameterCategory=0,parameterNumber=192;
+
+# SO2Contents
+1000000193;discipline=192,parameterCategory=0,parameterNumber=193;
+
+# AQIndex
+1000000194;discipline=192,parameterCategory=0,parameterNumber=194;
+
+# SmogIndex
+1000000195;discipline=192,parameterCategory=0,parameterNumber=195;
+
+# UVIndexMax
+1000000196;discipline=192,parameterCategory=0,parameterNumber=196;
+
+# UVIndex
+1000000197;discipline=192,parameterCategory=0,parameterNumber=197;
+
+# OzoneAnomaly
+1000000198;discipline=192,parameterCategory=0,parameterNumber=198;
+
+# PrecipitationRateLarge
+1000000200;discipline=192,parameterCategory=0,parameterNumber=200;
+
+# PrecipitationRateConv
+1000000201;discipline=192,parameterCategory=0,parameterNumber=201;
+
+# PressureReduced
+1000000202;discipline=192,parameterCategory=0,parameterNumber=202;
+
+# PressureTendency
+1000000203;discipline=192,parameterCategory=0,parameterNumber=203;
+
+# NOContents
+1000000204;discipline=192,parameterCategory=0,parameterNumber=204;
+
+# O3Contents
+1000000205;discipline=192,parameterCategory=0,parameterNumber=205;
+
+# PM10Contents
+1000000206;discipline=192,parameterCategory=0,parameterNumber=206;
+
+# PM25Contents
+1000000207;discipline=192,parameterCategory=0,parameterNumber=207;
+
+# TemperatureVirtual
+1000000212;discipline=192,parameterCategory=0,parameterNumber=212;
+
+# SnowWarning
+1000000220;discipline=192,parameterCategory=0,parameterNumber=220;
+
+# PressureAnomaly
+1000000226;discipline=192,parameterCategory=0,parameterNumber=226;
+
+# GeopotentialHeightAnomaly
+1000000227;discipline=192,parameterCategory=0,parameterNumber=227;
+
+# SkinTemperature
+1000000235;discipline=192,parameterCategory=0,parameterNumber=235;
+
+# OpenLandSnowDepth
+1000000239;discipline=192,parameterCategory=0,parameterNumber=239;
+
+# TOL
+1000000240;discipline=192,parameterCategory=0,parameterNumber=240;
+
+# QOL
+1000000241;discipline=192,parameterCategory=0,parameterNumber=241;
+
+# DivergenceAbsolute
+1000000242;discipline=192,parameterCategory=0,parameterNumber=242;
+
+# DivergenceRelative
+1000000244;discipline=192,parameterCategory=0,parameterNumber=244;
+
+# WindShearU
+1000000245;discipline=192,parameterCategory=0,parameterNumber=245;
+
+# WindShearV
+1000000246;discipline=192,parameterCategory=0,parameterNumber=246;
+
+# VapourPressure
+1000000255;discipline=192,parameterCategory=0,parameterNumber=255;
+
+# DragCoefficient
+1000000256;discipline=192,parameterCategory=1,parameterNumber=0;
+
+# Evaporation
+1000000257;discipline=192,parameterCategory=1,parameterNumber=1;
+
+# PoP
+1000000259;discipline=192,parameterCategory=1,parameterNumber=3;
+
+# ProbabilityThunderstorm
+1000000260;discipline=192,parameterCategory=1,parameterNumber=4;
+
+# FlashAccuracy
+1000000261;discipline=192,parameterCategory=1,parameterNumber=5;
+
+# FlashMultiplicity
+1000000262;discipline=192,parameterCategory=1,parameterNumber=6;
+
+# FlashStrength
+1000000263;discipline=192,parameterCategory=1,parameterNumber=7;
+
+# SnowfallRate
+1000000264;discipline=192,parameterCategory=1,parameterNumber=8;
+
+# SnowAccumulation
+1000000265;discipline=192,parameterCategory=1,parameterNumber=9;
+
+# WaterEquivalentOfSnow
+1000000266;discipline=192,parameterCategory=1,parameterNumber=10;
+
+# WaterAccumulation
+1000000267;discipline=192,parameterCategory=1,parameterNumber=11;
+
+# SnowWaterRatio
+1000000268;discipline=192,parameterCategory=1,parameterNumber=12;
+
+# FreezingLevel
+1000000270;discipline=192,parameterCategory=1,parameterNumber=14;
+
+# MiddleAndLowCloudCover
+1000000271;discipline=192,parameterCategory=1,parameterNumber=15;
+
+# ConvectiveCloudCover
+1000000272;discipline=192,parameterCategory=1,parameterNumber=16;
+
+# LowCloudCover
+1000000273;discipline=192,parameterCategory=1,parameterNumber=17;
+
+# MediumCloudCover
+1000000274;discipline=192,parameterCategory=1,parameterNumber=18;
+
+# HighCloudCover
+1000000275;discipline=192,parameterCategory=1,parameterNumber=19;
+
+# CloudWater
+1000000276;discipline=192,parameterCategory=1,parameterNumber=20;
+
+# ConvectiveSnow
+1000000278;discipline=192,parameterCategory=1,parameterNumber=22;
+
+# LargeScaleSnow
+1000000279;discipline=192,parameterCategory=1,parameterNumber=23;
+
+# LandSeaMask
+1000000281;discipline=192,parameterCategory=1,parameterNumber=25;
+
+# ForestFraction
+1000000282;discipline=192,parameterCategory=1,parameterNumber=26;
+
+# SurfaceRoughness
+1000000283;discipline=192,parameterCategory=1,parameterNumber=27;
+
+# Albedo
+1000000284;discipline=192,parameterCategory=1,parameterNumber=28;
+
+# SoilTemperature
+1000000285;discipline=192,parameterCategory=1,parameterNumber=29;
+
+# SoilMoistureContent
+1000000286;discipline=192,parameterCategory=1,parameterNumber=30;
+
+# Vegetation
+1000000287;discipline=192,parameterCategory=1,parameterNumber=31;
+
+# GroundTemperature
+1000000288;discipline=192,parameterCategory=1,parameterNumber=32;
+
+# SurfaceSoilWetness
+1000000289;discipline=192,parameterCategory=1,parameterNumber=33;
+
+# LocationId
+1000000290;discipline=192,parameterCategory=1,parameterNumber=34;
+
+# Year
+1000000291;discipline=192,parameterCategory=1,parameterNumber=35;
+
+# Month
+1000000292;discipline=192,parameterCategory=1,parameterNumber=36;
+
+# Day
+1000000293;discipline=192,parameterCategory=1,parameterNumber=37;
+
+# Hour
+1000000294;discipline=192,parameterCategory=1,parameterNumber=38;
+
+# Minute
+1000000295;discipline=192,parameterCategory=1,parameterNumber=39;
+
+# Second
+1000000296;discipline=192,parameterCategory=1,parameterNumber=40;
+
+# ForecastPeriod
+1000000297;discipline=192,parameterCategory=1,parameterNumber=41;
+
+# ModelLevel
+1000000298;discipline=192,parameterCategory=1,parameterNumber=42;
+
+# CloudCondensate
+1000000299;discipline=192,parameterCategory=1,parameterNumber=43;
+
+# TurbulentKineticEnergy
+1000000301;discipline=192,parameterCategory=1,parameterNumber=45;
+
+# FlashLength
+1000000305;discipline=192,parameterCategory=1,parameterNumber=49;
+
+# FlashWidth
+1000000306;discipline=192,parameterCategory=1,parameterNumber=50;
+
+# FlashDirection
+1000000307;discipline=192,parameterCategory=1,parameterNumber=51;
+
+# FlashDuration
+1000000308;discipline=192,parameterCategory=1,parameterNumber=52;
+
+# RadiationNetSurfaceSW
+1000000311;discipline=192,parameterCategory=1,parameterNumber=55;
+
+# RadiationNetSurfaceLW
+1000000312;discipline=192,parameterCategory=1,parameterNumber=56;
+
+# RadiationNetTopAtmSW
+1000000313;discipline=192,parameterCategory=1,parameterNumber=57;
+
+# RadiationNetTopAtmLW
+1000000314;discipline=192,parameterCategory=1,parameterNumber=58;
+
+# RadiationLW
+1000000315;discipline=192,parameterCategory=1,parameterNumber=59;
+
+# RadiationSW
+1000000316;discipline=192,parameterCategory=1,parameterNumber=60;
+
+# RadiationGlobal
+1000000317;discipline=192,parameterCategory=1,parameterNumber=61;
+
+# RadiationReflected
+1000000318;discipline=192,parameterCategory=1,parameterNumber=62;
+
+# LatentHeatFlux
+1000000321;discipline=192,parameterCategory=1,parameterNumber=65;
+
+# SensibleHeatFlux
+1000000322;discipline=192,parameterCategory=1,parameterNumber=66;
+
+# BoundaryLayerDissipation
+1000000323;discipline=192,parameterCategory=1,parameterNumber=67;
+
+# UMomentumFlux
+1000000324;discipline=192,parameterCategory=1,parameterNumber=68;
+
+# VMomentumFlux
+1000000325;discipline=192,parameterCategory=1,parameterNumber=69;
+
+# WeatherAndCloudiness
+1000000326;discipline=192,parameterCategory=1,parameterNumber=70;
+
+# FogIntensity
+1000000327;discipline=192,parameterCategory=1,parameterNumber=71;
+
+# CloudSymbol
+1000000328;discipline=192,parameterCategory=1,parameterNumber=72;
+
+# LowCloudSymbol
+1000000329;discipline=192,parameterCategory=1,parameterNumber=73;
+
+# MediumCloudSymbol
+1000000330;discipline=192,parameterCategory=1,parameterNumber=74;
+
+# HighCloudSymbol
+1000000331;discipline=192,parameterCategory=1,parameterNumber=75;
+
+# ConvCloudSymbol
+1000000332;discipline=192,parameterCategory=1,parameterNumber=76;
+
+# FrontSymbol
+1000000333;discipline=192,parameterCategory=1,parameterNumber=77;
+
+# FogSymbol
+1000000334;discipline=192,parameterCategory=1,parameterNumber=78;
+
+# SmogSymbol
+1000000335;discipline=192,parameterCategory=1,parameterNumber=79;
+
+# WeatherSymbol1
+1000000336;discipline=192,parameterCategory=1,parameterNumber=80;
+
+# WeatherSymbol2
+1000000337;discipline=192,parameterCategory=1,parameterNumber=81;
+
+# WeatherSymbol3
+1000000338;discipline=192,parameterCategory=1,parameterNumber=82;
+
+# SimpleWeather
+1000000339;discipline=192,parameterCategory=1,parameterNumber=83;
+
+# WindSpeedGeostr
+1000000340;discipline=192,parameterCategory=1,parameterNumber=84;
+
+# WindSpeed10M
+1000000341;discipline=192,parameterCategory=1,parameterNumber=85;
+
+# WindDirection10M
+1000000342;discipline=192,parameterCategory=1,parameterNumber=86;
+
+# Temperature2M
+1000000343;discipline=192,parameterCategory=1,parameterNumber=87;
+
+# DewPoint2M
+1000000344;discipline=192,parameterCategory=1,parameterNumber=88;
+
+# Humidity2M
+1000000345;discipline=192,parameterCategory=1,parameterNumber=89;
+
+# WindUMS10M
+1000000346;discipline=192,parameterCategory=1,parameterNumber=90;
+
+# WindVMS10M
+1000000347;discipline=192,parameterCategory=1,parameterNumber=91;
+
+# ShipDirection
+1000000348;discipline=192,parameterCategory=1,parameterNumber=92;
+
+# ShipSpeed
+1000000349;discipline=192,parameterCategory=1,parameterNumber=93;
+
+# WeatherSymbol
+1000000350;discipline=192,parameterCategory=1,parameterNumber=94;
+
+# ChillFactor
+1000000351;discipline=192,parameterCategory=1,parameterNumber=95;
+
+# DegreeDays
+1000000352;discipline=192,parameterCategory=1,parameterNumber=96;
+
+# Precipitation1h
+1000000353;discipline=192,parameterCategory=1,parameterNumber=97;
+
+# Precipitation3h
+1000000354;discipline=192,parameterCategory=1,parameterNumber=98;
+
+# Precipitation6h
+1000000355;discipline=192,parameterCategory=1,parameterNumber=99;
+
+# Precipitation12h
+1000000356;discipline=192,parameterCategory=1,parameterNumber=100;
+
+# Precipitation24h
+1000000357;discipline=192,parameterCategory=1,parameterNumber=101;
+
+# MaximumTemperature24h
+1000000358;discipline=192,parameterCategory=1,parameterNumber=102;
+
+# MinimumTemperature24h
+1000000359;discipline=192,parameterCategory=1,parameterNumber=103;
+
+# MaximumTemperature2m
+1000000360;discipline=192,parameterCategory=1,parameterNumber=104;
+
+# MinimumTemperature2m
+1000000361;discipline=192,parameterCategory=1,parameterNumber=105;
+
+# MinimumWind
+1000000362;discipline=192,parameterCategory=1,parameterNumber=106;
+
+# Precipitation4h
+1000000363;discipline=192,parameterCategory=1,parameterNumber=107;
+
+# CloudTopBrightnessTemperature
+1000000364;discipline=192,parameterCategory=1,parameterNumber=108;
+
+# WaterVapourBrightnessTemperature
+1000000365;discipline=192,parameterCategory=1,parameterNumber=109;
+
+# WaterVapourBrightnessTemperatureIncludingCloudCorrection
+1000000366;discipline=192,parameterCategory=1,parameterNumber=110;
+
+# MaximumIcingIndex
+1000000367;discipline=192,parameterCategory=1,parameterNumber=111;
+
+# CloudWaterReflectivity
+1000000368;discipline=192,parameterCategory=1,parameterNumber=112;
+
+# SatoKierto
+1000000370;discipline=192,parameterCategory=1,parameterNumber=114;
+
+# FrostProbability
+1000000372;discipline=192,parameterCategory=1,parameterNumber=116;
+
+# SevereFrostProbability
+1000000373;discipline=192,parameterCategory=1,parameterNumber=117;
+
+# ConvectiveSnowFallRate
+1000000378;discipline=192,parameterCategory=1,parameterNumber=122;
+
+# LargeScaleSnowFallRate
+1000000379;discipline=192,parameterCategory=1,parameterNumber=123;
+
+# ConvectiveAvailablePotentialEnergy
+1000000380;discipline=192,parameterCategory=1,parameterNumber=124;
+
+# Roughness
+1000000381;discipline=192,parameterCategory=1,parameterNumber=125;
+
+# StormRelativeHelicity
+1000000382;discipline=192,parameterCategory=1,parameterNumber=126;
+
+# SurfaceRoughnessAtSea
+1000000383;discipline=192,parameterCategory=1,parameterNumber=127;
+
+# IceConcentration
+1000000384;discipline=192,parameterCategory=1,parameterNumber=128;
+
+# IceThickness
+1000000385;discipline=192,parameterCategory=1,parameterNumber=129;
+
+# IceMinThickness
+1000000386;discipline=192,parameterCategory=1,parameterNumber=130;
+
+# IceMaxThickness
+1000000387;discipline=192,parameterCategory=1,parameterNumber=131;
+
+# IceDegreeOfRidging
+1000000388;discipline=192,parameterCategory=1,parameterNumber=132;
+
+# IceSpeed
+1000000389;discipline=192,parameterCategory=1,parameterNumber=133;
+
+# IceDirection
+1000000390;discipline=192,parameterCategory=1,parameterNumber=134;
+
+# CanopyWater
+1000000392;discipline=192,parameterCategory=1,parameterNumber=136;
+
+# GroundFrost
+1000000393;discipline=192,parameterCategory=1,parameterNumber=137;
+
+# SurfaceTypeFraction
+1000000394;discipline=192,parameterCategory=1,parameterNumber=138;
+
+# SoilType
+1000000395;discipline=192,parameterCategory=1,parameterNumber=139;
+
+# VegetationType
+1000000399;discipline=192,parameterCategory=1,parameterNumber=143;
+
+# ForecasterCode
+1000000400;discipline=192,parameterCategory=1,parameterNumber=144;
+
+# WmoBlockNumber
+1000000401;discipline=192,parameterCategory=1,parameterNumber=145;
+
+# WmoStationNumber
+1000000402;discipline=192,parameterCategory=1,parameterNumber=146;
+
+# StationType
+1000000403;discipline=192,parameterCategory=1,parameterNumber=147;
+
+# Latitude
+1000000404;discipline=192,parameterCategory=1,parameterNumber=148;
+
+# Longitude
+1000000405;discipline=192,parameterCategory=1,parameterNumber=149;
+
+# PressureChange
+1000000406;discipline=192,parameterCategory=1,parameterNumber=150;
+
+# Visibility
+1000000407;discipline=192,parameterCategory=1,parameterNumber=151;
+
+# PresentWeather
+1000000408;discipline=192,parameterCategory=1,parameterNumber=152;
+
+# PastWeather1
+1000000409;discipline=192,parameterCategory=1,parameterNumber=153;
+
+# PastWeather2
+1000000410;discipline=192,parameterCategory=1,parameterNumber=154;
+
+# LowCloudType
+1000000411;discipline=192,parameterCategory=1,parameterNumber=155;
+
+# MiddleCloudType
+1000000412;discipline=192,parameterCategory=1,parameterNumber=156;
+
+# HighCloudType
+1000000413;discipline=192,parameterCategory=1,parameterNumber=157;
+
+# CloudHeight
+1000000414;discipline=192,parameterCategory=1,parameterNumber=158;
+
+# PrecipitationPeriod
+1000000415;discipline=192,parameterCategory=1,parameterNumber=159;
+
+# MaximumWind
+1000000416;discipline=192,parameterCategory=1,parameterNumber=160;
+
+# WindGust
+1000000417;discipline=192,parameterCategory=1,parameterNumber=161;
+
+# OldVisibility
+1000000418;discipline=192,parameterCategory=1,parameterNumber=162;
+
+# VisibilityChange
+1000000419;discipline=192,parameterCategory=1,parameterNumber=163;
+
+# RainOnOff
+1000000420;discipline=192,parameterCategory=1,parameterNumber=164;
+
+# SunOnOff
+1000000421;discipline=192,parameterCategory=1,parameterNumber=165;
+
+# WetnessOnOff
+1000000422;discipline=192,parameterCategory=1,parameterNumber=166;
+
+# RainMinutes
+1000000423;discipline=192,parameterCategory=1,parameterNumber=167;
+
+# StateOfGround
+1000000424;discipline=192,parameterCategory=1,parameterNumber=168;
+
+# SnowDepth06
+1000000425;discipline=192,parameterCategory=1,parameterNumber=169;
+
+# SnowDepth18
+1000000426;discipline=192,parameterCategory=1,parameterNumber=170;
+
+# DailyMeanTemperature
+1000000427;discipline=192,parameterCategory=1,parameterNumber=171;
+
+# MinimumTemperature06
+1000000428;discipline=192,parameterCategory=1,parameterNumber=172;
+
+# MaximumTemperature06
+1000000429;discipline=192,parameterCategory=1,parameterNumber=173;
+
+# MinimumGroundTemperature06
+1000000430;discipline=192,parameterCategory=1,parameterNumber=174;
+
+# MinimumTemperature18
+1000000431;discipline=192,parameterCategory=1,parameterNumber=175;
+
+# MaximumTemperature18
+1000000432;discipline=192,parameterCategory=1,parameterNumber=176;
+
+# MonthlyMeanTemperature
+1000000433;discipline=192,parameterCategory=1,parameterNumber=177;
+
+# MonthlyPrecipitation
+1000000434;discipline=192,parameterCategory=1,parameterNumber=178;
+
+# SunHours
+1000000435;discipline=192,parameterCategory=1,parameterNumber=179;
+
+# DailyGlobalRadiation
+1000000436;discipline=192,parameterCategory=1,parameterNumber=180;
+
+# DailyDiffuseRadiation
+1000000437;discipline=192,parameterCategory=1,parameterNumber=181;
+
+# DailyReflectedRadiation
+1000000438;discipline=192,parameterCategory=1,parameterNumber=182;
+
+# DailyNetRadiation
+1000000439;discipline=192,parameterCategory=1,parameterNumber=183;
+
+# PrecipitationReliability
+1000000440;discipline=192,parameterCategory=1,parameterNumber=184;
+
+# TotalOzone
+1000000441;discipline=192,parameterCategory=1,parameterNumber=185;
+
+# UVCumulated
+1000000442;discipline=192,parameterCategory=1,parameterNumber=186;
+
+# UVMaximum
+1000000443;discipline=192,parameterCategory=1,parameterNumber=187;
+
+# TimeOfUVMaximum
+1000000444;discipline=192,parameterCategory=1,parameterNumber=188;
+
+# DailyPrecipitationCode
+1000000445;discipline=192,parameterCategory=1,parameterNumber=189;
+
+# HourlySunShine
+1000000446;discipline=192,parameterCategory=1,parameterNumber=190;
+
+# HourlyGlobalRadiation
+1000000447;discipline=192,parameterCategory=1,parameterNumber=191;
+
+# HourlyDiffuseRadiation
+1000000448;discipline=192,parameterCategory=1,parameterNumber=192;
+
+# HourlyReflectedRadiation
+1000000449;discipline=192,parameterCategory=1,parameterNumber=193;
+
+# HourlyNetRadiation
+1000000450;discipline=192,parameterCategory=1,parameterNumber=194;
+
+# MonthlyMeanPrecipitation3160
+1000000451;discipline=192,parameterCategory=1,parameterNumber=195;
+
+# MonthlyMeanTemperature3160
+1000000452;discipline=192,parameterCategory=1,parameterNumber=196;
+
+# MonthlyMeanCloudiness3160
+1000000453;discipline=192,parameterCategory=1,parameterNumber=197;
+
+# Monthly15SnowDepth3160
+1000000454;discipline=192,parameterCategory=1,parameterNumber=198;
+
+# MonthlyMeanPrecipitation6190
+1000000455;discipline=192,parameterCategory=1,parameterNumber=199;
+
+# MonthlyMeanTemperature6190
+1000000456;discipline=192,parameterCategory=1,parameterNumber=200;
+
+# MonthlyMeanCloudiness6190
+1000000457;discipline=192,parameterCategory=1,parameterNumber=201;
+
+# Monthly15SnowDepth6190
+1000000458;discipline=192,parameterCategory=1,parameterNumber=202;
+
+# HourlyPressure
+1000000459;discipline=192,parameterCategory=1,parameterNumber=203;
+
+# HourlyTemperature
+1000000460;discipline=192,parameterCategory=1,parameterNumber=204;
+
+# HourlyMinimumTemperature
+1000000461;discipline=192,parameterCategory=1,parameterNumber=205;
+
+# HourlyMaximumTemperature
+1000000462;discipline=192,parameterCategory=1,parameterNumber=206;
+
+# HourlyRelativeHumidity
+1000000463;discipline=192,parameterCategory=1,parameterNumber=207;
+
+# HourlyWindSpeed
+1000000464;discipline=192,parameterCategory=1,parameterNumber=208;
+
+# HourlyMinimumWindSpeed
+1000000465;discipline=192,parameterCategory=1,parameterNumber=209;
+
+# HourlyMaximumWindSpeed
+1000000466;discipline=192,parameterCategory=1,parameterNumber=210;
+
+# HourlyMaximumGust
+1000000467;discipline=192,parameterCategory=1,parameterNumber=211;
+
+# HourlyWindDirection
+1000000468;discipline=192,parameterCategory=1,parameterNumber=212;
+
+# HourlyMaxRainIntensity
+1000000469;discipline=192,parameterCategory=1,parameterNumber=213;
+
+# RainIntensityWeather
+1000000470;discipline=192,parameterCategory=1,parameterNumber=214;
+
+# HourlyWaterTemperature
+1000000471;discipline=192,parameterCategory=1,parameterNumber=215;
+
+# PressureAtStationLevel
+1000000472;discipline=192,parameterCategory=1,parameterNumber=216;
+
+# Precipitation06
+1000000473;discipline=192,parameterCategory=1,parameterNumber=217;
+
+# Precipitation18
+1000000474;discipline=192,parameterCategory=1,parameterNumber=218;
+
+# FlAltitude
+1000000475;discipline=192,parameterCategory=1,parameterNumber=219;
+
+# PhaseOfFlight
+1000000476;discipline=192,parameterCategory=1,parameterNumber=220;
+
+# Turbulence
+1000000477;discipline=192,parameterCategory=1,parameterNumber=221;
+
+# BaseOfTurbulence
+1000000478;discipline=192,parameterCategory=1,parameterNumber=222;
+
+# TopOfTurbulence
+1000000479;discipline=192,parameterCategory=1,parameterNumber=223;
+
+# Icing
+1000000480;discipline=192,parameterCategory=1,parameterNumber=224;
+
+# StdDevTotalCloud
+1000000481;discipline=192,parameterCategory=1,parameterNumber=225;
+
+# TemperatureHighCld
+1000000482;discipline=192,parameterCategory=1,parameterNumber=226;
+
+# StdDevHighCld
+1000000483;discipline=192,parameterCategory=1,parameterNumber=227;
+
+# TemperatureLMCld
+1000000484;discipline=192,parameterCategory=1,parameterNumber=228;
+
+# StdDevLMCld
+1000000485;discipline=192,parameterCategory=1,parameterNumber=229;
+
+# FogPercentage
+1000000486;discipline=192,parameterCategory=1,parameterNumber=230;
+
+# LandPercentage
+1000000487;discipline=192,parameterCategory=1,parameterNumber=231;
+
+# SeaPercentage
+1000000488;discipline=192,parameterCategory=1,parameterNumber=232;
+
+# SnowPercentage
+1000000489;discipline=192,parameterCategory=1,parameterNumber=233;
+
+# SunGlintPercentage
+1000000490;discipline=192,parameterCategory=1,parameterNumber=234;
+
+# IR
+1000000491;discipline=192,parameterCategory=1,parameterNumber=235;
+
+# VIS
+1000000492;discipline=192,parameterCategory=1,parameterNumber=236;
+
+# WV
+1000000493;discipline=192,parameterCategory=1,parameterNumber=237;
+
+# CH112
+1000000494;discipline=192,parameterCategory=1,parameterNumber=238;
+
+# Precipitation7Days
+1000000495;discipline=192,parameterCategory=1,parameterNumber=239;
+
+# Precipitation10Days
+1000000496;discipline=192,parameterCategory=1,parameterNumber=240;
+
+# Precipitation30Days
+1000000497;discipline=192,parameterCategory=1,parameterNumber=241;
+
+# SunSeconds
+1000000498;discipline=192,parameterCategory=1,parameterNumber=242;
+
+# HaKeTaskCode
+1000000499;discipline=192,parameterCategory=1,parameterNumber=243;
+
+# CloudBase
+1000000500;discipline=192,parameterCategory=1,parameterNumber=244;
+
+# 1CloudCover
+1000000501;discipline=192,parameterCategory=1,parameterNumber=245;
+
+# 1CloudBase
+1000000502;discipline=192,parameterCategory=1,parameterNumber=246;
+
+# 2CloudCover
+1000000503;discipline=192,parameterCategory=1,parameterNumber=247;
+
+# 2CloudBase
+1000000504;discipline=192,parameterCategory=1,parameterNumber=248;
+
+# 3CloudCover
+1000000505;discipline=192,parameterCategory=1,parameterNumber=249;
+
+# 3CloudBase
+1000000506;discipline=192,parameterCategory=1,parameterNumber=250;
+
+# 4CloudCover
+1000000507;discipline=192,parameterCategory=1,parameterNumber=251;
+
+# 4CloudBase
+1000000508;discipline=192,parameterCategory=1,parameterNumber=252;
+
+# CbCloudCover
+1000000509;discipline=192,parameterCategory=1,parameterNumber=253;
+
+# CbCloudBase
+1000000510;discipline=192,parameterCategory=1,parameterNumber=254;
+
+# SolarElevation
+1000000511;discipline=192,parameterCategory=1,parameterNumber=255;
+
+# CloudCeilingHFT
+1000000513;discipline=192,parameterCategory=2,parameterNumber=1;
+
+# WindGustKT
+1000000514;discipline=192,parameterCategory=2,parameterNumber=2;
+
+# AviVis
+1000000515;discipline=192,parameterCategory=2,parameterNumber=3;
+
+# VerVis
+1000000516;discipline=192,parameterCategory=2,parameterNumber=4;
+
+# WindSpeedKT
+1000000517;discipline=192,parameterCategory=2,parameterNumber=5;
+
+# HourlyMaximumGustKT
+1000000518;discipline=192,parameterCategory=2,parameterNumber=6;
+
+# WindVectorKT
+1000000519;discipline=192,parameterCategory=2,parameterNumber=7;
+
+# WeatherSymbolTaf
+1000000520;discipline=192,parameterCategory=2,parameterNumber=8;
+
+# AviationWeather1
+1000000521;discipline=192,parameterCategory=2,parameterNumber=9;
+
+# AviationWeather2
+1000000522;discipline=192,parameterCategory=2,parameterNumber=10;
+
+# AviationWeather3
+1000000523;discipline=192,parameterCategory=2,parameterNumber=11;
+
+# PackedAviationCloud1
+1000000524;discipline=192,parameterCategory=2,parameterNumber=12;
+
+# PackedAviationCloud2
+1000000525;discipline=192,parameterCategory=2,parameterNumber=13;
+
+# PackedAviationCloud3
+1000000526;discipline=192,parameterCategory=2,parameterNumber=14;
+
+# PackedAviationCloud4
+1000000527;discipline=192,parameterCategory=2,parameterNumber=15;
+
+# LandCover
+1000000530;discipline=192,parameterCategory=2,parameterNumber=18;
+
+# IceCover
+1000000532;discipline=192,parameterCategory=2,parameterNumber=20;
+
+# DeepSoilTemperature
+1000000533;discipline=192,parameterCategory=2,parameterNumber=21;
+
+# DeepSoilMoistureContent
+1000000534;discipline=192,parameterCategory=2,parameterNumber=22;
+
+# ForestGroundHumidity
+1000000535;discipline=192,parameterCategory=2,parameterNumber=23;
+
+# FieldGroundHumidity
+1000000536;discipline=192,parameterCategory=2,parameterNumber=24;
+
+# Precipitation5d
+1000000537;discipline=192,parameterCategory=2,parameterNumber=25;
+
+# ForestFireWarning
+1000000538;discipline=192,parameterCategory=2,parameterNumber=26;
+
+# GroundHumidityForest
+1000000540;discipline=192,parameterCategory=2,parameterNumber=28;
+
+# ClusterTemperature1
+1000000541;discipline=192,parameterCategory=2,parameterNumber=29;
+
+# ClusterTemperature2
+1000000542;discipline=192,parameterCategory=2,parameterNumber=30;
+
+# ClusterTemperature3
+1000000543;discipline=192,parameterCategory=2,parameterNumber=31;
+
+# ClusterTemperature4
+1000000544;discipline=192,parameterCategory=2,parameterNumber=32;
+
+# ClusterTemperature5
+1000000545;discipline=192,parameterCategory=2,parameterNumber=33;
+
+# ClusterTemperature6
+1000000546;discipline=192,parameterCategory=2,parameterNumber=34;
+
+# ClusterGeopHeight1
+1000000547;discipline=192,parameterCategory=2,parameterNumber=35;
+
+# ClusterGeopHeight2
+1000000548;discipline=192,parameterCategory=2,parameterNumber=36;
+
+# ClusterGeopHeight3
+1000000549;discipline=192,parameterCategory=2,parameterNumber=37;
+
+# ClusterGeopHeight4
+1000000550;discipline=192,parameterCategory=2,parameterNumber=38;
+
+# ClusterGeopHeight5
+1000000551;discipline=192,parameterCategory=2,parameterNumber=39;
+
+# ClusterGeopHeight6
+1000000552;discipline=192,parameterCategory=2,parameterNumber=40;
+
+# EFIWindSpeed
+1000000556;discipline=192,parameterCategory=2,parameterNumber=44;
+
+# EFITemperature
+1000000557;discipline=192,parameterCategory=2,parameterNumber=45;
+
+# EFIWindGust
+1000000558;discipline=192,parameterCategory=2,parameterNumber=46;
+
+# EFIWindPrecipitation
+1000000559;discipline=192,parameterCategory=2,parameterNumber=47;
+
+# ProbabilityOfTemp
+1000000560;discipline=192,parameterCategory=2,parameterNumber=48;
+
+# ProbabilityOfTempLimit1
+1000000561;discipline=192,parameterCategory=2,parameterNumber=49;
+
+# ProbabilityOfTempLimit2
+1000000562;discipline=192,parameterCategory=2,parameterNumber=50;
+
+# ProbabilityOfTempLimit3
+1000000563;discipline=192,parameterCategory=2,parameterNumber=51;
+
+# ProbabilityOfTempLimit4
+1000000564;discipline=192,parameterCategory=2,parameterNumber=52;
+
+# ProbabilityOfPrec
+1000000570;discipline=192,parameterCategory=2,parameterNumber=58;
+
+# ProbabilityOfPrecLimit1
+1000000571;discipline=192,parameterCategory=2,parameterNumber=59;
+
+# ProbabilityOfPrecLimit2
+1000000572;discipline=192,parameterCategory=2,parameterNumber=60;
+
+# ProbabilityOfPrecLimit3
+1000000573;discipline=192,parameterCategory=2,parameterNumber=61;
+
+# ProbabilityOfPrecLimit4
+1000000574;discipline=192,parameterCategory=2,parameterNumber=62;
+
+# ProbabilityOfPrecLimit5
+1000000575;discipline=192,parameterCategory=2,parameterNumber=63;
+
+# ProbabilityOfPrecLimit6
+1000000576;discipline=192,parameterCategory=2,parameterNumber=64;
+
+# ProbabilityOfPrecLimit7
+1000000577;discipline=192,parameterCategory=2,parameterNumber=65;
+
+# ProbabilityOfPrecLimit8
+1000000578;discipline=192,parameterCategory=2,parameterNumber=66;
+
+# ProbabilityOfPrecLimit9
+1000000579;discipline=192,parameterCategory=2,parameterNumber=67;
+
+# ProbabilityOfWind
+1000000580;discipline=192,parameterCategory=2,parameterNumber=68;
+
+# ProbabilityOfWindLimit1
+1000000581;discipline=192,parameterCategory=2,parameterNumber=69;
+
+# ProbabilityOfWindLimit2
+1000000582;discipline=192,parameterCategory=2,parameterNumber=70;
+
+# ProbabilityOfGustLimit1
+1000000583;discipline=192,parameterCategory=2,parameterNumber=71;
+
+# ProbabilityOfGustLimit2
+1000000584;discipline=192,parameterCategory=2,parameterNumber=72;
+
+# ProbabilityOfGustLimit3
+1000000585;discipline=192,parameterCategory=2,parameterNumber=73;
+
+# ProbabilityOfGustLimit4
+1000000586;discipline=192,parameterCategory=2,parameterNumber=74;
+
+# ProbabilityOfGustLimit5
+1000000587;discipline=192,parameterCategory=2,parameterNumber=75;
+
+# ProbabilityOfPrecLimit10
+1000000588;discipline=192,parameterCategory=2,parameterNumber=76;
+
+# TopoSlope
+1000000590;discipline=192,parameterCategory=2,parameterNumber=78;
+
+# TopoAzimuth
+1000000591;discipline=192,parameterCategory=2,parameterNumber=79;
+
+# TopoRelativeHeight
+1000000592;discipline=192,parameterCategory=2,parameterNumber=80;
+
+# TopoDistanceToSea
+1000000593;discipline=192,parameterCategory=2,parameterNumber=81;
+
+# TopoDirectionToSea
+1000000594;discipline=192,parameterCategory=2,parameterNumber=82;
+
+# TopoDistanceToLand
+1000000595;discipline=192,parameterCategory=2,parameterNumber=83;
+
+# TopoDirectionToLand
+1000000596;discipline=192,parameterCategory=2,parameterNumber=84;
+
+# SensorOrdinal
+1000000600;discipline=192,parameterCategory=2,parameterNumber=88;
+
+# DeltaTime
+1000000601;discipline=192,parameterCategory=2,parameterNumber=89;
+
+# BirchPollenTemperatureSum
+1000000602;discipline=192,parameterCategory=2,parameterNumber=90;
+
+# BirchPollenConcentration
+1000000603;discipline=192,parameterCategory=2,parameterNumber=91;
+
+# BirchPollenAvailable
+1000000604;discipline=192,parameterCategory=2,parameterNumber=92;
+
+# BirchPollenRemainingRatio
+1000000605;discipline=192,parameterCategory=2,parameterNumber=93;
+
+# GrassPollenTemperatureSum
+1000000606;discipline=192,parameterCategory=2,parameterNumber=94;
+
+# GrassPollenConcentration
+1000000607;discipline=192,parameterCategory=2,parameterNumber=95;
+
+# GrassPollenAvailable
+1000000608;discipline=192,parameterCategory=2,parameterNumber=96;
+
+# GrassPollenRemainingRatio
+1000000609;discipline=192,parameterCategory=2,parameterNumber=97;
+
+# AlderPollenTemperatureSum
+1000000610;discipline=192,parameterCategory=2,parameterNumber=98;
+
+# AlderPollenConcentration
+1000000611;discipline=192,parameterCategory=2,parameterNumber=99;
+
+# AlderPollenAvailable
+1000000612;discipline=192,parameterCategory=2,parameterNumber=100;
+
+# AlderPollenRemainingRatio
+1000000613;discipline=192,parameterCategory=2,parameterNumber=101;
+
+# MugwortPollenTemperatureSum
+1000000614;discipline=192,parameterCategory=2,parameterNumber=102;
+
+# MugwortPollenConcentration
+1000000615;discipline=192,parameterCategory=2,parameterNumber=103;
+
+# MugwortPollenAvailable
+1000000616;discipline=192,parameterCategory=2,parameterNumber=104;
+
+# MugwortPollenRemainingRatio
+1000000617;discipline=192,parameterCategory=2,parameterNumber=105;
+
+# RagweedPollenTemperatureSum
+1000000618;discipline=192,parameterCategory=2,parameterNumber=106;
+
+# RagweedPollenConcentration
+1000000619;discipline=192,parameterCategory=2,parameterNumber=107;
+
+# RagweedPollenAvailable
+1000000620;discipline=192,parameterCategory=2,parameterNumber=108;
+
+# RagweedPollenRemainingRatio
+1000000621;discipline=192,parameterCategory=2,parameterNumber=109;
+
+# FrostSum
+1000000634;discipline=192,parameterCategory=2,parameterNumber=122;
+
+# RoadFrostCover
+1000000635;discipline=192,parameterCategory=2,parameterNumber=123;
+
+# RoadSnowCover
+1000000636;discipline=192,parameterCategory=2,parameterNumber=124;
+
+# RoadMaintenanceMeasure
+1000000637;discipline=192,parameterCategory=2,parameterNumber=125;
+
+# TimeToNextMeasure
+1000000638;discipline=192,parameterCategory=2,parameterNumber=126;
+
+# WaterStorage
+1000000639;discipline=192,parameterCategory=2,parameterNumber=127;
+
+# TimeToNextSalting
+1000000640;discipline=192,parameterCategory=2,parameterNumber=128;
+
+# RoadCondition
+1000000641;discipline=192,parameterCategory=2,parameterNumber=129;
+
+# ProbabilityDryRoad
+1000000642;discipline=192,parameterCategory=2,parameterNumber=130;
+
+# ProbabilityWetRoad
+1000000643;discipline=192,parameterCategory=2,parameterNumber=131;
+
+# ProbabilityMoistRoad
+1000000644;discipline=192,parameterCategory=2,parameterNumber=132;
+
+# ProbabilitySnowyRoad
+1000000645;discipline=192,parameterCategory=2,parameterNumber=133;
+
+# ProbabilityFrostyRoad
+1000000646;discipline=192,parameterCategory=2,parameterNumber=134;
+
+# ProbabilityIcyRoad
+1000000647;discipline=192,parameterCategory=2,parameterNumber=135;
+
+# RoadTemperature
+1000000648;discipline=192,parameterCategory=2,parameterNumber=136;
+
+# GrowthPeriodDeviationInDays
+1000000649;discipline=192,parameterCategory=2,parameterNumber=137;
+
+# GrowthPeriodDeviationInPrcnt
+1000000650;discipline=192,parameterCategory=2,parameterNumber=138;
+
+# GrowthPeriodPrecipitation
+1000000651;discipline=192,parameterCategory=2,parameterNumber=139;
+
+# EffectiveTemperatureSum
+1000000652;discipline=192,parameterCategory=2,parameterNumber=140;
+
+# RoadConditionSeverity
+1000000653;discipline=192,parameterCategory=2,parameterNumber=141;
+
+# RoadTemperature2
+1000000654;discipline=192,parameterCategory=2,parameterNumber=142;
+
+# DeepRoadTemperature
+1000000655;discipline=192,parameterCategory=2,parameterNumber=143;
+
+# DeepRoadTemperature2
+1000000656;discipline=192,parameterCategory=2,parameterNumber=144;
+
+# RoadConditionAlternative
+1000000657;discipline=192,parameterCategory=2,parameterNumber=145;
+
+# GrowthPeriodOnOff
+1000000658;discipline=192,parameterCategory=2,parameterNumber=146;
+
+# RoadNotification
+1000000659;discipline=192,parameterCategory=2,parameterNumber=147;
+
+# RoadWarning
+1000000660;discipline=192,parameterCategory=2,parameterNumber=148;
+
+# PedestrianIndex
+1000000661;discipline=192,parameterCategory=2,parameterNumber=149;
+
+# RoadReasoning
+1000000662;discipline=192,parameterCategory=2,parameterNumber=150;
+
+# TrafficIndex
+1000000663;discipline=192,parameterCategory=2,parameterNumber=151;
+
+# Friction
+1000000664;discipline=192,parameterCategory=2,parameterNumber=152;
+
+# RoadIceCover
+1000000665;discipline=192,parameterCategory=2,parameterNumber=153;
+
+# RoadIceCoverOnVehiclePath
+1000000666;discipline=192,parameterCategory=2,parameterNumber=154;
+
+# WindDirectionCode
+1000000670;discipline=192,parameterCategory=2,parameterNumber=158;
+
+# WindDirectionVoltage
+1000000671;discipline=192,parameterCategory=2,parameterNumber=159;
+
+# AverageWindDirection
+1000000672;discipline=192,parameterCategory=2,parameterNumber=160;
+
+# MaximumWindDirection
+1000000673;discipline=192,parameterCategory=2,parameterNumber=161;
+
+# MinimumWindDirection
+1000000674;discipline=192,parameterCategory=2,parameterNumber=162;
+
+# WindDirectionDeviation
+1000000675;discipline=192,parameterCategory=2,parameterNumber=163;
+
+# WindSpeedDeviation
+1000000676;discipline=192,parameterCategory=2,parameterNumber=164;
+
+# WindVerticalDeviation
+1000000677;discipline=192,parameterCategory=2,parameterNumber=165;
+
+# TemperatureCode
+1000000680;discipline=192,parameterCategory=2,parameterNumber=168;
+
+# TemperatureVoltage
+1000000681;discipline=192,parameterCategory=2,parameterNumber=169;
+
+# AverageTemperature
+1000000682;discipline=192,parameterCategory=2,parameterNumber=170;
+
+# TemperatureDeviation
+1000000683;discipline=192,parameterCategory=2,parameterNumber=171;
+
+# HumidityCode
+1000000690;discipline=192,parameterCategory=2,parameterNumber=178;
+
+# HumidityVoltage
+1000000691;discipline=192,parameterCategory=2,parameterNumber=179;
+
+# AverageHumidity
+1000000692;discipline=192,parameterCategory=2,parameterNumber=180;
+
+# MaximumHumidity
+1000000693;discipline=192,parameterCategory=2,parameterNumber=181;
+
+# MinimumHumidity
+1000000694;discipline=192,parameterCategory=2,parameterNumber=182;
+
+# HumidityDeviation
+1000000695;discipline=192,parameterCategory=2,parameterNumber=183;
+
+# PressureCode
+1000000700;discipline=192,parameterCategory=2,parameterNumber=188;
+
+# PressureVoltage
+1000000701;discipline=192,parameterCategory=2,parameterNumber=189;
+
+# AveragePressure
+1000000702;discipline=192,parameterCategory=2,parameterNumber=190;
+
+# MaximumPressure
+1000000703;discipline=192,parameterCategory=2,parameterNumber=191;
+
+# MinimumPressure
+1000000704;discipline=192,parameterCategory=2,parameterNumber=192;
+
+# PressureDeviation
+1000000705;discipline=192,parameterCategory=2,parameterNumber=193;
+
+# SurfaceWaterPhase
+1000000706;discipline=192,parameterCategory=2,parameterNumber=194;
+
+# ProbabilityOfSnow
+1000000707;discipline=192,parameterCategory=2,parameterNumber=195;
+
+# VerticalSoundingSignificance
+1000000708;discipline=192,parameterCategory=2,parameterNumber=196;
+
+# SatelCh1
+1000000710;discipline=192,parameterCategory=2,parameterNumber=198;
+
+# SatelCh2
+1000000711;discipline=192,parameterCategory=2,parameterNumber=199;
+
+# SatelCh3
+1000000712;discipline=192,parameterCategory=2,parameterNumber=200;
+
+# SatelCh4
+1000000713;discipline=192,parameterCategory=2,parameterNumber=201;
+
+# SatelCh5
+1000000714;discipline=192,parameterCategory=2,parameterNumber=202;
+
+# SatelCh6
+1000000715;discipline=192,parameterCategory=2,parameterNumber=203;
+
+# SatelCh112
+1000000716;discipline=192,parameterCategory=2,parameterNumber=204;
+
+# SatelCh124
+1000000717;discipline=192,parameterCategory=2,parameterNumber=205;
+
+# SatelCh345
+1000000718;discipline=192,parameterCategory=2,parameterNumber=206;
+
+# SatelCh7
+1000000719;discipline=192,parameterCategory=2,parameterNumber=207;
+
+# SatelCh8
+1000000720;discipline=192,parameterCategory=2,parameterNumber=208;
+
+# SatelCh9
+1000000721;discipline=192,parameterCategory=2,parameterNumber=209;
+
+# SatelCh10
+1000000722;discipline=192,parameterCategory=2,parameterNumber=210;
+
+# SatelCh11
+1000000723;discipline=192,parameterCategory=2,parameterNumber=211;
+
+# SatelCh12
+1000000724;discipline=192,parameterCategory=2,parameterNumber=212;
+
+# SatelCh129
+1000000730;discipline=192,parameterCategory=2,parameterNumber=218;
+
+# SatelCh239
+1000000731;discipline=192,parameterCategory=2,parameterNumber=219;
+
+# SatelCh321
+1000000732;discipline=192,parameterCategory=2,parameterNumber=220;
+
+# SatelCh4910
+1000000733;discipline=192,parameterCategory=2,parameterNumber=221;
+
+# SatelCh164
+1000000734;discipline=192,parameterCategory=2,parameterNumber=222;
+
+# 1CloudType
+1000000745;discipline=192,parameterCategory=2,parameterNumber=233;
+
+# 2CloudType
+1000000746;discipline=192,parameterCategory=2,parameterNumber=234;
+
+# 3CloudType
+1000000747;discipline=192,parameterCategory=2,parameterNumber=235;
+
+# 4CloudType
+1000000748;discipline=192,parameterCategory=2,parameterNumber=236;
+
+# Mist
+1000000749;discipline=192,parameterCategory=2,parameterNumber=237;
+
+# FL1Base
+1000000750;discipline=192,parameterCategory=2,parameterNumber=238;
+
+# FL1Top
+1000000751;discipline=192,parameterCategory=2,parameterNumber=239;
+
+# FL1Cover
+1000000752;discipline=192,parameterCategory=2,parameterNumber=240;
+
+# FL1CloudType
+1000000753;discipline=192,parameterCategory=2,parameterNumber=241;
+
+# FL2Base
+1000000754;discipline=192,parameterCategory=2,parameterNumber=242;
+
+# FL2Top
+1000000755;discipline=192,parameterCategory=2,parameterNumber=243;
+
+# FL2Cover
+1000000756;discipline=192,parameterCategory=2,parameterNumber=244;
+
+# FL2CloudType
+1000000757;discipline=192,parameterCategory=2,parameterNumber=245;
+
+# FL3Base
+1000000758;discipline=192,parameterCategory=2,parameterNumber=246;
+
+# FL3Top
+1000000759;discipline=192,parameterCategory=2,parameterNumber=247;
+
+# FL3Cover
+1000000760;discipline=192,parameterCategory=2,parameterNumber=248;
+
+# FL3CloudType
+1000000761;discipline=192,parameterCategory=2,parameterNumber=249;
+
+# FL4Base
+1000000762;discipline=192,parameterCategory=2,parameterNumber=250;
+
+# FL4Top
+1000000763;discipline=192,parameterCategory=2,parameterNumber=251;
+
+# FL4Cover
+1000000764;discipline=192,parameterCategory=2,parameterNumber=252;
+
+# FL4CloudType
+1000000765;discipline=192,parameterCategory=2,parameterNumber=253;
+
+# FL5Base
+1000000766;discipline=192,parameterCategory=2,parameterNumber=254;
+
+# FL5Top
+1000000767;discipline=192,parameterCategory=2,parameterNumber=255;
+
+# FL5Cover
+1000000768;discipline=192,parameterCategory=3,parameterNumber=0;
+
+# FL5CloudType
+1000000769;discipline=192,parameterCategory=3,parameterNumber=1;
+
+# FL6Base
+1000000770;discipline=192,parameterCategory=3,parameterNumber=2;
+
+# FL6Top
+1000000771;discipline=192,parameterCategory=3,parameterNumber=3;
+
+# FL6Cover
+1000000772;discipline=192,parameterCategory=3,parameterNumber=4;
+
+# FL6CloudType
+1000000773;discipline=192,parameterCategory=3,parameterNumber=5;
+
+# FL7Base
+1000000774;discipline=192,parameterCategory=3,parameterNumber=6;
+
+# FL7Top
+1000000775;discipline=192,parameterCategory=3,parameterNumber=7;
+
+# FL7Cover
+1000000776;discipline=192,parameterCategory=3,parameterNumber=8;
+
+# FL7CloudType
+1000000777;discipline=192,parameterCategory=3,parameterNumber=9;
+
+# FL8Base
+1000000778;discipline=192,parameterCategory=3,parameterNumber=10;
+
+# FL8Top
+1000000779;discipline=192,parameterCategory=3,parameterNumber=11;
+
+# FL8Cover
+1000000780;discipline=192,parameterCategory=3,parameterNumber=12;
+
+# FL8CloudType
+1000000781;discipline=192,parameterCategory=3,parameterNumber=13;
+
+# FLCbBase
+1000000782;discipline=192,parameterCategory=3,parameterNumber=14;
+
+# FLCbCover
+1000000783;discipline=192,parameterCategory=3,parameterNumber=15;
+
+# FLMinBase
+1000000784;discipline=192,parameterCategory=3,parameterNumber=16;
+
+# FLMaxBase
+1000000785;discipline=192,parameterCategory=3,parameterNumber=17;
+
+# PollenIndexNut
+1000000786;discipline=192,parameterCategory=3,parameterNumber=18;
+
+# PollenIndexAlder
+1000000787;discipline=192,parameterCategory=3,parameterNumber=19;
+
+# PollenIndexBirch
+1000000788;discipline=192,parameterCategory=3,parameterNumber=20;
+
+# PollenIndexMugwort
+1000000789;discipline=192,parameterCategory=3,parameterNumber=21;
+
+# PollenIndexHay
+1000000790;discipline=192,parameterCategory=3,parameterNumber=22;
+
+# PollenIndexMould
+1000000791;discipline=192,parameterCategory=3,parameterNumber=23;
+
+# PollenIndexSum
+1000000792;discipline=192,parameterCategory=3,parameterNumber=24;
+
+# NormalGroundMinTemperature
+1000000793;discipline=192,parameterCategory=3,parameterNumber=25;
+
+# NormalGroundMinTemperatureF02
+1000000794;discipline=192,parameterCategory=3,parameterNumber=26;
+
+# NormalGroundMinTemperatureF12
+1000000795;discipline=192,parameterCategory=3,parameterNumber=27;
+
+# NormalGroundMinTemperatureF37
+1000000796;discipline=192,parameterCategory=3,parameterNumber=28;
+
+# NormalGroundMinTemperatureF50
+1000000797;discipline=192,parameterCategory=3,parameterNumber=29;
+
+# NormalGroundMinTemperatureF63
+1000000798;discipline=192,parameterCategory=3,parameterNumber=30;
+
+# NormalGroundMinTemperatureF88
+1000000799;discipline=192,parameterCategory=3,parameterNumber=31;
+
+# NormalGroundMinTemperatureF98
+1000000800;discipline=192,parameterCategory=3,parameterNumber=32;
+
+# NormalMeanTemperature
+1000000801;discipline=192,parameterCategory=3,parameterNumber=33;
+
+# NormalMeanTemperatureF02
+1000000802;discipline=192,parameterCategory=3,parameterNumber=34;
+
+# NormalMeanTemperatureF12
+1000000803;discipline=192,parameterCategory=3,parameterNumber=35;
+
+# NormalMeanTemperatureF37
+1000000804;discipline=192,parameterCategory=3,parameterNumber=36;
+
+# NormalMeanTemperatureF50
+1000000805;discipline=192,parameterCategory=3,parameterNumber=37;
+
+# NormalMeanTemperatureF63
+1000000806;discipline=192,parameterCategory=3,parameterNumber=38;
+
+# NormalMeanTemperatureF88
+1000000807;discipline=192,parameterCategory=3,parameterNumber=39;
+
+# NormalMeanTemperatureF98
+1000000808;discipline=192,parameterCategory=3,parameterNumber=40;
+
+# NormalMaxTemperature
+1000000811;discipline=192,parameterCategory=3,parameterNumber=43;
+
+# NormalMaxTemperatureF02
+1000000812;discipline=192,parameterCategory=3,parameterNumber=44;
+
+# NormalMaxTemperatureF12
+1000000813;discipline=192,parameterCategory=3,parameterNumber=45;
+
+# NormalMaxTemperatureF37
+1000000814;discipline=192,parameterCategory=3,parameterNumber=46;
+
+# NormalMaxTemperatureF50
+1000000815;discipline=192,parameterCategory=3,parameterNumber=47;
+
+# NormalMaxTemperatureF63
+1000000816;discipline=192,parameterCategory=3,parameterNumber=48;
+
+# NormalMaxTemperatureF88
+1000000817;discipline=192,parameterCategory=3,parameterNumber=49;
+
+# NormalMaxTemperatureF98
+1000000818;discipline=192,parameterCategory=3,parameterNumber=50;
+
+# NormalMinTemperature
+1000000821;discipline=192,parameterCategory=3,parameterNumber=53;
+
+# NormalMinTemperatureF02
+1000000822;discipline=192,parameterCategory=3,parameterNumber=54;
+
+# NormalMinTemperatureF12
+1000000823;discipline=192,parameterCategory=3,parameterNumber=55;
+
+# NormalMinTemperatureF37
+1000000824;discipline=192,parameterCategory=3,parameterNumber=56;
+
+# NormalMinTemperatureF50
+1000000825;discipline=192,parameterCategory=3,parameterNumber=57;
+
+# NormalMinTemperatureF63
+1000000826;discipline=192,parameterCategory=3,parameterNumber=58;
+
+# NormalMinTemperatureF88
+1000000827;discipline=192,parameterCategory=3,parameterNumber=59;
+
+# NormalMinTemperatureF98
+1000000828;discipline=192,parameterCategory=3,parameterNumber=60;
+
+# PoP24h
+1000000829;discipline=192,parameterCategory=3,parameterNumber=61;
+
+# PoP18
+1000000830;discipline=192,parameterCategory=3,parameterNumber=62;
+
+# PoP06
+1000000831;discipline=192,parameterCategory=3,parameterNumber=63;
+
+# Evaporation18
+1000000832;discipline=192,parameterCategory=3,parameterNumber=64;
+
+# MetarObservationType
+1000000840;discipline=192,parameterCategory=3,parameterNumber=72;
+
+# RoadWarning1
+1000000841;discipline=192,parameterCategory=3,parameterNumber=73;
+
+# RoadWarning2
+1000000842;discipline=192,parameterCategory=3,parameterNumber=74;
+
+# RoadWarning3
+1000000843;discipline=192,parameterCategory=3,parameterNumber=75;
+
+# RoadWarning4
+1000000844;discipline=192,parameterCategory=3,parameterNumber=76;
+
+# RoadWarning5
+1000000845;discipline=192,parameterCategory=3,parameterNumber=77;
+
+# RoadWarning6
+1000000846;discipline=192,parameterCategory=3,parameterNumber=78;
+
+# SnowLoad
+1000000850;discipline=192,parameterCategory=3,parameterNumber=82;
+
+# HoarFrostLoad
+1000000851;discipline=192,parameterCategory=3,parameterNumber=83;
+
+# TotalSnowLoad
+1000000852;discipline=192,parameterCategory=3,parameterNumber=84;
+
+# DrySnowLoad
+1000000853;discipline=192,parameterCategory=3,parameterNumber=85;
+
+# WetSnowLoad
+1000000854;discipline=192,parameterCategory=3,parameterNumber=86;
+
+# FrozenSnowLoad
+1000000855;discipline=192,parameterCategory=3,parameterNumber=87;
+
+# SnowLoadType
+1000000856;discipline=192,parameterCategory=3,parameterNumber=88;
+
+# PrecipitationWater
+1000000857;discipline=192,parameterCategory=3,parameterNumber=89;
+
+# PrecipitationSnow
+1000000858;discipline=192,parameterCategory=3,parameterNumber=90;
+
+# PrecipitationSleet
+1000000859;discipline=192,parameterCategory=3,parameterNumber=91;
+
+# TotalSnowLoadChange
+1000000860;discipline=192,parameterCategory=3,parameterNumber=92;
+
+# TemperatureAnomalyMinus2
+1000000861;discipline=192,parameterCategory=3,parameterNumber=93;
+
+# TemperatureAnomalyMinus1
+1000000862;discipline=192,parameterCategory=3,parameterNumber=94;
+
+# TemperatureAnomalyPlus0
+1000000863;discipline=192,parameterCategory=3,parameterNumber=95;
+
+# TemperatureAnomalyPlus1
+1000000864;discipline=192,parameterCategory=3,parameterNumber=96;
+
+# TemperatureAnomalyPlus2
+1000000865;discipline=192,parameterCategory=3,parameterNumber=97;
+
+# PrecipitationAnomaly10
+1000000866;discipline=192,parameterCategory=3,parameterNumber=98;
+
+# PrecipitationAnomaly20
+1000000867;discipline=192,parameterCategory=3,parameterNumber=99;
+
+# Detectability
+1000000868;discipline=192,parameterCategory=3,parameterNumber=100;
+
+# VerticalMeltingArea
+1000000870;discipline=192,parameterCategory=3,parameterNumber=102;
+
+# TemperatureF100
+1000000871;discipline=192,parameterCategory=3,parameterNumber=103;
+
+# TemperatureF90
+1000000872;discipline=192,parameterCategory=3,parameterNumber=104;
+
+# TemperatureF75
+1000000873;discipline=192,parameterCategory=3,parameterNumber=105;
+
+# TemperatureF50
+1000000874;discipline=192,parameterCategory=3,parameterNumber=106;
+
+# TemperatureF25
+1000000875;discipline=192,parameterCategory=3,parameterNumber=107;
+
+# TemperatureF10
+1000000876;discipline=192,parameterCategory=3,parameterNumber=108;
+
+# TemperatureF0
+1000000877;discipline=192,parameterCategory=3,parameterNumber=109;
+
+# TotalCloudCoverF100
+1000000881;discipline=192,parameterCategory=3,parameterNumber=113;
+
+# TotalCloudCoverF90
+1000000882;discipline=192,parameterCategory=3,parameterNumber=114;
+
+# TotalCloudCoverF75
+1000000883;discipline=192,parameterCategory=3,parameterNumber=115;
+
+# TotalCloudCoverF50
+1000000884;discipline=192,parameterCategory=3,parameterNumber=116;
+
+# TotalCloudCoverF25
+1000000885;discipline=192,parameterCategory=3,parameterNumber=117;
+
+# TotalCloudCoverF10
+1000000886;discipline=192,parameterCategory=3,parameterNumber=118;
+
+# TotalCloudCoverF0
+1000000887;discipline=192,parameterCategory=3,parameterNumber=119;
+
+# TotalPrecipitationF100
+1000000891;discipline=192,parameterCategory=3,parameterNumber=123;
+
+# TotalPrecipitationF90
+1000000892;discipline=192,parameterCategory=3,parameterNumber=124;
+
+# TotalPrecipitationF75
+1000000893;discipline=192,parameterCategory=3,parameterNumber=125;
+
+# TotalPrecipitationF50
+1000000894;discipline=192,parameterCategory=3,parameterNumber=126;
+
+# TotalPrecipitationF25
+1000000895;discipline=192,parameterCategory=3,parameterNumber=127;
+
+# TotalPrecipitationF10
+1000000896;discipline=192,parameterCategory=3,parameterNumber=128;
+
+# TotalPrecipitationF0
+1000000897;discipline=192,parameterCategory=3,parameterNumber=129;
+
+# ExceptionalPrecipitation
+1000000910;discipline=192,parameterCategory=3,parameterNumber=142;
+
+# 1CloudTop
+1000000911;discipline=192,parameterCategory=3,parameterNumber=143;
+
+# 2CloudTop
+1000000912;discipline=192,parameterCategory=3,parameterNumber=144;
+
+# 3CloudTop
+1000000913;discipline=192,parameterCategory=3,parameterNumber=145;
+
+# 4CloudTop
+1000000914;discipline=192,parameterCategory=3,parameterNumber=146;
+
+# CbCloudTop
+1000000915;discipline=192,parameterCategory=3,parameterNumber=147;
+
+# Precipitation3hF0
+1000000920;discipline=192,parameterCategory=3,parameterNumber=152;
+
+# Precipitation3hF1
+1000000921;discipline=192,parameterCategory=3,parameterNumber=153;
+
+# Precipitation3hF2
+1000000922;discipline=192,parameterCategory=3,parameterNumber=154;
+
+# Precipitation3hF5
+1000000923;discipline=192,parameterCategory=3,parameterNumber=155;
+
+# Precipitation3hF6
+1000000924;discipline=192,parameterCategory=3,parameterNumber=156;
+
+# Precipitation3hF7
+1000000925;discipline=192,parameterCategory=3,parameterNumber=157;
+
+# Precipitation3hF8
+1000000926;discipline=192,parameterCategory=3,parameterNumber=158;
+
+# Precipitation3hF9
+1000000927;discipline=192,parameterCategory=3,parameterNumber=159;
+
+# Precipitation3hF10
+1000000928;discipline=192,parameterCategory=3,parameterNumber=160;
+
+# Precipitation3hF12
+1000000929;discipline=192,parameterCategory=3,parameterNumber=161;
+
+# Precipitation3hF20
+1000000930;discipline=192,parameterCategory=3,parameterNumber=162;
+
+# Precipitation3hF25
+1000000931;discipline=192,parameterCategory=3,parameterNumber=163;
+
+# Precipitation3hF30
+1000000932;discipline=192,parameterCategory=3,parameterNumber=164;
+
+# Precipitation3hF37
+1000000933;discipline=192,parameterCategory=3,parameterNumber=165;
+
+# Precipitation3hF40
+1000000934;discipline=192,parameterCategory=3,parameterNumber=166;
+
+# Precipitation3hF50
+1000000935;discipline=192,parameterCategory=3,parameterNumber=167;
+
+# Precipitation3hF60
+1000000936;discipline=192,parameterCategory=3,parameterNumber=168;
+
+# Precipitation3hF63
+1000000937;discipline=192,parameterCategory=3,parameterNumber=169;
+
+# Precipitation3hF70
+1000000938;discipline=192,parameterCategory=3,parameterNumber=170;
+
+# Precipitation3hF75
+1000000939;discipline=192,parameterCategory=3,parameterNumber=171;
+
+# Precipitation3hF80
+1000000940;discipline=192,parameterCategory=3,parameterNumber=172;
+
+# Precipitation3hF88
+1000000941;discipline=192,parameterCategory=3,parameterNumber=173;
+
+# Precipitation3hF90
+1000000942;discipline=192,parameterCategory=3,parameterNumber=174;
+
+# Precipitation3hF95
+1000000943;discipline=192,parameterCategory=3,parameterNumber=175;
+
+# Precipitation3hF98
+1000000944;discipline=192,parameterCategory=3,parameterNumber=176;
+
+# Precipitation3hF99
+1000000945;discipline=192,parameterCategory=3,parameterNumber=177;
+
+# Precipitation3hF100
+1000000946;discipline=192,parameterCategory=3,parameterNumber=178;
+
+# ProbabilityOfPrecipitation3h0mm
+1000000947;discipline=192,parameterCategory=3,parameterNumber=179;
+
+# ProbabilityOfPrecipitation3h01mm
+1000000948;discipline=192,parameterCategory=3,parameterNumber=180;
+
+# ProbabilityOfPrecipitation3h05mm
+1000000949;discipline=192,parameterCategory=3,parameterNumber=181;
+
+# ProbabilityOfPrecipitation3h1mm
+1000000950;discipline=192,parameterCategory=3,parameterNumber=182;
+
+# ProbabilityOfPrecipitation3h2mm
+1000000951;discipline=192,parameterCategory=3,parameterNumber=183;
+
+# ProbabilityOfPrecipitation3h3mm
+1000000952;discipline=192,parameterCategory=3,parameterNumber=184;
+
+# ProbabilityOfPrecipitation3h4mm
+1000000953;discipline=192,parameterCategory=3,parameterNumber=185;
+
+# ProbabilityOfPrecipitation3h5mm
+1000000954;discipline=192,parameterCategory=3,parameterNumber=186;
+
+# ProbabilityOfPrecipitation3h6mm
+1000000955;discipline=192,parameterCategory=3,parameterNumber=187;
+
+# ProbabilityOfPrecipitation3h7mm
+1000000956;discipline=192,parameterCategory=3,parameterNumber=188;
+
+# ProbabilityOfPrecipitation3h8mm
+1000000957;discipline=192,parameterCategory=3,parameterNumber=189;
+
+# ProbabilityOfPrecipitation3h9mm
+1000000958;discipline=192,parameterCategory=3,parameterNumber=190;
+
+# ProbabilityOfPrecipitation3h10mm
+1000000959;discipline=192,parameterCategory=3,parameterNumber=191;
+
+# ProbabilityOfPrecipitation3h12mm
+1000000960;discipline=192,parameterCategory=3,parameterNumber=192;
+
+# ProbabilityOfPrecipitation3h14mm
+1000000961;discipline=192,parameterCategory=3,parameterNumber=193;
+
+# ProbabilityOfPrecipitation3h16mm
+1000000962;discipline=192,parameterCategory=3,parameterNumber=194;
+
+# ProbabilityOfPrecipitation3h18mm
+1000000963;discipline=192,parameterCategory=3,parameterNumber=195;
+
+# ProbabilityOfPrecipitation3h20mm
+1000000964;discipline=192,parameterCategory=3,parameterNumber=196;
+
+# ProbabilityOfPrecipitation3h25mm
+1000000965;discipline=192,parameterCategory=3,parameterNumber=197;
+
+# ProbabilityOfPrecipitation3h30mm
+1000000966;discipline=192,parameterCategory=3,parameterNumber=198;
+
+# ProbabilityOfPrecipitation3h35mm
+1000000967;discipline=192,parameterCategory=3,parameterNumber=199;
+
+# ProbabilityOfPrecipitation3h40mm
+1000000968;discipline=192,parameterCategory=3,parameterNumber=200;
+
+# ProbabilityOfPrecipitation3h45mm
+1000000969;discipline=192,parameterCategory=3,parameterNumber=201;
+
+# ProbabilityOfPrecipitation3h50mm
+1000000970;discipline=192,parameterCategory=3,parameterNumber=202;
+
+# ProbabilityOfPrecipitation3h60mm
+1000000971;discipline=192,parameterCategory=3,parameterNumber=203;
+
+# ProbabilityOfPrecipitation3h70mm
+1000000972;discipline=192,parameterCategory=3,parameterNumber=204;
+
+# ProbabilityOfPrecipitation3h80mm
+1000000973;discipline=192,parameterCategory=3,parameterNumber=205;
+
+# ProbabilityOfPrecipitation3h90mm
+1000000974;discipline=192,parameterCategory=3,parameterNumber=206;
+
+# ProbabilityOfPrecipitation3h100mm
+1000000975;discipline=192,parameterCategory=3,parameterNumber=207;
+
+# ProbabilityOfPrecipitation3h150mm
+1000000976;discipline=192,parameterCategory=3,parameterNumber=208;
+
+# ProbabilityOfPrecipitation3h200mm
+1000000977;discipline=192,parameterCategory=3,parameterNumber=209;
+
+# ProbabilityOfPrecipitation3h500mm
+1000000978;discipline=192,parameterCategory=3,parameterNumber=210;
+
+# FlagDate
+1000000999;discipline=192,parameterCategory=3,parameterNumber=231;
+
+# ProbabilityOfWindLimit3
+1000001023;discipline=192,parameterCategory=3,parameterNumber=255;
+
+# ProbabilityOfWindLimit4
+1000001024;discipline=192,parameterCategory=4,parameterNumber=0;
+
+# ProbabilityOfWindLimit5
+1000001025;discipline=192,parameterCategory=4,parameterNumber=1;
+
+# ProbabilityOfWindLimit6
+1000001026;discipline=192,parameterCategory=4,parameterNumber=2;
+
+# ProbabilityOfColdLimit1
+1000001031;discipline=192,parameterCategory=4,parameterNumber=7;
+
+# ProbabilityOfColdLimit2
+1000001032;discipline=192,parameterCategory=4,parameterNumber=8;
+
+# ProbabilityOfColdLimit3
+1000001033;discipline=192,parameterCategory=4,parameterNumber=9;
+
+# ProbabilityOfColdLimit4
+1000001034;discipline=192,parameterCategory=4,parameterNumber=10;
+
+# ProbabilityOfHeatLimit1
+1000001041;discipline=192,parameterCategory=4,parameterNumber=17;
+
+# ProbabilityOfHeatLimit2
+1000001042;discipline=192,parameterCategory=4,parameterNumber=18;
+
+# ProbabilityOfHeatLimit3
+1000001043;discipline=192,parameterCategory=4,parameterNumber=19;
+
+# ProbabilityOfCAPE1
+1000001051;discipline=192,parameterCategory=4,parameterNumber=27;
+
+# ProbabilityOfCAPE2
+1000001052;discipline=192,parameterCategory=4,parameterNumber=28;
+
+# ProbabilityOfCAPE3
+1000001053;discipline=192,parameterCategory=4,parameterNumber=29;
+
+# ProbabilityOfCAPE4
+1000001054;discipline=192,parameterCategory=4,parameterNumber=30;
+
+# ProbabilityOfPr6Limit1
+1000001061;discipline=192,parameterCategory=4,parameterNumber=37;
+
+# ProbabilityOfPr6Limit2
+1000001062;discipline=192,parameterCategory=4,parameterNumber=38;
+
+# ProbabilityOfPr6Limit3
+1000001063;discipline=192,parameterCategory=4,parameterNumber=39;
+
+# ProbabilityOfPr6Limit4
+1000001064;discipline=192,parameterCategory=4,parameterNumber=40;
+
+# ProbabilityOfPr6Limit5
+1000001065;discipline=192,parameterCategory=4,parameterNumber=41;
+
+# ProbabilityOfPr6Limit6
+1000001066;discipline=192,parameterCategory=4,parameterNumber=42;
+
+# ProbabilityOfPr24Limit1
+1000001071;discipline=192,parameterCategory=4,parameterNumber=47;
+
+# ProbabilityOfPr24Limit2
+1000001072;discipline=192,parameterCategory=4,parameterNumber=48;
+
+# ProbabilityOfPr24Limit3
+1000001073;discipline=192,parameterCategory=4,parameterNumber=49;
+
+# ProbabilityOfPr24Limit4
+1000001074;discipline=192,parameterCategory=4,parameterNumber=50;
+
+# ProbabilityOfPr24Limit5
+1000001075;discipline=192,parameterCategory=4,parameterNumber=51;
+
+# ProbabilityOfSn6Limit1
+1000001081;discipline=192,parameterCategory=4,parameterNumber=57;
+
+# ProbabilityOfSn6Limit2
+1000001082;discipline=192,parameterCategory=4,parameterNumber=58;
+
+# ProbabilityOfSn6Limit3
+1000001083;discipline=192,parameterCategory=4,parameterNumber=59;
+
+# ProbabilityOfSn6Limit4
+1000001084;discipline=192,parameterCategory=4,parameterNumber=60;
+
+# ProbabilityOfSn6Limit5
+1000001085;discipline=192,parameterCategory=4,parameterNumber=61;
+
+# ProbabilityOfSn6Limit6
+1000001086;discipline=192,parameterCategory=4,parameterNumber=62;
+
+# ProbabilityOfSn24Limit1
+1000001091;discipline=192,parameterCategory=4,parameterNumber=67;
+
+# ProbabilityOfSn24Limit2
+1000001092;discipline=192,parameterCategory=4,parameterNumber=68;
+
+# ProbabilityOfSn24Limit3
+1000001093;discipline=192,parameterCategory=4,parameterNumber=69;
+
+# ProbabilityOfSn24Limit4
+1000001094;discipline=192,parameterCategory=4,parameterNumber=70;
+
+# ProbabilityOfSn24Limit5
+1000001095;discipline=192,parameterCategory=4,parameterNumber=71;
+
+# ProbabilityOfSn24Limit6
+1000001096;discipline=192,parameterCategory=4,parameterNumber=72;
+
+# BioMassSum
+1000001097;discipline=192,parameterCategory=4,parameterNumber=73;
+
+# BioMassSumChange
+1000001098;discipline=192,parameterCategory=4,parameterNumber=74;
+
+# BioMassSumChangeP
+1000001099;discipline=192,parameterCategory=4,parameterNumber=75;
+
+# CyanosSum
+1000001100;discipline=192,parameterCategory=4,parameterNumber=76;
+
+# CyanosSumChange
+1000001101;discipline=192,parameterCategory=4,parameterNumber=77;
+
+# CyanosSumChangeP
+1000001102;discipline=192,parameterCategory=4,parameterNumber=78;
+
+# Reflectivity
+1000001103;discipline=192,parameterCategory=4,parameterNumber=79;
+
+# RadialVelocity
+1000001104;discipline=192,parameterCategory=4,parameterNumber=80;
+
+# SpectralWidth
+1000001105;discipline=192,parameterCategory=4,parameterNumber=81;
+
+# AshConcentration
+1000001106;discipline=192,parameterCategory=4,parameterNumber=82;
+
+# GrowthPeriodStarted
+1000001107;discipline=192,parameterCategory=4,parameterNumber=83;
+
+# GrowthPeriodEnded
+1000001108;discipline=192,parameterCategory=4,parameterNumber=84;
+
+# AshOnOff
+1000001109;discipline=192,parameterCategory=4,parameterNumber=85;
+
+# WindSpeedF100
+1000001110;discipline=192,parameterCategory=4,parameterNumber=86;
+
+# WindSpeedF90
+1000001111;discipline=192,parameterCategory=4,parameterNumber=87;
+
+# WindSpeedF75
+1000001112;discipline=192,parameterCategory=4,parameterNumber=88;
+
+# WindSpeedF50
+1000001113;discipline=192,parameterCategory=4,parameterNumber=89;
+
+# WindSpeedF25
+1000001114;discipline=192,parameterCategory=4,parameterNumber=90;
+
+# WindSpeedF10
+1000001115;discipline=192,parameterCategory=4,parameterNumber=91;
+
+# WindSpeedF0
+1000001116;discipline=192,parameterCategory=4,parameterNumber=92;
+
+# WindGustF100
+1000001117;discipline=192,parameterCategory=4,parameterNumber=93;
+
+# WindGustF90
+1000001118;discipline=192,parameterCategory=4,parameterNumber=94;
+
+# WindGustF75
+1000001119;discipline=192,parameterCategory=4,parameterNumber=95;
+
+# WindGustF50
+1000001120;discipline=192,parameterCategory=4,parameterNumber=96;
+
+# WindGustF25
+1000001121;discipline=192,parameterCategory=4,parameterNumber=97;
+
+# WindGustF10
+1000001122;discipline=192,parameterCategory=4,parameterNumber=98;
+
+# WindGustF0
+1000001123;discipline=192,parameterCategory=4,parameterNumber=99;
+
+# GrowthPeriodPentadRelativeHumidityMean
+1000001124;discipline=192,parameterCategory=4,parameterNumber=100;
+
+# GrowthPeriodPentadRelativeHumidityDeviation
+1000001125;discipline=192,parameterCategory=4,parameterNumber=101;
+
+# GrowthPeriodPentadRelativeHumidityMax
+1000001126;discipline=192,parameterCategory=4,parameterNumber=102;
+
+# GrowthPeriodPentadRelativeHumidityMin
+1000001127;discipline=192,parameterCategory=4,parameterNumber=103;
+
+# GrowthPeriodPentadEvaporation
+1000001128;discipline=192,parameterCategory=4,parameterNumber=104;
+
+# GrowthPeriodEvaporationSum
+1000001129;discipline=192,parameterCategory=4,parameterNumber=105;
+
+# EffectiveTemperatureSumDeviation
+1000001130;discipline=192,parameterCategory=4,parameterNumber=106;
+
+# GrowthPeriodPentadTemperatureMean
+1000001131;discipline=192,parameterCategory=4,parameterNumber=107;
+
+# GrowthPeriodPentadTemperatureMeanDeviation
+1000001132;discipline=192,parameterCategory=4,parameterNumber=108;
+
+# GrowthPeriodPentadTemperatureMax
+1000001133;discipline=192,parameterCategory=4,parameterNumber=109;
+
+# GrowthPeriodPentadTemperatureMaxDeviation
+1000001134;discipline=192,parameterCategory=4,parameterNumber=110;
+
+# GrowthPeriodPentadTemperatureMin
+1000001135;discipline=192,parameterCategory=4,parameterNumber=111;
+
+# GrowthPeriodPentadTemperatureMinDeviation
+1000001136;discipline=192,parameterCategory=4,parameterNumber=112;
+
+# GrowthPeriodPentadSurfaceTemperatureMin
+1000001137;discipline=192,parameterCategory=4,parameterNumber=113;
+
+# GrowthPeriodPentadFrostNights
+1000001138;discipline=192,parameterCategory=4,parameterNumber=114;
+
+# GrowthPeriodPentadPrecipitation
+1000001139;discipline=192,parameterCategory=4,parameterNumber=115;
+
+# GrowthPeriodPentadPrecipitationDeviation
+1000001140;discipline=192,parameterCategory=4,parameterNumber=116;
+
+# GrowthPeriodPentadPrecipitationDays01mm
+1000001141;discipline=192,parameterCategory=4,parameterNumber=117;
+
+# GrowthPeriodPentadPrecipitationDays1mm
+1000001142;discipline=192,parameterCategory=4,parameterNumber=118;
+
+# GrowthPeriodPrecipitationSum
+1000001143;discipline=192,parameterCategory=4,parameterNumber=119;
+
+# GrowthPeriodPrecipitationSumDeviationInPrcnt
+1000001144;discipline=192,parameterCategory=4,parameterNumber=120;
+
+# GrowthPeriodPentadSurfaceTemperatureMin025Perc
+1000001145;discipline=192,parameterCategory=4,parameterNumber=121;
+
+# SeaWaterVelocityU
+1000001146;discipline=192,parameterCategory=4,parameterNumber=122;
+
+# SeaWaterVelocityV
+1000001147;discipline=192,parameterCategory=4,parameterNumber=123;
+
+# SeaWaterVelocityW
+1000001148;discipline=192,parameterCategory=4,parameterNumber=124;
+
+# EastwardIceVelocity
+1000001149;discipline=192,parameterCategory=4,parameterNumber=125;
+
+# NorthwardIceVelocity
+1000001150;discipline=192,parameterCategory=4,parameterNumber=126;
+
+# RaftIceConcentration
+1000001151;discipline=192,parameterCategory=4,parameterNumber=127;
+
+# RaftIceThickness
+1000001152;discipline=192,parameterCategory=4,parameterNumber=128;
+
+# RidgeIceConcentration
+1000001153;discipline=192,parameterCategory=4,parameterNumber=129;
+
+# MeanIceThickness
+1000001154;discipline=192,parameterCategory=4,parameterNumber=130;
+
+# Runoff
+1000001155;discipline=192,parameterCategory=4,parameterNumber=131;
+
+# WaterLevelIndex
+1000001156;discipline=192,parameterCategory=4,parameterNumber=132;
+
+# PrecipitationLevel
+1000001157;discipline=192,parameterCategory=4,parameterNumber=133;
+
+# Snow1h
+1000001158;discipline=192,parameterCategory=4,parameterNumber=134;
+
+# RadiationGlobalAccumulation
+1000001159;discipline=192,parameterCategory=4,parameterNumber=135;
+
+# RadiationLWAccumulation
+1000001160;discipline=192,parameterCategory=4,parameterNumber=136;
+
+# RadiationNetSurfaceLWAccumulation
+1000001161;discipline=192,parameterCategory=4,parameterNumber=137;
+
+# RadiationNetSurfaceSWAccumulation
+1000001162;discipline=192,parameterCategory=4,parameterNumber=138;
+
+# RadiationDiffuseAccumulation
+1000001163;discipline=192,parameterCategory=4,parameterNumber=139;
+
+# ClearAirTurbulence
+1000001164;discipline=192,parameterCategory=4,parameterNumber=140;
+
+# HorizontalExtentOfCumulonimbus
+1000001165;discipline=192,parameterCategory=4,parameterNumber=141;
+
+# InCloudTurbulence
+1000001166;discipline=192,parameterCategory=4,parameterNumber=142;
+
+# PrecipitationGraupel
+1000001167;discipline=192,parameterCategory=4,parameterNumber=143;
+
+# PrecipitationRateGraupel
+1000001168;discipline=192,parameterCategory=4,parameterNumber=144;
+
+# PrecipitationSolid
+1000001169;discipline=192,parameterCategory=4,parameterNumber=145;
+
+# PrecipitationRateSolid
+1000001170;discipline=192,parameterCategory=4,parameterNumber=146;
+
+# PrecipitationInstantWater
+1000001171;discipline=192,parameterCategory=4,parameterNumber=147;
+
+# PrecipitationInstantSnow
+1000001172;discipline=192,parameterCategory=4,parameterNumber=148;
+
+# PrecipitationInstantGraupel
+1000001173;discipline=192,parameterCategory=4,parameterNumber=149;
+
+# CloudTop
+1000001174;discipline=192,parameterCategory=4,parameterNumber=150;
+
+# FloodWarningIndex
+1000001175;discipline=192,parameterCategory=4,parameterNumber=151;
+
+# HakeMessageType
+1000001176;discipline=192,parameterCategory=4,parameterNumber=152;
+
+# Surface6hAccumulatedNOxDryDeposition
+1000001180;discipline=192,parameterCategory=4,parameterNumber=156;
+
+# Surface6hAccumulatedNOxWetDeposition
+1000001181;discipline=192,parameterCategory=4,parameterNumber=157;
+
+# Surface6hAccumulatedNHxDryDeposition
+1000001182;discipline=192,parameterCategory=4,parameterNumber=158;
+
+# Surface6hAccumulatedNHxWetDeposition
+1000001183;discipline=192,parameterCategory=4,parameterNumber=159;
+
+# Surface6hAccumulatedSDryDeposition
+1000001184;discipline=192,parameterCategory=4,parameterNumber=160;
+
+# Surface6hAccumulatedSWetDeposition
+1000001185;discipline=192,parameterCategory=4,parameterNumber=161;
+
+# Surface24hAccumulatedNOxDryDeposition
+1000001186;discipline=192,parameterCategory=4,parameterNumber=162;
+
+# Surface24hAccumulatedNOxWetDeposition
+1000001187;discipline=192,parameterCategory=4,parameterNumber=163;
+
+# Surface24hAccumulatedNHxDryDeposition
+1000001188;discipline=192,parameterCategory=4,parameterNumber=164;
+
+# Surface24hAccumulatedNHxWetDeposition
+1000001189;discipline=192,parameterCategory=4,parameterNumber=165;
+
+# Surface24hAccumulatedSDryDeposition
+1000001190;discipline=192,parameterCategory=4,parameterNumber=166;
+
+# Surface24hAccumulatedSWetDeposition
+1000001191;discipline=192,parameterCategory=4,parameterNumber=167;
+
+# AbsoluteHumidity
+1000001192;discipline=192,parameterCategory=4,parameterNumber=168;
+
+# PrecipitationInstantSolid
+1000001193;discipline=192,parameterCategory=4,parameterNumber=169;
+
+# SeaDepth
+1000001194;discipline=192,parameterCategory=4,parameterNumber=170;
+
+# MixedLayerThickness
+1000001195;discipline=192,parameterCategory=4,parameterNumber=171;
+
+# SeaSurfaceElevation
+1000001196;discipline=192,parameterCategory=4,parameterNumber=172;
+
+# SeasonalWaterLevelIndex
+1000001197;discipline=192,parameterCategory=4,parameterNumber=173;
+
+# IcingWarningIndex
+1000001198;discipline=192,parameterCategory=4,parameterNumber=174;
+
+# CloudIce
+1000001199;discipline=192,parameterCategory=4,parameterNumber=175;
+
+# SnowMixingRatio
+1000001200;discipline=192,parameterCategory=4,parameterNumber=176;
+
+# RainWaterMixingRatio
+1000001201;discipline=192,parameterCategory=4,parameterNumber=177;
+
+# GraupelMixingRatio
+1000001202;discipline=192,parameterCategory=4,parameterNumber=178;
+
+# OceanIcing
+1000001203;discipline=192,parameterCategory=4,parameterNumber=179;
+
+# MoninObukhovLength
+1000001204;discipline=192,parameterCategory=4,parameterNumber=180;
+
+# PrecipitationForm2
+1000001205;discipline=192,parameterCategory=4,parameterNumber=181;
+
+# PrecipitationForm3
+1000001206;discipline=192,parameterCategory=4,parameterNumber=182;
+
+# QNH
+1000001207;discipline=192,parameterCategory=4,parameterNumber=183;
+
+# PrecipitationInstantTotal
+1000001208;discipline=192,parameterCategory=4,parameterNumber=184;
+
+# ClearAirTurbulence2
+1000001209;discipline=192,parameterCategory=4,parameterNumber=185;
+
+# TotalColumnWater
+1000001210;discipline=192,parameterCategory=4,parameterNumber=186;
+
+# DeIcingClass0Probability
+1000001211;discipline=192,parameterCategory=4,parameterNumber=187;
+
+# DeIcingClass1Probability
+1000001212;discipline=192,parameterCategory=4,parameterNumber=188;
+
+# DeIcingClass2Probability
+1000001213;discipline=192,parameterCategory=4,parameterNumber=189;
+
+# DeIcingClass3Probability
+1000001214;discipline=192,parameterCategory=4,parameterNumber=190;
+
+# DeIcingClass4Probability
+1000001215;discipline=192,parameterCategory=4,parameterNumber=191;
+
+# TopLinkIndex2
+1000001216;discipline=192,parameterCategory=4,parameterNumber=192;
+
+# TopLinkIndex3
+1000001217;discipline=192,parameterCategory=4,parameterNumber=193;
+
+# ProbabilityThunderstorm2
+1000001218;discipline=192,parameterCategory=4,parameterNumber=194;
+
+# ProbabilityOfPrecFormDrizzle
+1000001219;discipline=192,parameterCategory=4,parameterNumber=195;
+
+# ProbabilityOfPrecFormRain
+1000001220;discipline=192,parameterCategory=4,parameterNumber=196;
+
+# ProbabilityOfPrecFormSleet
+1000001221;discipline=192,parameterCategory=4,parameterNumber=197;
+
+# ProbabilityOfPrecFormSnow
+1000001222;discipline=192,parameterCategory=4,parameterNumber=198;
+
+# ProbabilityOfPrecFormFreezingDrizzle
+1000001223;discipline=192,parameterCategory=4,parameterNumber=199;
+
+# ProbabilityOfPrecFormFreezingRain
+1000001224;discipline=192,parameterCategory=4,parameterNumber=200;
+
+# BoundaryLayerTurbulence
+1000001225;discipline=192,parameterCategory=4,parameterNumber=201;
+
+# PotentialPrecipitationForm
+1000001226;discipline=192,parameterCategory=4,parameterNumber=202;
+
+# SnowDensity
+1000001227;discipline=192,parameterCategory=4,parameterNumber=203;
+
+# AreaOfRisk
+1000001228;discipline=192,parameterCategory=4,parameterNumber=204;
+
+# CloudBase2
+1000001229;discipline=192,parameterCategory=4,parameterNumber=205;
+
+# FrostLayerTop
+1000001230;discipline=192,parameterCategory=4,parameterNumber=206;
+
+# FrostLayerBottom
+1000001231;discipline=192,parameterCategory=4,parameterNumber=207;
+
+# Visibility2
+1000001232;discipline=192,parameterCategory=4,parameterNumber=208;
+
+# CloudTop2
+1000001233;discipline=192,parameterCategory=4,parameterNumber=209;
+
+# AverageWindSpeedMS
+1000001234;discipline=192,parameterCategory=4,parameterNumber=210;
+
+# PotentialPrecipitationType
+1000001235;discipline=192,parameterCategory=4,parameterNumber=211;
+
+# HumidityRelativeToIce
+1000001236;discipline=192,parameterCategory=4,parameterNumber=212;
+
+# FrostPoint
+1000001237;discipline=192,parameterCategory=4,parameterNumber=213;
+
+# AvailableEnsembleMemberCount
+1000001238;discipline=192,parameterCategory=4,parameterNumber=214;
+
+# WindGust2
+1000001239;discipline=192,parameterCategory=4,parameterNumber=215;
+
+# ProbabilityOfSigWaveHeightLimit1
+1000001240;discipline=192,parameterCategory=4,parameterNumber=216;
+
+# ProbabilityOfSigWaveHeightLimit2
+1000001241;discipline=192,parameterCategory=4,parameterNumber=217;
+
+# ProbabilityOfSigWaveHeightLimit3
+1000001242;discipline=192,parameterCategory=4,parameterNumber=218;
+
+# ProbabilityOfSigWaveHeightLimit4
+1000001243;discipline=192,parameterCategory=4,parameterNumber=219;
+
+# ProbabilityOfConvectivePrecipitationLimit1
+1000001244;discipline=192,parameterCategory=4,parameterNumber=220;
+
+# ProbabilityOfConvectivePrecipitationLimit2
+1000001245;discipline=192,parameterCategory=4,parameterNumber=221;
+
+# ProbabilityOfConvectivePrecipitationLimit3
+1000001246;discipline=192,parameterCategory=4,parameterNumber=222;
+
+# ProbabilityOfConvectivePrecipitationLimit4
+1000001247;discipline=192,parameterCategory=4,parameterNumber=223;
+
+# ProbabilityOfConvectivePrecipitationLimit5
+1000001248;discipline=192,parameterCategory=4,parameterNumber=224;
+
+# ProbabilityOfConvectivePrecipitationLimit6
+1000001249;discipline=192,parameterCategory=4,parameterNumber=225;
+
+# ProbabilityOfPrecipitation3h03mm
+1000001250;discipline=192,parameterCategory=4,parameterNumber=226;
+
+# ProbabilityOfColdLimit5
+1000001251;discipline=192,parameterCategory=4,parameterNumber=227;
+
+# DifferentialReflectivity
+1000001300;discipline=192,parameterCategory=5,parameterNumber=20;
+
+# SpecificDifferentialPhase
+1000001301;discipline=192,parameterCategory=5,parameterNumber=21;
+
+# DifferentialPhase
+1000001302;discipline=192,parameterCategory=5,parameterNumber=22;
+
+# SignalQualityIndex
+1000001303;discipline=192,parameterCategory=5,parameterNumber=23;
+
+# ReflectivityCorrelation
+1000001304;discipline=192,parameterCategory=5,parameterNumber=24;
+
+# TemperatureF99
+1000004500;discipline=192,parameterCategory=17,parameterNumber=148;
+
+# TemperatureF97.5
+1000004501;discipline=192,parameterCategory=17,parameterNumber=149;
+
+# TemperatureF95
+1000004502;discipline=192,parameterCategory=17,parameterNumber=150;
+
+# TemperatureF87.5
+1000004503;discipline=192,parameterCategory=17,parameterNumber=151;
+
+# TemperatureF12.5
+1000004504;discipline=192,parameterCategory=17,parameterNumber=152;
+
+# TemperatureF5
+1000004505;discipline=192,parameterCategory=17,parameterNumber=153;
+
+# TemperatureF2.5
+1000004506;discipline=192,parameterCategory=17,parameterNumber=154;
+
+# TemperatureF1
+1000004507;discipline=192,parameterCategory=17,parameterNumber=155;
+
+# TotalCloudCoverF99
+1000004508;discipline=192,parameterCategory=17,parameterNumber=156;
+
+# TotalCloudCoverF97.5
+1000004509;discipline=192,parameterCategory=17,parameterNumber=157;
+
+# TotalCloudCoverF95
+1000004510;discipline=192,parameterCategory=17,parameterNumber=158;
+
+# TotalCloudCoverF87.5
+1000004511;discipline=192,parameterCategory=17,parameterNumber=159;
+
+# TotalCloudCoverF12.5
+1000004512;discipline=192,parameterCategory=17,parameterNumber=160;
+
+# TotalCloudCoverF5
+1000004513;discipline=192,parameterCategory=17,parameterNumber=161;
+
+# TotalCloudCoverF2.5
+1000004514;discipline=192,parameterCategory=17,parameterNumber=162;
+
+# TotalCloudCoverF1
+1000004515;discipline=192,parameterCategory=17,parameterNumber=163;
+
+# Precipitation3hF97.5
+1000004516;discipline=192,parameterCategory=17,parameterNumber=164;
+
+# Precipitation3hF87.5
+1000004517;discipline=192,parameterCategory=17,parameterNumber=165;
+
+# Precipitation3hF12.5
+1000004518;discipline=192,parameterCategory=17,parameterNumber=166;
+
+# Precipitation3hF2.5
+1000004519;discipline=192,parameterCategory=17,parameterNumber=167;
+
+# WindSpeedF99
+1000004520;discipline=192,parameterCategory=17,parameterNumber=168;
+
+# WindSpeedF97.5
+1000004521;discipline=192,parameterCategory=17,parameterNumber=169;
+
+# WindSpeedF95
+1000004522;discipline=192,parameterCategory=17,parameterNumber=170;
+
+# WindSpeedF87.5
+1000004523;discipline=192,parameterCategory=17,parameterNumber=171;
+
+# WindSpeedF12.5
+1000004524;discipline=192,parameterCategory=17,parameterNumber=172;
+
+# WindSpeedF5
+1000004525;discipline=192,parameterCategory=17,parameterNumber=173;
+
+# WindSpeedF2.5
+1000004526;discipline=192,parameterCategory=17,parameterNumber=174;
+
+# WindSpeedF1
+1000004527;discipline=192,parameterCategory=17,parameterNumber=175;
+
+# WindGustF99
+1000004528;discipline=192,parameterCategory=17,parameterNumber=176;
+
+# WindGustF97.5
+1000004529;discipline=192,parameterCategory=17,parameterNumber=177;
+
+# WindGustF95
+1000004530;discipline=192,parameterCategory=17,parameterNumber=178;
+
+# WindGustF87.5
+1000004531;discipline=192,parameterCategory=17,parameterNumber=179;
+
+# WindGustF12.5
+1000004532;discipline=192,parameterCategory=17,parameterNumber=180;
+
+# WindGustF5
+1000004533;discipline=192,parameterCategory=17,parameterNumber=181;
+
+# WindGustF2.5
+1000004534;discipline=192,parameterCategory=17,parameterNumber=182;
+
+# WindGustF1
+1000004535;discipline=192,parameterCategory=17,parameterNumber=183;
+
+# DewPointF100
+1000004536;discipline=192,parameterCategory=17,parameterNumber=184;
+
+# DewPointF99
+1000004537;discipline=192,parameterCategory=17,parameterNumber=185;
+
+# DewPointF97.5
+1000004538;discipline=192,parameterCategory=17,parameterNumber=186;
+
+# DewPointF95
+1000004539;discipline=192,parameterCategory=17,parameterNumber=187;
+
+# DewPointF87.5
+1000004540;discipline=192,parameterCategory=17,parameterNumber=188;
+
+# DewPointF50
+1000004541;discipline=192,parameterCategory=17,parameterNumber=189;
+
+# DewPointF12.5
+1000004542;discipline=192,parameterCategory=17,parameterNumber=190;
+
+# DewPointF5
+1000004543;discipline=192,parameterCategory=17,parameterNumber=191;
+
+# DewPointF2.5
+1000004544;discipline=192,parameterCategory=17,parameterNumber=192;
+
+# DewPointF1
+1000004545;discipline=192,parameterCategory=17,parameterNumber=193;
+
+# DewPointF0
+1000004546;discipline=192,parameterCategory=17,parameterNumber=194;
+
+# CAPEF100
+1000004547;discipline=192,parameterCategory=17,parameterNumber=195;
+
+# CAPEF99
+1000004548;discipline=192,parameterCategory=17,parameterNumber=196;
+
+# CAPEF97.5
+1000004549;discipline=192,parameterCategory=17,parameterNumber=197;
+
+# CAPEF95
+1000004550;discipline=192,parameterCategory=17,parameterNumber=198;
+
+# CAPEF87.5
+1000004551;discipline=192,parameterCategory=17,parameterNumber=199;
+
+# CAPEF50
+1000004552;discipline=192,parameterCategory=17,parameterNumber=200;
+
+# CAPEF12.5
+1000004553;discipline=192,parameterCategory=17,parameterNumber=201;
+
+# CAPEF5
+1000004554;discipline=192,parameterCategory=17,parameterNumber=202;
+
+# CAPEF2.5
+1000004555;discipline=192,parameterCategory=17,parameterNumber=203;
+
+# CAPEF1
+1000004556;discipline=192,parameterCategory=17,parameterNumber=204;
+
+# CAPEF0
+1000004557;discipline=192,parameterCategory=17,parameterNumber=205;
+
+# IceCoverF100
+1000004558;discipline=192,parameterCategory=17,parameterNumber=206;
+
+# IceCoverF99
+1000004559;discipline=192,parameterCategory=17,parameterNumber=207;
+
+# IceCoverF97.5
+1000004560;discipline=192,parameterCategory=17,parameterNumber=208;
+
+# IceCoverF95
+1000004561;discipline=192,parameterCategory=17,parameterNumber=209;
+
+# IceCoverF87.5
+1000004562;discipline=192,parameterCategory=17,parameterNumber=210;
+
+# IceCoverF50
+1000004563;discipline=192,parameterCategory=17,parameterNumber=211;
+
+# IceCoverF12.5
+1000004564;discipline=192,parameterCategory=17,parameterNumber=212;
+
+# IceCoverF5
+1000004565;discipline=192,parameterCategory=17,parameterNumber=213;
+
+# IceCoverF2.5
+1000004566;discipline=192,parameterCategory=17,parameterNumber=214;
+
+# IceCoverF1
+1000004567;discipline=192,parameterCategory=17,parameterNumber=215;
+
+# IceCoverF0
+1000004568;discipline=192,parameterCategory=17,parameterNumber=216;
+
+# SnowDepthF100
+1000004569;discipline=192,parameterCategory=17,parameterNumber=217;
+
+# SnowDepthF99
+1000004570;discipline=192,parameterCategory=17,parameterNumber=218;
+
+# SnowDepthF97.5
+1000004571;discipline=192,parameterCategory=17,parameterNumber=219;
+
+# SnowDepthF95
+1000004572;discipline=192,parameterCategory=17,parameterNumber=220;
+
+# SnowDepthF87.5
+1000004573;discipline=192,parameterCategory=17,parameterNumber=221;
+
+# SnowDepthF50
+1000004574;discipline=192,parameterCategory=17,parameterNumber=222;
+
+# SnowDepthF12.5
+1000004575;discipline=192,parameterCategory=17,parameterNumber=223;
+
+# SnowDepthF5
+1000004576;discipline=192,parameterCategory=17,parameterNumber=224;
+
+# SnowDepthF2.5
+1000004577;discipline=192,parameterCategory=17,parameterNumber=225;
+
+# SnowDepthF1
+1000004578;discipline=192,parameterCategory=17,parameterNumber=226;
+
+# SnowDepthF0
+1000004579;discipline=192,parameterCategory=17,parameterNumber=227;
+
+# MaximumTemperatureF100
+1000004580;discipline=192,parameterCategory=17,parameterNumber=228;
+
+# MaximumTemperatureF99
+1000004581;discipline=192,parameterCategory=17,parameterNumber=229;
+
+# MaximumTemperatureF97.5
+1000004582;discipline=192,parameterCategory=17,parameterNumber=230;
+
+# MaximumTemperatureF95
+1000004583;discipline=192,parameterCategory=17,parameterNumber=231;
+
+# MaximumTemperatureF87.5
+1000004584;discipline=192,parameterCategory=17,parameterNumber=232;
+
+# MaximumTemperatureF50
+1000004585;discipline=192,parameterCategory=17,parameterNumber=233;
+
+# MaximumTemperatureF12.5
+1000004586;discipline=192,parameterCategory=17,parameterNumber=234;
+
+# MaximumTemperatureF5
+1000004587;discipline=192,parameterCategory=17,parameterNumber=235;
+
+# MaximumTemperatureF2.5
+1000004588;discipline=192,parameterCategory=17,parameterNumber=236;
+
+# MaximumTemperatureF1
+1000004589;discipline=192,parameterCategory=17,parameterNumber=237;
+
+# MaximumTemperatureF0
+1000004590;discipline=192,parameterCategory=17,parameterNumber=238;
+
+# MinimumTemperatureF100
+1000004591;discipline=192,parameterCategory=17,parameterNumber=239;
+
+# MinimumTemperatureF99
+1000004592;discipline=192,parameterCategory=17,parameterNumber=240;
+
+# MinimumTemperatureF97.5
+1000004593;discipline=192,parameterCategory=17,parameterNumber=241;
+
+# MinimumTemperatureF95
+1000004594;discipline=192,parameterCategory=17,parameterNumber=242;
+
+# MinimumTemperatureF87.5
+1000004595;discipline=192,parameterCategory=17,parameterNumber=243;
+
+# MinimumTemperatureF50
+1000004596;discipline=192,parameterCategory=17,parameterNumber=244;
+
+# MinimumTemperatureF12.5
+1000004597;discipline=192,parameterCategory=17,parameterNumber=245;
+
+# MinimumTemperatureF5
+1000004598;discipline=192,parameterCategory=17,parameterNumber=246;
+
+# MinimumTemperatureF2.5
+1000004599;discipline=192,parameterCategory=17,parameterNumber=247;
+
+# MinimumTemperatureF1
+1000004600;discipline=192,parameterCategory=17,parameterNumber=248;
+
+# MinimumTemperatureF0
+1000004601;discipline=192,parameterCategory=17,parameterNumber=249;
+
+# TemperatureSeaF100
+1000004602;discipline=192,parameterCategory=17,parameterNumber=250;
+
+# TemperatureSeaF99
+1000004603;discipline=192,parameterCategory=17,parameterNumber=251;
+
+# TemperatureSeaF97.5
+1000004604;discipline=192,parameterCategory=17,parameterNumber=252;
+
+# TemperatureSeaF95
+1000004605;discipline=192,parameterCategory=17,parameterNumber=253;
+
+# TemperatureSeaF87.5
+1000004606;discipline=192,parameterCategory=17,parameterNumber=254;
+
+# TemperatureSeaF50
+1000004607;discipline=192,parameterCategory=17,parameterNumber=255;
+
+# TemperatureSeaF12.5
+1000004608;discipline=192,parameterCategory=18,parameterNumber=0;
+
+# TemperatureSeaF5
+1000004609;discipline=192,parameterCategory=18,parameterNumber=1;
+
+# TemperatureSeaF2.5
+1000004610;discipline=192,parameterCategory=18,parameterNumber=2;
+
+# TemperatureSeaF1
+1000004611;discipline=192,parameterCategory=18,parameterNumber=3;
+
+# TemperatureSeaF0
+1000004612;discipline=192,parameterCategory=18,parameterNumber=4;
+
+# PressureF100
+1000004613;discipline=192,parameterCategory=18,parameterNumber=5;
+
+# PressureF99
+1000004614;discipline=192,parameterCategory=18,parameterNumber=6;
+
+# PressureF97.5
+1000004615;discipline=192,parameterCategory=18,parameterNumber=7;
+
+# PressureF95
+1000004616;discipline=192,parameterCategory=18,parameterNumber=8;
+
+# PressureF87.5
+1000004617;discipline=192,parameterCategory=18,parameterNumber=9;
+
+# PressureF50
+1000004618;discipline=192,parameterCategory=18,parameterNumber=10;
+
+# PressureF12.5
+1000004619;discipline=192,parameterCategory=18,parameterNumber=11;
+
+# PressureF5
+1000004620;discipline=192,parameterCategory=18,parameterNumber=12;
+
+# PressureF2.5
+1000004621;discipline=192,parameterCategory=18,parameterNumber=13;
+
+# PressureF1
+1000004622;discipline=192,parameterCategory=18,parameterNumber=14;
+
+# PressureF0
+1000004623;discipline=192,parameterCategory=18,parameterNumber=15;
+
+# TotalColumnWaterF100
+1000004624;discipline=192,parameterCategory=18,parameterNumber=16;
+
+# TotalColumnWaterF99
+1000004625;discipline=192,parameterCategory=18,parameterNumber=17;
+
+# TotalColumnWaterF97.5
+1000004626;discipline=192,parameterCategory=18,parameterNumber=18;
+
+# TotalColumnWaterF95
+1000004627;discipline=192,parameterCategory=18,parameterNumber=19;
+
+# TotalColumnWaterF87.5
+1000004628;discipline=192,parameterCategory=18,parameterNumber=20;
+
+# TotalColumnWaterF50
+1000004629;discipline=192,parameterCategory=18,parameterNumber=21;
+
+# TotalColumnWaterF12.5
+1000004630;discipline=192,parameterCategory=18,parameterNumber=22;
+
+# TotalColumnWaterF5
+1000004631;discipline=192,parameterCategory=18,parameterNumber=23;
+
+# TotalColumnWaterF2.5
+1000004632;discipline=192,parameterCategory=18,parameterNumber=24;
+
+# TotalColumnWaterF1
+1000004633;discipline=192,parameterCategory=18,parameterNumber=25;
+
+# TotalColumnWaterF0
+1000004634;discipline=192,parameterCategory=18,parameterNumber=26;
+
+# SnowAccumulationF100
+1000004635;discipline=192,parameterCategory=18,parameterNumber=27;
+
+# SnowAccumulationF99
+1000004636;discipline=192,parameterCategory=18,parameterNumber=28;
+
+# SnowAccumulationF97.5
+1000004637;discipline=192,parameterCategory=18,parameterNumber=29;
+
+# SnowAccumulationF95
+1000004638;discipline=192,parameterCategory=18,parameterNumber=30;
+
+# SnowAccumulationF87.5
+1000004639;discipline=192,parameterCategory=18,parameterNumber=31;
+
+# SnowAccumulationF50
+1000004640;discipline=192,parameterCategory=18,parameterNumber=32;
+
+# SnowAccumulationF12.5
+1000004641;discipline=192,parameterCategory=18,parameterNumber=33;
+
+# SnowAccumulationF5
+1000004642;discipline=192,parameterCategory=18,parameterNumber=34;
+
+# SnowAccumulationF2.5
+1000004643;discipline=192,parameterCategory=18,parameterNumber=35;
+
+# SnowAccumulationF1
+1000004644;discipline=192,parameterCategory=18,parameterNumber=36;
+
+# SnowAccumulationF0
+1000004645;discipline=192,parameterCategory=18,parameterNumber=37;
+
+# GeopHeightF100
+1000004646;discipline=192,parameterCategory=18,parameterNumber=38;
+
+# GeopHeightF99
+1000004647;discipline=192,parameterCategory=18,parameterNumber=39;
+
+# GeopHeightF97.5
+1000004648;discipline=192,parameterCategory=18,parameterNumber=40;
+
+# GeopHeightF95
+1000004649;discipline=192,parameterCategory=18,parameterNumber=41;
+
+# GeopHeightF87.5
+1000004650;discipline=192,parameterCategory=18,parameterNumber=42;
+
+# GeopHeightF50
+1000004651;discipline=192,parameterCategory=18,parameterNumber=43;
+
+# GeopHeightF12.5
+1000004652;discipline=192,parameterCategory=18,parameterNumber=44;
+
+# GeopHeightF5
+1000004653;discipline=192,parameterCategory=18,parameterNumber=45;
+
+# GeopHeightF2.5
+1000004654;discipline=192,parameterCategory=18,parameterNumber=46;
+
+# GeopHeightF1
+1000004655;discipline=192,parameterCategory=18,parameterNumber=47;
+
+# GeopHeightF0
+1000004656;discipline=192,parameterCategory=18,parameterNumber=48;
+
+# SpecificHumidityF100
+1000004657;discipline=192,parameterCategory=18,parameterNumber=49;
+
+# SpecificHumidityF99
+1000004658;discipline=192,parameterCategory=18,parameterNumber=50;
+
+# SpecificHumidityF97.5
+1000004659;discipline=192,parameterCategory=18,parameterNumber=51;
+
+# SpecificHumidityF95
+1000004660;discipline=192,parameterCategory=18,parameterNumber=52;
+
+# SpecificHumidityF87.5
+1000004661;discipline=192,parameterCategory=18,parameterNumber=53;
+
+# SpecificHumidityF50
+1000004662;discipline=192,parameterCategory=18,parameterNumber=54;
+
+# SpecificHumidityF12.5
+1000004663;discipline=192,parameterCategory=18,parameterNumber=55;
+
+# SpecificHumidityF5
+1000004664;discipline=192,parameterCategory=18,parameterNumber=56;
+
+# SpecificHumidityF2.5
+1000004665;discipline=192,parameterCategory=18,parameterNumber=57;
+
+# SpecificHumidityF1
+1000004666;discipline=192,parameterCategory=18,parameterNumber=58;
+
+# SpecificHumidityF0
+1000004667;discipline=192,parameterCategory=18,parameterNumber=59;
+
+# PressureF90
+1000004668;discipline=192,parameterCategory=18,parameterNumber=60;
+
+# PressureF75
+1000004669;discipline=192,parameterCategory=18,parameterNumber=61;
+
+# PressureF25
+1000004670;discipline=192,parameterCategory=18,parameterNumber=62;
+
+# PressureF10
+1000004671;discipline=192,parameterCategory=18,parameterNumber=63;
+
+# SoundingLCLPressureSurface
+1000004720;discipline=192,parameterCategory=18,parameterNumber=112;
+
+# SoundingLFCPressureSurface
+1000004721;discipline=192,parameterCategory=18,parameterNumber=113;
+
+# SoundingELPressureSurface
+1000004722;discipline=192,parameterCategory=18,parameterNumber=114;
+
+# SoundingCAPESurface
+1000004723;discipline=192,parameterCategory=18,parameterNumber=115;
+
+# SoundingCAPE3kmSurface
+1000004724;discipline=192,parameterCategory=18,parameterNumber=116;
+
+# SoundingCINSurface
+1000004725;discipline=192,parameterCategory=18,parameterNumber=117;
+
+# SoundingLCLHeightSurface
+1000004726;discipline=192,parameterCategory=18,parameterNumber=118;
+
+# SoundingLFCHeightSurface
+1000004727;discipline=192,parameterCategory=18,parameterNumber=119;
+
+# SoundingELHeightSurface
+1000004728;discipline=192,parameterCategory=18,parameterNumber=120;
+
+# SoundingCAPE1040Surface
+1000004729;discipline=192,parameterCategory=18,parameterNumber=121;
+
+# SoundingLCLPressure500m
+1000004730;discipline=192,parameterCategory=18,parameterNumber=122;
+
+# SoundingLFCPressure500m
+1000004731;discipline=192,parameterCategory=18,parameterNumber=123;
+
+# SoundingELPressure500m
+1000004732;discipline=192,parameterCategory=18,parameterNumber=124;
+
+# SoundingCAPE500m
+1000004733;discipline=192,parameterCategory=18,parameterNumber=125;
+
+# SoundingCAPE3km500m
+1000004734;discipline=192,parameterCategory=18,parameterNumber=126;
+
+# SoundingCIN500m
+1000004735;discipline=192,parameterCategory=18,parameterNumber=127;
+
+# SoundingLCLHeight500m
+1000004736;discipline=192,parameterCategory=18,parameterNumber=128;
+
+# SoundingLFCHeight500m
+1000004737;discipline=192,parameterCategory=18,parameterNumber=129;
+
+# SoundingELHeightS500m
+1000004738;discipline=192,parameterCategory=18,parameterNumber=130;
+
+# SoundingCAPE1040500m
+1000004739;discipline=192,parameterCategory=18,parameterNumber=131;
+
+# SoundingLCLPressureMostUnstable
+1000004740;discipline=192,parameterCategory=18,parameterNumber=132;
+
+# SoundingLFCPressureMostUnstable
+1000004741;discipline=192,parameterCategory=18,parameterNumber=133;
+
+# SoundingELPressureMostUnstable
+1000004742;discipline=192,parameterCategory=18,parameterNumber=134;
+
+# SoundingCAPEMostUnstable
+1000004743;discipline=192,parameterCategory=18,parameterNumber=135;
+
+# SoundingCAPE3kmMostUnstable
+1000004744;discipline=192,parameterCategory=18,parameterNumber=136;
+
+# SoundingCINMostUnstable
+1000004745;discipline=192,parameterCategory=18,parameterNumber=137;
+
+# SoundingLCLHeightMostUnstable
+1000004746;discipline=192,parameterCategory=18,parameterNumber=138;
+
+# SoundingLFCHeightMostUnstable
+1000004747;discipline=192,parameterCategory=18,parameterNumber=139;
+
+# SoundingELHeightMostUnstable
+1000004748;discipline=192,parameterCategory=18,parameterNumber=140;
+
+# SoundingCAPE1040MostUnstable
+1000004749;discipline=192,parameterCategory=18,parameterNumber=141;
+
+# SoundingShowalterIndex
+1000004750;discipline=192,parameterCategory=18,parameterNumber=142;
+
+# SoundingLiftedIndex
+1000004751;discipline=192,parameterCategory=18,parameterNumber=143;
+
+# SoundingKIndex
+1000004752;discipline=192,parameterCategory=18,parameterNumber=144;
+
+# SoundingCrossTotalsIndex
+1000004753;discipline=192,parameterCategory=18,parameterNumber=145;
+
+# SoundingVerticalTotalsIndex
+1000004754;discipline=192,parameterCategory=18,parameterNumber=146;
+
+# SoundingTotalTotalsIndex
+1000004755;discipline=192,parameterCategory=18,parameterNumber=147;
+
+# SoundingBulkShear6km
+1000004770;discipline=192,parameterCategory=18,parameterNumber=162;
+
+# SoundingBulkShear1km
+1000004771;discipline=192,parameterCategory=18,parameterNumber=163;
+
+# SoundingStormRelativeHelicity3km
+1000004772;discipline=192,parameterCategory=18,parameterNumber=164;
+
+# SoundingStormRelativeHelicity1km
+1000004773;discipline=192,parameterCategory=18,parameterNumber=165;
+
+# SoundingWindSpeed1500m
+1000004774;discipline=192,parameterCategory=18,parameterNumber=166;
+
+# SoundingThetaE3km
+1000004775;discipline=192,parameterCategory=18,parameterNumber=167;
+
+# HighVegetationCover
+1000004800;discipline=192,parameterCategory=18,parameterNumber=192;
+
+# SkinReservoirContent
+1000004801;discipline=192,parameterCategory=18,parameterNumber=193;
+
+# SoilTemperatureLevel1
+1000004802;discipline=192,parameterCategory=18,parameterNumber=194;
+
+# SoilTemperatureLevel2
+1000004803;discipline=192,parameterCategory=18,parameterNumber=195;
+
+# SoilTemperatureLevel3
+1000004804;discipline=192,parameterCategory=18,parameterNumber=196;
+
+# SoilTemperatureLevel4
+1000004805;discipline=192,parameterCategory=18,parameterNumber=197;
+
+# VolumetricSoilWaterLayer1
+1000004806;discipline=192,parameterCategory=18,parameterNumber=198;
+
+# VolumetricSoilWaterLayer2
+1000004807;discipline=192,parameterCategory=18,parameterNumber=199;
+
+# VolumetricSoilWaterLayer3
+1000004808;discipline=192,parameterCategory=18,parameterNumber=200;
+
+# VolumetricSoilWaterLayer4
+1000004809;discipline=192,parameterCategory=18,parameterNumber=201;
+
+# HighVegetationType
+1000004810;discipline=192,parameterCategory=18,parameterNumber=202;
+
+# LowVegetationType
+1000004811;discipline=192,parameterCategory=18,parameterNumber=203;
+
+# IcingRate
+1000004820;discipline=192,parameterCategory=18,parameterNumber=212;
+
+# IceMass
+1000004821;discipline=192,parameterCategory=18,parameterNumber=213;
+
+# COConcentration
+1000004900;discipline=192,parameterCategory=19,parameterNumber=36;
+
+# NOConcentration
+1000004901;discipline=192,parameterCategory=19,parameterNumber=37;
+
+# NO2Concentration
+1000004902;discipline=192,parameterCategory=19,parameterNumber=38;
+
+# O3Concentration
+1000004903;discipline=192,parameterCategory=19,parameterNumber=39;
+
+# PM10Concentration
+1000004904;discipline=192,parameterCategory=19,parameterNumber=40;
+
+# PM25Concentration
+1000004905;discipline=192,parameterCategory=19,parameterNumber=41;
+
+# SO2Concentration
+1000004906;discipline=192,parameterCategory=19,parameterNumber=42;

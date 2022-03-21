@@ -95,9 +95,10 @@ services:
     container_name: ssl-proxy
     restart: always
     environment:
+      HSTS_HEADER: skip
       UPSTREAM: 185.213.74.67:8080
-      SERVERNAME: sm1.harvesterseasons.com
-      EXTRANAMES: sm.harvesterseasons.com #,smdev.harvesterseasons.com
+      SERVERNAME: sm.harvesterseasons.com
+      #EXTRANAMES: sm1.harvesterseasons.com,harmonia.geoss.space #,smdev.harvesterseasons.com
     ports:
       - "80:80"
       - "443:443"

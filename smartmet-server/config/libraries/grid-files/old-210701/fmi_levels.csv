@@ -22,4 +22,4 @@
 13;HEIGHT_LAYER;Layer between two metric heights above ground;
 14;DEPTH_LAYER;Layer between two depths below land surface;
 15;ISOTHERMAL;Isothermal level, temperature in 1/100 K;
-16;MAXWIND;Maximum wind level;
+16;MAX_WIND;Maximum wind level;

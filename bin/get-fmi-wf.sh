@@ -33,16 +33,27 @@ conda activate xr
 grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_[shortName].grib
 mv fmi-smartmet-$ydate-swvl2-cum.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T090000_swvl2.grib
 rm grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T090000_swvl2.grib
-grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
+#grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
+grib_copy fmi-smartmet-$ydate-*-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
 # calculate snow depth forecast from snow fall accumulation data
 # need snow state: ERA5 (5 days old) will be accumulated by the forecast from same day in past with ERA5 analysis
-edate=$(date -d "$ydate 5 days ago" +%Y%m%d)
-cdo --eccodes -O chparam,144.173.192,11.1.0 -mulc,0.001 -add grib/SMARTMET_${edate:0:4}0101T000000_${edate}T000000_sfara.grib \
-    -remapbil,smartmet-sk-grid -selname,sd -seltimestep,1 grib/ERA5_${edate:0:4}0101T000000_${edate}T0000_base+soil.grib sde-state.grib
 # add new forecast to sde-state
-cdo --eccodes chparam,144.173.192,11.1.0 -add -mulc,0.001 grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib \
+edate=$(date -d "$ydate 5 days ago" +%Y%m%d)
+if [ -s "grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib" ] 
+then 
+    cdo --eccodes -O chparam,144.173.192,11.1.0 -mulc,0.001 -add grib/SMARTMET_${edate:0:4}0101T000000_${edate}T000000_sfara.grib \
+    -remapbil,smartmet-sk-grid -selname,sd -seltimestep,1 grib/ERA5_${edate:0:4}0101T000000_${edate}T0000_base+soil.grib sde-state.grib
+    cdo --eccodes chparam,144.173.192,11.1.0 -add -mulc,0.001 grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib \
     -seltimestep,8 sde-state.grib grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sde.grib
+else
+    echo "$date snowacc file is empty"
+fi
 # calculate snow depth obs from swe kriging data
-cdo --eccodes chparam,141.228,141.128 -mulc,0.01 fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T000000_sde.grib
+if [ -s "fmi-smartmet-$ydate-sd-krg.grib" ] 
+then 
+    cdo --eccodes chparam,141.228,141.128 -mulc,0.01 fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T000000_sde.grib
+else
+    echo "$ydate snow obs file is empty"
+fi
 mv fmi-smartmet-* smartmet/
 sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

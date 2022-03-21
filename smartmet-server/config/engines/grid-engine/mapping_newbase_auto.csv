@@ -17,8 +17,7 @@
 #         3 = GRIB_ID
 #         4 = NEWBASE_ID
 #         5 = NEWBASE_NAME
-#         6 = CDM_ID
-#         7 = CDM_NAME
+#         6 = NETCDF_NAME
 #  4) Parameter id / name
 #  5) Geometry id
 #  6) Parameter level id type:
@@ -49,6 +48,8 @@
 #         2 = Nearest
 #         3 = Min
 #         4 = Max
+#         9 = Landscape
+#         10 = Forbidden
 #         500..999 = List
 #         1000..65535 = External (interpolated by an external function)
 # 10) Time interpolation method
@@ -57,6 +58,8 @@
 #         2 = Nearest
 #         3 = Min
 #         4 = Max
+#         6 = Previous
+#         7 = Next
 #         1000..65535 = External (interpolated by an external function)
 # 11) Level interpolation method
 #         0 = None
@@ -65,9 +68,12 @@
 #         3 = Min
 #         4 = Max
 #         5 = Logarithmic
+#         6 = Previous
+#         7 = Next
 #         1000..65535 = External (interpolated by an external function)
 # 12) Group flags
-#         bit 0 = Climatological parameter (=> ignore year when searching) 
+#         bit 0 = Climatological parameter (=> ignore year when searching)
+#         bit 1 = Global parameter (=> ignore timestamp when searching, for example LandSeaMask)
 # 13) Search match (Can this mapping used when searching mappings for incomplete parameters)
 #         E = Enabled
 #         D = Disabled
@@ -76,10 +82,52 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
-ECSF;CrossSectionDirection;2;RADGLOA-JM2;5008;1;1;00000;1;1;;0;E;;;;
-ECSF;GroundTemperature;2;TG-K;5008;1;14;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-ECSF;VolumetricSoilWaterLayer1;2;SOILWET1-M;5008;1;14;00007;1;1;;0;E;;;;
-HOPSSF;Evaporation;2;EVAP-KGM2;5026;1;0;00000;1;1;;0;E;;;;
-HOPSSF;GroundTemperature;2;TG-K;5026;1;0;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-HOPSSF;Temperature;2;T-K;5026;1;0;00000;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
-SMARTOBS;GroundTemperature;2;TG-K;5015;1;9;00007;1;1;;0;E;SUM{$,-273.15};SUM{$,273.15};;
+ERA5;DewPoint;2;TD-K;5010;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ERA5;DewPoint;2;TD-K;5021;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ERA5;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5010;;0;00007;1;1;1;0;D;;;;;;
+ERA5;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5010;;9;00007;1;1;1;0;D;;;;;;
+ERA5;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5021;;0;00007;1;1;1;0;D;;;;;;
+ECSF;DewPoint;2;TD-K;5014;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;DewPoint;2;TD-K;5014;;2;00500;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;DewPoint;2;TD-K;5014;;2;00700;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;DewPoint;2;TD-K;5014;;2;00850;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;DewPoint;2;TD-K;5014;;2;00925;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;GeopHeight;2;Z-M2S2;5014;;2;00500;1;1;1;0;D;MUL{$,0.102000};DIV{$,0.102000};;;;
+ECSF;GeopHeight;2;Z-M2S2;5014;;2;00700;1;1;1;0;D;MUL{$,0.102000};DIV{$,0.102000};;;;
+ECSF;GeopHeight;2;Z-M2S2;5014;;2;00850;1;1;1;0;D;MUL{$,0.102000};DIV{$,0.102000};;;;
+ECSF;GeopHeight;2;Z-M2S2;5014;;2;00925;1;1;1;0;D;MUL{$,0.102000};DIV{$,0.102000};;;;
+ECSF;MaximumTemperature24h;2;TMAX-24-K;5014;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;MinimumTemperature24h;2;TMIN-24-K;5014;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;Temperature;2;T-K;5014;;2;00500;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;Temperature;2;T-K;5014;;2;00700;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;Temperature;2;T-K;5014;;2;00850;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;Temperature;2;T-K;5014;;2;00925;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+ECSF;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5014;;0;00007;1;1;1;0;D;;;;;;
+ECSF;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5014;;9;00007;1;1;1;0;D;;;;;;
+ECSF;WindDirection;2;DD-D;5014;;2;00500;1;1;1;0;D;;;;;;
+ECSF;WindDirection;2;DD-D;5014;;2;00700;1;1;1;0;D;;;;;;
+ECSF;WindDirection;2;DD-D;5014;;2;00850;1;1;1;0;D;;;;;;
+ECSF;WindDirection;2;DD-D;5014;;2;00925;1;1;1;0;D;;;;;;
+ECSF;WindSpeedMS;2;FF-MS;5014;;2;00500;1;1;1;0;D;;;;;;
+ECSF;WindSpeedMS;2;FF-MS;5014;;2;00700;1;1;1;0;D;;;;;;
+ECSF;WindSpeedMS;2;FF-MS;5014;;2;00850;1;1;1;0;D;;;;;;
+ECSF;WindSpeedMS;2;FF-MS;5014;;2;00925;1;1;1;0;D;;;;;;
+ECSF;WindUMS;2;U-MS;5014;;2;00500;2;2;2;0;D;;;;;;
+ECSF;WindUMS;2;U-MS;5014;;2;00700;2;2;2;0;D;;;;;;
+ECSF;WindUMS;2;U-MS;5014;;2;00850;2;2;2;0;D;;;;;;
+ECSF;WindUMS;2;U-MS;5014;;2;00925;2;2;2;0;D;;;;;;
+ECSF;WindVMS;2;V-MS;5014;;2;00500;2;2;2;0;D;;;;;;
+ECSF;WindVMS;2;V-MS;5014;;2;00700;2;2;2;0;D;;;;;;
+ECSF;WindVMS;2;V-MS;5014;;2;00850;2;2;2;0;D;;;;;;
+ECSF;WindVMS;2;V-MS;5014;;2;00925;2;2;2;0;D;;;;;;
+ECBSF;DewPoint;2;TD-K;5022;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ECBSF;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5022;;0;00007;1;1;1;0;D;;;;;;
+ECB2SF;DewPoint;2;TD-K;5021;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+ECB2SF;VolumetricSoilWaterLayer1;2;SOILWET-M3M3;5021;;0;00007;1;1;1;0;D;;;;;;
+HOPSSF;GroundTemperature;2;TG-K;5026;;1;00000;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+SMARTMET;MaximumTemperature24h;2;TMAX-24-K;1073;;6;00002;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+SMARTMET;MinimumTemperature24h;2;TMIN-24-K;1073;;6;00002;1;1;1;0;E;SUM{$,-273.15};SUM{$,273.15};;;;
+SMARTMET;SpecificHumidity;2;Q-KGKG;13;;0;00000;1;1;1;0;D;;;;;;
+SMARTMET;VelocityPotential;2;VV-PAS;13;;0;00000;1;1;1;0;E;;;;;;
+SMARTOBS;Temperature;2;T-K;13;;0;00002;1;1;1;0;D;SUM{$,-273.15};SUM{$,273.15};;;;
+SMARTOBS;WindSpeedMS;2;FF-MS;13;;0;00002;1;1;1;0;D;;;;;;
