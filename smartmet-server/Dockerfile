@@ -8,7 +8,7 @@ ENV USER_NAME="smartmet" \
         GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
 
 # install smartmet-server including grid-engine grid-admin grid-gui and tools
-RUN yum -y install https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-21.3.26-2.el7.fmi.noarch.rpm && \
+RUN yum -y install https://download.fmi.fi/smartmet-open/rhel/7/x86_64/smartmet-open-release-latest-7.fmi.noarch.rpm && \
     yum -y update && \
     yum -y install epel-release && \
     yum-config-manager --setopt="epel.exclude=librsvg2*" --save && \

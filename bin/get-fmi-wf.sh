@@ -42,7 +42,7 @@ edate=$(date -d "$ydate 5 days ago" +%Y%m%d)
 if [ -s "grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib" ] 
 then 
     cdo --eccodes -O chparam,144.173.192,11.1.0 -mulc,0.001 -add grib/SMARTMET_${edate:0:4}0101T000000_${edate}T000000_sfara.grib \
-    -remapbil,smartmet-sk-grid -selname,sd -seltimestep,1 grib/ERA5_${edate:0:4}0101T000000_${edate}T0000_base+soil.grib sde-state.grib
+    -remapbil,smartmet-sk-grid -selname,sd -seltimestep,1 grib/ERA5_${edate:0:4}0101T000000_${edate}T000000_base+soil.grib sde-state.grib
     cdo --eccodes chparam,144.173.192,11.1.0 -add -mulc,0.001 grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib \
     -seltimestep,8 sde-state.grib grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sde.grib
 else

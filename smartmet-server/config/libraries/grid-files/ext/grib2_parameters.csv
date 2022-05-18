@@ -52,3 +52,37 @@
 # Soil temperature layer 4 organic soil
 199236;discipline=192,centre=86,parameterCategory=128,parameterNumber=236;
 
+# 301 - Satellite products
+# MIR Medium Infrared reflectance
+301220;discipline=3,parameterCategory=0,parameterNumber=220;
+
+# Band 0 reflectance
+301200;discipline=3,parameterCategory=0,parameterNumber=200;
+
+# Band 1 reflectance
+301201;discipline=3,parameterCategory=0,parameterNumber=201;
+
+# Band 2 reflectance
+301202;discipline=3,parameterCategory=0,parameterNumber=202;
+
+# Band 3 reflectance
+301203;discipline=3,parameterCategory=0,parameterNumber=203;
+
+# Band 4 reflectance
+301204;discipline=3,parameterCategory=0,parameterNumber=204;
+
+# Band 5 reflectance
+301205;discipline=3,parameterCategory=0,parameterNumber=205;
+
+# Band 6 reflectance
+301206;discipline=3,parameterCategory=0,parameterNumber=206;
+
+# Band 7 reflectance
+301207;discipline=3,parameterCategory=0,parameterNumber=207;
+
+# Band 8 reflectance
+301208;discipline=3,parameterCategory=0,parameterNumber=208;
+
+# Band 9 reflectance
+301209;discipline=3,parameterCategory=0,parameterNumber=209;
+

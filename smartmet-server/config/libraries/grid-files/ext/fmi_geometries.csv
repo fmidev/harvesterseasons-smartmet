@@ -27,7 +27,12 @@
 1;5024;ERA5L-EU;801;501;330.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
 1;5029;SWI-EU;6832;4144;-10.996000;71.996000;0.009000;0.009000;+x-y;Copernicus land Soil wetness index Europe 0.01° latlon
 1;5030;SWI-GL;3600;1800;-179.950000;89.950000;0.100000;0.100000;+x-y;Copernicus land Soil wetness index Global 0.1° latlon
-
+#1;5031;S3SY-EU;8176;5601;-10.991070;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid
+1;5031;S3SY-EU;8176;5601;-10.991071;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid EU
+1;5032;S3SY-NAM;18705;3921;180.000000;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid North-America
+1;5033;S3SY-AFR;9632;8176;-25.991071;37.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Africa
+1;5034;S3SY-WAS;8176;5040;25.008929;49.991071;0.008929;0.008929;+x-y;Vegetation legacy grid West-Asia
+1;5035;S3SY-NAS;15119;3921;45.008929;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid North-Asia
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

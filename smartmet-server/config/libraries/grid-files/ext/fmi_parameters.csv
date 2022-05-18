@@ -32,8 +32,8 @@
 
 10000008;SRO-M;m;Surface runoff (metres);
 10000009;SSRO-M;m;Subsurface Runoff (metres);
-10000029;TVL-N;;Type of low vegetation 
-10000030;TVH-N;;Type of high vegetation
+10000029;TVL-N;;Type of low vegetation;
+10000030;TVH-N;;Type of high vegetation;
 10000039;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;5;
 10000040;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
@@ -51,6 +51,17 @@
 10260046;TSNOWP-KGM2;kg m-2;Total snow precipitation;1;1;1;2;
 10260056;WESD-KGM2;kg m-2;Water equivalent of accumulated snow depth (deprecated);1;1;1;2;
 10172228;RRR-MEAN-MS;m s-1;Mean total precipitation rate;1;1;1;2;
-10228090;TCSNOWWAT-KGM2;kg m2;Total column snow water (kg m-2)
-10228251;EVAPP-M;m;Potential evaporation
-
+10228090;TCSNOWWAT-KGM2;kg m2;Total column snow water (kg m-2);
+10228251;EVAPP-M;m;Potential evaporation;
+10500219;NDVI;JustAnumber;Normalized difference vegetation index;
+10301220;MIR;Medium infrared radiance;1;1;;;
+10301200;SRB0;Band 0 surface reflectance;1;1;;;
+10301201;SRB1;Band 0 surface reflectance;1;1;;;
+10301202;SRB2;Band 0 surface reflectance;1;1;;;
+10301203;SRB3;Band 0 surface reflectance;1;1;;;
+10301204;SRB4;Band 0 surface reflectance;1;1;;;
+10301205;SRB5;Band 0 surface reflectance;1;1;;;
+10301206;SRB6;Band 0 surface reflectance;1;1;;;
+10301207;SRB7;Band 0 surface reflectance;1;1;;;
+10301208;SRB8;Band 0 surface reflectance;1;1;;;
+10301209;SRB9;Band 0 surface reflectance;1;1;;;
