@@ -1,10 +1,16 @@
 #!/bin/bash
 eval "$(conda shell.bash hook)"
 conda activate xr
+if [[ $# -gt 1 ]]; then
+    version=$2
+else
+    version='3.2.1'
+fi
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
 else
-    yday=`date -d '1 month ago' +%Y%m%d`
+    yday=`date -d '9 days ago' +%Y%m%d`
+    yday={$yday:0:-1}1
 fi
 incoming=/home/smartmet/data/copernicus
 mkdir -p $incoming
@@ -14,10 +20,10 @@ day=`date -d $yday +%d`
 
 cd $incoming
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/2021/03/21/SWI10_202103211200_GLOBE_ASCAT_V3.1.1/c_gls_SWI10_202103211200_GLOBE_ASCAT_V3.1.1.nc
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V3.1.1/c_gls_SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V3.1.1.nc"
-metaurl="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V3.1.1/c_gls_SWI10_PROD-DESC_${year}${month}${day}1200_GLOBE_ASCAT_V3.1.1.xml"
-ncfile="c_gls_SWI10_${yday}1200_GLOBE_ASCAT_V3.1.1.nc"
-meta="c_gls_SWI10_PROD-DESC_${yday}1200_GLOBE_ASCAT_V3.1.1.xml"
+url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version.nc"
+metaurl="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_PROD-DESC_${year}${month}${day}1200_GLOBE_ASCAT_V$version.xml"
+ncfile="c_gls_SWI10_${yday}1200_GLOBE_ASCAT_V$version.nc"
+meta="c_gls_SWI10_PROD-DESC_${yday}1200_GLOBE_ASCAT_V$version.xml"
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/gl_swi12.5km/$ncfile"
 
