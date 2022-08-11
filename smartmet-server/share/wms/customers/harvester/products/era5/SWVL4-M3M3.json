@@ -1,0 +1,22 @@
+{
+    "title": "ERA5 Volumetric Soil Water Layer 4",
+    "abstract": "SWVL4-M3M3 Volumetric soil water layer 4 (m3 m-3) from ECMWF.",
+    "projection": {},
+    "producer": "ERA5",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/volsoilwater.json",
+	    "css": "isobands/volsoilwater.css",
+	    "parameter": "SWVL4-M3M3:ERA5::9:25855:1:0",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

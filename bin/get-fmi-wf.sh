@@ -38,7 +38,7 @@ grib_copy fmi-smartmet-$ydate-*-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_$
 # calculate snow depth forecast from snow fall accumulation data
 # need snow state: ERA5 (5 days old) will be accumulated by the forecast from same day in past with ERA5 analysis
 # add new forecast to sde-state
-edate=$(date -d "$ydate 5 days ago" +%Y%m%d)
+edate=$(date -d "$ydate 6 days ago" +%Y%m%d)
 if [ -s "grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_sfara.grib" ] 
 then 
     cdo --eccodes -O chparam,144.173.192,11.1.0 -mulc,0.001 -add grib/SMARTMET_${edate:0:4}0101T000000_${edate}T000000_sfara.grib \

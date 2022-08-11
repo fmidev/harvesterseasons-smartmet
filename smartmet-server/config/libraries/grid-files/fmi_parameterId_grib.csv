@@ -385,16 +385,12 @@ MIXHGT-M;159;;;
 N-0TO1;164;;;
 
 # 165:10 metre U wind component (m s-1)
-U-MS;165;;;
 
 # 166:10 metre V wind component (m s-1)
-V-MS;166;;;
 
 # 167:2 metre temperature (K)
-T-K;167;;;
 
 # 168:2 metre dewpoint temperature (K)
-TD-K;168;;;
 
 # 169:Surface solar radiation downwards (J m-2)
 RADGLOA-JM2;169;;;

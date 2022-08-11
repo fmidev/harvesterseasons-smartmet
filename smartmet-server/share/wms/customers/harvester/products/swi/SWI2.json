@@ -1,6 +1,6 @@
 {
-    "title" : "SWI",
-    "abstract" : "SWI",
+    "title" : "SWI2",
+    "abstract" : "SWI2 Soil water index level 2.",
     "projection": {},
     "producer": "SWI",
     "source":"grid",
@@ -9,8 +9,8 @@
             "qid": "l",
             "layer_type": "isoband",
             "isobands": "json:isobands/SWI.json",
-            "css": "isobands/SOILWET1-M.css",
-            "parameter": "SWI2-%:SWI:5029:1:0:1",
+            "css": "isobands/SWI.css",
+            "parameter": "SWI1:SWI:5029:1:0:1",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

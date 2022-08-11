@@ -98,7 +98,7 @@ services:
       HSTS_HEADER: skip
       UPSTREAM: 185.213.74.67:8080
       SERVERNAME: sm.harvesterseasons.com
-      EXTRANAMES: sm1.harvesterseasons.com
+      EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space
       # ,smdev.harvesterseasons.com
     ports:
       - "80:80"

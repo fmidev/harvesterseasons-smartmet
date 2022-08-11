@@ -1,0 +1,22 @@
+{
+    "title": "ERA5 Soil Temperature Level 3 Isobands (Kelvin)",
+    "abstract": "STL1-K Soil temperature level 3 (K) from ECMWF.",
+    "projection": {},
+    "producer": "ERA5",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/temperature_K.json",
+	    "css": "isobands/temperature.css",
+	    "parameter": "STL3-K:ERA5::9:7268:1:0",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

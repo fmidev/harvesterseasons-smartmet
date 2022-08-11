@@ -11,14 +11,14 @@ then
     month=$2
     day=$3
 else
-    year=$(date -d '5 days ago' +%Y)
-    month=$(date -d '5 days ago' +%m)
-    day=$(date -d '5 days ago' +%d)
+    year=$(date -d '6 days ago' +%Y)
+    month=$(date -d '6 days ago' +%m)
+    day=$(date -d '6 days ago' +%d)
 fi
 cd /home/smartmet/data
 echo "fetch ERA5 for y: $year m: $month d: $day"
 [ -f ERA5_$year$month${day}T000000_base+soil.grib ] || ../bin/cds-era5.py $year $month $day
 #conda activate xr
-/home/smartmet/anaconda3/envs/xr/bin/cdo --eccodes aexprf,ec-sde.instr ERA5_$year$month${day}T000000_base+soil.grib grib/ERA5_${year}0101T000000_$year$month${day}T000000_base+soil.grib
-rm ERA5_$year$month${day}T000000_base+soil.grib
+/home/smartmet/anaconda3/envs/xr/bin/cdo -f grb2 --eccodes selname,sde -exprf,ec-sde.instr ERA5_$year$month${day}T000000_base+soil.grib grib/ERA5_${year}0101T000000_$year$month${day}T000000_sde.grib
+mv ERA5_$year$month${day}T000000_base+soil.grib grib/ERA5_${year}0101T000000_$year$month${day}T000000_base+soil.grib
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

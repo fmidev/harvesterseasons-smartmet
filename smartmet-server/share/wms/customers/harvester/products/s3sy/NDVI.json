@@ -6,12 +6,12 @@
     "source": "grid",
     "views":[{
         "layers": [{
-            "qid": "l", 
+            "qid": "l",
             "layer_type": "isoband",
             "isobands": "json:isobands/NDVI.json",
             "css": "isobands/NDVI.css",
-            "parameter": "NDVI:S3SY::1:0:0",
-                "sampling":{
+            "parameter": "NDVI:S3SY",
+            "sampling":{
                 "relativeresolution": 4
             },
             "attributes": {

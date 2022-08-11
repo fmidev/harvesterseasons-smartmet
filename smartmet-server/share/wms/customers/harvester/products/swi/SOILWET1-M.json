@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/SOILWET1-M.json",
             "css": "isobands/SOILWET1-M.css",
-            "parameter": "SOILWET1-M:ECBSF:5022:9:7:1",
+            "parameter": "SOILWET1-M:ECBSF::9:7:1:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

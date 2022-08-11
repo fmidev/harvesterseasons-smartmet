@@ -100,3 +100,75 @@ SRB6;301206;;
 SRB7;301207;;
 SRB8;301208;;
 SRB9;301209;;
+
+# 228040:Soil wetness index in layer 1 (dimensionless)
+SWI1;228040;;;
+
+# 228041:Soil wetness index in layer 2 (dimensionless)
+SWI2;228041;;;
+
+# 228042:Soil wetness index in layer 3 (dimensionless)
+SWI3;228042;;;
+
+# 228043:Soil wetness index in layer 4 (dimensionless)
+SWI4;228043;;;
+
+# 165:10 metre U wind component (m s-1)
+U10-MS;165;;;
+
+# 166:10 metre V wind component (m s-1)
+V10-MS;166;;;
+
+# 228001:Convective inhibition (J kg-1)
+CIN-JKG;228001;;;
+
+# 260121:K index (K)
+KX;260121;;;
+
+# 196:Northward gravity wave surface stress (N m-2 s)
+MGWS-NM2S;196;;;
+
+# 228251:Potential evaporation (m)
+PEV-M;228251;;;
+
+# 210:Surface net solar radiation, clear sky (J m-2)
+SSRC-JM2;210;;;
+
+# 211:Surface net thermal radiation, clear sky (J m-2)
+STRC-JM2;211;;;
+
+# 167:2 metre temperature (K)
+T2-K;167;;;
+
+# 60:Potential vorticity (K m2 kg-1 s-1)
+PV-KM2KGS;60;;;
+
+# 160:Standard deviation of orography (m)
+SDOR-M;160;;;
+
+# 161:Anisotropy of sub-gridscale orography (~)
+ISOR;161;;;
+
+# 162:Angle of sub-gridscale orography (radians)
+ANOR-RAD;162;;;
+
+# 163:Slope of sub-gridscale orography (~)
+SLOR;163;;;
+
+# 26:Lake cover ((0 - 1))
+CL-0TO1;26;;;
+
+# 228007:Lake total depth (m)
+DL-M;228007;;;
+
+# 228012:Lake shape factor (dimensionless)
+LSHF;228012;;;
+
+# 74:Standard deviation of filtered subgrid orography (m)
+SDFOR-M;74;;;
+
+# 168:2 metre dewpoint temperature (K)
+TD2-K;168;;;
+
+# 2: Velocity potential (m2 s-1)
+VP-M2S;2;;;

@@ -1,0 +1,35 @@
+{
+    "title" : "FMI VolumetricSoilWaterLayer28",
+    "abstract" : "FMI VolumetricSoilWaterLayer28",
+    "projection": {},
+    "source":"grid",
+    "views": [{
+        "layers": [ 
+	 {
+            "qid": "ll",
+            "layer_type": "isoband",
+            "producer": "ECBSF",
+            "isobands": "json:isobands/SOILWET1-M.json",
+            "css": "isobands/SOILWET1-M.css",
+            "parameter": "SOILWET1-M:ECBSF::9:7:1:0",
+            "sampling": { 
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            } 
+         },
+         {
+            "qid": "l",
+            "layer_type": "isoband",
+            "producer": "SMARTMET",
+            "parameter": "SWVL2-M3M3:SMARTMET:5015",
+            "isobands": "json:isobands/SOILWET1-M.json",
+            "css": "isobands/SOILWET1-M.css",
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+         }
+         ]
+    }]
+}
