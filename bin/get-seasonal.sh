@@ -72,7 +72,8 @@ conda activate xr
      -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_eu.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib && \
     cdo -s --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-eu-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-eu-{}.grib" \
-    && rm disacc-tmp-*.grib || echo "NOT adj acc - seasonal forecast input missing or already produced"
+    && rm disacc-tmp-*.grib 
+    || echo "NOT adj acc - seasonal forecast input missing or already produced"
 
 ## Make stl2,3,4 from stl1
 [ -f ens/ec-sf_$year${month}_all-24h-eu-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_stl-24h-eu-50.grib ] && \

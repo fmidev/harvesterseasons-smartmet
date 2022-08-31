@@ -8,10 +8,12 @@
 # Running from the parent directory
 #
 # Mikko Strahlendorff 7.5.2021 (updated to use aux_lists 25.5.)
+eval "$(conda shell.bash hook)"
+conda activate gdal
 out=${1:0:-1}
-[ ! "$2" == "" ] && fch=$2 || fch=/home/smartmet/data/GEDI_FCH_2019.tif
+[ ! "$2" == "" ] && fch=$2 || fch=/vsicurl/https://copernicus.data.lit.fmi.fi/dtm/fch/GEDI_FCH_2019.tif
 cd $1
-[ ! -f $out.lst ] && parallel gdalinfo /vsitar/{} ::: DEM1_SAR_DGE_30_*.tar | grep _DEM.tif | sed 's/^[[:space:]]*//' 1>$out.lst 2>/dev/null 
+[ ! -f $out.lst ] && parallel gdalinfo /vsitar/{} ::: DEM1_SAR_DGE_30_*.tar | grep _DEM.tif | sed 's/^[[:space:]]*//' 1>>$out.lst 2>/dev/null 
 aux-lists.sh $out
 #[ ! -f $out-wbm.lst ] && parallel gdalinfo /vsitar/{} ::: DEM1_SAR_DGE_30_* | grep _WBM.tif | sed 's/^[[:space:]]*//' 1>$out-wbm.lst 2>/dev/null 
 #[ ! -f $out-flm.lst ] && parallel gdalinfo /vsitar/{} ::: DEM1_SAR_DGE_30_* | grep _FLM.tif | sed 's/^[[:space:]]*//' 1>$out-flm.lst 2>/dev/null 

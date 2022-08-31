@@ -32,7 +32,6 @@ TVL-N;29;;;
 TVH-N;30;;;
 
 # Surface soil wetness
-SWVL1-M3M3;39;;;
 
 # Volumetric Soil Water layer 2
 SWVL2-M3M3;40;;;
@@ -50,13 +49,15 @@ STL1-K;139;;;
 HSNOW-M;141;;;
 
 # Soil temperature level 2 in Kelvins
-STL2-K;170;;;
 
 # Top Net Solar Radation
-TSR-J;178;;;
+TSR-JM2;178;;;
 
 # Evaporation (m of water equivalent)
 EVAP-M;182;;;
+
+# Total precipitation in millimeters
+RR-MM;193;;;
 
 # Total precipitation in meters
 RR-M;228;;;
@@ -88,3 +89,116 @@ TCSNOWWAT-KGM2;228090;;;
 # Potential evaporation (m)
 EVAPP-M;228251;;;
 
+# 228040:Soil wetness index in layer 1 (dimensionless)
+SWI1;228040;;;
+
+# 228041:Soil wetness index in layer 2 (dimensionless)
+SWI2;228041;;;
+
+# 228042:Soil wetness index in layer 3 (dimensionless)
+SWI3;228042;;;
+
+# 228043:Soil wetness index in layer 4 (dimensionless)
+SWI4;228043;;;
+
+# 165:10 metre U wind component (m s-1)
+U10-MS;165;;;
+
+# 166:10 metre V wind component (m s-1)
+V10-MS;166;;;
+
+# 228001:Convective inhibition (J kg-1)
+CIN-JKG;228001;;;
+
+# 260121:K index (K)
+KX;260121;;;
+
+# 196:Northward gravity wave surface stress (N m-2 s)
+MGWS-NM2S;196;;;
+
+# 228251:Potential evaporation (m)
+PEV-M;228251;;;
+
+# 210:Surface net solar radiation, clear sky (J m-2)
+SSRC-JM2;210;;;
+
+# 211:Surface net thermal radiation, clear sky (J m-2)
+STRC-JM2;211;;;
+
+# 167:2 metre temperature (K)
+TAS-K;167;;;
+
+# 60:Potential vorticity (K m2 kg-1 s-1)
+PV-KM2KGS;60;;;
+
+# 160:Standard deviation of orography (m)
+SDOR-M;160;;;
+
+# 161:Anisotropy of sub-gridscale orography (~)
+ISOR;161;;;
+
+# 162:Angle of sub-gridscale orography (radians)
+ANOR-RAD;162;;;
+
+# 163:Slope of sub-gridscale orography (~)
+SLOR;163;;;
+
+# 26:Lake cover ((0 - 1))
+CL-0TO1;26;;;
+
+# 228007:Lake total depth (m)
+DL-M;228007;;;
+
+# 228012:Lake shape factor (dimensionless)
+LSHF;228012;;;
+
+# 74:Standard deviation of filtered subgrid orography (m)
+SDFOR-M;74;;;
+
+# 228246:100 metre U wind component (m s-1)
+U100-MS;228246;;;
+
+# 228247:100 metre V wind component (m s-1)
+V100-MS;228247;;;
+
+# 228023:Cloud base height (m)
+CBH-M;228023;;;
+
+# 186:Low cloud cover (0-1)
+
+# 187:Medium cloud cover (0-1)
+
+# 188:High cloud cover (0-1)
+
+# 228029:Instantaneous 10 metre wind gust (m s-1)
+I10FG-MS;228029;;;
+
+# 235030:Mean convective precipitation rate (kg m-2 s-1)
+MCPR-KGM2S;235030;;;
+
+# 235043:Mean evaporation rate (kg m-2 s-1)
+MER-KGM2S;235043;;;
+
+# 235029:Mean large-scale precipitation rate (kg m-2 s-1)
+MLSPR-KGM2S;235029;;;
+
+# 235048:Mean runoff rate (kg m-2 s-1)
+MROR-KGM2S;235048;;;
+
+# 235031:Mean snowfall rate (kg m-2 s-1)
+MSR-KGM2S;235031;;;
+
+# 235021:Mean sub-surface runoff rate (kg m-2 s-1)
+MSSROR-KGM2S;235021;;;
+
+# 235034:Mean surface latent heat flux (W m-2)
+MSLHF-WM2;235034;;;
+
+# 235020:Mean surface runoff rate (kg m-2 s-1)
+MSROR-KGM2S;235020;;;
+
+# 235033:Mean surface sensible heat flux (W m-2)
+MSSHF-WM2;235033;;;
+
+# 235055:Mean total precipitation rate (kg m-2 s-1)
+MTPR-KGM2S;235055;;;

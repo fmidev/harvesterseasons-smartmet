@@ -606,7 +606,7 @@
 644;TTURB-M;m;Top of turbulence in meters;1;1;1;;
 645;PHFLIG-N;Code;Phase of flight, code 8004 of BUFR;2;2;2;;
 646;ALTIT-M;m;Altitude of an object in meters;1;1;1;;
-647;PSEA-HPA;hPa;Pressure reduced to mean sea level;1;1;1;;
+647;PSEA-PA;hPa;Pressure reduced to mean sea level;1;1;1;;
 648;WATLEV-CM;cm;Water level in centimeters;1;1;1;;
 649;WATMIN-CM;cm;Minimum water level in centimeters;1;1;1;;
 650;WATMAX-CM;cm;Maximum water level in centimeters;1;1;1;;

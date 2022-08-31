@@ -1,24 +1,29 @@
 #!/bin/bash
 # Split countries with Islands far from the mainland into several areas
 # Russia split in Euro / Siberia / Pacific
-cd Asia/Russian_Federation
-[ ! -f Russian_Federation_Euro.lst ] && grep -P DSM_10_N.+_00_E0[234567].+_ < Russian_Federation.lst > Russian_Federation_Euro.lst\
- && grep -P DSM_10_N8.+_00_E080_ < Russian_Federation.lst >> Russian_Federation_Euro.lst
-[ ! -f Russian_Federation_Siberia.lst ] && grep -P DSM_10_N.+_00_E1[012].+_ < Russian_Federation.lst > Russian_Federation_Siberia.lst\
- && grep -P DSM_10_N.*_00_E0[89].+_ < Russian_Federation.lst >> Russian_Federation_Siberia.lst\
- && grep -P DSM_10_N.*_00_E130_ < Russian_Federation.lst >> Russian_Federation_Siberia.lst
-[ ! -f Russian_Federation_Pacific.lst ] && grep -P DSM_10_N.+_00_E1[345678].+_ < Russian_Federation.lst > Russian_Federation_Pacific.lst
-[ ! -f Russian_Federation_Pacific_East.lst ] && grep -P DSM_10_N.+_00_W.+_ < Russian_Federation.lst > Russian_Federation_Pacific_East.lst
-cd ..
-parallel ln -sTT Russian_Federation ::: Russian_Federation_Euro Russian_Federation_Pacific Russian_Federation_Pacific_East Russian_Federation_Siberia
-cd ..
+if [ -d "Asia/Russian_Federation" ]
+then
+ cd Asia/Russian_Federation
+ [ ! -f Russian_Federation_Euro.lst ] && grep -P DSM_10_N.+_00_E0[234567].+_ < Russian_Federation.lst > Russian_Federation_Euro.lst\
+  && grep -P DSM_10_N8.+_00_E080_ < Russian_Federation.lst >> Russian_Federation_Euro.lst
+ [ ! -f Russian_Federation_Siberia.lst ] && grep -P DSM_10_N.+_00_E1[012].+_ < Russian_Federation.lst > Russian_Federation_Siberia.lst\
+  && grep -P DSM_10_N.*_00_E0[89].+_ < Russian_Federation.lst >> Russian_Federation_Siberia.lst\
+  && grep -P DSM_10_N.*_00_E130_ < Russian_Federation.lst >> Russian_Federation_Siberia.lst
+ [ ! -f Russian_Federation_Pacific.lst ] && grep -P DSM_10_N.+_00_E1[345678].+_ < Russian_Federation.lst > Russian_Federation_Pacific.lst
+ [ ! -f Russian_Federation_Pacific_East.lst ] && grep -P DSM_10_N.+_00_W.+_ < Russian_Federation.lst > Russian_Federation_Pacific_East.lst
+ cd ..
+ parallel ln -sTT Russian_Federation ::: Russian_Federation_Euro Russian_Federation_Pacific Russian_Federation_Pacific_East Russian_Federation_Siberia
+ cd ..
+fi
+if [ -d "Europe/France" ]
+then
 # France
-cd Europe/France/
+cd Europe/France
 [ ! -f France_.lst ] && mv France.lst France_.lst
-[ ! -f France.lst ] && grep -P DSM_10_N[45].+_00_W00[12345]_ < France_.lst > France.lst\
- && grep -P DSM_10_N[45].+_00_E00[1234567]_ < France_.lst >> France.lst\
- && grep -P DSM_10_N5.+_00_W008_ < France_.lst >> France.lst\
-[ ! -f France_Corsica.lst ] && grep -P DSM_10_N4.+_00_E00[89]_ < France_.lst > France_Corsica.lst
+[ ! -f France.lst ] && grep -P DSM_10_N[45].+_00_W00[123456]_ < France_.lst > France.lst\
+ && grep -P DSM_10_N[45].+_00_E00[012345678]_ < France_.lst >> France.lst
+# && grep -P DSM_10_N5.+_00_W008_ < France_.lst >> France.lst
+[ ! -f France_Corsica.lst ] && grep -P DSM_10_N4[12]_00_E00[89]_ < France_.lst > France_Corsica.lst
 [ ! -f France_Guiana.lst ] && grep -P DSM_10_N0[2345]_00_W05[1234]_ < France_.lst > France_Guiana.lst
 [ ! -f France_Caribbean.lst ] && grep -P DSM_10_N1[4568]_00_W06.+_ < France_.lst > France_Caribbean.lst
 [ ! -f France_Reunion.lst ] && grep -P DSM_10_S2[12]_00_E055_ < France_.lst > France_Reunion.lst
@@ -26,6 +31,9 @@ cd Europe/France/
 cd ..
 parallel ln -sT France France_{} ::: Guiana Corsica Reunion Mayotte Caribbean
 cd ..
+fi
+if [ -d "Europe/Portugal" ]
+then
 # Portugal
 cd Europe/Portugal
 [ ! -f Portugal_.lst ] && mv Portugal.lst Portugal_.lst
@@ -35,14 +43,20 @@ cd Europe/Portugal
 cd ..
 parallel ln -sT Portugal Portugal_{} ::: Madeira Azores
 cd ..
+fi
+if [ -d "Europe/Spain" ]
+then
 # Spain
 cd Europe/Spain
 [ ! -f Spain_.lst ] && mv Spain.lst Spain_.lst
-[ ! -f Spain.lst ] && grep -P DSM_10_N[45].+_00_W00[12345]_ < Spain_.lst > Spain.lst
+[ ! -f Spain.lst ] && grep -P DSM_10_N[345].+_00_W00[12345678]_ < Spain_.lst > Spain.lst
 [ ! -f Spain_Canary_Islands.lst ] && grep -P DSM_10_N2.+_00_W01[345678]_ < Spain_.lst > Spain_Canary_Islands.lst
 cd ..
 ln -sT Spain Spain_Canary_Islands
 cd ..
+fi
+if [ -d "Europe/Svabard_and_Jan_Mayen" ]
+then
 # Svalbard & Jan Mayen
 cd Europe/Svalbard_and_Jan_Mayen
 [ ! -f Svalbard.lst ] && grep -P DSM_10_N[78].+_00_E0[123].+_ < Svalbard_and_Jan_Mayen.lst > Svalbard.lst
@@ -51,6 +65,9 @@ cd Europe/Svalbard_and_Jan_Mayen
 cd ..
 parallel ln -sT Svalbard_and_Jan_Mayen {} ::: Svalbard Jan_Mayen Bear_Island
 cd ..
+fi
+if [ -d "Oceania/New_Zealand" ]
+then
 # New Zealand
 cd Oceania/New_Zealand
 [ ! -f New_Zealand_.lst ] && mv New_Zealand.lst New_Zealand_.lst
@@ -64,6 +81,9 @@ cd Oceania/New_Zealand
 cd ..
 parallel ln -sT New_Zealand New_Zealand_{} ::: Antipodes_Island Auckland_Islands Campbell_Island Chatham_Islands Snares_Islands
 cd ..
+fi
+if [ -d "Oceania/Australia" ]
+then
 # Australia is better without Tasmania
 cd Oceania/Australia
 [ ! -f Australia_.lst ] && mv Australia.lst Australia_.lst && grep -P DSM_10_S[123].+_00_E.+_ < Australia_.lst > Australia.lst
@@ -71,6 +91,9 @@ cd Oceania/Australia
 cd ..
 ln -sT Australia Australia_Tasmania
 cd ..
+fi
+if [ -d "Oceania/Kiribati" ]
+then
 # Kiribati is across the antimeridian
 cd Oceania/Kiribati
 [ ! -f Kiribati_East.lst ] && grep -P DSM_10_.+_00_W.+_ < Kiribati.lst > Kiribati_East.lst
@@ -78,6 +101,9 @@ cd Oceania/Kiribati
 cd ..
 parallel ln -sT Kiribati Kiribati_{} ::: East West
 cd ..
+fi
+if [ -d "Oceania/Fiji" ]
+then
 # Fiji is across the antimeridian
 cd Oceania/Fiji
 [ ! -f Fiji_East.lst ] && grep -P DSM_10_.+_00_W1.+_ < Fiji.lst > Fiji_East.lst
@@ -85,6 +111,9 @@ cd Oceania/Fiji
 cd ..
 parallel ln -sT Fiji Fiji_{} ::: East West
 cd ..
+fi
+if [ -d "South_America/Chile" ]
+then
 # Chile
 cd South_America/Chile
 [ ! -f Chile_.lst ] && mv Chile.lst Chile_.lst
@@ -95,6 +124,9 @@ cd South_America/Chile
 cd ..
 parallel ln -sT Chile Chile_{} ::: Easter_Island Isla_Sala_y_Gomez
 cd ..
+fi
+if [ -d "Seven_seas_\(open_ocean\)/Seychelles" ]
+then
 # Seychelles has one island in Caribbean
 cd Seven_seas_\(open_ocean\)/Seychelles
 [ ! -f Seychelles_West.lst ] && grep -P DSM_10_N.+_00_W.+_ < Seychelles.lst > Seychelles_West.lst
@@ -103,6 +135,9 @@ cd Seven_seas_\(open_ocean\)/Seychelles
 cd ..
 ln -sT Seychelles Seychelles_West
 cd ..
+fi
+if [ -d "Seven_seas_\(open_ocean\)/Saint_Helena___Ascension_and_Tristan_Da_Cunha" ]
+then
 # St Helena Ascension Tristan da Cunha
 cd Seven_seas_\(open_ocean\)/Saint_Helena___Ascension_and_Tristan_Da_Cunha
 [ ! -f Saint_Helena.lst ] && grep -P DSM_10_S1[67]_00_W006_ < Saint_Helena___Ascension_and_Tristan_Da_Cunha.lst > Saint_Helena.lst
@@ -111,6 +146,9 @@ cd Seven_seas_\(open_ocean\)/Saint_Helena___Ascension_and_Tristan_Da_Cunha
 cd ..
 parallel ln -sT Saint_Helena___Ascension_and_Tristan_Da_Cunha ::: Ascension Saint_Helena Tristan_Da_Cunha
 cd ..
+fi
+if [ -d "Seven_seas_\(open_ocean\)/French_Southern_and_Antarctic_Lands" ]
+then
 # French Antarctic Islands
 cd Seven_seas_\(open_ocean\)/French_Southern_and_Antarctic_Lands
 [ ! -f Crozet_Islands.lst ] && grep -P DSM_10_S4.+_00_E05.+_ < French_Southern_and_Antarctic_Lands.lst > Crozet_Islands.lst
@@ -119,6 +157,9 @@ cd Seven_seas_\(open_ocean\)/French_Southern_and_Antarctic_Lands
 cd ..
 parallel ln -sT French_Southern_and_Antarctic_Lands ::: Crozet_Islands Amsterdam_Island Kerguelen
 cd ..
+fi
+if [ -d "North_America/Canada" ]
+then
 # Canada split in North / South 
 cd North_America/Canada
 [ ! -f Canada_.lst ] && mv Canada.lst Canada_.lst
@@ -129,6 +170,9 @@ cd North_America/Canada
 cd ..
 ln -sT Canada Canada_North
 cd ..
+fi
+if [ -d "North_America/United_States" ]
+then
 # United States: Alaska, Hawai and Atolles 
 cd North_America/United_States
 [ ! -f United_States_.lst ] && mv United_States.lst United_States_.lst
@@ -141,6 +185,9 @@ cd North_America/United_States
 cd ..
 parallel ln -sT United_States United_States_{} ::: Alaska Bering_West Hawai Atolles
 cd ..
+fi
+if [ -d "North_America/United_States_Minor_Outlying_Islands" ]
+then
 # US minor islands
 cd North_America/United_States_Minor_Outlying_Islands
 [ ! -f United_States_Minor_Island_1.lst ] && grep -P DSM_10_N28_00_W17[89]_ < United_States_Minor_Outlying_Islands.lst > United_States_Minor_Island_1.lst
@@ -152,3 +199,4 @@ cd North_America/United_States_Minor_Outlying_Islands
 cd ..
 parallel ln -sT United_States_Minor_Outlying_Islands United_States_Minor_Island_{} ::: 1 2 3 4 5 6
 cd ..
+fi

@@ -27,7 +27,9 @@
 1;5024;ERA5L-EU;801;501;330.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
 1;5029;SWI-EU;6832;4144;-10.996000;71.996000;0.009000;0.009000;+x-y;Copernicus land Soil wetness index Europe 0.01° latlon
 1;5030;SWI-GL;3600;1800;-179.950000;89.950000;0.100000;0.100000;+x-y;Copernicus land Soil wetness index Global 0.1° latlon
-
+1;5031;EOBS;705;465;-24.950000;25.050000;0.100000;0.100000;+x+y;E-OBS 0.1 grid
+1;5032;ECSF-EU2;161;101;-30.000000;75.000000;0.500000;0.500000;+x-y;ECSF pl grid
+1;5033;EOBS;705;465;-24.950140;25.049861;0.100000;0.100000;+x+y;E-OBS 0.1 deg
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

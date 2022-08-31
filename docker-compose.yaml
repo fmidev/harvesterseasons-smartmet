@@ -41,14 +41,14 @@ services:
       - redis-db
     restart: "unless-stopped" 
     volumes:
-      - ../config:/home/smartmet/config:Z
-      - ../share:/home/smartmet/share:Z
+      - ../config:/home/smartmet/config:z
+      - ../share:/home/smartmet/share:z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
-      - ../log:/var/log/smartmet:Z
+      - ../log:/var/log/smartmet:z
       #- ../content:/tmp/content:Z
-      - ../data/grib:/srv/data/grib:Z
-      - ../data/querydata:/srv/data/querydata:Z
+      - ../data/grib:/srv/data/grib:z
+      - ../data/querydata:/srv/data/querydata:z
     entrypoint:
       # The content of 'command' is passed as an argument to entrypoint script
       - "/home/smartmet/scripts/wait-for-postgres.sh"
@@ -96,8 +96,8 @@ services:
     restart: always
     environment:
       HSTS_HEADER: skip
-      UPSTREAM: 185.213.74.67:8080
-      SERVERNAME: sm.harvesterseasons.com
+      UPSTREAM: 185.213.73.20:8080
+      SERVERNAME: smdev.harvesterseasons.com
       #EXTRANAMES: sm1.harvesterseasons.com,harmonia.geoss.space #,smdev.harvesterseasons.com
     ports:
       - "80:80"

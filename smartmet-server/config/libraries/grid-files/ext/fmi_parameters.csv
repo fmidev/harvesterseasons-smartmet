@@ -34,16 +34,15 @@
 10000009;SSRO-M;m;Subsurface Runoff (metres);
 10000029;TVL-N;;Type of low vegetation 
 10000030;TVH-N;;Type of high vegetation
-10000039;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;5;
 10000040;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 10000042;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
 10000139;STL1-K;K;Soil temperature level 1 in Kelvins;1;1;1;1;
 10000141;HSNOW-M;m;Snow depth (m of water equivalent);1;1;1;2;
-10000178;TSR-J;J;Top Net Solar Radation;1;1;1;2;
+10000178;TSR-JM2;J;Top Net Solar Radation;1;1;1;2;
 10000182;EVAP-M;m;Evaporation (m of water equivalent);1;1;1;1;
-10000170;STL2-K;K;Soil temperature level 2 in Kelvins;1;1;1;1;
 10000183;STL3-K;K;Soil temperature level 3 in Kelvins;1;1;1;1;
+10000193;RR-MM;mm;Total precipitation in millimeters;1;1;1;1;
 10000205;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
 10000228;RR-M;m;Total precipitation in meters;1;1;1;1;
 10000236;STL4-K;K;Soil temperature level 4 in Kelvins;1;1;1;1;
@@ -53,4 +52,39 @@
 10172228;RRR-MEAN-MS;m s-1;Mean total precipitation rate;1;1;1;2;
 10228090;TCSNOWWAT-KGM2;kg m2;Total column snow water (kg m-2)
 10228251;EVAPP-M;m;Potential evaporation
-
+10228040;SWI1;;Soil wetness index layer 1
+10228041;SWI2;;Soil wetness index layer 2
+10228042;SWI3;;Soil wetness index layer 3
+10228043;SWI4;;Soil wetness index layer 4
+10000165;U10-MS;m/s;10 metre U wind component;
+10000166;V10-MS;m/s;10 metre V wind component;
+10228001;CIN-JKG;J kg-1;Convective inhibition;
+10260121;KX;;K index;
+10000196;MGWS-NM2S;N m-2 s;Northward gravity wave surface stress;
+10228251;PEV-M;m;Potential evaporation;
+10000210;SSRC-JM2;J m-2;Surface net solar radiation, clear sky;
+10000211;STRC-JM2; J m-2;Surface net thermal radiation, clear sky;
+10000167;TAS-K;K;2 metre temperature;
+10000060;PV-KM2KGS;K m2 kg-1 s-1;Potential vorticity;
+10000160;SDOR-M;m;Standard devitaion of orography;
+10000161;ISOR;;Anisotropy of sub-gridscale orography;
+10000162;ANOR-RAD;rad;Angle of sub-gridscale orography;
+10000163;SLOR;;Slope of sub-gridscale orography;
+10000026;CL-0TO1;0to1;Lake cover (0-1);
+10228007;DL-M;m;Lake total depth;
+10228012;LSHF;;Lake shape factor (dimensionless);
+10000074;SDFOR-M;m;Standard deviation of filtered subgrid orography;
+10228246;U100-MS;m s-1;100 metre U wind component;
+10228247;V100-MS;m s-1;100 metre V wind component;
+10228023;CBH-M;m;Cloud base height;
+10228029;I10FG-MS;m s-1;Instantaneous 10 metre wind gust;
+10235030;MCPR-KGM2S;kg m-2 s-1;Mean convective precipitation rate;
+10235043;MER-KGM2S;kg m-2 s-1;Mean evaporation rate;
+10235029;MLSPR-KGM2S;kg m-2 s-1;Mean large-scale precipitation rate;
+10235048;MROR-KGM2S;kg m-2 s-1;Mean runoff rate;
+10235031;MSR-KGM2S;kg m-2 s-1;Mean snowfall rate;
+10235021;MSSROR-KGM2S;kg m-2 s-1;Mean sub-surface runoff rate;
+10235034;MSLHF-WM2;W m-2;Mean surface latent heat flux;
+10235020;MSROR-KGM2S;kg m-2 s-1;Mean surface runoff rate;
+10235033;MSSHF-WM2;W m-2;Mean surface sensible heat flux;
+10235055;MTPR-KGM2S;kg m-2 s-1;Mean total precipitation rate;

@@ -1,0 +1,132 @@
+FROM rockylinux/rockylinux
+LABEL maintainer "Mikko Strahlendorff mikko.strahlendorffo@fmi.fi>"
+LABEL license    "MIT License Copyright (c) 2020 FMI Open Development"
+
+ENV USER_NAME="smartmet" \
+    NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
+        GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
+
+# FMI proxy setup if needed
+COPY proxydetect.sh /usr/local/bin/proxydetect.sh
+RUN ln -s proxydetect.sh /usr/local/bin/proxydetect
+
+# Lock some library versions to prevent updates breaking smartmet-server
+COPY versionlock8.list /etc/yum/pluginconf.d/versionlock.list
+
+# Basic setup before running any yum commands
+RUN echo ip_resolve=4 >> /etc/yum.conf && \
+    . /usr/local/bin/proxydetect && \
+    curl -O /etc/yum.repos.d/libjpeg-turbo.repo https://libjpeg-turbo.org/pmwiki/uploads/Downloads/libjpeg-turbo.repo
+# Install gosu
+ENV GOSU_VERSION 1.10
+RUN set -ex; . /usr/local/bin/proxydetect && \
+        dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
+        dnf -y install wget && \
+	dnf -y install dpkg && \
+	dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" && \
+	wget --quiet -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" && \
+	wget --quiet -O /tmp/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc" && \
+	export GNUPGHOME="$(mktemp -d)" && \
+	rm -fr "$GNUPGHOME" /tmp/gosu.asc && \
+	chmod +xs /usr/bin/gosu && \
+	gosu nobody true && \
+	dnf -y remove dpkg && \
+	dnf clean all && \
+ 	rm -rf /tmp/* /var/cache/yum
+# install smartmet-server including grid-engine grid-admin grid-gui and tools
+# dnf -y install https://download.fmi.fi/smartmet-open/rhel/8/x86_64/smartmet-open-beta-latest-8.noarch.rpm && \
+# dnf config-manager --enable smartmet-open-beta && \
+RUN  dnf -y install drpm && \
+ dnf -y install rpm-build && \
+ dnf -y install yum-utils && \
+ dnf -y install yum-plugin-versionlock && \
+ dnf -y install dnf-plugins-core && \
+ dnf config-manager --set-enabled powertools && \
+ dnf config-manager --setopt=http_caching=packages --save && \
+ dnf -y install https://download.fmi.fi/smartmet-open/rhel/8/x86_64/smartmet-open-release-22.8.22-1.el7_9.fm-8.noarch.rpm && \
+ dnf -y install clang && \
+ dnf -y install ccache && \
+ dnf -y install createrepo_c && \
+ dnf -y install git && \
+ dnf -y install make && \
+ dnf -y install sudo && \
+ dnf -y install rpmlint && \
+ dnf -y module disable postgresql:12 && \
+ dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
+ dnf config-manager --disable "pgdg*" && \
+ sed -i -e 's/-source\]$/-__source]/' /etc/yum.repos.d/*.repo && \
+ dnf -y update && \
+ dnf -y install "glibc-langpack-*" && \
+ ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
+ dnf -y install \
+    smartmet-plugin-backend \
+    smartmet-plugin-admin \
+    smartmet-plugin-download \
+    smartmet-plugin-timeseries \
+    smartmet-plugin-wms \
+    smartmet-engine-grid \
+    smartmet-plugin-grid-admin \
+    smartmet-plugin-grid-gui \
+    smartmet-tools-grid \
+    smartmet-qdtools && \
+ dnf clean all && \
+ rm -rf /var/cache/yum
+
+# Install Google Noto fonts
+RUN mkdir -p /usr/share/fonts/truetype/noto && \
+     for FONT in ${NOTO_FONTS}; \
+     do \
+         curl -s -S -o ${FONT}.zip https://noto-website-2.storage.googleapis.com/pkgs/${FONT}.zip && \
+         unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/noto && \
+         rm -f ${FONT}.zip ; \
+     done
+
+# Install Google Fonts
+RUN \
+    for FONT in $GOOGLE_FONTS; \
+    do \
+        mkdir -p /usr/share/fonts/truetype/${FONT} && \
+        curl -s -S -o ${FONT}.zip "https://fonts.google.com/download?family=${FONT}" && \
+        unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/${FONT} && \
+        rm -f ${FONT}.zip ; \
+    done
+					    
+HEALTHCHECK --interval=30s --timeout=10s \
+    CMD curl -f http://localhost:8080/admin?what=qengine || exit 1
+
+# Expose SmartMet Servers default port
+EXPOSE 8080
+
+#COPY smartmetconf /etc/smartmet
+#COPY wms /smartmet/share/wms
+#COPY docker-entrypoint.sh /
+RUN groupadd -r -g 5700 smartmet
+RUN useradd -r -u 4516 -g smartmet smartmet
+
+# wms.conf defines imagecache. timeseriescache's use is yet to be found.
+# MS 6.3.20: from new Rauhala dockerhub code
+RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chmod -R g=u /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /etc/passwd /var/log
+
+# M.K. 09.01.2020: adopted it to WEkEO paths 
+RUN mkdir -p /srv/data
+# M.K. 09.01.2020: /srv/grid-data adopted to WEkEO setting
+#                  other paths are not created in step before TODO check!
+RUN chown -R smartmet /srv/data /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
+
+# Smartmet Servers configs should be separate from /etc's settings that come from RPM-packages
+# These locations are required to be defined in several different setting files under the config-direcotry
+# M.K. 09.01.2020: do I have to change something here? Dockerfile is aborting here.
+COPY scripts /home/smartmet/scripts 
+RUN chown -R smartmet /home/smartmet/*
+
+# Dont use root to run commands in container
+USER smartmet
+
+# Uncomment to include files in Docker image. 
+# Comment and add in compose-file for development
+#COPY --chown=smartmet config /home/smartmet/config 
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["smartmetd"]

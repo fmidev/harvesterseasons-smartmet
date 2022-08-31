@@ -1,5 +1,6 @@
 #!/bin/bash
-fch=/home/smartmet/data/UMD_FCH_2019.tif
+#fch=/home/smartmet/data/UMD_FCH_2019.tif
+fch=/vsicurl/https://copernicus.data.lit.fmi.fi/dtm/fch/UMD_FCH_2019.tif
 tr=$(gdalinfo $1/$1-wbm.vrt | grep -Po 'Size = (.+)' | sed 's:Size = (::' | sed 's:,: :' | sed 's:)::' )
 ul=$(gdalinfo $1/$1-wbm.vrt | grep -Po 'Upper Left (.*)' | sed 's:Upper Left  (::'| sed 's:) (.*::'|sed 's:,::' )
 #| awk '{print int($1+0.5) " " int($2+0.5)}')

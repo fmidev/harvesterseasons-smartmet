@@ -304,6 +304,7 @@ U-MS;131;;;
 V-MS;132;;;
 
 # 133:Specific humidity (kg kg-1)
+Q-KGKG;133;;;
 
 # 134:Surface pressure (Pa)
 PGR-PA;134;;;
@@ -324,13 +325,13 @@ TOTCWV-KGM2;137;;;
 # 140:Soil wetness level 1 (m of water equivalent)
 
 # 141:Snow depth (m of water equivalent)
-# SD-KGM2;141;;;
+SD-KGM2;141;;;
 
 # 142:Large-scale precipitation (m)
 RRL-KGM2;142;;;
 
 # 143:Convective precipitation (m)
-143;RRC-KGM2;;;
+RRC-KGM2;143;;;
 
 # 144:Snowfall (m of water equivalent)
 SNACC-KGM2;144;;;
@@ -351,7 +352,7 @@ CRNK-N;148;;;
 # 150:Top net radiation (J m-2)
 
 # 151:Mean sea level pressure (Pa)
-PSEA-HPA;151;;;
+PSEA-PA;151;;;
 
 # 152:Logarithm of surface pressure (~)
 LNSP-N;152;;;
@@ -385,13 +386,10 @@ MIXHGT-M;159;;;
 N-0TO1;164;;;
 
 # 165:10 metre U wind component (m s-1)
-U-MS;165;;;
 
 # 166:10 metre V wind component (m s-1)
-V-MS;166;;;
 
 # 167:2 metre temperature (K)
-T-K;167;;;
 
 # 168:2 metre dewpoint temperature (K)
 TD-K;168;;;
@@ -434,6 +432,7 @@ EWSS-NM2S;180;;;
 NSSS-NM2S;181;;;
 
 # 182:Evaporation (m of water equivalent)
+
 
 # 183:Soil temperature level 3 (K)
 
@@ -8740,7 +8739,6 @@ N-PRCNT;228164;;;
 
 # 260015:Precipitation type (code table (4.201))
 PRECFORM-N;260015;;;
-PRECFORM2-N;260015;;;
 
 # 260016:Integrated liquid water (kg m-2)
 

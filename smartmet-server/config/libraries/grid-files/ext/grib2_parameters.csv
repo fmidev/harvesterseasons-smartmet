@@ -52,3 +52,5 @@
 # Soil temperature layer 4 organic soil
 199236;discipline=192,centre=86,parameterCategory=128,parameterNumber=236;
 
+# Total Precipitation in millimeters
+10000193;discipline=0,parameterCategory=1,parameterNumber=193;
