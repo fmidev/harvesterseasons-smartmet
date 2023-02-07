@@ -19,7 +19,7 @@ c.retrieve(
     {
         'format': 'grib',
         'originating_centre': 'ecmwf',
-        'system': '5',
+        'system': '51',
         'variable': [ 'v_component_of_wind', 'u_component_of_wind', 'specific_humidity', 'temperature', 'geopotential', ],
         'pressure_level': [ '500', '700', '850', 925],
         'year': year,

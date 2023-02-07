@@ -8,7 +8,7 @@ obsfile=${obspath##*/}
 modfile=${modpath##*/}
 otags=(${obsfile//_/ })
 mtags=(${modfile//-/ })
-unbound="2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4"
+unbound="2d,2t,skt,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4"
 prefix="${otags[0]}"-"${mtags[0]}${mtags[1]:0:2}"_"${otags[1]}"
 ending="eu.grib"
 
