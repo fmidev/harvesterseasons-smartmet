@@ -11,7 +11,7 @@ fi
 
 cd /home/smartmet/data/gdalcubes
 # execute the Rscript in the gdalcubes docker image for wg kriging, then make a COG and put to ceph
-sudo docker exec -u rstudio jovial_tharp Rscript /home/rstudio/wg_interpolation_new_code.R -s $yday \
+sudo docker exec -u rstudio busy_matsumoto Rscript /home/rstudio/wg_interpolation_new_code.R -s $yday \
  && gdal_calc.py --calc="2*logical_and(A>=17,A<28)+3*(A>=28)" -A Tuuli_${yday}_WG_KED.tif --outfile=Tuuli_${yday}_WG_KED_CLASSIFIED.tif \
 --type Byte --NoDataValue=0 --co='COMPRESS=DEFLATE' --co='PREDICTOR=2' --co='BIGTIFF=IF_SAFER' --co='TILED=YES' \
  && gdal_polygonize.py -b 1 Tuuli_${yday}_WG_KED_CLASSIFIED.tif Tuuli_${yday}_WG_KED.geojson \

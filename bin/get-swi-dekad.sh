@@ -10,7 +10,7 @@ if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
 else
     yday=`date -d '9 days ago' +%Y%m%d`
-    yday={$yday:0:-1}1
+    yday=${yday:0:-1}1
 fi
 incoming=/home/smartmet/data/copernicus
 mkdir -p $incoming
@@ -44,6 +44,6 @@ else
      s3cmd put -q -P --no-progress $file s3://copernicus/land/gl_swi12.5km_grb/ &&\
        s3cmd put -q -P --no-progress $meta s3://copernicus/land/gl_swi12.5km_meta/
     rm $ncfile $meta
-    mv $file ../grib/SWI10_${file:13:4}0101T120000_${file:13:8}T${file:21:4}_swis.grib
+    mv $file ../grib/SWI10_${file:12:4}0101T120000_${file:12:8}T${file:20:4}00_swis.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
