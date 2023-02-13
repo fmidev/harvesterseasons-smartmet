@@ -1,0 +1,66 @@
+[
+    {
+      "qid": "Soiltype_7",
+      "lolimit": 7,
+      "attributes": {
+        "class": "Soiltype_7"
+      }
+    },
+    {
+      "qid": "Soiltype_6",
+      "hilimit": 7,
+      "lolimit": 6,
+      "attributes": {
+        "class": "Soiltype_6"
+      }
+    },
+    {
+      "qid": "Soiltype_5",
+      "hilimit": 6,
+      "lolimit": 5,
+      "attributes": {
+        "class": "Soiltype_5"
+      }
+    },
+    {
+      "qid": "Soiltype_4",
+      "hilimit": 5,
+      "lolimit": 4,
+      "attributes": {
+        "class": "Soiltype_4"
+      }
+    },
+    {
+      "qid": "Soiltype_3",
+      "hilimit": 4,
+      "lolimit": 3,
+      "attributes": {
+        "class": "Soiltype_3"
+      }
+    },
+    {
+      "qid": "Soiltype_2",
+      "hilimit": 3,
+      "lolimit":2,
+      "attributes": {
+        "class": "Soiltype_2"
+      }
+    },
+    {
+      "qid": "Soiltype_1",
+      "hilimit": 2,
+      "lolimit":1,
+      "attributes": {
+        "class": "Soiltype_1"
+      }
+    },
+    {
+      "qid": "Soiltype_0",
+      "hilimit": 1,
+      "lolimit": 0,
+      "attributes": {
+        "class": "Soiltype_0"
+      }
+    }
+  ]
+  

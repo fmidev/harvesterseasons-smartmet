@@ -1,0 +1,11 @@
+.NDVI_09_1     { stroke:none; fill: rgb(9,79,41) }
+.NDVI_08_09    { stroke:none; fill: rgb(10,105,33) }
+.NDVI_07_08    { stroke:none; fill: rgb(26,136,40) }
+.NDVI_06_07    { stroke:none; fill: rgb(66,155,70) }
+.NDVI_05_06    { stroke:none; fill: rgb(100,173,98) }
+.NDVI_04_05    { stroke:none; fill: rgb(148,197,140) }
+.NDVI_03_04    { stroke:none; fill: rgb(148,175,140) }
+.NDVI_02_03    { stroke:none; fill: rgb(255,255,220) }
+.NDVI_01_02    { stroke:none; fill: rgb(190,152,13) }
+.NDVI_0_01     { stroke:none; fill: rgb(130,76,6) }
+.NDVI_inf_0    { stroke:none; fill: rgb(17,141,250) }

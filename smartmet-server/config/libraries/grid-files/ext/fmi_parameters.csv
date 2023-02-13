@@ -34,6 +34,9 @@
 10000009;SSRO-M;m;Subsurface Runoff (metres);
 10000029;TVL-N;;Type of low vegetation 
 10000030;TVH-N;;Type of high vegetation
+10000029;TVL-N;;Type of low vegetation;
+10000030;TVH-N;;Type of high vegetation;
+10000039;SWVL1-M3M3;M3M3;Surface soil wetness;1;1;1;5;
 10000040;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 10000042;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
@@ -56,6 +59,24 @@
 10228041;SWI2;;Soil wetness index layer 2
 10228042;SWI3;;Soil wetness index layer 3
 10228043;SWI4;;Soil wetness index layer 4
+10228090;TCSNOWWAT-KGM2;kg m2;Total column snow water (kg m-2);
+10228251;EVAPP-M;m;Potential evaporation;
+10500219;NDVI;JustAnumber;Normalized difference vegetation index;
+10301220;MIR;Medium infrared radiance;1;1;;;
+10301200;SRB0;Band 0 surface reflectance;1;1;;;
+10301201;SRB1;Band 0 surface reflectance;1;1;;;
+10301202;SRB2;Band 0 surface reflectance;1;1;;;
+10301203;SRB3;Band 0 surface reflectance;1;1;;;
+10301204;SRB4;Band 0 surface reflectance;1;1;;;
+10301205;SRB5;Band 0 surface reflectance;1;1;;;
+10301206;SRB6;Band 0 surface reflectance;1;1;;;
+10301207;SRB7;Band 0 surface reflectance;1;1;;;
+10301208;SRB8;Band 0 surface reflectance;1;1;;;
+10301209;SRB9;Band 0 surface reflectance;1;1;;;
+10228040;SWI1;;Soil wetness index layer 1;
+10228041;SWI2;;Soil wetness index layer 2;
+10228042;SWI3;;Soil wetness index layer 3;
+10228043;SWI4;;Soil wetness index layer 4;
 10000165;U10-MS;m/s;10 metre U wind component;
 10000166;V10-MS;m/s;10 metre V wind component;
 10228001;CIN-JKG;J kg-1;Convective inhibition;
@@ -65,6 +86,8 @@
 10000210;SSRC-JM2;J m-2;Surface net solar radiation, clear sky;
 10000211;STRC-JM2; J m-2;Surface net thermal radiation, clear sky;
 10000167;TAS-K;K;2 metre temperature;
+10000167;T2-K;K;2 metre temperature;
+10000168;TD2-K;K;2 metre dewpoint temperature;
 10000060;PV-KM2KGS;K m2 kg-1 s-1;Potential vorticity;
 10000160;SDOR-M;m;Standard devitaion of orography;
 10000161;ISOR;;Anisotropy of sub-gridscale orography;
@@ -88,3 +111,4 @@
 10235020;MSROR-KGM2S;kg m-2 s-1;Mean surface runoff rate;
 10235033;MSSHF-WM2;W m-2;Mean surface sensible heat flux;
 10235055;MTPR-KGM2S;kg m-2 s-1;Mean total precipitation rate;
+10000002;VP-M2S;m2 s-1; Velocity potential;

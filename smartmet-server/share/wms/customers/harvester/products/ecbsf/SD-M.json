@@ -6,11 +6,11 @@
     "source":"grid",
     "views": [{
         "layers": [{
-            "qid": "l",
+            "qid": "isoband",
             "layer_type": "isoband",
             "isobands": "json:isobands/HSNOW-M.json",
             "css": "isobands/HSNOW-M.css",
-            "parameter": "SD-M:ECBSF::1:0:1:0",
+            "parameter": "SD-M:ECBSF",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

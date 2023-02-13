@@ -1,0 +1,19 @@
+{
+    "title" : "TreeCoverDensity",
+    "abstract" : "TreeCoverDensity",
+    "projection": {},
+    "producer": "Copernicus",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "parameter": "Q-KGKG:SMARTMET:13",
+            "isobands": "json:isobands/TreeCoverDensityLegend.json",
+            "css": "isobands/TreeCoverDensityLegend.css",
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

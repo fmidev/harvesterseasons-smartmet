@@ -1,19 +1,16 @@
 {
-    "title" : "ECSF Soil Temperature",
-    "abstract" : "C3S seasonal forecast data from ECMWF.",
+    "title" : "FMI Soil Temperature",
+    "abstract" : "FMI Soil Temperature",
     "projection": {},
-    "producer": "ECBSF",
+    "producer": "SMARTMET",
     "source":"grid",
     "views": [{
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/TSOIL-C.json",
-            "css": "isobands/TSOIL-C.css",
-            "parameter": "TG-K:SMARTMET:1073:9:7:0",
-	    "sampling": { 
-		"relativeresolution": 4
-	    },
+            "parameter": "TG-K:SMARTMET",
+            "isobands": "json:ecsf/temperature/isobands/Temperature.json",
+            "css": "ecsf/temperature/isobands/Temperature.css",
             "attributes": {
                 "shape-rendering": "crispEdges"
             }

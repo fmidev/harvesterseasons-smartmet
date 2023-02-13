@@ -1,0 +1,89 @@
+[
+  {
+    "qid": "NDVI_09_1",
+    "lolimit": 0.9,
+    "hilimit": 1,
+    "attributes": {
+      "class": "NDVI_09_1"
+    }
+  },
+  {
+    "qid": "NDVI_08_09",
+    "lolimit": 0.8,
+    "hilimit": 0.9,
+    "attributes": {
+      "class": "NDVI_08_09"
+    }
+  },
+  {
+    "qid": "NDVI_07_08",
+    "lolimit": 0.7,
+    "hilimit": 0.8,
+    "attributes": {
+      "class": "NDVI_07_08"
+    }
+  },
+  {
+    "qid": "NDVI_06_07",
+    "lolimit": 0.6,
+    "hilimit": 0.7,
+    "attributes": {
+      "class": "NDVI_06_07"
+    }
+  },
+  {
+    "qid": "NDVI_05_06",
+    "lolimit": 0.5,
+    "hilimit": 0.6,
+    "attributes": {
+      "class": "NDVI_05_06"
+    }
+  },
+  {
+    "qid": "NDVI_04_05",
+    "lolimit": 0.4,
+    "hilimit": 0.5,
+    "attributes": {
+      "class": "NDVI_04_05"
+    }
+  },
+  {
+    "qid": "NDVI_03_04",
+    "lolimit": 0.3,
+    "hilimit": 0.4,
+    "attributes": {
+      "class": "NDVI_03_04"
+    }
+  },
+  {
+    "qid": "NDVI_02_03",
+    "lolimit": 0.2,
+    "hilimit": 0.3,
+    "attributes": {
+      "class": "NDVI_02_03"
+    }
+  },
+  {
+    "qid": "NDVI_01_02",
+    "lolimit": 0.1,
+    "hilimit": 0.2,
+    "attributes": {
+      "class": "NDVI_01_02"
+    }
+  },
+  {
+    "qid": "NDVI_0_01",
+    "lolimit": 0,
+    "hilimit": 0.1,
+    "attributes": {
+      "class": "NDVI_0_01"
+    }
+  },
+  {
+    "qid": "NDVI_inf_0",
+    "hilimit": 0,
+    "attributes": {
+      "class": "NDVI_inf_0"
+    }
+  }
+]

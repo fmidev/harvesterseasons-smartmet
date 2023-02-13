@@ -1,0 +1,170 @@
+[
+    {
+        "attributes": {
+            "class": "Treecoverdensity_100"
+        },
+        "lolimit": 100,
+        "qid": "Treecoverdensity_100"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_95_100"
+        },
+        "hilimit": 100,
+        "lolimit": 95,
+        "qid": "Treecoverdensity_95_100"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_90_95"
+        },
+        "hilimit": 95,
+        "lolimit": 90,
+        "qid": "Treecoverdensity_90_95"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_85_90"
+        },
+        "hilimit": 90,
+        "lolimit": 85,
+        "qid": "Treecoverdensity_85_90"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_80_85"
+        },
+        "hilimit": 85,
+        "lolimit": 80,
+        "qid": "Treecoverdensity_80_85"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_75_80"
+        },
+        "hilimit": 80,
+        "lolimit": 75,
+        "qid": "Treecoverdensity_75_80"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_70_75"
+        },
+        "hilimit": 75,
+        "lolimit": 70,
+        "qid": "Treecoverdensity_70_75"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_65_70"
+        },
+        "hilimit": 70,
+        "lolimit": 65,
+        "qid": "Treecoverdensity_65_70"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_60_65"
+        },
+        "hilimit": 65,
+        "lolimit": 60,
+        "qid": "Treecoverdensity_60_65"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_55_60"
+        },
+        "hilimit": 60,
+        "lolimit": 55,
+        "qid": "Treecoverdensity_55_60"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_50_55"
+        },
+        "hilimit": 55,
+        "lolimit": 50,
+        "qid": "Treecoverdensity_50_55"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_45_50"
+        },
+        "hilimit": 50,
+        "lolimit": 45,
+        "qid": "Treecoverdensity_45_50"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_40_45"
+        },
+        "hilimit": 45,
+        "lolimit": 40,
+        "qid": "Treecoverdensity_40_45"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_35_40"
+        },
+        "hilimit": 40,
+        "lolimit": 35,
+        "qid": "Treecoverdensity_35_40"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_30_35"
+        },
+        "hilimit": 35,
+        "lolimit": 30,
+        "qid": "Treecoverdensity_30_35"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_25_30"
+        },
+        "hilimit": 30,
+        "lolimit": 25,
+        "qid": "Treecoverdensity_25_30"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_20_25"
+        },
+        "hilimit": 25,
+        "lolimit": 20,
+        "qid": "Treecoverdensity_20_25"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_15_20"
+        },
+        "hilimit": 20,
+        "lolimit": 15,
+        "qid": "Treecoverdensity_15_20"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_10_15"
+        },
+        "hilimit": 15,
+        "lolimit": 10,
+        "qid": "Treecoverdensity_10_15"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_5_10"
+        },
+        "hilimit": 10,
+        "lolimit": 5,
+        "qid": "Treecoverdensity_5_10"
+    },
+    {
+        "attributes": {
+            "class": "Treecoverdensity_0_5"
+        },
+        "hilimit": 5,
+        "lolimit": 1,
+        "qid": "Treecoverdensity_0_5"
+    }
+]
+

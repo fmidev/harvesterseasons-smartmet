@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/TSOIL-K.json",
             "css": "isobands/TSOIL-K.css",
-            "parameter": "TSOIL-K:ECBSF:5022:9:28:1",
+            "parameter": "TSOIL-K:ECBSF:::7:1:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

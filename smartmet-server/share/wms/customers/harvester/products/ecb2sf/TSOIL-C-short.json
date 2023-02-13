@@ -6,7 +6,7 @@
     "source":"grid",
     "views": [{
         "layers": [{
-            "qid": "l",
+            "qid": "TSOIL-K",
             "layer_type": "isoband",
             "isobands": "json:ecsf/temperature/isobands/Temperature-short.json",
             "css": "ecsf/temperature/isobands/Temperature.css",

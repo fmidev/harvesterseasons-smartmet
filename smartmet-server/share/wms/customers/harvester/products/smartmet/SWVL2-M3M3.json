@@ -1,0 +1,19 @@
+{
+    "title" : "FMI VolumetricSoilWaterLayer28",
+    "abstract" : "FMI VolumetricSoilWaterLayer28",
+    "projection": {},
+    "producer": "SMARTMET",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "parameter": "SWVL2-M3M3:SMARTMET:5015",
+            "isobands": "json:isobands/SOILWET1-M.json",
+            "css": "isobands/SOILWET1-M.css",
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

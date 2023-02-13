@@ -1,0 +1,22 @@
+{
+    "title" : "ECB2SF Soil Wetness",
+    "abstract" : "C3S seasonal forecast data from ECMWF, bias adjusted.",
+    "projection": {},
+    "producer": "ECB2SF",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/SOILWET-M3M3.json",
+            "css": "isobands/SOILWET-M3M3.css",
+            "parameter": "SOILWET-M3M3:ECB2SF:::7:1:0",
+	    "sampling": { 
+		"relativeresolution": 4
+	    },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

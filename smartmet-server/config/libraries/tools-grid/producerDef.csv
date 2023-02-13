@@ -13,6 +13,7 @@ ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
 ECSF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF
 ECBSF;ECBSF;EC-C3S-BSF;Bias adjusted C3S seasonal forecast data
 ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
+ECXB2SF;ECXB2SF;EC-C3S-XB2SF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
 ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
 HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
 HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
@@ -24,3 +25,4 @@ SWI10;SWI10;SWI10;Copernicus global land Soil wetness index
 ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
 EOBS;EOBS;EOBS;E-OBS analysis grid for longterm observations
+S3SY;S3SY;S3SY;Sentinel-3 level 2 Synergy
