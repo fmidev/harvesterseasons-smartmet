@@ -1,10 +1,13 @@
 #!/bin/bash
+# give yearmonthday and version as cmd 
 eval "$(conda shell.bash hook)"
 conda activate xr
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
+    version=$2
 else
-    yday=`date -d '3 days ago' +%Y%m%d`
+    yday=`date -d '2 days ago' +%Y%m%d`
+    version=1.0.2
 fi
 incoming=/home/smartmet/data/copernicus
 mkdir -p $incoming
@@ -12,13 +15,15 @@ year=`date -d $yday +%Y`
 month=`date -d $yday +%m`
 day=`date -d $yday +%d`
 
+echo $year $month $day
+
 cd $incoming
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/2020/10/11/SWI1km_202010111200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_202010111200_CEURO_SCATSAR_V1.0.1.nc
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V1.0.1.nc"
+url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 meta=${url:0:-3}.xml
-ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V1.0.1.nc"
+ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
 file=${ncfile:0:-3}-swi.grib
-#ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
+ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
 [ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url && \
@@ -32,7 +37,6 @@ if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
 else 
-# SWI1..4 grib names are grib1 table 228 with parameter number 40..43
   cdo --eccodes -f grb -s -b P8 copy -chparam,-4,40.228,-8,41.228,-14,42.228,-16,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $file && \
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/ &&\
