@@ -66,7 +66,7 @@ conda activate xr
 seq 0 50 | parallel grib_copy ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-[level].grib
 # fix levels
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3-fix.grib] && echo "Levels swvls fixed already" || \
- parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}-fix.grib ::: `seq 0 50` ::: `seq 0 3`
+ parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}-fix.grib ::: `seq 0 50` ::: `seq 1 4`
 # merge levels 
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib] && echo "Already merged swvls levels" || \
  seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
