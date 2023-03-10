@@ -13,9 +13,9 @@ c.retrieve(
         'variable': [
             '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_dewpoint_temperature',
             '2m_temperature', 'evaporation_from_bare_soil', 'evaporation_from_open_water_surfaces_excluding_oceans',
-            'evaporation_from_the_top_of_canopy', 'evaporation_from_vegetation_transpiration', 'evapotranspiration',
-            #'leaf_area_index_high_vegetation', 'leaf_area_index_low_vegetation', 
-            'potential_evaporation'-            'runoff', 'skin_reservoir_content', 'skin_temperature',
+            'evaporation_from_the_top_of_canopy', 'evaporation_from_vegetation_transpiration',
+            'leaf_area_index_high_vegetation', 'leaf_area_index_low_vegetation', 
+            'potential_evaporation','runoff', 'skin_reservoir_content', 'skin_temperature',
             'snow_albedo', 'snow_cover', 'snow_density',
             'snow_depth', 'snow_depth_water_equivalent', 'snow_evaporation',
             'snowfall', 'snowmelt', 'soil_temperature_level_1',

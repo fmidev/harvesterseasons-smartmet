@@ -24,15 +24,16 @@ wget -O /home/smartmet/data/fmi-smartmet-$date-TG.grib "http://data.fmi.fi/fmi-a
 wget -O /home/smartmet/data/fmi-smartmet-$date-snowacc.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=WaterAccumulation,SnowAccumulation,SnowWaterRatio&timestep=720&starttime=${date}T000000&format=grib2&producer=snow_accumulation"
 # observations
 # SWVL2 calculation only for summer season
-wget -O /home/smartmet/data/fmi-smartmet-$ydate-swvl2-cum.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=VolumetricSoilWaterLayer28&timestep=1440&starttime=${ydate:0:4}0401T090000&format=grib2&producer=fmi_soil_cumulative&projection=epsg:4326"
+# smartobs swvl2 not produced anymore
+#wget -O /home/smartmet/data/fmi-smartmet-$ydate-swvl2-cum.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=VolumetricSoilWaterLayer28&timestep=1440&starttime=${ydate:0:4}0101T090000&format=grib2&producer=fmi_soil_cumulative&projection=epsg:4326"
 wget -O /home/smartmet/data/fmi-smartmet-$ydate-synop-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=Temperature,Evaporation,WindSpeedMS&timestep=data&starttime=${ydate}T000000&format=grib1&producer=kriging_suomi_synop&projection=epsg:4326"
 wget -O /home/smartmet/data/fmi-smartmet-$ydate-sd-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=WaterEquivalentOfSnow&timestep=data&starttime=${ydate}T000000&format=grib1&producer=kriging_suomi_snow&projection=epsg:4326"
 wget -O /home/smartmet/data/fmi-smartmet-$ydate-tg-krg.grib "http://data.fmi.fi/fmi-apikey/$fmiapi/download?param=GroundTemperature&timestep=data&starttime=${ydate}T000000&format=grib2&producer=roadkriging_suomi&projection=epsg:4326"
 cd /home/smartmet/data
 conda activate xr
 grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:4}0101T000000_${date}T000000_[shortName].grib
-mv fmi-smartmet-$ydate-swvl2-cum.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T090000_swvl2.grib
-rm grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T090000_swvl2.grib
+#mv fmi-smartmet-$ydate-swvl2-cum.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T090000_swvl2.grib
+#rm grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T090000_swvl2.grib
 #grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
 grib_copy fmi-smartmet-$ydate-*-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
 # calculate snow depth forecast from snow fall accumulation data

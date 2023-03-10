@@ -172,3 +172,6 @@ TD2-K;168;;;
 
 # 2: Velocity potential (m2 s-1)
 VP-M2S;2;;;
+
+# 260199: Volumetric soil moisture (m3 m-3)
+VSW-M3M3;260199;;;

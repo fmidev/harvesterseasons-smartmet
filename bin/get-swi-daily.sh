@@ -4,7 +4,7 @@ conda activate xr
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
 else
-    yday=`date -d '8 days ago' +%Y%m%d`
+    yday=`date -d '3 days ago' +%Y%m%d`
 fi
 incoming=/home/smartmet/data/copernicus
 mkdir -p $incoming
@@ -18,7 +18,7 @@ url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetatio
 meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V1.0.1.nc"
 file=${ncfile:0:-3}-swi.grib
-ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
+#ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
 [ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url && \
@@ -32,11 +32,12 @@ if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
 else 
+# SWI1..4 grib names are grib1 table 228 with parameter number 40..43
   cdo --eccodes -f grb -s -b P8 copy -chparam,-4,40.228,-8,41.228,-14,42.228,-16,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $file && \
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/ &&\
        s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
     rm $ncfile ${ncfile:0:-3}.xml
-    mv $file ../grib/SWI_${file:13:6}01T120000_${file:13:8}T${file:21:4}_swis.grib
+    mv $file ../grib/SWI_${file:13:4}0101T120000_${file:13:8}T${file:21:4}_swis.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

@@ -89,3 +89,4 @@
 10228012;LSHF;;Lake shape factor (dimensionless);
 10000074;SDFOR-M;m;Standard deviation of filtered subgrid orography;
 10000002;VP-M2S;m2 s-1; Velocity potential;
+10260199;VSW-M3M3;m3 m-3;Volumetric soil moisture;
