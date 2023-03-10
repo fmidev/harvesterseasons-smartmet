@@ -66,7 +66,10 @@ conda activate xr
 seq 0 50 | parallel grib_copy ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-[level].grib
 # fix levels
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3-fix.grib] && echo "Levels swvls fixed already" || \
- parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}-fix.grib ::: `seq 0 50` ::: `seq 1 4`
+seq 0 50 | parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib &&
+seq 0 50 | parallel grib_set -s levelType=106,level:d=1,topLevel:d=0.07,bottomLevel:d=0.28 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib &&
+seq 0 50 | parallel grib_set -s levelType=106,level:d=2,topLevel:d=0.28,bottomLevel:d=1.0 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib &&
+seq 0 50 | parallel grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4-fix.grib &&
 # merge levels 
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib] && echo "Already merged swvls levels" || \
  seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
@@ -155,16 +158,16 @@ wait
 # fix grib attributes for ECSF
 [ -f ens/ec-sf_$year${month}_all+sde-24h-$abr-50.grib ] && [ ! -f ens/ECSF_$year${month}01T000000_all-24h-$abr-50.grib ] && \
  seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-sf_$year${month}_all+sde-24h-$abr-{}.grib \
-    ens/ECSF_$year${month}01T000000_all-24h-$abr-{}.grib || echo "NOT fixing sde gribs attributes - no input or already produced"
+    ens/ECSF_$year${month}01T000000_all-24h-$abr-{}.grib || echo "NOT fixing ecsf swvls gribs attributes - no input or already produced"
 # join ensemble members and move to grib folder 
 [ -f ens/ECSF_$year${month}01T000000_all-24h-$abr-50.grib ] && [ ! -f grib/ECSF_$year${month}01T000000_all-24h-$abr.grib ] &&\
-grib_copy ens/ECSF_$year${month}01T000000_all-24h-$abr-*.grib grib/ECSF_$year${month}01T000000_all-24h-$abr.grib || echo "NOT joining ensemble members with sde - no input or already produced"
+grib_copy ens/ECSF_$year${month}01T000000_all-24h-$abr-*.grib grib/ECSF_$year${month}01T000000_all-24h-$abr.grib || echo "NOT joining ensemble members ecsf swvls - no input or already produced"
 
 # ECSF-SWVLs
 # fix grib attributes
 [ -f ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib ]
  seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib \
-    ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib || echo "NOT fixing sde gribs attributes - no input or already produced"
+    ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib || echo "NOT fixing ecsf swvl gribs attributes - no input or already produced"
 # join ensemble members and move to grib file
 [ -f grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib ] && \
 grib_copy ens/ECSF_$year${month}01T000000_swvls-24h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib
