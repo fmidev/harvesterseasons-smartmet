@@ -69,7 +69,7 @@ seq 0 50 | parallel grib_copy ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib ens
  parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}-fix.grib ::: `seq 0 50` ::: `seq 1 4`
 # merge levels 
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib] && echo "Already merged swvls levels" || \
- seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
+ seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
 ## Make bias-adjustements for single level parameters
 ### adjust swvl1/2 from mars file
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50.grib ] && \
@@ -159,10 +159,15 @@ wait
 # join ensemble members and move to grib folder 
 [ -f ens/ECSF_$year${month}01T000000_all-24h-$abr-50.grib ] && [ ! -f grib/ECSF_$year${month}01T000000_all-24h-$abr.grib ] &&\
 grib_copy ens/ECSF_$year${month}01T000000_all-24h-$abr-*.grib grib/ECSF_$year${month}01T000000_all-24h-$abr.grib || echo "NOT joining ensemble members with sde - no input or already produced"
-# copy ECSF-SWVLs 
- [ -f grib/ECSF_$year${month}01T000000_all-24h-$abr.grib ] && \
- mv ecsf_$year-$month-01_eu-swvls-4.grib grib/ECSF_$year${month}01T000000_swvl-24h-$abr.grib && \
- ln -s grib/ECSF_$year${month}01T000000_swvl-24h-$abr.grib ecsf_$year-$month-01_eu-swvls-4.grib
+
+# ECSF-SWVLs
+# fix grib attributes
+[ -f ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib ]
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib \
+    ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib || echo "NOT fixing sde gribs attributes - no input or already produced"
+# join ensemble members and move to grib file
+[ -f grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib ] && \
+grib_copy ens/ECSF_$year${month}01T000000_swvls-24h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib
 
 echo "start XGBoost predict" # tmp echo 
 
