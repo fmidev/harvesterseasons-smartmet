@@ -40,6 +40,7 @@ else
     rm ens/ec-sf-${era}_$oldyear${oldmonth}_disacc-$abr-*.grib
     rm ens/ec-sf_$oldyear${oldmonth}_all+sde-24h-$abr-*
     rm ens/ECSF_$oldyear${oldmonth}01T000000_all-24h-$abr-*
+    # lisää poista swvl säätöjutut
 fi
 cd /home/smartmet/data
 
@@ -52,23 +53,31 @@ echo "$bsf $era y: $year m: $month ending $eyear-$emonth area: $area abr: $abr"
 [ -f ec-sf-$year$month-all-24h-$abr.grib ] && echo "SF Data file already downloaded" || /home/smartmet/bin/cds-sf-all-24h.py $year $month $area $abr
 [ -f ec-sf-$year$month-pl-12h-$abr.grib ] && echo "SF pressurelevel Data already downloaded" || /home/smartmet/bin/cds-sf-pl-12h.py $year $month $area $abr
 [ -f ecsf_$year-$month-01_$abr-swvls.grib ] && echo "SF SoilLevel Data already downloaded" || sed s:2023-01-01:$year-$month-01:g ../mars/seas-swvl.mars | ../bin/mars
-[ ! -f ecsf_$year-$month-01_$abr-swvls-4.grib ] && cp ecsf_$year-$month-01_$abr-swvls.grib ecsf_$year-$month-01_$abr-swvls-0.grib  && \
-    parallel --link -j1 grib_set -w level={\1} -s shortName=swvl{\2},levelType=106,topLevel={\3},bottomLevel={\4} ecsf_$year-$month-01_$abr-swvls-{\1}.grib ecsf_$year-$month-01_$abr-swvls-{\2}.grib  ::: 0 1 2 3 ::: 1 2 3 4 ::: 0 7 28 100 ::: 7 28 100 255 && \
-    rm ecsf_$year-$month-01_$abr-swvls-[0123].grib  || echo "SF SoilLevel Data fixed"
+
 # ensure new eccodes and cdo
 conda activate xr
+# ensemble members
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && echo "Ensemble member sl files ready" || \
     grib_copy ec-sf-$year$month-all-24h-$abr.grib ens/ec-sf_$year${month}_all-24h-$abr-[number].grib
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50.grib ] && echo "Ensemble member swvl files ready"  || \
-    grib_copy ecsf_$year-$month-01_$abr-swvls-4.grib ens/ec-sf_$year${month}_swvls-24h-$abr-[number].grib
+    grib_copy ecsf_$year-$month-01_$abr-swvls.grib ens/ec-sf_$year${month}_swvls-24h-$abr-[number].grib
+# swvls levels
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3.grib] && echo "Levels swvls files ready" || \
+seq 0 50 | parallel grib_copy ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-[level].grib
+# fix levels
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3-fix.grib] && echo "Levels swvls fixed already" || \
+ parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{\1}-lvl-{\2}-fix.grib ::: `seq 0 50` ::: `seq 0 3`
+# merge levels 
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib] && echo "Already merged swvls levels" || \
+ seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
 ## Make bias-adjustements for single level parameters
 ### adjust swvl1/2 from mars file
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50.grib ] && \
  seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
-    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib \
-    -selname,swvl1,swvl2,swvl3,swvl4 $era/$era-ecsf_2000-2019_swvl_unbound_bias_$abr.grib \
-    ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib || echo "NOT adj swvls - seasonal forecast input missing or already produced"
-### adjust unbound variables (removed swvl1/2 in Nov 2022 as not anymore available from CDS)
+ -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib \
+ era5l/era5l-ecsf_2000-2019_swvls_unbound_bias_eu_vsws_fixed.grib \
+ ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib || echo "NOT adj swvls - seasonal forecast input missing or already produced"
+ ### adjust unbound variables (removed swvl1/2 in Nov 2022 as not anymore available from CDS)
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && \
  seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
     -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,2d,2t,stl1 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
