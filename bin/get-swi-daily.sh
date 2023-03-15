@@ -1,7 +1,8 @@
 #!/bin/bash
 # give yearmonthday and version as cmd 
-eval "$(conda shell.bash hook)"
-conda activate xr
+#eval "$(conda shell.bash hook)"
+#conda activate xr
+
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
     version=$2
@@ -9,7 +10,7 @@ else
     yday=`date -d '2 days ago' +%Y%m%d`
     version=1.0.2
 fi
-incoming=/home/smartmet/data/copernicus
+incoming=~/data/copernicus
 mkdir -p $incoming
 year=`date -d $yday +%Y`
 month=`date -d $yday +%m`

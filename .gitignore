@@ -1,3 +1,5 @@
+smartmet-server/config/engines/grid-engine/mapping_fmi_auto.csv
+smartmet-server/config/engines/grid-engine/mapping_newbase_auto.csv
 fminames-db/data
 dev/
 .fmi-apikey
@@ -6,5 +8,3 @@ dev/
 __pycache__
 *.egg-info
 *~
-smartmet-server/config/engines/grid-engine/mapping_fmi_auto.csv
-smartmet-server/config/engines/grid-engine/mapping_newbase_auto.csv
