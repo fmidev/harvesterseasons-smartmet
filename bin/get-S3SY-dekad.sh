@@ -4,7 +4,7 @@
 # Mikko Strahlendorff 20.4.2022
 ###################
 eval "$(conda shell.bash hook)"
-conda activate xr
+#conda activate xr
 if [ $# -ne 0 ]
 then
     d=$1
@@ -44,19 +44,21 @@ export token=$(curl -d 'client_id=cdse-public' -d 'username=mikko.strahlendorff@
 #query="https://catalogue.dataspace.copernicus.eu/resto/api/collections/Sentinel3/search.json?maxRecords=2000&startDate=${sdate}T00:00:00Z&completionDate=${edate}T23:59:59Z&timeliness=Short+Time+Critical&processingLevel=LEVEL2&productType=SY_2_V10___&geometry=POLYGON((-80+75,-80+-25,50+-25,50+75,-80+75))"
 #query="https://catalogue.dataspace.copernicu.eu/odata/v1/Products?$filter=((ContentDate/Start ge 2023-02-10T22:00:00.000Z and ContentDate/Start le 2023-02-20T21:59:59.999Z) and (Online eq true) and (OData.CSC.Intersects(Footprint=geography'SRID=4326;POLYGON((-80 75,-80 -25,50 -25,50 75,-80 75))')) and (((((((Attributes/OData.CSC.StringAttribute/any(i0:i0/Name eq 'productType' and i0/Value eq 'SY_2_V10___')))) and (Collection/Name eq 'SENTINEL-3'))))))&$expand=Attributes&$orderby=ContentDate/Start asc&$top=20"
 #filter="filter=contains(Name,SY_2_V10___) and ContentDate/Start gt $sdateT00:00:00.000Z and ContentDate/Start lt $edateT00:00:00.000Z"
-filter='(startswith(Name,"S3") and (Attributes/OData.CSC.StringAttribute/any(att:att/Name eq "instrumentShortName" and att/OData.CSC.StringAttribute/Value eq "SYNERGY") and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq "productType" and att/OData.CSC.StringAttribute/Value eq "SY_2_V10___"))) and ContentDate/Start ge '"$sdate"'T00:00:00.000Z and ContentDate/Start lt '"$edate"'T23:59:59.999Z and OData.CSC.Intersects(area=geography"SRID=4326;POLYGON ((-100 25, 50 25, 50 75, -100 75, -100 25))")))%27)'
+#filter='(startswith(Name,"S3") and (Attributes/OData.CSC.StringAttribute/any(att:att/Name eq "instrumentShortName" and att/OData.CSC.StringAttribute/Value eq "SYNERGY") and Attributes/OData.CSC.StringAttribute/any(att:att/Name eq "productType" and att/OData.CSC.StringAttribute/Value eq "SY_2_V10___"))) and ContentDate/Start ge '"$sdate"'T00:00:00.000Z and ContentDate/Start lt '"$edate"'T23:59:59.999Z and OData.CSC.Intersects(area=geography"SRID=4326;POLYGON ((-100 25, 50 25, 50 75, -100 75, -100 25))")))%27)'
+#'((ContentDate/Start ge '"$sdate"'T00:00:00.000Z and ContentDate/Start le '"$edate"'T21:59:59.999Z) and (Online eq true) and (((((((Attributes/OData.CSC.StringAttribute/any(i0:i0/Name eq "productType" and i0/Value eq "SY_2_V10___"))) and (Collection/Name eq "SENTINEL-3"))))))&$expand=Attributes&$top=32'
+filter='$'"filter=contains(Name,%27SY_2_V10___%27)%20and%20ContentDate/Start%20ge%20${sdate}T00:00:00.000Z%20and%20ContentDate/Start%20lt%20${edate}T23:59:59.999Z"
 #$orderby=ContentDate/Start%20desc
 #$expand=Attributes
 #$count=True
 #$top=50
 #$skip=0
 #filter='((ContentDate/Start ge '"$sdate"'T00:00:00.000Z and ContentDate/Start le '"$edate"'T21:59:59.999Z) and (Online eq true) and (((((((Attributes/OData.CSC.StringAttribute/any(i0:i0/Name eq "productType" and i0/Value eq "SY_2_V10___")))) and (Collection/Name eq "SENTINEL-3"))))))&$expand=Attributes'
-linkstxt=$(wget -qO - --body-data "$filter" --body-data 'top=50' --body-data 'skip=0' --method GET  "https://datahub.creodias.eu/odata/v1/Products" |jq '.value[].Id')
-#'((ContentDate/Start ge '"$sdate"'T00:00:00.000Z and ContentDate/Start le '"$edate"'T21:59:59.999Z) and (Online eq true) and (((((((Attributes/OData.CSC.StringAttribute/any(i0:i0/Name eq "productType" and i0/Value eq "SY_2_V10___"))) and (Collection/Name eq "SENTINEL-3"))))))&$expand=Attributes&$top=32'
+#linkstxt=$(wget -dO - --body-data "$filter" --body-data '$orderby=ContentDate/Start%20desc' --body-data '$expand=Attributes' --body-data '$top=50' --body-data '$skip=0' --body-data '$count=True' --method GET  "https://datahub.creodias.eu/odata/v1/Products" |jq '.value[].Id')
+linkstxt=$(wget -dO - --body-data "$filter" --body-data '$orderby=ContentDate/Start%20desc' --body-data '$expand=Attributes' --body-data '$top=50' --body-data '$skip=0' --body-data '$count=True' --method GET  "https://catalogue.dataspace.copernicus.eu/odata/v1/Products" |jq '.value[].Id')
+#linkstxt=$(curl -s "$query" | jq -r '.features[].properties.services.download.url')
 
 #features[].properties.services.download.url')
 echo "$filter \n $linkstxt"
-#linkstxt=$(curl -s "$query" | jq -r '.features[].properties.services.download.url')
 IFS=' ' readarray links <<< "$linkstxt"
 get-unzip-rm() {
     i=${1:1:-1}

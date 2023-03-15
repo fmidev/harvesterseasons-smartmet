@@ -96,9 +96,10 @@ services:
     restart: always
     environment:
       HSTS_HEADER: skip
-      UPSTREAM: 185.213.74.67:8080
-      SERVERNAME: sm.harvesterseasons.com
-      EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space
+      NGINX_CLIENT_MAX_BODY_SIZE: 10m
+      UPSTREAM: 128.214.255.90:8080
+      SERVERNAME: desm.harvesterseasons.com
+      #EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space
       # ,smdev.harvesterseasons.com
     ports:
       - "80:80"
