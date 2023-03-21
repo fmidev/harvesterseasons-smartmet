@@ -1,7 +1,8 @@
 #!/bin/bash
 # give yearmonthday and version as cmd 
-eval "$(conda shell.bash hook)"
-conda activate xr
+#eval "$(conda shell.bash hook)"
+#conda activate xr
+
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
     version=$2
@@ -9,7 +10,7 @@ else
     yday=`date -d '2 days ago' +%Y%m%d`
     version=1.0.2
 fi
-incoming=/home/smartmet/data/copernicus
+incoming=~/data/copernicus
 mkdir -p $incoming
 year=`date -d $yday +%Y`
 month=`date -d $yday +%m`
@@ -22,6 +23,7 @@ cd $incoming
 url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
+fileFix=${ncfile:0:-3}-swi-fix.grib
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
@@ -37,11 +39,13 @@ if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
 else 
-  cdo --eccodes -f grb -s -b P8 copy -chparam,-4,40.228,-8,41.228,-14,42.228,-16,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $file && \
+    
+    cdo --eccodes -f grb -s -b P8 copy -chparam,-4,40.228,-8,41.228,-14,42.228,-16,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
+    grib_set -r -s centre=224,jScansPositively=0 $fileFix $file
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/ &&\
        s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
-    rm $ncfile ${ncfile:0:-3}.xml
+    rm $ncfile ${ncfile:0:-3}.xml $fileFix
     mv $file ../grib/SWI_${file:13:4}0101T120000_${file:13:8}T${file:21:4}_swis.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
