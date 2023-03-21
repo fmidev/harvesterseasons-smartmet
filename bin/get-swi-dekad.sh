@@ -10,7 +10,7 @@ fi
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
 else
-    yday=`date -d '9 days ago' +%Y%m%d`
+    yday=`date -d '8 days ago' +%Y%m%d`
     yday={$yday:0:-1}1
 fi
 incoming=/home/smartmet/data/copernicus
