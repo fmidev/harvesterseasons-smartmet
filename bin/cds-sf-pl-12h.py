@@ -7,10 +7,9 @@ import sys
 
 year= sys.argv[1]
 mon= sys.argv[2]
-euro=[75, -30, 25, 50]
-sam=[-10, -80, -60, -50]
-area=euro
-#area=sam
+area = sys.argv[3]
+abr = sys.argv[4]
+
 print('single-original-pressure-levels','\nmonth: ',mon, '\nyear: ', year,'\narea: ',area, '\n')
 
 c = cdsapi.Client()
@@ -58,7 +57,6 @@ c.retrieve(
         ],
         'area': area,
     },
-    '/home/smartmet/data/ec-sf-%s%s-pl-12h-euro.grib'%(year,mon))
-#    '/home/smartmet/data/ec-sf-%s%s-pl-12h-sam.grib'%(year,mon))
+    '/home/smartmet/data/ec-sf-%s%s-pl-12h-%s.grib'%(year,mon,abr))
 
 

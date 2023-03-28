@@ -55,24 +55,24 @@ echo "$bsf $era y: $year m: $month ending $eyear-$emonth area: $area abr: $abr"
 [ -f ecsf_$year-$month-01_$abr-swvls.grib ] && echo "SF SoilLevel Data already downloaded" || sed s:2023-01-01:$year-$month-01:g ../mars/seas-swvl.mars | ../bin/mars
 
 # ensure new eccodes and cdo
-conda activate xgb
+#conda activate xr
 # ensemble members
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && echo "Ensemble member sl files ready" || \
     grib_copy ec-sf-$year$month-all-24h-$abr.grib ens/ec-sf_$year${month}_all-24h-$abr-[number].grib
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50.grib ] && echo "Ensemble member swvl files ready"  || \
     grib_copy ecsf_$year-$month-01_$abr-swvls.grib ens/ec-sf_$year${month}_swvls-24h-$abr-[number].grib
 # swvls levels
-[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3.grib] && echo "Levels swvls files ready" || \
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3.grib ] && echo "Levels swvls files ready" || \
 seq 0 50 | parallel grib_copy ens/ec-sf_$year${month}_swvls-24h-$abr-{}.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-[level].grib
 # fix levels
-[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3-fix.grib] && echo "Levels swvls fixed already" || \
-seq 0 50 | parallel grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib &&
-seq 0 50 | parallel grib_set -s levelType=106,level:d=1,topLevel:d=0.07,bottomLevel:d=0.28 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib &&
-seq 0 50 | parallel grib_set -s levelType=106,level:d=2,topLevel:d=0.28,bottomLevel:d=1.0 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib &&
-seq 0 50 | parallel grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4-fix.grib &&
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-lvl-3-fix.grib ] && echo "Levels swvls fixed already" || \
+seq 0 50 | parallel "grib_set -s levelType=106,level:d=0,topLevel:d=0.0,bottomLevel:d=0.07 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0-fix.grib &&
+grib_set -s levelType=106,level:d=1,topLevel:d=0.07,bottomLevel:d=0.28 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib &&
+grib_set -s levelType=106,level:d=2,topLevel:d=0.28,bottomLevel:d=1.0 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib &&
+grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib"
 # merge levels 
-[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib] && echo "Already merged swvls levels" || \
- seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-4-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
+[ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib ] && echo "Already merged swvls levels" || \
+ seq 0 50 | parallel cdo --eccodes merge ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-0-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-1-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-2-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-lvl-3-fix.grib ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib
 ## Make bias-adjustements for single level parameters
 ### adjust swvl1/2 from mars file
 [ -f ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50.grib ] && \
@@ -218,7 +218,7 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
 conda activate xgb
 [ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
 seq 0 50 | parallel -j 6 python3 /home/smartmet/mlbias/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
-conda activate xr
+#conda activate xr
 
 ## tp netcdf to grib 
 [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && \
