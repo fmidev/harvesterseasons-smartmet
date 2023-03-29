@@ -3,7 +3,7 @@
 # NAME:
 #		download_swe_ftp_clms.sh
 # CALLING SEQUENCE:
-# 		./download_swe_ftp_clms.sh $pattern $outpath
+# 		./download_swe_ftp_clms.sh $yday $outpath
 # EAMPLE:
 #       download_swe_ftp_clms.sh *20140101*.nc /home/ubuntu/data/CGLC2_SWE/
 #       download_swe_ftp_clms.sh *20140101*.nc
@@ -18,22 +18,20 @@
 #=====#################################################################
 
 yday=$(date -d "yesterday" '+%Y%m%d')
-
+outpath=/home/ubuntu/data/CGLC2_SWE/
 if [[ $# -eq 2 ]] 
 then
     outpath=$2 
-    pattern=$1
-    mkdir -p $outpath
+    yday=$1
 elif [[ $# -eq 1 ]]
 then
-    outpath=/home/ubuntu/data/CGLC2_SWE/
-    pattern=$1
-    mkdir -p $outpath
+    yday=$1
 else
-    outpath=/home/ubuntu/data/CGLC2_SWE/
-    mkdir -p $outpath
-    pattern=*$yday*.nc
+    yday=$yday
 fi
+mkdir -p $outpath
+
+cd /home/ubuntu/data/
 
 ftp_site=litdb.fmi.fi
 username=globland_admin
@@ -47,7 +45,14 @@ user $username $passwd
 lcd $outpath
 binary
 cd $inpath
-mget $pattern
+mget *$yday*.nc
 close
 bye
 EOF
+
+cdo --eccodes -s -f grb1 copy -setparam,141.128 -setname,sd -mulc,0.001 -selname,swe CGLC2_SWE/c_gls_SWE5K_${yday}0000_NHEMI_SSMIS_V*.nc CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib
+grib_set -s centre=86 CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib grib/CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib && rm CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib
+#cdo --eccodes -s -f grb1 copy -setparam,141.128 -setname,sd -mulc,0.001 -selname,swe_var CGLC2_SWE/c_gls_SWE5K_${yday}0000_NHEMI_SSMIS_V*.nc CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib
+#grib_set -s centre=86,type=ea CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib grib/CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib && rm CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib
+
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

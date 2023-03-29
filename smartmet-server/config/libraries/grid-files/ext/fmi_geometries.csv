@@ -37,6 +37,7 @@
 1;5038;S3SY-SEA;8848;5600;68.008929;54.991071;0.008929;0.008929;+x-y;Vegetation legacy grid South-East-Asia
 1;5039;S3SY-AUS;9519;6496;95.008929;9.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Australasia
 1;5040;S3SY-AIS;8736;4592;92.008929;28.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Asia islands
+1;5051;CLMS-SWE;7200;1000;-179.975000;35.025000;0.050000;0.050000;+x+y;Global CLMS SWE grid
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------
