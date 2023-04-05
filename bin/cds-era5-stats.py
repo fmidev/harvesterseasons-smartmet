@@ -1,15 +1,17 @@
 #!/usr/bin/env python3                                                                                                                                                     
 import sys
 import cdsapi
-
+# source ~/.smart 
 c = cdsapi.Client()
-years= sys.argv[1:]
+abr = sys.argv[1]
+area = sys.argv[2]
+years= sys.argv[3:]
 
 c.retrieve(
     'reanalysis-era5-single-levels-monthly-means',
     {
         'format': 'grib',
-        'area' : '75/-30/25/50',
+        'area' : area,
         'product_type': 'monthly_averaged_reanalysis',
         'variable': [
             'maximum_2m_temperature_in_the_last_24_hours','minimum_2m_temperature_in_the_last_24_hours',
@@ -39,4 +41,5 @@ c.retrieve(
         ],
         'time': '00:00',
     },
-    '/home/smartmet/data/era5_2010-2009_stats-euro.grib')
+    '/home/smartmet/data/era5_2010-2009_stats-%s.grib'%(abr)
+    )

@@ -1,19 +1,21 @@
 #!/usr/bin/env python3                                                                                                                                                     
 import sys
 import cdsapi
+# run source ~/.smart for $area $abr 
 
 c = cdsapi.Client()
-mon= sys.argv[1]
-years=sys.argv[2:]
-year=sys.argv[2]+'-'+sys.argv[-1]
-print(years, year)
-
+abr = sys.argv[1]
+area = sys.argv[2]
+mon = sys.argv[3]
+years = sys.argv[4:]
+year = sys.argv[4]+'-'+sys.argv[-1]
+print(years, year, abr, area)
 c.retrieve(
     'reanalysis-era5-land-monthly-means',
     {
         'format': 'grib',
 #nordic        'area' : '74/0/51/42',
-        'area' : '75/-30/25/50',
+        'area' : area,
         'product_type': ['monthly_averaged_reanalysis','monthly_standard_deviation'],
         'variable': [
             'maximum_2m_temperature_in_the_last_24_hours','minimum_2m_temperature_in_the_last_24_hours',

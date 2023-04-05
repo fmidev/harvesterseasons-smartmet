@@ -3,10 +3,13 @@ import sys
 import cdsapi
 
 c = cdsapi.Client()
-mon=sys.argv[1]
-years=sys.argv[2:]
-year=sys.argv[2]+'-'+sys.argv[-1]
-print(years, year)
+abr = sys.argv[1]
+area = sys.argv[2]
+mon = sys.argv[3]
+years = sys.argv[4:]
+year = sys.argv[4]+'-'+sys.argv[-1]
+print(years, year, abr, area)
+
 c.retrieve(
     'seasonal-monthly-single-levels',
     {
@@ -37,8 +40,7 @@ c.retrieve(
             '1', '2', '3',
             '4', '5', '6',
         ],
-        'area': [ 75, -30, 25, 50
-        ],
+        'area': area,
         'year': years,
     },
-    '/home/smartmet/data/ens/ec-sf-%s-stats-%s-euro-fcmean.grib'%(year,mon))
+    '/home/smartmet/data/ens/ec-sf-%s-stats-%s-%s-fcmean.grib'%(year,mon,abr))

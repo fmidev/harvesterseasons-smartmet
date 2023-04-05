@@ -3,16 +3,18 @@ import sys
 import cdsapi
 
 c = cdsapi.Client()
-year= sys.argv[1]
-month= sys.argv[2]
-day= sys.argv[3]
+year = sys.argv[1]
+month = sys.argv[2]
+day = sys.argv[3]
+abr = sys.argv[4]
+area = sys.argv[5]
 
 c.retrieve(
     'reanalysis-era5-single-levels',
     {
         'product_type':'reanalysis',
         'format':'grib',
-	    'area' : '75/-30/25/50',
+	    'area' : area,
         'variable':[
             '10m_u_component_of_wind', '10m_v_component_of_wind', '2m_dewpoint_temperature',
             '2m_temperature', 'evaporation', 'high_vegetation_cover',
