@@ -46,9 +46,6 @@ SWVL4-M3M3;42;;;
 # Soil temperature level 1 in Kelvins
 STL1-K;139;;;
 
-# Snow depth (m of water equivalent)
-HSNOW-M;141;;;
-
 # Soil temperature level 2 in Kelvins
 STL2-K;170;;;
 
@@ -175,3 +172,15 @@ VP-M2S;2;;;
 
 # 260199: Volumetric soil moisture (m3 m-3)
 VSW-M3M3;260199;;;
+
+# 32: Snow albedo ((0 - 1))
+ASN-0TO1;32;;;
+
+# 260038: Snow cover (%)
+SNOWC;260038;;;
+
+# 45: Snow melt (m of water eq.)
+SMLT-M;45;;;
+
+# 238:Temperature of snow layer (K)
+TSN-K;238;;;

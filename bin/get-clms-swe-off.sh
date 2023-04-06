@@ -26,24 +26,17 @@ then
 elif [[ $# -eq 1 ]]
 then
     yday=$1
-else
-    yday=$yday
 fi
 mkdir -p $outpath
 
-cd /home/ubuntu/data/
+cd $outpath
 
-ftp_site=litdb.fmi.fi
-username=globland_admin
-passwd=JyFWTMoTjEQ72
-inpath=/SWE_NH_5km/
+ftp_site=ftp.globalland.cls.fr
+username=mstrahl
+passwd=Hehec3po
+inpath=/Core/CRYOSPHERE/dataset-fmi-swe-nh-5km/
 
-ftp -p -inv <<EOF
-open $ftp_site
-user $username $passwd
-lcd $outpath
-binary
-cd $inpath
+ftp -p -inv ftp://$username:$passwd@$ftp_site$inpath* <<EOF
 mget *$yday*.nc
 close
 bye

@@ -324,7 +324,7 @@ TOTCWV-KGM2;137;;;
 # 140:Soil wetness level 1 (m of water equivalent)
 
 # 141:Snow depth (m of water equivalent)
-# SD-KGM2;141;;;
+SD-KGM2;141;;;
 
 # 142:Large-scale precipitation (m)
 RRL-KGM2;142;;;

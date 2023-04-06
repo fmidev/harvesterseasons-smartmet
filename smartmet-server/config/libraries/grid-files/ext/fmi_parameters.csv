@@ -39,7 +39,7 @@
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 10000042;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
 10000139;STL1-K;K;Soil temperature level 1 in Kelvins;1;1;1;1;
-10000141;HSNOW-M;m;Snow depth (m of water equivalent);1;1;1;2;
+10000141;SD-M;m;Snow depth (m of elevation);1;1;1;2;
 10000178;TSR-J;J;Top Net Solar Radation;1;1;1;2;
 10000182;EVAP-M;m;Evaporation (m of water equivalent);1;1;1;1;
 10000170;STL2-K;K;Soil temperature level 2 in Kelvins;1;1;1;1;
@@ -90,3 +90,7 @@
 10000074;SDFOR-M;m;Standard deviation of filtered subgrid orography;
 10000002;VP-M2S;m2 s-1; Velocity potential;
 10260199;VSW-M3M3;m3 m-3;Volumetric soil moisture;
+10000032;ASN-0TO1;0to1;Snow albedo (0-1);
+10260038;SNOWC;%;Snow cover;
+10000045;SMLT-M;m of water eq;Snow melt (m of water equivalent);
+10000238;TSN-K;K;Temperature of snow layer;

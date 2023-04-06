@@ -202,7 +202,7 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
     ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib || echo "NOT remap sl - no input or already produced"
 [ -f ens/disacc-$year${month}-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && \
 seq 0 50 | parallel cdo --eccodes -O -b P12 \
-    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -mulc,1000 ens/disacc-$year${month}-{}.grib \
+    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/disacc-$year${month}-{}.grib \
     ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib || echo "NOT remap disacc - no input or already produced"
 
 ## (change dates in era5-orography-XGB-202105-$abr.grib to match fetched data)
@@ -217,7 +217,7 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
 ## remove print commands from python script when tuotantoajo :D 
 conda activate xgb
 [ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
-seq 0 50 | parallel -j 6 python3 /home/smartmet/mlbias/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
+seq 0 50 | parallel -j 6 python3 /home/smartmet/bin/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
 #conda activate xr
 
 ## tp netcdf to grib 
