@@ -5,6 +5,7 @@
 ###################
 eval "$(conda shell.bash hook)"
 #conda activate xr
+gpt=/home/ubuntu/snap/bin/gpt
 if [ $# -ne 0 ]
 then
     d=$1
@@ -44,12 +45,44 @@ parallel -j1 get-unzip-rm ::: `echo $links`
 
 start=$(ls -d *LST____${d}T*SEN3 | cut -d"_" -f8| cut -d"T" -f1 | tr "\n" ","| cut -d"," -f1)
 orbits=$(ls -d S3*/ | cut -d"_" -f13 | awk '!seen[$0]++' | tr "\n" " ")
-echo "Data is from $start with times $orbits"
+echo "Data is from $start with orbits $orbits"
+scenes=$(ls -d *LST____${d}T*SEN3)
+parallel $gpt reproject -Pcrs=epsg:4326 -Ssource={} -t {.} ::: *LST____${d}T*SEN3
+proj_S3 () {
+    cd $1
+    yfirst=$(cdo --eccodes infon -selname,latitude_in geodetic_in.nc | grep -e latitude | cut -d" " -f32)
+    ylast=$(cdo --eccodes infon -selname,latitude_in geodetic_in.nc | grep -e latitude | cut -d" " -f44)
+    ylongname=$(cdo --eccodes infon -selname,latitude_in geodetic_in.nc | grep -e latitude | cut -d" " -f46)
+    xfirst=$(cdo --eccodes infon -selname,longitude_in geodetic_in.nc | grep -e longitude | cut -d" " -f32)
+    xlast=$(cdo --eccodes infon -selname,longitude_in geodetic_in.nc | grep -e longitude | cut -d" " -f44)
+    xlongname=$(cdo --eccodes infon -selname,longitude_in geodetic_in.nc | grep -e longitude | cut -d" " -f46)
+    xrange=$(echo "$xlast - $xfirst"| bc)
+    xinc=$(echo "scale=5; $xrange / 1500"| bc)
+    yrange=$(echo "$ylast - $yfirst"| bc)
+    yinc=$(echo "scale=5; $yrange / 1200"| bc)
+    cat <<END > mygrid
+gridtype = curvilinear
+gridsize  = 1800000
+xsize     = 1500
+ysize     = 1200
+xunits = degrees_east
+yunits = degrees_north
+scanningMode = 64
+xinc = $xinc
+yinc = $yinc
+xfirst = $xfirst
+xlongname = $xlongname
+yfirst = $yfirst
+ylongname = $ylongname
+END
+#    gdal_translate -sds -of VRT -gcp cartesian_in.nc:x_in cartesian_in:y_in geodetic_in:longitude_in geodetic_in.nc:latitude_in LST_in.nc lst.vrt
+#    gdalwarp 
+}
 #"${links[@]}"
 #echo "$d SEN3 SYN combination:" `ls -d S3*_V10____${d}T*.SEN3`
-cd ..
+# cd ..
 # -{1} sen3/S3B_SY_2_V10____${d}T*_{\2}_*.SEN3/'{=1 s:.*selname,:: =}'.nc\
-#parallel cdo -s -O -f grb2 -b P8 ensmean -{1} sen3/S3?_SY_2_V10____${start}T*_{\2}_*${timeliness}_002.SEN3/'{=1 s:.*selname,:: =}'.nc\
+#parallel cdo -s -O -f grb1 -b P8 ensmean -{1} S3?_SY_2_V10____${start}T*_{\2}_*_PS[12]_O_${timeliness}_004.SEN3/'{=1 s:.*selname,:: =}'.nc\
 # sen3/S3SY_${start:0:4}0101T000000_${end}T000000_'{=1 s:.*selname,:: =}'_{\2}.grib :::: sen3/sen3codes.lst ::: EUROPE AFRICA NORTH_AMERICA CENTRAL_AMERICA SOUTH_AMERICA NORTH_ASIA WEST_ASIA SOUTH_EAST_ASIA ASIAN_ISLANDS AUSTRALASIA\
 #  && rm -rf S3?_SY_2_V10____$start*.SEN3
 

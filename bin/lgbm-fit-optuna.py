@@ -7,8 +7,8 @@ import xgboost as xgb
 from sklearn.model_selection import GridSearchCV
 import numpy as np
 warnings.filterwarnings("ignore")
-### XGBoost with Optuna hyperparameter tuning
-# note: does not save trained mdl
+### LightGBM with Optuna hyperparameter tuning
+# note anni 12/04/2023 this is still cp xgb-training, lightgbm version here soon
 startTime=time.time()
 
 data_dir='/home/ubuntu/data/ml-training-data/' # training data

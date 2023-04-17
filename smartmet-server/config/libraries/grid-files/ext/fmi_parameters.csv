@@ -39,7 +39,6 @@
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 10000042;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
 10000139;STL1-K;K;Soil temperature level 1 in Kelvins;1;1;1;1;
-10000141;SD-M;m;Snow depth (m of elevation);1;1;1;2;
 10000178;TSR-J;J;Top Net Solar Radation;1;1;1;2;
 10000182;EVAP-M;m;Evaporation (m of water equivalent);1;1;1;1;
 10000170;STL2-K;K;Soil temperature level 2 in Kelvins;1;1;1;1;
@@ -94,3 +93,11 @@
 10260038;SNOWC;%;Snow cover;
 10000045;SMLT-M;m of water eq;Snow melt (m of water equivalent);
 10000238;TSN-K;K;Temperature of snow layer;
+10228100;EVATC-M;m of water eq;Evaporation from the top of canopy (m of water eq.);
+10228101;EVABS-M;m of water eq;Evaporation from bare soil (m of water eq.);
+10228102;EVAOW-M;m of water eq;Evaporation from open water surfaces excluding oceans (m of water eq.);
+10228103;EVAVT-M;m of water eq;Evaporation from vegetation transpiration (m of water eq.);
+10000044;ES-M;m of water eq;Snow evaporation (m of water eq.);
+10000198;SRC-M;m of water eq;Skin reservoir content (m of water eq);
+10003066;HSNOW-M;m;Snow depth (m);
+10000141;SD-M;m of water eq;Snow depth (m of water eq.);

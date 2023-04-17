@@ -182,5 +182,29 @@ SNOWC;260038;;;
 # 45: Snow melt (m of water eq.)
 SMLT-M;45;;;
 
-# 238:Temperature of snow layer (K)
+# 238: Temperature of snow layer (K)
 TSN-K;238;;;
+
+# 228100: Evaporation from the top of canopy (m of water equivalent)
+EVATC-M;228100;;;
+
+# 228101: Evaporation from bare soil (m of water equivalent)
+EVABS-M;228101;;;
+
+# 228102: Evaporation from open water surfaces excluding oceans (m of water equivalent)
+EVAOW-M;228102;;;
+
+# 228103: Evaporation from vegetation transpiration (m of water equivalent)
+EVAVT-M;228103;;;
+
+# 44: Snow evaporation (m of water equivalent)
+ES-M;44;;;
+
+# 198: Skin reservoir content (m of water equivalent)
+SRC-M;198;;;
+
+# 3066: Snow depth (m)
+HSNOW-M;3066;;;
+
+# 141: Snow depth (m of water equivalent)
+SD-M;141;;;
