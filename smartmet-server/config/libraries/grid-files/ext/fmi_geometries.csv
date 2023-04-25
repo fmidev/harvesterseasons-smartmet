@@ -23,7 +23,7 @@
 1;5017;SMARTMET-SK2;863;318;350.901294;51.300000;0.067400;0.067325;+x+y;SMARTMET Nordic too
 1;5021;ERA5-EU;321;201;-30.000000;75.000000;0.250000;0.250000;+x-y;ERA5 EU domain
 1;5022;ERA5L-EU;801;501;-30.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
-1;5023;ERA5L+nordic;421;231;0.000000;74.000000;0.100000;0.100000;+x+y;ERA5L Nordic Domain south to north
+11;5023;ERA5L+nordic;421;231;0.000000;74.000000;0.100000;0.100000;+x+y;ERA5L Nordic Domain south to north
 1;5024;ERA5L-EU;801;501;330.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
 1;5029;SWI-EU;6832;4144;-10.996000;71.996000;0.009000;0.009000;+x-y;Copernicus land Soil wetness index Europe 0.01° latlon
 1;5030;SWI-GL;3600;1800;-179.950000;89.950000;0.100000;0.100000;+x-y;Copernicus land Soil wetness index Global 0.1° latlon
@@ -39,6 +39,7 @@
 1;5040;S3SY-AIS;8736;4592;92.008929;28.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Asia islands
 1;5051;CLMS-SWE;7200;1000;-179.975000;35.025000;0.050000;0.050000;+x+y;Global CLMS SWE grid
 1;5052;CLMS-NDVI-EU;26880;16800;-30.000000;74.997024;0.002976;0.002976;+x-y;Europe CLMS NDVI grid
+1;5053;LSASAF-GL;36000;18001;180.000000;-90.000000;0.010000;0.010000;+x+y;Global 0.01 grid
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

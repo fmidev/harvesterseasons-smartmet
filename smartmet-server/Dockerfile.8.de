@@ -21,7 +21,7 @@ RUN echo ip_resolve=4 >> /etc/yum.conf && \
 RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/8/x86_64/smartmet-open-release-latest-8.noarch.rpm && \
  dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
  dnf config-manager --set-enabled powertools && \
- dnf -y --nobest --skip-broken install \
+ dnf -y --nobest --skip-broken install unzip \
     smartmet-plugin-admin \
     smartmet-plugin-download \
     smartmet-plugin-timeseries \
@@ -32,7 +32,7 @@ RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/8/x86_64/smartmet-
     smartmet-plugin-edr \
     smartmet-tools-grid \
     smartmet-qdtools && \
- dnf clean all && \
+ dnf clean all 
 
 # Install Google Noto fonts
 RUN mkdir -p /usr/share/fonts/truetype/noto && \
@@ -67,7 +67,7 @@ RUN useradd -r -u 1001 -g smartmet smartmet
 
 # wms.conf defines imagecache. timeseriescache's use is yet to be found.
 # MS 6.3.20: from new Rauhala dockerhub code
-RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /var/log/smartmet && \
     chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
     chmod -R g=u /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /etc/passwd /var/log
 

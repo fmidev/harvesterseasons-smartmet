@@ -118,22 +118,22 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
 
 ## fix grib attributes
 [ -f ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}-fixed.grib || echo "NOT fixing swvls gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}-fixed.grib || echo "NOT fixing unbound gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_snow-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_snow-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}-fixed.grib || echo "NOT fixing snow gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_bound-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_bound-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}-fixed.grib || echo "NOT fixing bound gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_acc-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_acc-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}-fixed.grib || echo "NOT fixing acc gribs attributes - no input or already produced"
 [ -f ens/ec-${bsf}_$year${month}_stl-24h-$abr-50.grib ] && [ ! -f ens/ec-${bsf}_$year${month}_stl-24h-$abr-50-fixed.grib ] && \
- seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_stl-24h-$abr-{}.grib \
+ seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_stl-24h-$abr-{}.grib \
     ens/ec-${bsf}_$year${month}_stl-24h-$abr-{}-fixed.grib || echo "NOT fixing stl gribs attributes - no input or already produced"
 
 ## join ensemble members and move to grib folder
@@ -229,10 +229,10 @@ seq 0 50 | parallel cdo -s --eccodes -b P8 timcumsum ens/ECX${bsf}_$year${month}
 
 ## fix grib attributes for tp and pl-pp 
 [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib ] && \
-seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib \
+seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib \
 ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}-fixed.grib || echo "NOT fixing tp grib attributes - no input or already produced"
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && ! [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && \
-seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
+seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
 ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}-fixed.grib || echo "NOT fixing pl-pp grib attributes - no input or already produced"
 
 ## join pl-pp and tp ensemble members and move to grib folder

@@ -5,7 +5,7 @@ services:
     image: smartmet-server:latest
     build: 
       context: ./smartmet-server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.8.de
     security_opt:
       - seccomp:unconfined
     container_name: smartmet-server
@@ -96,7 +96,7 @@ services:
     restart: always
     environment:
       HSTS_HEADER: skip
-      NGINX_CLIENT_MAX_BODY_SIZE: 10m
+      NGINX_CLIENT_MAX_BODY_SIZE: 100m
       UPSTREAM: 128.214.255.90:8080
       SERVERNAME: desm.harvesterseasons.com
       #EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space

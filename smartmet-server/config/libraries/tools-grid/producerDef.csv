@@ -7,6 +7,7 @@
 # 3. Producer title
 # 4. Producer desciption
 #
+CLMS;CLMS;CLMS;Copernicus Land Monitoring Service
 ERA5;ERA5;ERA5;Era5 data from ECMWF
 UERRA;UERRA;UERRA;UERRA regional reanalysis data
 ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
@@ -15,9 +16,10 @@ ECBSF;ECBSF;EC-C3S-BSF;Bias adjusted C3S seasonal forecast data
 ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
 ECXB2SF;ECXB2SF;EC-C3S-XB2SF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
 ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
-HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
-HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
-HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
+#HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
+#HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
+#HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
+LSASAF;LSASAF;LSASAF;LSASAF Land Surface Analysis satellite application facility
 SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
 SMARTOBS;SMARTOBS;SMARTOBS;FMI official weather observation based parameters
 SWI;SWI;SWI;Copernicus land Soil wetness index
@@ -25,14 +27,13 @@ SWI10;SWI10;SWI10;Copernicus global land Soil wetness index
 ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
 S3SY;S3SY;S3SY;Sentinel-3 level 2 Synergy
-AWI-CM-1-1-MR;AWI-CM-1-1-MR;AWI-CM-1-1-MR;CMIP6 AWI-CM-1-1-MR model data from C3S
-BCC-CSM2-MR;BCC-CSM2-MR;BCC-CSM2-MR;CMIP6 BCC-CSM2-MR model data from C3S
-CNRM-CM6-1-HR;CNRM-CM6-1-HR;CNRM-CM6-1-HR;CMIP6 CNRM-CM6-1-HR model data from C3S
-FGOALS-f3-L;FGOALS-f3-L;FGOALS-f3-L;CMIP6 FGOALS-f3-L model data from C3S
-GFDL-ESM4;GFDL-ESM4;GFDL-ESM4;CMIP6 GFDL-ESM4 model data from C3S
-HadGEM3-GC31-LL;HadGEM3-GC31-LL;HadGEM3-GC31-LL;CMIP6 HadGEM3-GC31-LL model data from C3S
-HadGEM3-GC31-MM;HadGEM3-GC31-MM;HadGEM3-GC31-MM;CMIP6 HadGEM3-GC31-MM model data from C3S
-INM-CM4-8;INM-CM4-8;INM-CM4-8;CMIP6 INM-CM4-8 model data from C3S
-INM-CM5-0;INM-CM5-0;INM-CM5-0;CMIP6 INM-CM5-0 model data from C3S
-MRI-ESM2-0;MRI-ESM2-0;MRI-ESM2-0;CMIP6 MRI-ESM2-0 model data from C3S
-CLMS;CLMS;CLMS;Copernicus Land Monitoring Service
+#AWI-CM-1-1-MR;AWI-CM-1-1-MR;AWI-CM-1-1-MR;CMIP6 AWI-CM-1-1-MR model data from C3S
+#BCC-CSM2-MR;BCC-CSM2-MR;BCC-CSM2-MR;CMIP6 BCC-CSM2-MR model data from C3S
+#CNRM-CM6-1-HR;CNRM-CM6-1-HR;CNRM-CM6-1-HR;CMIP6 CNRM-CM6-1-HR model data from C3S
+#FGOALS-f3-L;FGOALS-f3-L;FGOALS-f3-L;CMIP6 FGOALS-f3-L model data from C3S
+#GFDL-ESM4;GFDL-ESM4;GFDL-ESM4;CMIP6 GFDL-ESM4 model data from C3S
+#HadGEM3-GC31-LL;HadGEM3-GC31-LL;HadGEM3-GC31-LL;CMIP6 HadGEM3-GC31-LL model data from C3S
+#HadGEM3-GC31-MM;HadGEM3-GC31-MM;HadGEM3-GC31-MM;CMIP6 HadGEM3-GC31-MM model data from C3S
+#INM-CM4-8;INM-CM4-8;INM-CM4-8;CMIP6 INM-CM4-8 model data from C3S
+#INM-CM5-0;INM-CM5-0;INM-CM5-0;CMIP6 INM-CM5-0 model data from C3S
+#MRI-ESM2-0;MRI-ESM2-0;MRI-ESM2-0;CMIP6 MRI-ESM2-0 model data from C3S

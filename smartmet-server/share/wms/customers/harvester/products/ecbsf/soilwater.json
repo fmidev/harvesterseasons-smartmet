@@ -1,5 +1,5 @@
 {
-    "title" : "EC SF Volumetric Soil Wetness Layer 1",
+    "title" : "EC BSF Volumetric Soil Wetness Layer 1",
     "abstract" : "C3S seasonal forecast data from ECMWF.",
     "projection": {},
     "producer": "ECBSF",
@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:ecsf/soilwater/Soilwater.json",
             "css": "ecsf/soilwater/Soilwater.css",
-            "parameter": "SOILWET1-M:ECBSF:0:::1:0",
+            "parameter": "VSW-M3M3:ECBSF::9:0:0:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

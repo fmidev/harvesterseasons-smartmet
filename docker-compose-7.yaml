@@ -5,7 +5,7 @@ services:
     image: smartmet-server:latest
     build: 
       context: ./smartmet-server
-      dockerfile: Dockerfile.8
+      dockerfile: Dockerfile
     security_opt:
       - seccomp:unconfined
     container_name: smartmet-server

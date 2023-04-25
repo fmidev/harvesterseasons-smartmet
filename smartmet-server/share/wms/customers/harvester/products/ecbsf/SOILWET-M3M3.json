@@ -1,5 +1,5 @@
 {
-    "title" : "ECSF Soil Wetness",
+    "title" : "ECBSF Soil Wetness level 2",
     "abstract" : "C3S seasonal forecast data from ECMWF.",
     "projection": {},
     "producer": "ECBSF",
@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/SOILWET-M3M3.json",
             "css": "isobands/SOILWET-M3M3.css",
-            "parameter": "SOILWET-M3M3:ECBSF:::7:1:0",
+            "parameter": "VSW-M3M3:ECBSF:5022:9:1:0:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },
