@@ -1,0 +1,22 @@
+{
+    "title": "ERA5L Soil Temperature Level 1 Isobands (Kelvin)",
+    "abstract": "STL1-K Soil temperature level 1 (K) from ECMWF.",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/temperature_K.json",
+	    "css": "isobands/temperature.css",
+	    "parameter": "STL1-K:ERA5L:5022:9:7:1",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

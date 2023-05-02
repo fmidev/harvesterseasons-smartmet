@@ -64,7 +64,7 @@ services:
       dockerfile: Dockerfile
     image: fminames-db:latest
     container_name: fminames-db
-    restart: "no"
+    restart: "unless-stopped"
     environment:
       # This silly password needs to copied into ./smartmet/geonames.conf
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!

@@ -1,0 +1,22 @@
+{
+    "title": "ERA5L Pressure Reduced To Mean Sea Level Isobands (Pa)",
+    "abstract": "PSEA-PA Pressure reduced to mean sea level (Pa) from ECMWF.",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/pressure_pa.json",
+	    "css": "isobands/pressure.css",
+	    "parameter": "PSEA-PA:ERA5L::1:0:1",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

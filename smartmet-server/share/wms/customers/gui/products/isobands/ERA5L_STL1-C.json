@@ -1,0 +1,22 @@
+{
+    "title": "ERA5L Soil Temperature Level 1 Isobands (Celsius)",
+    "abstract": "STL1-C Soil temperature level 1 (C) from ECMWF.",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/temperature_C.json",
+	    "css": "isobands/temperature.css",
+	    "parameter": "STL1-C:ERA5L:::7:1",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

@@ -1,0 +1,23 @@
+{
+    "title": "ERA5L High Vegetation Cover in Fraction of the Grid Box",
+    "abstract": "High vegetation cover in fraction of the grid box from ERA5L reanalysis",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/vegetationcover.json",
+            "css": "isobands/vegetationcover.css",
+            "parameter": "CVH-N:ERA5L::1:0:1",
+            "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+            
+        }]
+    }]
+}

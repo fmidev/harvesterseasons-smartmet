@@ -1,0 +1,74 @@
+[
+  {
+    "qid": "Windspeed_32_inf",
+    "lolimit": 32,
+    "attributes": {
+      "class": "Windspeed_32_inf"
+    }
+  },
+  {
+    "qid": "Windspeed_26_32",
+    "lolimit": 26,
+    "hilimit": 32,
+    "attributes": {
+      "class": "Windspeed_26_32"
+    }
+  },
+  {
+    "qid": "Windspeed_21_26",
+    "lolimit": 21,
+    "hilimit": 26,
+    "attributes": {
+      "class": "Windspeed_21_26"
+    }
+  },
+  {
+    "qid": "Windspeed_17_21",
+    "lolimit": 17,
+    "hilimit": 21,
+    "attributes": {
+      "class": "Windspeed_17_21"
+    }
+  },
+  {
+    "qid": "Windspeed_14_17",
+    "lolimit": 14,
+    "hilimit": 17,
+    "attributes": {
+      "class": "Windspeed_14_17"
+    }
+  },
+  {
+    "qid": "Windspeed_10_14",
+    "lolimit": 10,
+    "hilimit": 14,
+    "attributes": {
+      "class": "Windspeed_10_14"
+    }
+  },
+  {
+    "qid": "Windspeed_7_10",
+    "lolimit": 7,
+    "hilimit": 10,
+    "attributes": {
+      "class": "Windspeed_7_10"
+    }
+  },
+  {
+    "qid": "Windspeed_5_7",
+    "lolimit": 5,
+    "hilimit": 7,
+    "attributes": {
+      "class": "Windspeed_5_7"
+    }
+  },
+  {
+    "qid": "Windspeed_3_5",
+    "lolimit": 3,
+    "hilimit": 5,
+    "attributes": {
+      "class": "Windspeed_3_5"
+    }
+  }
+]
+

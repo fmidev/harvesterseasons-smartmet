@@ -1,0 +1,24 @@
+{
+    "title": "Surface Runoff in Meter",
+    "abstract": "Surface runoff in meter from ERA5L reanalysis",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/surfacerunoff.json",
+            "css": "isobands/surfacerunoff.css",
+            "parameter": "SRO-M:ERA5L::1:0:1",
+            "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+            
+        }]
+    }]
+}
+
