@@ -6,8 +6,11 @@ eyear = sys.argv[2]
 mon = sys.argv[3]
 abr = sys.argv[4]
 area = sys.argv[5]
-years=list(range(int(syear),int(eyear)))
-print(years)
+if syear==eyear:
+    years=syear
+else:
+    years=list(range(int(syear),int(eyear)+1))
+print(years, area, abr)
 
 c = cdsapi.Client()
 

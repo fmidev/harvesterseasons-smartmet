@@ -36,6 +36,7 @@ grib_copy fmi-smartmet-$date-*.grib grib/SMARTMET_${date:0:4}0101T000000_${date}
 #rm grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T090000_swvl2.grib
 #grib_copy fmi-smartmet-$ydate-synop-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
 grib_copy fmi-smartmet-$ydate-*-krg.grib grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_[shortName].grib
+rm grib/SMARTOBS_${ydate:0:4}0101T000000_${ydate}T000000_sd.grib
 # calculate snow depth forecast from snow fall accumulation data
 # need snow state: ERA5 (5 days old) will be accumulated by the forecast from same day in past with ERA5 analysis
 # add new forecast to sde-state
@@ -52,7 +53,8 @@ fi
 # calculate snow depth obs from swe kriging data
 if [ -s "fmi-smartmet-$ydate-sd-krg.grib" ] 
 then 
-    cdo --eccodes chparam,141.228,141.128 -mulc,0.01 fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T000000_sde.grib
+    #cdo --eccodes chparam,141.228,141.128 -mulc,0.01 fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T000000_sde.grib
+    cdo --eccodes chparam,141.228,66.3 -mulc,0.01 fmi-smartmet-$ydate-sd-krg.grib grib/SMARTOBS_${date:0:4}0101T000000_${date}T000000_sde.grib
 else
     echo "$ydate snow obs file is empty"
 fi

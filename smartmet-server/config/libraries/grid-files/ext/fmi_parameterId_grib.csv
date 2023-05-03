@@ -203,14 +203,14 @@ ES-M;44;;;
 # 198: Skin reservoir content (m of water equivalent)
 SRC-M;198;;;
 
-# 500045:Snow Depth (m)
-HSNOW-M;500045;;;
-
 # 3066:Snow Depth (m)
 HSNOW-M;3066;;;
+
+# 500045:Snow Depth (m)
+HSNOW-M;500045;;;
 
 # 141: Snow depth (m of water equivalent)
 SD-M;141;;;
 
-# 228141:Snow depth water equivalent (kg m-2)
+# 228141:Snow depth water equivalent (kg m-2) (mm)
 SD-KGM2;228141;;;
