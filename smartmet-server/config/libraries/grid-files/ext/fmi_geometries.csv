@@ -23,16 +23,23 @@
 1;5017;SMARTMET-SK2;863;318;350.901294;51.300000;0.067400;0.067325;+x+y;SMARTMET Nordic too
 1;5021;ERA5-EU;321;201;-30.000000;75.000000;0.250000;0.250000;+x-y;ERA5 EU domain
 1;5022;ERA5L-EU;801;501;-30.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
-1;5023;ERA5L+nordic;421;231;0.000000;74.000000;0.100000;0.100000;+x+y;ERA5L Nordic Domain south to north
+11;5023;ERA5L+nordic;421;231;0.000000;74.000000;0.100000;0.100000;+x+y;ERA5L Nordic Domain south to north
 1;5024;ERA5L-EU;801;501;330.000000;75.000000;0.100000;0.100000;+x-y;ERA5L EU domain
 1;5029;SWI-EU;6832;4144;-10.996000;71.996000;0.009000;0.009000;+x-y;Copernicus land Soil wetness index Europe 0.01° latlon
 1;5030;SWI-GL;3600;1800;-179.950000;89.950000;0.100000;0.100000;+x-y;Copernicus land Soil wetness index Global 0.1° latlon
-#1;5031;S3SY-EU;8176;5601;-10.991070;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid
 1;5031;S3SY-EU;8176;5601;-10.991071;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid EU
 1;5032;S3SY-NAM;18705;3921;180.000000;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid North-America
 1;5033;S3SY-AFR;9632;8176;-25.991071;37.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Africa
 1;5034;S3SY-WAS;8176;5040;25.008929;49.991071;0.008929;0.008929;+x-y;Vegetation legacy grid West-Asia
 1;5035;S3SY-NAS;15119;3921;45.008929;75.000000;0.008929;0.008929;+x-y;Vegetation legacy grid North-Asia
+1;5036;S3SY-CAM;8400;5600;-124.991071;49.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Central-America
+1;5037;S3SY-SAM;6720;9071;-92.991071;24.991071;0.008929;0.008929;+x-y;Vegetation legacy grid South-America
+1;5038;S3SY-SEA;8848;5600;68.008929;54.991071;0.008929;0.008929;+x-y;Vegetation legacy grid South-East-Asia
+1;5039;S3SY-AUS;9519;6496;95.008929;9.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Australasia
+1;5040;S3SY-AIS;8736;4592;92.008929;28.991071;0.008929;0.008929;+x-y;Vegetation legacy grid Asia islands
+1;5051;CLMS-SWE;7200;1000;-179.975000;35.025000;0.050000;0.050000;+x+y;Global CLMS SWE grid
+1;5052;CLMS-NDVI-EU;26880;16800;-30.000000;74.997024;0.002976;0.002976;+x-y;Europe CLMS NDVI grid
+1;5053;LSASAF-GL;36000;18001;180.000000;-90.000000;0.010000;0.010000;+x+y;Global 0.01 grid
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------
