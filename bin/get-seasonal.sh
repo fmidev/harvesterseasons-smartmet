@@ -216,28 +216,28 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
 ## run xgb-predict.py
 ## remove print commands from python script when tuotantoajo :D 
 conda activate xgb
-[ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
-seq 0 50 | parallel -j 6 python3 /home/smartmet/bin/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
+#[ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
+#seq 0 50 | parallel -j 6 python3 /home/smartmet/bin/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
 #conda activate xr
 
 ## tp netcdf to grib 
-[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && \
-seq 0 50 | parallel cdo -b 16 -f grb copy -setparam,128.228 -setmissval,-9.e38 ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib || echo "NO input or already netcdf to grib1"
+#[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && \
+#seq 0 50 | parallel cdo -b 16 -f grb copy -setparam,128.228 -setmissval,-9.e38 ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib || echo "NO input or already netcdf to grib1"
 ## tp disacc to accumulated
-[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && \
-seq 0 50 | parallel cdo -s --eccodes -b P8 timcumsum ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib || echo "NOT adj xgb-acc - input missing or already produced"
+#[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && \
+#seq 0 50 | parallel cdo -s --eccodes -b P8 timcumsum ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib || echo "NOT adj xgb-acc - input missing or already produced"
 
 ## fix grib attributes for tp and pl-pp 
-[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib ] && \
-seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib \
-ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}-fixed.grib || echo "NOT fixing tp grib attributes - no input or already produced"
+#[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib ] && \
+#seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib \
+#ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}-fixed.grib || echo "NOT fixing tp grib attributes - no input or already produced"
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && ! [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && \
 seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
 ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}-fixed.grib || echo "NOT fixing pl-pp grib attributes - no input or already produced"
 
 ## join pl-pp and tp ensemble members and move to grib folder
-[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib  ] && ! [ -f grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib  ] && \
-grib_copy ens/ECX${bsf}_$year${month}_tp-acc-$abr-*-fixed.grib grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib || echo "NOT joining tp ensemble members - no input or already produced"
+#[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib  ] && ! [ -f grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib  ] && \
+#grib_copy ens/ECX${bsf}_$year${month}_tp-acc-$abr-*-fixed.grib grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib || echo "NOT joining tp ensemble members - no input or already produced"
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && ! [ -f grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib ] && \
 grib_copy ens/ec-sf_$year${month}_pl-pp-12h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib || echo "NOT joining pl-pp ensemble members - no input or already produced"
 wait 
