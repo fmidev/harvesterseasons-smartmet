@@ -1,0 +1,21 @@
+#################################################################################
+#
+# This file defines grib parameter identifiers, names and units.
+#
+# Notice that this file contains "default" definitions that comes with 
+# the installation package. You should use another file for your own definitions
+# (for example "grib_parameters_ext.csv". Add the name of your file into the 
+# "grid-files.conf" file so that the programs can find it.
+#
+# Fields:
+#   1 Grib-id
+#   2 Name
+#   3 Units
+#   4 Description
+#
+#################################################################################
+# Distance to water(in general), river, lake and ocean parameters from DEM
+128100;dtw;m;distance to water;
+128101;dtr;m;distance to river;
+128102;dtl;m;distance to lake;
+128103;dto;m;distance to ocean;

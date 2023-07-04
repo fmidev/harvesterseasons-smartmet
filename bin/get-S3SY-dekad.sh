@@ -91,7 +91,7 @@ parallel cdo -s -O -f grb2 -b P8 ensmean -{1} sen3/S3?_SY_2_V10____${start}T*_{\
   && rm -rf S3?_SY_2_V10____$start*.SEN3
 
 parallel grib_set -r -s centre=97,jScansPositively=0,dataDate=$end sen3/S3SY_${start:0:4}0101T000000_${end}T000000_{\1}_{\2}.grib\
- grib/S3SY_${start:0:4}0101T000000_${end}T000000_97_{\1}_{\2}_$timeliness.grib ::: B0 B2 B3 MIR NDVI ::: EUROPE AFRICA NORTH_AMERICA CENTRAL_AMERICA SOUTH_AMERICA NORTH_ASIA WEST_ASIA SOUTH_EAST_ASIA ASIAN_ISLANDS AUSTRALASIA\
+ grib/S3SY_20000101T000000_${end}T000000_97_{\1}_{\2}_$timeliness.grib ::: B0 B2 B3 MIR NDVI ::: EUROPE AFRICA NORTH_AMERICA CENTRAL_AMERICA SOUTH_AMERICA NORTH_ASIA WEST_ASIA SOUTH_EAST_ASIA ASIAN_ISLANDS AUSTRALASIA\
   && rm sen3/S3SY_${start:0:4}0101T000000_${end}T000000_[BMN]*.grib
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

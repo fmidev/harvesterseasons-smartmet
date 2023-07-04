@@ -1,0 +1,13 @@
+.Pressure_1035_inf  	{ stroke: none; fill: rgb(254,143,0) }
+.Pressure_1031_1035  	{ stroke: none; fill: rgb(254,181,0) }
+.Pressure_1027_1031 	{ stroke: none; fill: rgb(254,218,0) }
+.Pressure_1023_1027   	{ stroke: none; fill: rgb(254,254,0) }
+.Pressure_1019_1023  	{ stroke: none; fill: rgb(199,255,19) }
+.Pressure_1015_1019  	{ stroke: none; fill: rgb(150,254,0) }
+.Pressure_1011_1015 	{ stroke: none; fill: rgb(100,254,0) }
+.Pressure_1007_1011   	{ stroke: none; fill: rgb(50,236,0) }
+.Pressure_1003_1007	{ stroke: none; fill: rgb(0,209,0) }
+.Pressure_999_1003	{ stroke: none; fill: rgb(0,176,0) }
+.Pressure_995_999	{ stroke: none; fill: rgb(0,209,70) }
+.Pressure_991_995	{ stroke: none; fill: rgb(9,231,140) }
+.Pressure_inf_991  	{ stroke: none; fill: rgb(28,240,209) }

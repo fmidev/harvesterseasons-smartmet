@@ -8,9 +8,9 @@
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/vegetationlai.json",
-            "css": "isobands/vegetationlai.css",
-            "parameter": "LAI_HV-M2M2:ERA5L::1:0:1",
+            "isobands": "json:isobands/vegetation_LAI.json",
+            "css": "isobands/vegetation_LAI.css",
+            "parameter": "LAI_HV-M2M2:ERA5L::1:0:1:0",
             "sampling":{
                 "relativeresolution": 4
             },

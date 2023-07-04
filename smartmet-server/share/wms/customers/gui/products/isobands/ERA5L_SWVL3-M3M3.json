@@ -10,7 +10,7 @@
 	    "layer_type": "isoband",
 	    "isobands": "json:isobands/volsoilwater.json",
 	    "css": "isobands/volsoilwater.css",
-	    "parameter": "SWVL3-M3M3:ERA5L:::100:1",
+	    "parameter": "SWVL3-M3M3:ERA5L::9:7268:1:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

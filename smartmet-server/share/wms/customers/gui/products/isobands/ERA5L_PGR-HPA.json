@@ -1,6 +1,6 @@
 {
-    "title": "ERA5L Pressure Reduced To Mean Sea Level Isobands (hPa)",
-    "abstract": "PSEA-HPA Pressure reduced to mean sea level (hPa) from ECMWF.",
+    "title": "ERA5L Pressure On Ground Isobands (hPa)",
+    "abstract": "PGR-PA Pressure on ground (hPa) from ECMWF.",
     "projection": {},
     "producer": "ERA5L",
     "source": "grid",
@@ -10,7 +10,7 @@
 	    "layer_type": "isoband",
 	    "isobands": "json:isobands/pressure_hpa.json",
 	    "css": "isobands/pressure.css",
-	    "parameter": "PSEA-HPA:ERA5L::1:0:1",
+	    "parameter": "PGR-HPA:ERA5L::1:0:1:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

@@ -1,6 +1,6 @@
 {
-    "title": "ERA5L Volumetric Soil Water Layer 1",
-    "abstract": "SWVL1-M3M3 Volumetric soil water layer 1 (m3 m-3) from ECMWF.",
+    "title": "ERA5L 2 m Dew Point Temperature Isobands (Kelvin)",
+    "abstract": "TD2-K 2 m Dew point temperature (K) from ECMWF.",
     "projection": {},
     "producer": "ERA5L",
     "source": "grid",
@@ -8,9 +8,9 @@
 	"layers": [{
 	    "qid": "l", 
 	    "layer_type": "isoband",
-	    "isobands": "json:isobands/volsoilwater.json",
-	    "css": "isobands/volsoilwater.css",
-	    "parameter": "SWVL1-M3M3:ERA5L:::7:1",
+	    "isobands": "json:isobands/temperature_K.json",
+	    "css": "isobands/temperature.css",
+	    "parameter": "TD2-K:ERA5L::1:0:1:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

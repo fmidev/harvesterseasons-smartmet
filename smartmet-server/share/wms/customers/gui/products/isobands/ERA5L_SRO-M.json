@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/surfacerunoff.json",
             "css": "isobands/surfacerunoff.css",
-            "parameter": "SRO-M:ERA5L::1:0:1",
+            "parameter": "SRO-M:ERA5L::1:0:1:0",
             "sampling":{
                 "relativeresolution": 4
             },

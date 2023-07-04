@@ -3,6 +3,7 @@
     "abstract" : "ECMWF VolumetricSoilWaterLayer28",
     "projection": {},
     "producer": "ecmwf_soil_water",
+    "source" : "grid",
     "views": [{
         "layers": [{
             "qid": "l",

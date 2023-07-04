@@ -1,0 +1,42 @@
+"api":
+{
+        "templatedir" = "../../tmpl";
+        "items":
+        (
+                {
+                        "url" = "/edr";
+                        "template" = "home.json";
+                },
+                {
+                        "url" = "/edr/api";
+                        "template" = "api.json";
+                },
+                {
+                        "url" = "/edr/conformance";
+                        "template" = "conformance.json";
+                }
+        )
+};
+// Supported data queries
+"data_queries":
+{
+        "default" = ["position","radius","area","cube","locations","trajectory","corridor"];
+        "override":
+        {
+                "METAR" = ["position","radius","area","locations","trajectory","corridor"];
+                "TAF" = ["position","radius","area","locations","trajectory","corridor"];
+                "SIGMET" = ["position","radius","area","locations","trajectory","corridor"];
+        };
+};
+
+// Supported output formats
+"output_formats":
+{
+    "default" = ["CoverageJSON","GeoJSON"];
+    "override":
+    {
+        "METAR" = ["CoverageJSON","GeoJSON","IWXXM","TAC"];
+        "SIGMET" = ["CoverageJSON","GeoJSON","IWXXM","TAC"];
+        "TAF" = ["CoverageJSON","GeoJSON","IWXXM","TAC"];
+    };
+};

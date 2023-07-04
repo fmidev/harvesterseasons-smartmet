@@ -84,8 +84,8 @@ preds_train=train_stations[preds]
 preds_test=test_stations[preds]
 var_train=train_stations[var]
 var_test=test_stations[var]
-print(preds_train)    
-
+print(preds_train.dtypes)    
+'''
 ### XGBoost
 # Define model hyperparameters 
 nstm=500
@@ -130,6 +130,6 @@ varOut.to_csv(res_dir+'predicted_results_194sta.csv')
 xgbr.save_model(mod_dir+'mdl_194sta_2000-2020.txt')
 
 print("RMSE: %.5f" % (mse**(1/2.0)))
-
+'''
 executionTime=(time.time()-startTime)
 print('Execution time in minutes: %.2f'%(executionTime/60))

@@ -143,6 +143,9 @@ PV-KM2KGS;60;;;
 # 160:Standard deviation of orography (m)
 SDOR-M;160;;;
 
+# 160:Standard deviation of orography difference (m)
+SDORDIFF-M;200160;;;
+
 # 161:Anisotropy of sub-gridscale orography (~)
 ISOR;161;;;
 
@@ -214,3 +217,12 @@ SD-M;141;;;
 
 # 228141:Snow depth water equivalent (kg m-2) (mm)
 SD-KGM2;228141;;;
+
+# 500206:Leaf area index (~)
+LAI;500206;;;
+
+# Distance to water (general), river, lake or ocean (m)
+DTW-M;128100;;;
+DTR-M;128101;;;
+DTL-M;128102;;;
+DTO-M;128103;;;

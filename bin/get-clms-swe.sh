@@ -49,8 +49,8 @@ close
 bye
 EOF
 
-cdo --eccodes -s -f grb1 copy -setparam,141.128 -setname,sd -mulc,0.001 -selname,swe CGLC2_SWE/c_gls_SWE5K_${yday}0000_NHEMI_SSMIS_V*.nc CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib
-grib_set -s centre=86 CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib grib/CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib && rm CLMS_${yday:0:4}0101T000000_${yday}T000000_swe.grib
+cdo --eccodes -s -f grb1 copy -setparam,141.128 -setname,sd -mulc,0.001 -selname,swe CGLC2_SWE/c_gls_SWE5K_${yday}0000_NHEMI_SSMIS_V*.nc CLMS_20000101T000000_${yday}T000000_swe.grib
+grib_set -s centre=86 CLMS_20000101T000000_${yday}T000000_swe.grib grib/CLMS_20000101T000000_${yday}T000000_swe.grib && rm CLMS_20000101T000000_${yday}T000000_swe.grib
 #cdo --eccodes -s -f grb1 copy -setparam,141.128 -setname,sd -mulc,0.001 -selname,swe_var CGLC2_SWE/c_gls_SWE5K_${yday}0000_NHEMI_SSMIS_V*.nc CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib
 #grib_set -s centre=86,type=ea CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib grib/CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib && rm CLMS_${yday:0:4}0101T000000_${yday}T000000_swevar.grib
 

@@ -1,0 +1,84 @@
+[
+    {
+      "qid": "SWI_90_100",
+      "lolimit": 90,
+      "hilimit": 100,
+      "attributes": {
+        "class": "SWI_90_100"
+      }
+    },
+    {
+      "qid": "SWI_80_90",
+      "lolimit": 80,
+      "hilimit": 90,
+      "attributes": {
+        "class": "SWI_80_90"
+      }
+    },
+    {
+      "qid": "SWI_70_80",
+      "lolimit": 70,
+      "hilimit": 80,
+      "attributes": {
+        "class": "SWI_70_80"
+      }
+    },
+    {
+      "qid": "SWI_60_70",
+      "lolimit": 60,
+      "hilimit": 70,
+      "attributes": {
+        "class": "SWI_60_70"
+      }
+    },
+    {
+      "qid": "SWI_50_60",
+      "lolimit": 50,
+      "hilimit": 60,
+      "attributes": {
+        "class": "SWI_50_60"
+      }
+    },
+    {
+      "qid": "SWI_40_50",
+      "lolimit": 40,
+      "hilimit": 50,
+      "attributes": {
+        "class": "SWI_40_50"
+      }
+    },
+    {
+      "qid": "SWI_30_40",
+      "lolimit": 30,
+      "hilimit": 40,
+      "attributes": {
+        "class": "SWI_30_40"
+      }
+    },
+    {
+      "qid": "SWI_20_30",
+      "lolimit": 20,
+      "hilimit": 30,
+      "attributes": {
+        "class": "SWI_20_30"
+      }
+    },
+    {
+      "qid": "SWI_10_20",
+      "lolimit": 10,
+      "hilimit": 20,
+      "attributes": {
+        "class": "SWI_10_20"
+      }
+    },
+    {
+      "qid": "SWI_0_10",
+      "lolimit": 0,
+      "hilimit": 10,
+      "attributes": {
+        "class": "SWI_0_10"
+      }
+    }
+  ]
+  
+  

@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/wind_uv.json",
             "css": "isobands/wind_uv.css",
-            "parameter": "V10-MS:ERA5L::1:0:1",
+            "parameter": "V10-MS:ERA5L::1:0:1:0",
             "sampling":{
                 "relativeresolution": 4
             },

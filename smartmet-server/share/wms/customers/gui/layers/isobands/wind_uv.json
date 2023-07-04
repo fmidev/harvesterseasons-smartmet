@@ -1,0 +1,162 @@
+[
+    {
+      "qid": "Wind32_inf",
+      "lolimit": 32,
+      "attributes": {
+        "class": "Wind_32_inf"
+      }
+    },
+    {
+      "qid": "Wind_26_32",
+      "lolimit": 26,
+      "hilimit": 32,
+      "attributes": {
+        "class": "Wind_26_32"
+      }
+    },
+    {
+      "qid": "Wind_21_26",
+      "lolimit": 21,
+      "hilimit": 26,
+      "attributes": {
+        "class": "Wind_21_26"
+      }
+    },
+    {
+      "qid": "Wind_17_21",
+      "lolimit": 17,
+      "hilimit": 21,
+      "attributes": {
+        "class": "Wind_17_21"
+      }
+    },
+    {
+      "qid": "Wind_14_17",
+      "lolimit": 14,
+      "hilimit": 17,
+      "attributes": {
+        "class": "Wind_14_17"
+      }
+    },
+    {
+      "qid": "Wind_10_14",
+      "lolimit": 10,
+      "hilimit": 14,
+      "attributes": {
+        "class": "Wind_10_14"
+      }
+    },
+    {
+      "qid": "Wind_7_10",
+      "lolimit": 7,
+      "hilimit": 10,
+      "attributes": {
+        "class": "Wind_7_10"
+      }
+    },
+    {
+      "qid": "Wind_5_7",
+      "lolimit": 5,
+      "hilimit": 7,
+      "attributes": {
+        "class": "Wind_5_7"
+      }
+    },
+    {
+      "qid": "Wind_3_5",
+      "lolimit": 3,
+      "hilimit": 5,
+      "attributes": {
+        "class": "Wind_3_5"
+      }
+    },
+    {
+      "qid": "Wind_0_3",
+      "lolimit": 0,
+      "hilimit": 3,
+      "attributes": {
+        "class": "Wind_0_3"
+      }
+    },
+   {
+      "qid": "Wind_3_0",
+      "lolimit": -3,
+      "hilimit": 0,
+      "attributes": {
+        "class": "Wind_3_0"
+      }
+    },
+   {
+      "qid": "Wind_5_3",
+      "lolimit": -5,
+      "hilimit": -3,
+      "attributes": {
+        "class": "Wind_5_3"
+      }
+    },
+   {
+      "qid": "Wind_7_5",
+      "lolimit": -7,
+      "hilimit": -5,
+      "attributes": {
+        "class": "Wind_7_5"
+      }
+    },
+   {
+      "qid": "Wind_10_7",
+      "lolimit": -10,
+      "hilimit": -7,
+      "attributes": {
+        "class": "Wind_10_7"
+      }
+    },
+   {
+      "qid": "Wind_14_10",
+      "lolimit": -14,
+      "hilimit": -10,
+      "attributes": {
+        "class": "Wind_14_10"
+      }
+    },
+   {
+      "qid": "Wind_17_14",
+      "lolimit": -17,
+      "hilimit": -14,
+      "attributes": {
+        "class": "Wind_17_14"
+      }
+    },
+   {
+      "qid": "Wind_21_17",
+      "lolimit": -21,
+      "hilimit": -17,
+      "attributes": {
+        "class": "Wind_21_17"
+      }
+    },
+   {
+      "qid": "Wind_26_21",
+      "lolimit": -26,
+      "hilimit": -21,
+      "attributes": {
+        "class": "Wind_26_21"
+      }
+    },
+   {
+      "qid": "Wind_32_26",
+      "lolimit": -32,
+      "hilimit": -26,
+      "attributes": {
+        "class": "Wind_32_26"
+      }
+    },
+   {
+      "qid": "Wind_inf_32",
+      "hilimit": -32,
+      "attributes": {
+        "class": "Wind_inf_32"
+      }
+    }
+  ]
+  
+  

@@ -45,7 +45,7 @@ file=${ncfile:0:-3}-LAI-V1-eu-fix.grib
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
 #ncog="${nfile:0:-4}_cog.tif"
-nc_ok=$(cdo xinfon $ncIn)
+nc_ok=$(cdo sinfon $ncIn)
 
 if [ -z "$nc_ok" ]
 then
@@ -54,11 +54,11 @@ then
 else 
   ncea -d lat,25.0,75.0 -d lon,-30.0,50.0 $ncIn $ncfile 
   cdo -f grb2 -s -b P12 copy -setparam,28.0.2 -setvrange,0,7 -selname,LAI $ncfile $fileFix
-  grib_set -r -s centre=224,dataDate=$ydate,jScansPositively=0 $fileFix $file
-  mv $file ../grib/CLMS_20140101T000000_${year}$month${day}T000000_LAI-V1-eu.grib
+  grib_set -r -s centre=224,dataDate=$yday,jScansPositively=0 $fileFix $file
+  mv $file ../grib/CLMS_20140101T000000_${year}${month}${day}T000000_LAI-V1-eu.grib
   s3cmd put -q -P --no-progress $ncIn s3://copernicus/land/gl_lai300m/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/gl_lai300m_grb/ &&\
        s3cmd put -q -P --no-progress $meta s3://copernicus/land/gl_lai300m_meta/
-#    rm $ncIn $ncfile $meta $fileFix
+  rm $ncIn $ncfile $meta $fileFix
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

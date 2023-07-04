@@ -48,6 +48,6 @@ else
      s3cmd put -q -P --no-progress $file s3://copernicus/land/gl_swi12.5km_grb/ &&\
        s3cmd put -q -P --no-progress $meta s3://copernicus/land/gl_swi12.5km_meta/
     rm $ncfile $meta $fileFix
-    mv $file ../grib/SWI10_${file:12:4}0101T120000_${file:12:8}T${file:20:4}_swis.grib
+    mv $file ../grib/SWI10_20000101T000000_${file:12:8}T${file:20:4}00_swis.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

@@ -40,6 +40,8 @@
 1;5051;CLMS-SWE;7200;1000;-179.975000;35.025000;0.050000;0.050000;+x+y;Global CLMS SWE grid
 1;5052;CLMS-NDVI-EU;26880;16800;-30.000000;74.997024;0.002976;0.002976;+x-y;Europe CLMS NDVI grid
 1;5053;LSASAF-GL;36000;18001;180.000000;-90.000000;0.010000;0.010000;+x+y;Global 0.01 grid
+1;5054;ERA5-EU;321;201;-30.000000;25.000000;0.250000;0.250000;+x+y;ERA5 EU area bottoms up
+1;5055;C3S-EU;28800;18000;-29.999000;74.999000;0.003000;0.003000;+x+y;C3S Land Cover at 300m
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

@@ -8,6 +8,8 @@
 # 4. Producer desciption
 #
 CLMS;CLMS;CLMS;Copernicus Land Monitoring Service
+COPERNICUS;COPERNICUS;COPERNICUS;Copernicus Digital Elevation Map products
+C3S;C3S;C3S;Copernicus Climate Change Service products
 ERA5;ERA5;ERA5;Era5 data from ECMWF
 UERRA;UERRA;UERRA;UERRA regional reanalysis data
 ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF

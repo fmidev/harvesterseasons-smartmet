@@ -1,7 +1,8 @@
 #!/bin/bash
 # Fetch NDVI_300m_V2 from Copernicus Land Monitoring System 
 # give yearmonthday as cmd (July 2020 -> )
-version="V2.0.1"
+#version="V2.0.1"
+version="V2.0.2"
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
     if [[ $# -gt 1 ]]; then
@@ -47,6 +48,6 @@ else
      s3cmd put -q -P --no-progress $file s3://copernicus/land/gl_ndvi300m_grb/ &&\
        s3cmd put -q -P --no-progress $meta s3://copernicus/land/gl_ndvi300m_meta/
     rm $ncIn $ncfile $meta $fileFix
-    mv $file ../grib/CLMS_20200101T000000_${file:14:8}T000000_NDVI-V2-eu.grib
+    mv $file ../grib/CLMS_20140101T000000_${file:14:8}T000000_NDVI-V2-eu.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

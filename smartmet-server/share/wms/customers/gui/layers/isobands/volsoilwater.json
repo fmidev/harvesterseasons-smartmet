@@ -1,0 +1,66 @@
+[
+    {
+      "qid": "Volsoilwaterlayer_04_inf",
+      "lolimit": 0.4,
+      "attributes": {
+        "class": "Volsoilwaterlayer_04_inf"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_035_04",
+      "lolimit": 0.35,
+      "hilimit": 0.4,
+      "attributes": {
+        "class": "Volsoilwaterlayer_035_04"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_03_035",
+      "lolimit": 0.3,
+      "hilimit": 0.35,
+      "attributes": {
+        "class": "Volsoilwaterlayer_03_035"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_025_03",
+      "lolimit": 0.25,
+      "hilimit": 0.3,
+      "attributes": {
+        "class": "Volsoilwaterlayer_025_03"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_02_025",
+      "lolimit": 0.2,
+      "hilimit": 0.25,
+      "attributes": {
+        "class": "Volsoilwaterlayer_02_025"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_015_02",
+      "lolimit": 0.15,
+      "hilimit": 0.2,
+      "attributes": {
+        "class": "Volsoilwaterlayer_015_02"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_01_015",
+      "lolimit": 0.1,
+      "hilimit": 0.15,
+      "attributes": {
+        "class": "Volsoilwaterlayer_01_015"
+      }
+    },
+    {
+      "qid": "Volsoilwaterlayer_inf_01",
+      "hilimit": 0.1,
+      "attributes": {
+        "class": "Volsoilwaterlayer_inf_01"
+      }
+    }
+  ]
+  
+  

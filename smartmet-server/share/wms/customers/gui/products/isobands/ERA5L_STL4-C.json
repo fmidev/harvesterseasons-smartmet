@@ -10,7 +10,7 @@
 	    "layer_type": "isoband",
 	    "isobands": "json:isobands/temperature_C.json",
 	    "css": "isobands/temperature.css",
-	    "parameter": "STL4-C:ERA5L:::0:1",
+	    "parameter": "STL4-C:ERA5L::9:25855:1:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

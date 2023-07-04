@@ -1,6 +1,6 @@
 {
     "title": "ERA5L 2 Metre Temperature Isobands (Celsius)",
-    "abstract": "TAS-C 2 metre temperature (C) from ECMWF.",
+    "abstract": "T2-C 2 metre temperature (C) from ECMWF.",
     "projection": {},
     "producer": "ERA5L",
     "source": "grid",
@@ -10,7 +10,7 @@
 	    "layer_type": "isoband",
 	    "isobands": "json:isobands/temperature_C.json",
 	    "css": "isobands/temperature.css",
-	    "parameter": "T2-C:ERA5L:5022:1:0:1",
+	    "parameter": "T2-C:ERA5L::1:0:1:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

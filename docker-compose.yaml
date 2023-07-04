@@ -39,10 +39,11 @@ services:
       # Entrypoint has script to validate that database is ready
       - fminames-db
       - redis-db
-    restart: "unless-stopped" 
+    restart: "on-failure" 
     volumes:
       - ../config:/home/smartmet/config:Z
       - ../share:/home/smartmet/share:Z
+      - ../tmpl:/home/smartmet/tmpl:Z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
       - ../log:/var/log/smartmet:Z

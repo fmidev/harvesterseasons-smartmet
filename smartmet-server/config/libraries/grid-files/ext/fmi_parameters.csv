@@ -46,12 +46,18 @@
 10000205;RO-M;M;Runoff in depth of water in metres;1;1;1;5;
 10000228;RR-M;m;Total precipitation in meters;1;1;1;1;
 10000236;STL4-K;K;Soil temperature level 4 in Kelvins;1;1;1;1;
+10128100;DTW-M;m;Distance to water in meters;1;1;1;1;
+10128101;DTR-M;m;Distance to river in meters;1;1;1;1;
+10128102;DTL-M;m;Distance to lake in meters;1;1;1;1;
+10128103;DTO-M;m;Distance to ocean in meters;1;1;1;1;
+10200160;SDORDIFF-M;m;Standard deviation of orograpy differnce in meters;1;1;1;1;
 10260045;TWATERP-KGM2;kg m-2;Total Water Precipitation;1;1;1;2;
 10260046;TSNOWP-KGM2;kg m-2;Total snow precipitation;1;1;1;2;
 10260056;WESD-KGM2;kg m-2;Water equivalent of accumulated snow depth (deprecated);1;1;1;2;
 10172228;RRR-MEAN-MS;m s-1;Mean total precipitation rate;1;1;1;2;
 10228090;TCSNOWWAT-KGM2;kg m2;Total column snow water (kg m-2);1;1;1;2;
 10228251;EVAPP-M;m;Potential evaporation;1;1;1;2;
+10500206;LAI;;Leaf Area index;1;1;1;2;
 10500219;NDVI;;Normalized difference vegetation index;1;1;1;2;
 10301220;MIR;Medium infrared radiance;1;1;;;
 10301200;SRB0;%;Band 0 surface reflectance;1;1;;;

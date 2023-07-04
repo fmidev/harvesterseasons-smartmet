@@ -1,0 +1,57 @@
+[
+    {
+        "attributes": {
+            "class": "Surfacerunoff_0001_inf"
+        },
+        "lolimit": 0.001,
+        "qid": "Surfacerunoff_0001_inf"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_00008_0001"
+        },
+        "hilimit": 0.001,
+        "lolimit": 0.0008,
+        "qid": "Surfacerunoff_00008_0001"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_00006_00008"
+        },
+        "hilimit": 0.0008,
+        "lolimit": 0.0006,
+        "qid": "Surfacerunoff_00006_00008"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_00004_00006"
+        },
+	    "hilimit": 0.0006,
+        "lolimit": 0.0004,
+        "qid": "Surfacerunoff_00004_00006"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_00002_00004"
+        },
+	    "hilimit": 0.0004,
+        "lolimit": 0.0002,
+        "qid": "Surfacerunoff_00002_00004"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_00001_00002"
+        },
+	    "hilimit": 0.0002,
+        "lolimit": 0.0001,
+        "qid": "Surfacerunoff_00001_00002"
+    },
+    {
+        "attributes": {
+            "class": "Surfacerunoff_0_00001"
+        },
+        "hilimit": 0.0001,
+        "lolimit": 0.0000,
+        "qid": "Surfacerunoff_0_00001"
+    }
+]      

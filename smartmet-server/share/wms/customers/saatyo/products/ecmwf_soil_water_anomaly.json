@@ -21,6 +21,7 @@
 },
     "projection": {},
     "producer": "ecmwf_soil_water_anomaly",
+    "source" : "grid",
     "views": [
         {
             "layers": [
