@@ -80,6 +80,7 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
  -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib \
  era5l/era5l-ecsf_2000-2019_swvls_unbound_bias_eu_vsws_fixed.grib \
  ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib || echo "NOT adj swvls - seasonal forecast input missing or already produced"
+
  ### adjust unbound variables (removed swvl1/2 in Nov 2022 as not anymore available from CDS)
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && \
  seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
@@ -172,6 +173,8 @@ ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib
 [ -f grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib ] && echo "NOT joining ensemlbe members ecsf swvls - no input or already produced" || \
 grib_copy ens/ECSF_$year${month}01T000000_swvls-24h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib
 
+rm ens/*swvls*
+
 echo "start XGBoost predict" # tmp echo 
 
 #### Gradient boosting bias adjustment for tp 
@@ -198,26 +201,26 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
     ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib || echo "NOT remap pl - no input or already produced"
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && \
 seq 0 50 | parallel cdo --eccodes -O -b P12 \
-    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,10u,10v,2d,2t,msl,tp,tsr,e,10fg,slhf,sshf,tcc,ro,sd,sf,rsn,stl1 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,10u,10v,2d,2t,msl,tp,tsr,e,10fg,slhf,sshf,tcc,ro,sd,sf,rsn,stl1,mx2t24,mn2t24 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
     ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib || echo "NOT remap sl - no input or already produced"
 [ -f ens/disacc-$year${month}-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && \
 seq 0 50 | parallel cdo --eccodes -O -b P12 \
     remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -mulc,1000 ens/disacc-$year${month}-{}.grib \
     ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib || echo "NOT remap disacc - no input or already produced"
 
-## (change dates in era5-orography-XGB-202105-$abr.grib to match fetched data)
-## not available era5 orography for whole month when tuotantoajo
-#diff=$(( ($year - 2022) * 12 + (10#$month - 10#1) ))
-#[ -f $era-orography-XGB-202201-$abr.grib ] && ! [ -f $era-orography-$year${month}-$abr.grib ] && \
-#cdo shifttime,${diff}months $era-orography-XGB-202201-$abr.grib $era-orography-$year${month}-$abr.grib  || echo "NOT current date era5 orography - no input or already produced" 
+## (change dates in era5-orography-XGB-202001-eu.grib to match fetched data)
+diff=$(( ($year - 2020) * 12 + (10#$month - 10#1) ))
+[ -f $era-orography-XGB-202001-$abr.grib ] && ! [ -f $era-orography-$year${month}-$abr.grib ] && \
+cdo shifttime,${diff}months $era-orography-XGB-202001-$abr.grib $era-orography-$year${month}-$abr.grib  || echo "NOT current date era5 orography - no input or already produced" 
 ## shiftime doesn't work for past? xgb-predict crashes - download file 
-! [ -f $era-orography-$year${month}-$abr.grib ] && /home/smartmet/bin/cds-era5-orography.py $year $month $area $abr || echo "ERA5 orography data already downloaded"
+#! [ -f $era-orography-$year${month}-$abr.grib ] && /home/smartmet/bin/cds-era5-orography.py $year $month $area $abr || echo "ERA5 orography data already downloaded"
 
 ## run xgb-predict.py
 ## remove print commands from python script when tuotantoajo :D 
-conda activate xgb
-[ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
-seq 0 50 | parallel -j 6 python3 /home/smartmet/mlbias/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
+#conda activate xgb
+#[ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
+#seq 0 50 | parallel -j 6 python3 /home/smartmet/mlbias/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
+
 conda activate xr
 
 ## tp netcdf to grib 
