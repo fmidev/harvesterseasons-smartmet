@@ -5,7 +5,7 @@ services:
     image: smartmet-server:latest
     build: 
       context: ./smartmet-server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.8
     security_opt:
       - seccomp:unconfined
     container_name: smartmet-server
@@ -43,6 +43,7 @@ services:
     volumes:
       - ../config:/home/smartmet/config:Z
       - ../share:/home/smartmet/share:Z
+      - ../tmpl:/home/smartmet/tmpl:Z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
       - ../log:/var/log/smartmet:Z
@@ -97,9 +98,9 @@ services:
     environment:
       HSTS_HEADER: skip
       NGINX_CLIENT_MAX_BODY_SIZE: 10m
-      UPSTREAM: 128.214.255.90:8080
-      SERVERNAME: desm.harvesterseasons.com
-      #EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space
+      UPSTREAM: 185.213.74.67:8080
+      SERVERNAME: sm.harvesterseasons.com
+      EXTRANAMES: harmonia.geoss.space
       # ,smdev.harvesterseasons.com
     ports:
       - "80:80"

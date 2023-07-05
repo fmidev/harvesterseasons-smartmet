@@ -1,0 +1,43 @@
+{
+    "title": "FMI DestinE EDR Server",
+    "description": "API for querying FMI DestinE datasets. Conforms to OGC API Environmental Data Retrieval specification",
+    "provider": {
+      "name": "FMI",
+      "url": "www.fmi.fi"
+    },
+    "contact": {
+      "email": "edr@fmi.fi"
+    },
+    "links": [
+      {
+        "href": "__HOST__/?f=JSON",
+        "rel": "self",
+        "type": "application/json",
+        "title": "Landing Page in JSON"
+      },
+      {
+        "href": "__HOST__/api?f=JSON",
+        "rel": "service-desc",
+        "type": "application/json",
+        "title": "API description in JSON"
+      },
+      {
+        "href": "__HOST__/api?f=HTML",
+        "rel": "service-doc",
+        "type": "text/html",
+        "title": "API description in HTML"
+      },
+      {
+        "href": "__HOST__/conformance?f=JSON",
+        "rel": "conformance",
+        "type": "application/json",
+        "title": "Conformance Declaration in JSON"
+      },
+      {
+        "href": "__HOST__/collections",
+        "rel": "data",
+        "type": "application/json",
+        "title": "Collections metadata in JSON"
+      }
+    ]
+}
