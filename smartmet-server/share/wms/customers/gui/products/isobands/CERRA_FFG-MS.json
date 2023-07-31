@@ -1,0 +1,22 @@
+{
+    "title": "CERRA 10 Metre Windgust Isobands (ms-1)",
+    "abstract": "FFG-MS 10 metre windgust (ms-1).",
+    "projection": {},
+    "producer": "CERRA",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l", 
+            "layer_type": "isoband",
+            "isobands": "json:isobands/windgust.json",
+            "css": "isobands/windgust.css",
+            "parameter": "FFG-MS:CERRA:5057:6:10:0",
+                "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

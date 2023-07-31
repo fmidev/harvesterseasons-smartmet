@@ -169,6 +169,7 @@
 
 # 10 metre wind gust since previous post-processing
 49;discipline=0,parameterCategory=2,parameterNumber=22,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=10,scaleFactorOfFirstFixedSurface=0,typeOfStatisticalProcessing=2,is_uerra=1;
+49;discipline=0,parameterCategory=2,parameterNumber=22,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=10,scaleFactorOfFirstFixedSurface=0,typeOfStatisticalProcessing=2;
 
 # Large-scale precipitation fraction
 50;discipline=192,parameterCategory=128,parameterNumber=50;

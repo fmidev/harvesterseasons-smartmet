@@ -1,0 +1,22 @@
+{
+    "title": "ERA5L TESTI",
+    "abstract": "ERA5L TESTI",
+    "projection": {},
+    "producer": "ERA5L",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l", 
+            "layer_type": "isoband",
+            "isobands": "json:isobands/windgust.json",
+            "css": "isobands/windgust.css",
+            "parameter": "U10-MS:ERA5L::1:0:1:0",
+                "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

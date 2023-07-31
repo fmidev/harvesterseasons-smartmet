@@ -1,0 +1,107 @@
+[
+    {
+      "qid": "Windgust_50_inf",
+      "lolimit": 50,
+      "attributes": {
+        "class": "Windgust_50_inf"
+      }
+    },
+    {
+      "qid": "Windgust_45_50",
+      "lolimit": 45,
+      "hilimit": 50,
+      "attributes": {
+        "class": "Windgust_45_50"
+      }
+    },
+    {
+      "qid": "Windgust_40_45",
+      "lolimit": 40,
+      "hilimit": 45,
+      "attributes": {
+        "class": "Windgust_40_45"
+      }
+    },
+    {
+      "qid": "Windgust_35_40",
+      "lolimit": 35,
+      "hilimit": 40,
+      "attributes": {
+        "class": "Windgust_35_40"
+      }
+    },
+    {
+      "qid": "Windgust_28_35",
+      "lolimit": 28,
+      "hilimit": 35,
+      "attributes": {
+        "class": "Windgust_28_35"
+      }
+    },
+    {
+      "qid": "Windgust_26_28",
+      "lolimit": 26,
+      "hilimit": 28,
+      "attributes": {
+        "class": "Windgust_26_28"
+      }
+    },
+    {
+      "qid": "Windgust_23_26",
+      "lolimit": 23,
+      "hilimit": 26,
+      "attributes": {
+        "class": "Windgust_23_26"
+      }
+    },
+    {
+      "qid": "Windgust_20_23",
+      "lolimit": 20,
+      "hilimit": 23,
+      "attributes": {
+        "class": "Windgust_20_23"
+      }
+    },
+    {
+      "qid": "Windgust_17_20",
+      "lolimit": 17,
+      "hilimit": 20,
+      "attributes": {
+        "class": "Windgust_17_20"
+      }
+    },
+    {
+      "qid": "Windgust_14_17",
+      "lolimit": 14,
+      "hilimit": 17,
+      "attributes": {
+        "class": "Windgust_14_17"
+      }
+    },
+   {
+      "qid": "Windgust_11_14",
+      "lolimit": 11,
+      "hilimit": 14,
+      "attributes": {
+        "class": "Windgust_11_14"
+      }
+    },
+   {
+      "qid": "Windgust_8_11",
+      "lolimit": 8,
+      "hilimit": 11,
+      "attributes": {
+        "class": "Windgust_8_11"
+      }
+    },
+   {
+      "qid": "Windgust_5_8",
+      "lolimit": 5,
+      "hilimit": 8,
+      "attributes": {
+        "class": "Windgust_5_8"
+      }
+    }
+  ]
+  
+  

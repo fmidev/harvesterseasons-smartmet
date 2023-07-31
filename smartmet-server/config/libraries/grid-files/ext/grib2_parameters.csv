@@ -86,3 +86,11 @@
 # Band 9 reflectance
 301209;discipline=3,parameterCategory=0,parameterNumber=209;
 
+# Mean total precipitation flux short=mtpf
+#235013;discipline=0,parameterCategory=1,parameterNumber=52,typeOfStatisticalProcessing=0;
+
+# 10 metre wind gust since previous post-processing (removing is_uerra=1)
+49;discipline=0,parameterCategory=2,parameterNumber=22,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=10,scaleFactorOfFirstFixedSurface=0,crraLocalVersion=1;
+
+# Albedo
+174;discipline=0,parameterCategory=19,parameterNumber=1,crraLocalVersion=1;

@@ -13,78 +13,53 @@
 #
 #################################################################################
 
-
-
 # Mapping "standard" grib identifiers (defined in the "grib_parameters.csv" file) into 
 # our own FMI identifiers (defined in the "ext/fmi_parameters.csv" file).
 
-
 # Surface runoff in depth of water in metres
 SRO-M;8;;;
-
 # Subsurface Runoff in depth of water in metres
 SSRO-M;9;;
-
 # 29:Type of low vegetation
 TVL-N;29;;; 
-
 # 30:Type of high vegetation
 TVH-N;30;;;
-
 # Surface soil wetness
 SWVL1-M3M3;39;;;
-
 # Volumetric Soil Water layer 2
 SWVL2-M3M3;40;;;
-
 # Volumetric Soil Water layer 3
 SWVL3-M3M3;41;;;
-
 # Volumetric Soil Water layer 4
 SWVL4-M3M3;42;;;
-
 # Soil temperature level 1 in Kelvins
 STL1-K;139;;;
-
 # Soil temperature level 2 in Kelvins
 STL2-K;170;;;
-
 # Top Net Solar Radation
 TSR-J;178;;;
-
 # Evaporation (m of water equivalent)
 EVAP-M;182;;;
-
 # Total precipitation in meters
 RR-M;228;;;
-
 # Soil temperature level 3 in Kelvins
 STL3-K;183;;;
-
 # Runoff in depth of water in metres
 RO-M;205;;;
-
 # Soil temperature level 4 in Kelvins
 STL4-K;236;;;
-
 # Total Water Precipitation (kg m-2)
 TWATERP-KGM2;260045;;;
-
 # Total snow precipitation (kg m-2)
 TSNOWP-KGM2;260046;;;
-
 # Mean total precipitation rate (m s-1)
 RRR-MEAN-MS;172228;;
-
 # Water equivalent of accumulated snow depth (deprecated) (kg m-2)
 WESD-KGM2;260056;;;
-
 # Total column snow water (kg m-2)
 TCSNOWWAT-KGM2;228090;;;
-
 # Potential evaporation (m)
 EVAPP-M;228251;;;
-
 # satellite products
 MIR;301220;;
 SRB0;301200;;
@@ -97,132 +72,98 @@ SRB6;301206;;
 SRB7;301207;;
 SRB8;301208;;
 SRB9;301209;;
-
 # 228040:Soil wetness index in layer 1 (dimensionless)
 SWI1;228040;;;
-
 # 228041:Soil wetness index in layer 2 (dimensionless)
 SWI2;228041;;;
-
 # 228042:Soil wetness index in layer 3 (dimensionless)
 SWI3;228042;;;
-
 # 228043:Soil wetness index in layer 4 (dimensionless)
 SWI4;228043;;;
-
 # 165:10 metre U wind component (m s-1)
 U10-MS;165;;;
-
 # 166:10 metre V wind component (m s-1)
 V10-MS;166;;;
-
 # 228001:Convective inhibition (J kg-1)
 CIN-JKG;228001;;;
-
 # 260121:K index (K)
 KX;260121;;;
-
 # 196:Northward gravity wave surface stress (N m-2 s)
 MGWS-NM2S;196;;;
-
 # 228251:Potential evaporation (m)
 PEV-M;228251;;;
-
 # 210:Surface net solar radiation, clear sky (J m-2)
 SSRC-JM2;210;;;
-
 # 211:Surface net thermal radiation, clear sky (J m-2)
 STRC-JM2;211;;;
-
 # 167:2 metre temperature (K)
 T2-K;167;;;
-
 # 60:Potential vorticity (K m2 kg-1 s-1)
 PV-KM2KGS;60;;;
-
 # 160:Standard deviation of orography (m)
 SDOR-M;160;;;
-
 # 160:Standard deviation of orography difference (m)
 SDORDIFF-M;200160;;;
-
 # 161:Anisotropy of sub-gridscale orography (~)
 ISOR;161;;;
-
 # 162:Angle of sub-gridscale orography (radians)
 ANOR-RAD;162;;;
-
 # 163:Slope of sub-gridscale orography (~)
 SLOR;163;;;
-
 # 26:Lake cover ((0 - 1))
 CL-0TO1;26;;;
-
 # 228007:Lake total depth (m)
 DL-M;228007;;;
-
 # 228012:Lake shape factor (dimensionless)
 LSHF;228012;;;
-
 # 74:Standard deviation of filtered subgrid orography (m)
 SDFOR-M;74;;;
-
 # 168:2 metre dewpoint temperature (K)
 TD2-K;168;;;
-
 # 2: Velocity potential (m2 s-1)
 VP-M2S;2;;;
-
 # 260199: Volumetric soil moisture (m3 m-3)
 VSW-M3M3;260199;;;
-
 # 32: Snow albedo ((0 - 1))
 ASN-0TO1;32;;;
-
 # 260038: Snow cover (%)
 SNOWC;260038;;;
-
 # 45: Snow melt (m of water eq.)
 SMLT-M;45;;;
-
 # 238: Temperature of snow layer (K)
 TSN-K;238;;;
-
 # 228100: Evaporation from the top of canopy (m of water equivalent)
 EVATC-M;228100;;;
-
 # 228101: Evaporation from bare soil (m of water equivalent)
 EVABS-M;228101;;;
-
 # 228102: Evaporation from open water surfaces excluding oceans (m of water equivalent)
 EVAOW-M;228102;;;
-
 # 228103: Evaporation from vegetation transpiration (m of water equivalent)
 EVAVT-M;228103;;;
-
 # 44: Snow evaporation (m of water equivalent)
 ES-M;44;;;
-
 # 198: Skin reservoir content (m of water equivalent)
 SRC-M;198;;;
-
 # 3066:Snow Depth (m)
 HSNOW-M;3066;;;
-
 # 500045:Snow Depth (m)
 HSNOW-M;500045;;;
-
 # 141: Snow depth (m of water equivalent)
 SD-M;141;;;
-
 # 228141:Snow depth water equivalent (kg m-2) (mm)
 SD-KGM2;228141;;;
-
 # 500206:Leaf area index (~)
 LAI;500206;;;
-
 # Distance to water (general), river, lake or ocean (m)
 DTW-M;128100;;;
 DTR-M;128101;;;
 DTL-M;128102;;;
 DTO-M;128103;;;
+# Mean total precipitation flux, Short Name mtpf
+MTPF-KGM-2;235013;;;
+# Snow Density
+SND-KGM3;500147;;;
+# Albedo
+ALBEDO-PRCNT;260509;;;
+# Total column water vapor
+TOTCWV-KGM2;260057;;;
