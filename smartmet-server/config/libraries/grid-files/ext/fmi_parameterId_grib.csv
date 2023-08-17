@@ -159,11 +159,17 @@ DTW-M;128100;;;
 DTR-M;128101;;;
 DTL-M;128102;;;
 DTO-M;128103;;;
-# Mean total precipitation flux, Short Name mtpf
-MTPF-KGM-2;235013;;;
+# total precipitation
+RR-KGM2;228228;;;
 # Snow Density
 SND-KGM3;500147;;;
 # Albedo
 ALBEDO-PRCNT;260509;;;
 # Total column water vapor
 TOTCWV-KGM2;260057;;;
+# Evaporation
+EVAP-KGM2;260259;;;
+# Soiltype
+SOILTY-N;500205;;;
+# sfc geopotential
+Z-M2S2;500004;;;

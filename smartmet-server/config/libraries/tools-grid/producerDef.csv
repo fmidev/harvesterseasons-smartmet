@@ -29,6 +29,7 @@ SWI;SWI;SWI;Copernicus Global Land Soil wetness index
 SWI10;SWI10;SWI10;Copernicus global land Soil wetness index
 ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
+ECC;ECC;ECC;IFS ancilliary hi-res
 S3SY;S3SY;S3SY;Sentinel-3 level 2 Synergy
 #AWI-CM-1-1-MR;AWI-CM-1-1-MR;AWI-CM-1-1-MR;CMIP6 AWI-CM-1-1-MR model data from C3S
 #BCC-CSM2-MR;BCC-CSM2-MR;BCC-CSM2-MR;CMIP6 BCC-CSM2-MR model data from C3S

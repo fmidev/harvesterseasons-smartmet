@@ -1,6 +1,6 @@
 {
-    "title": "SWI Soil Wetness Index Layer 3 Isobands",
-    "abstract": "SWI3 Copernicus land Soil wetness index layer 3.",
+    "title": "SWI Soil Wetness Index Layer 2 Isobands",
+    "abstract": "SWI2 Copernicus land Soil wetness index layer 2.",
     "projection": {},
     "producer": "SWI",
     "source": "grid",
@@ -8,9 +8,9 @@
 	"layers": [{
 	    "qid": "l", 
 	    "layer_type": "isoband",
-	    "isobands": "json:isobands/SWI.json",
-	    "css": "isobands/SWI.css",
-	    "parameter": "SWI3:SWI:5059:1:0:0",
+	    "isobands": "json:isobands/SWI-M3M3.json",
+	    "css": "isobands/SWI-M3M3.css",
+	    "parameter": "SWI2:SWI:5059:1:0:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/SWI.json",
             "css": "isobands/SWI.css",
-            "parameter": "SWI4:SWI:5029:1:0:1",
+            "parameter": "SWI4:SWI:5029:1:0:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },
