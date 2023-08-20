@@ -25,6 +25,9 @@ c.retrieve(
             'sub_surface_runoff', 'surface_pressure', 'surface_runoff',
             'temperature_of_snow_layer', 'total_precipitation', 'volumetric_soil_water_layer_1',
             'volumetric_soil_water_layer_2', 'volumetric_soil_water_layer_3', 'volumetric_soil_water_layer_4',
+            'total_evaporation', 'surface_latent_heat_flux', 'surface_sensible_heat_flux',
+            'surface_net_solar_radiation', 'surface_solar_radiation_downwards',
+            'surface_thermal_radiation_downwards', 'surface_net_thermal_radiation'
         ],
         'year': year,
         'month': month,
