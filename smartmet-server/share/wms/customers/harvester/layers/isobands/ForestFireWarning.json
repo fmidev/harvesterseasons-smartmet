@@ -1,0 +1,49 @@
+[
+    {
+        "attributes": {
+            "class": "ForestFireWarning_1_2"
+        },
+        "hilimit": 2,
+        "lolimit": 1,
+        "qid": "ForestFireWarning_1_2"
+    },
+    {
+        "attributes": {
+            "class": "ForestFireWarning_2_3"
+        },
+        "hilimit": 3,
+        "lolimit": 2,
+        "qid": "ForestFireWarning_2_3"
+    },
+    {
+        "attributes": {
+            "class": "ForestFireWarning_3_4"
+        },
+        "hilimit": 4,
+        "lolimit": 3,
+        "qid": "ForestFireWarning_3_4"
+    },
+    {
+        "attributes": {
+            "class": "ForestFireWarning_4_5"
+        },
+        "hilimit": 5,
+        "lolimit": 4,
+        "qid": "ForestFireWarning_4_5"
+    },
+    {
+        "attributes": {
+            "class": "ForestFireWarning_5_6"
+        },
+        "hilimit": 6,
+        "lolimit": 5,
+        "qid": "ForestFireWarning_5_6"
+    },
+    {
+        "attributes": {
+            "class": "ForestFireWarning_6"
+        },
+        "lolimit": 6,
+        "qid": "ForestFireWarning_6"
+    }
+]

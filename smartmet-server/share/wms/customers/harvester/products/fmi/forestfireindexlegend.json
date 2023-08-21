@@ -1,0 +1,19 @@
+{
+    "title" : "ForestFireIndex",
+    "abstract" : "ForestFireIndex",
+    "projection": {},
+    "producer": "",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "parameter": "EVAP-KGM2:SMARTMET:13",
+            "isobands": "json:isobands/ForestFireWarningLegend.json",
+            "css": "isobands/ForestFireWarning.css",
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

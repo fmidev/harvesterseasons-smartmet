@@ -38,10 +38,9 @@ nc_ok=$(cdo xinfon $ncfile)
 if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
-else 
-    
-    cdo --eccodes -f grb2 -s -b P8 copy -chparam,-4,40.228.192,-8,41.228.192,-14,42.228.192,-16,43.228.192 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
-    grib_set -r -s centre=224,jScansPositively=0 $fileFix $file
+else     
+    cdo --eccodes -z aec -f grb2 -s -b P8 copy -chparam,-4,40.228.192,-8,41.228.192,-14,42.228.192,-16,43.228.192 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
+    grib_set -s centre=224,jScansPositively=0 $fileFix $file
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/ &&\
        s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/

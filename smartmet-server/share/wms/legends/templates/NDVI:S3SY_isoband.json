@@ -1,0 +1,101 @@
+{
+    "defs":
+    {
+	"styles":
+	{
+	    ".Label":
+	    {
+		"font": "Arial",
+		"font-size": 8
+	    },
+	    ".Units":
+	    {
+		"font": "Arial",
+		"font-size": 14
+	    }
+	},
+	"layers": [
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "temperature_isoband_rect"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+			    "width": "14",
+			    "height": "15"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "temperature_isoband_start"
+		},
+		"layers": [
+		    {
+			"tag": "rect",
+			"attributes":
+			{
+                            "width": "14",
+                            "height": "0"
+			}
+		    }
+		]
+	    },
+	    {
+		"tag": "symbol",
+		"attributes":
+		{
+		    "id": "temperature_isoband_downtriangle"
+		},
+		"layers": [
+		    {
+			"tag": "path",
+			"attributes":
+			{
+			    "d": "M0 0,7 10,14 0Z"
+			}
+		    }
+		]
+	    }
+	]
+    },
+   "layer_type": "legend",
+    "symbols":
+    {
+        "symbol": ""
+    },
+    "layers": [
+	{
+	    "layer_type": "legend",
+            "x": 10,  // will be replaced in the code, the original value will be added
+            "y": 10,  // will be replaced in the code, the original value will be added
+	    "dx": 0,
+	    "dy": 15,
+	    "isobands": "isoband_color_scale",
+	    "symbols":
+	    {
+		"css": "isoband_css",
+		"symbol": "temperature_isoband_rect",
+		"attributes":
+		{
+		    "stroke": "black",
+		    "stroke-width": "0.5"
+		}
+	    },
+	    "labels":
+	    {
+		"separator": " - ",	// en dash = " \u2013 "
+		"dx": 20,
+		"dy": 12
+	    }
+	}
+    ]
+}

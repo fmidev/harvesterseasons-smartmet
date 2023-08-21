@@ -1,0 +1,7 @@
+/*  1-6 = increasing severity */
+.ForestFireWarning_1_2	{ stroke: none; fill: rgba(0,255,255,1.00); }
+.ForestFireWarning_2_3	{ stroke: none; fill: rgba(64,189,64,1.00); }
+.ForestFireWarning_3_4	{ stroke: none; fill: rgba(192,192,64,1.00); }
+.ForestFireWarning_4_5	{ stroke: none; fill: rgba(254,130,0,1.00); }
+.ForestFireWarning_5_6	{ stroke: none; fill: rgba(254,0,0,1.00); }
+.ForestFireWarning_6	{ stroke: none; fill: rgba(254,0,131,1.00); }
