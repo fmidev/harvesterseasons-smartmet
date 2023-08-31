@@ -49,7 +49,7 @@ query="https://catalogue.dataspace.copernicus.eu/resto/api/collections/Sentinel3
 linkstxt=$(wget -qO - "$query" | jq -r '.features[].id')
 
 #features[].properties.services.download.url')
-if [ $linkstxt -eq '' ]
+if [ -z "$linkstxt" ]
 then
     echo "$query $linkstxt"
     exit 1

@@ -1,6 +1,6 @@
 {
-    "title": "NDVI Normalized Difference Vegetation Index Isobands",
-    "abstract": "NDVI Normalized difference vegetation index, CLMS.",
+    "title": "SDE-CM Soil Water Equivalent Isobands",
+    "abstract": "SDE-CM Soil Water Equivalent (cm), CLMS.",
     "projection": {},
     "producer": "CLMS",
     "source": "grid",
@@ -8,9 +8,9 @@
 	"layers": [{
 	    "qid": "l", 
 	    "layer_type": "isoband",
-	    "isobands": "json:isobands/NDVI.json",
-	    "css": "isobands/NDVI.css",
-	    "parameter": "NDVI:CLMS:5052:1:0:0",
+	    "isobands": "json:isobands/swe.json",
+	    "css": "isobands/swe.css",
+	    "parameter": "SDE-CM:CLMS:5051:1:0:1",
 		"sampling":{
 		"relativeresolution": 4
 	    },

@@ -1,0 +1,64 @@
+[
+    {
+      "qid": "swe_125_inf",
+      "lolimit": 125,
+      "attributes": {
+        "class": "swe_125_inf"
+      }
+    },
+    {
+      "qid": "swe_100_125",
+      "lolimit": 100,
+      "hilimit": 125,
+      "attributes": {
+        "class": "swe_100_125"
+      }
+    },
+    {
+      "qid": "swe_75_100",
+      "lolimit": 75,
+      "hilimit": 100,
+      "attributes": {
+        "class": "swe_75_100"
+      }
+    },
+    {
+      "qid": "swe_50_75",
+      "lolimit": 50,
+      "hilimit": 75,
+      "attributes": {
+        "class": "swe_50_75"
+      }
+    },
+    {
+      "qid": "swe_25_50",
+      "lolimit": 25,
+      "hilimit": 50,
+      "attributes": {
+        "class": "swe_25_50"
+      }
+    },
+    {
+      "qid": "swe_10_25",
+      "lolimit": 10,
+      "hilimit": 25,
+      "attributes": {
+        "class": "swe_10_25"
+      }
+    },
+    {
+      "qid": "swe_1_10",
+      "lolimit": 1,
+      "hilimit": 10,
+      "attributes": {
+        "class": "swe_1_10"
+      }
+    },
+    {
+      "qid": "swe_inf_1",
+      "hilimit": 1,
+      "attributes": {
+        "class": "swe_inf_1"
+      }
+    }
+  ]

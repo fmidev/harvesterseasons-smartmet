@@ -29,17 +29,7 @@ else
     ## remove previous month files
     oldmonth=$(date -d '1 month ago' +%m)
     oldyear=$(date -d '1 month ago' +%Y)
-    rm $era-orography-$oldyear${oldmonth}-$abr.grib
-    rm ens/ec-${bsf}_$oldyear${oldmonth}_*-24h-$abr-*.grib
-    rm ens/ec-*_$oldyear${oldmonth}_pl-12h-$abr-*.grib
-    rm ens/ec-*_$oldyear${oldmonth}_pl-pp-12h-$abr-*.grib
-    rm ens/ec-${bsf}_$oldyear${oldmonth}_tp-$abr-*.nc
-    rm ens/disacc-$oldyear${oldmonth}-*.grib 
-    rm era5-orography-$oldyear${oldmonth}-$abr.grib 
-    rm ens/ECX${bsf}_$oldyear${oldmonth}_tp-$abr-*
-    rm ens/ec-sf-${era}_$oldyear${oldmonth}_disacc-$abr-*.grib
-    rm ens/ec-sf_$oldyear${oldmonth}_all+sde-24h-$abr-*
-    rm ens/ECSF_$oldyear${oldmonth}01T000000_all-24h-$abr-*
+    rm ens/*_$oldyear${oldmonth}_*.grib
     # lisää poista swvl säätöjutut
 fi
 cd /home/smartmet/data
@@ -100,10 +90,11 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
     ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
 ### adjust evaporation and total precip or other accumulating variables
 ### due to a clearly too strong variance term in tp adjustment is only done with bias for now
+### disacc tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_acc-24h-$abr-50.grib ] && \
- seq 0 50 | parallel "cdo -s --eccodes -O mergetime -seltimestep,1 -selname,e,tp ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
-     -deltat -selname,e,tp ens/ec-sf_$year${month}_all-24h-$abr-{}.grib ens/disacc-$year${month}-{}.grib && \
-    cdo -s --eccodes ymonmul -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/disacc-$year${month}-{}.grib \
+ seq 0 50 | parallel "cdo -s --eccodes -O mergetime -seltimestep,1 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+     -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf ens/ec-sf_$year${month}_all-24h-$abr-{}.grib ens/disacc-$year${month}-{}.grib && \
+    cdo -s --eccodes ymonmul -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,e,tp ens/disacc-$year${month}-{}.grib \
      -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_$abr.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib && \
     cdo -s --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}.grib" || echo "NOT adj acc - seasonal forecast input missing or already produced"

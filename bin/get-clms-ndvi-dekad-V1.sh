@@ -50,6 +50,6 @@ else
      s3cmd put -q -P --no-progress $file s3://copernicus/land/gl_ndvi300m_grb/ &&\
        s3cmd put -q -P --no-progress $meta s3://copernicus/land/gl_ndvi300m_meta/
     rm $ncIn $ncfile $meta $fileFix
-    mv $file ../grib/CLMS_20140101T000000_${file:14:8}T000000_NDVI-V1-eu.grib
+    mv $file ../grib/CLMS_20000101T000000_${file:14:8}T000000_NDVI-V1-eu.grib
 fi
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
