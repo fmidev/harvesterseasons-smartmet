@@ -36,16 +36,16 @@ era='era5l'
     cdo -b P12 -O --eccodes shifttime,1day -runsum,15 -selname,e,tp,ro ens/disacc-era5l-202308-5.grib ens/ec-sf_runsums_202308-5.grib || echo 'not doing stuff'
 
 # laihv lailv: shifttime ja karkausvuosi? 
-! [ -f ECC_${year}0101T000000_laihv-eu-day.grib ] && ! [ -f ECC_${year}0101T000000_lailv-eu-day.grib ] && \
-    diff=$(($year - 2020)) && \
-    cdo -shifttime,${diff}years grib/ECC_20000101T000000_laihv-eu-day.grib ECC_${year}0101T000000_laihv-eu-day.grib && \
-    cdo -shifttime,${diff}years grib/ECC_20000101T000000_lailv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib || echo 'not shifting'
+#! [ -f ECC_${year}0101T000000_laihv-eu-day.grib ] && ! [ -f ECC_${year}0101T000000_lailv-eu-day.grib ] && \
+#    diff=$(($year - 2020)) && \
+#    cdo -shifttime,${diff}years grib/ECC_20000101T000000_laihv-eu-day.grib ECC_${year}0101T000000_laihv-eu-day.grib && \
+#    cdo -shifttime,${diff}years grib/ECC_20000101T000000_lailv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib || echo 'not shifting'
 
 # soilgrids?
 
 # dtm-slope/aspect/height?
 
-python3 /home/smartmet/bin/DEV-xgb-predict-swi2.py ens/ec-sf_era5l_202308_swvls-24h-eu-5-fixLevs.grib ens/ec-sf_era5l_202308_sl00utc-24h-eu-5.grib ens/ec-sf_runsums_202308-5.grib ens/disacc-era5l-202308-5.grib ECC_${year}0101T000000_laihv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib ens/ECXBSF_swi2_out_DEV-5.nc
+python3 /home/ubuntu/bin/DEV-xgb-predict-swi2.py ens/ec-sf_era5l_202308_swvls-24h-eu-5-fixLevs.grib ens/ec-sf_era5l_202308_sl00utc-24h-eu-5.grib ens/ec-sf_runsums_202308-5.grib ens/disacc-era5l-202308-5.grib ens/ECXBSF_swi2_out_DEV-5.nc
 
 #echo 'netcdf to grib'
 # netcdf to grib

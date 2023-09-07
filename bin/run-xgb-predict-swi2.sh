@@ -34,17 +34,17 @@ echo 'runsums'
 [ -f ens/disacc-era5l-202308-49.grib ] && ! [ -f ens/ec-sf_runsums_202308-49.grib ] && \
 seq 0 50 | parallel cdo -b P12 -O --eccodes shifttime,1day -runsum,15 -selname,e,tp,ro ens/disacc-era5l-202308-{}.grib ens/ec-sf_runsums_202308-{}.grib || echo 'not doing stuff'
 
-echo 'laihv lailv'
+#echo 'laihv lailv'
 # laihv lailv: shifttime ja karkausvuosi? 
-! [ -f ECC_${year}0101T000000_laihv-eu-day.grib ] && ! [ -f ECC_${year}0101T000000_lailv-eu-day.grib ] && \
-diff=$(($year - 2020)) && \
-cdo -shifttime,${diff}years grib/ECC_20000101T000000_laihv-eu-day.grib ECC_${year}0101T000000_laihv-eu-day.grib && \
-cdo -shifttime,${diff}years grib/ECC_20000101T000000_lailv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib || echo 'not shifting'
+#! [ -f ECC_${year}0101T000000_laihv-eu-day.grib ] && ! [ -f ECC_${year}0101T000000_lailv-eu-day.grib ] && \
+#diff=$(($year - 2020)) && \
+#cdo -shifttime,${diff}years grib/ECC_20000101T000000_laihv-eu-day.grib ECC_${year}0101T000000_laihv-eu-day.grib && \
+#cdo -shifttime,${diff}years grib/ECC_20000101T000000_lailv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib || echo 'not shifting'
 
 # soilgrids?
 
 echo 'start xgb predict'
-seq 0 50 | parallel -j4 python /home/smartmet/bin/xgb-predict-swi2-V2.py ens/ec-sf_era5l_202308_swvls-24h-eu-{}-fixLevs.grib ens/ec-sf_era5l_202308_sl00utc-24h-eu-{}.grib ens/ec-sf_runsums_202308-{}.grib ens/disacc-era5l-202308-{}.grib ECC_${year}0101T000000_laihv-eu-day.grib ECC_${year}0101T000000_lailv-eu-day.grib ens/ECXBSF_swi2_out_dev-{}.nc
+seq 0 50 | parallel -j4 python /home/ubuntu/bin/xgb-predict-swi2-V2.py ens/ec-sf_era5l_202308_swvls-24h-eu-{}-fixLevs.grib ens/ec-sf_era5l_202308_sl00utc-24h-eu-{}.grib ens/ec-sf_runsums_202308-{}.grib ens/disacc-era5l-202308-{}.grib ens/ECXBSF_swi2_out_dev-{}.nc
 
 echo 'netcdf to grib'
 # netcdf to grib

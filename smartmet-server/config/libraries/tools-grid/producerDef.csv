@@ -28,6 +28,7 @@ SMARTMET;SMARTMET;SMARTMET;FMI official weather forecast based parameters
 SMARTOBS;SMARTOBS;SMARTOBS;FMI official weather observation based parameters
 SWI;SWI;SWI;Copernicus Global Land Soil wetness index
 SWI10;SWI10;SWI10;Copernicus global land Soil wetness index
+SWIC;SWIC;SWIC;Copernicus Global Land Soil wetness index climate
 ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
 ECC;ECC;ECC;IFS ancilliary hi-res

@@ -15,13 +15,13 @@ swvls_ecsf=sys.argv[1] # vsw (swvl layers)
 sl00_ecsf=sys.argv[2] # u10,v10,d2m,t2m,rsn,sd,stl1
 sl_runsum=sys.argv[3] # 15-day runnins sums for disaccumulated tp,e,ro
 sl_disacc=sys.argv[4] # disaccumulated tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf 
-laihv=sys.argv[5] # laihv
-lailv=sys.argv[6] # lailv 
+laihv='grib/ECC_20000101T000000_laihv-eu-day.grib' 
+lailv='grib/ECC_20000101T000000_lailv-eu-day.grib' 
 dtm_aspect='grib/COPERNICUS_20000101T000000_20110701T000000_anor-dtm-aspect-avg_eu-era5l.grb' 
 dtm_slope='grib/COPERNICUS_20000101T000000_20110701T000000_slor-dtm-slope-avg_eu-era5l.grb'
 dtm_height='grib/COPERNICUS_20000101T000000_20110701T000000_h-dtm-height-avg_eu-era5l.grb'
 soilgrids='grib/SG_2020050101T000000_soilgrids-0-200cm-eu-era5l.grib' # sand ssfr, silt soilp, clay scfr, soc stf
-outfile=sys.argv[7]
+outfile=sys.argv[5]
 
 # read in swvl2 and static values
 swvls=xr.open_dataset(swvls_ecsf, engine='cfgrib', 
@@ -38,7 +38,7 @@ swvl_df=swvl_df[['valid_time','latitude','longitude','swvl2-00']]
 
 # sl, disacc, dtm
 sl_UTC00_var = ['u10','v10','d2m','t2m',
-        'rsn','sd','stl1'] 
+        'rsn','sd','stl1'] # sde instead of sd?? FIX
 sl_disacc_var=['tp','e','slhf','sshf','ro','str','strd','ssr','ssrd','sf']
 dtm_var=['p3008','slor','anor']
 sl00=xr.open_dataset(sl00_ecsf, engine='cfgrib', 
@@ -107,6 +107,10 @@ laidf.reset_index(inplace=True)
 laidf=laidf[['valid_time','latitude','longitude','lai_hv','lai_lv']]
 laidf[['latitude','longitude']]=laidf[['latitude','longitude']].astype('float32')
 laidf['valid_time']=pd.to_datetime(laidf['valid_time'])
+# shift dates
+day1=str(day1)
+mons=(int(day1[0:4])-2020)*12
+laidf['valid_time'] = pd.DatetimeIndex( laidf['valid_time'] ) + pd.DateOffset(months = mons)
 laidf['valid_time']=laidf['valid_time'].dt.date
 laidf['valid_time']=pd.to_datetime(laidf['valid_time'])
 laidf.rename(columns = {'lai_lv':'lailv-00','lai_hv':'laihv-00'}, inplace = True)
