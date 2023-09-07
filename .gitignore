@@ -9,3 +9,4 @@ dev/
 __pycache__
 *.egg-info
 *~
+bin/tmp.py
