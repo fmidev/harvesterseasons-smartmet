@@ -173,3 +173,7 @@ EVAP-KGM2;260259;;;
 SOILTY-N;500205;;;
 # sfc geopotential
 Z-M2S2;500004;;;
+# Urban cover fraction/soil sealing
+CUR-0TO1;229001;;;
+# 133:Specific humidity (kg kg-1)
+Q-KGKG;133;;;

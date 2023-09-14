@@ -58,7 +58,7 @@
 1;5059;SWI-EU;6832;4144;-10.995536;71.995536;0.008929;0.008929;+x-y;precise 1km grid for soil water index product
 1;5060;ECC-EU;6832;4144;-10.995536;71.995536;0.008929;0.008929;+x-y;1km EU latlon grid - comparable to SWI-1km
 1;5061;ECC-ERA5L;801;501;-30.000000;75.000000;0.100000;0.100000;+x-y;ECMWF climate in ERA5L-EU grid
-1;5062;ECXBSF-ERA5L;801;501;-30.000000;25.000000;0.100000;0.100000;+x+y;ML output on ERA5L
+1;5062;ECXSF-ERA5L;801;501;-30.000000;25.000000;0.100000;0.100000;+x+y;ML output on ERA5L
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

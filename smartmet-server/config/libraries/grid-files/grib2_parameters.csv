@@ -12252,7 +12252,7 @@
 228255;discipline=192,parameterCategory=228,parameterNumber=255;
 
 # Urban cover fraction
-229001;discipline=1,parameterCategory=6,parameterNumber=0;
+229001;discipline=2,parameterCategory=6,parameterNumber=0;
 229001;discipline=192,parameterCategory=200,parameterNumber=199;
 
 # Surface runoff (variable resolution)
