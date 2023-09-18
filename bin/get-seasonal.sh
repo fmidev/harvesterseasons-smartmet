@@ -42,7 +42,7 @@ echo "$bsf $era y: $year m: $month ending $eyear-$emonth area: $area abr: $abr"
 ## Fetch seasonal data from CDS-API
 [ -f ec-sf-$year$month-all-24h-$abr.grib ] && echo "SF Data file already downloaded" || /home/smartmet/bin/cds-sf-all-24h.py $year $month $area $abr
 [ -f ec-sf-$year$month-pl-12h-$abr.grib ] && echo "SF pressurelevel Data already downloaded" || /home/smartmet/bin/cds-sf-pl-12h.py $year $month $area $abr
-[ -f ecsf_$year-$month-01_$abr-swvls.grib ] && echo "SF SoilLevel Data already downloaded" || sed s:2023-01-01:$year-$month-01:g ../mars/seas-swvl.mars | ../bin/mars
+[ -f ecsf_$year-$month-01_$abr-swvls.grib ] && echo "SF SoilLevel Data already downloaded" || sed s:2023-01-01:$year-$month-01:g ../mars/seas-swvl.mars | /home/smartmet/bin/mars
 
 # ensure new eccodes and cdo
 #conda activate xr

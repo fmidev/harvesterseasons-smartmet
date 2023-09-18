@@ -20,7 +20,7 @@ lailv='grib/ECC_20000101T000000_lailv-eu-day.grib'
 dtm_aspect='grib/COPERNICUS_20000101T000000_20110701T000000_anor-dtm-aspect-avg_eu-era5l.grb' 
 dtm_slope='grib/COPERNICUS_20000101T000000_20110701T000000_slor-dtm-slope-avg_eu-era5l.grb'
 dtm_height='grib/COPERNICUS_20000101T000000_20110701T000000_h-dtm-height-avg_eu-era5l.grb'
-soilgrids='grib/SWIC_2020050101T000000_soilgrids-0-200cm-eu-era5l.grib' # sand ssfr, silt soilp, clay scfr, soc stf
+soilgrids='grib/SG_20200501T000000_soilgrids-0-200cm-eu-era5l.grib' # sand ssfr, silt soilp, clay scfr, soc stf
 lakecov='grib/ECC_20000101T000000_ilwaterc-frac-eu-9km-fix.grib' # lake cover
 urbancov='grib/ECC_20000101T000000_urbanc-frac-eu-9km-fix.grib' # urban cover
 highveg='grib/ECC_20000101T000000_hveg-frac-eu-9km-fix.grib' # high vegetation cover
@@ -30,7 +30,8 @@ landcov='grib/ECC_20000101T000000_lc-frac-eu-9km-fix.grib' # land cover
 soiltype='grib/ECC_20000101T000000_soiltype-eu-9km-fix.grib' # soil type
 typehv='grib/ECC_20000101T000000_hveg-type-eu-9km-fix.grib' # type of high vegetation
 typelv='grib/ECC_20000101T000000_lveg-type-eu-9km-fix.grib' # type of low vegetation 
-swi2c='grib/' # swi2 climate
+swi2c1='grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean-eu-9km-fix.grib' # swi2 climate
+swi2c2='grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean-eu-9km-2-fix.grib'
 outfile=sys.argv[5]
 
 # read in swvl2 
@@ -45,6 +46,7 @@ swvl_df['depthBelowLandLayer']=swvl_df['depthBelowLandLayer'].round(2)
 swvl_df = swvl_df[swvl_df.depthBelowLandLayer == 0.07]
 swvl_df.rename(columns = {'vsw':'swvl2-00'}, inplace = True)
 swvl_df=swvl_df[['valid_time','latitude','longitude','swvl2-00']]
+print(swvl_df)
 
 # sl, dtm, soilgrids, eccs
 sl_UTC00_var = [#'u10','v10',
@@ -160,7 +162,8 @@ df1.rename(columns = {'d2m':'td2-00','t2m':'t2-00','rsn':'rsn-00','sd':'sd-00','
 print(df1)
 df2 = pd.merge(swvl_df,df1, on=['valid_time','latitude','longitude'])
 df1,swvl_df=[],[]
-'''
+print(df2)
+
 # disacc
 sl_disacc_var=['tp','e','slhf','sshf','ro','str',#'strd',
                'ssr','ssrd'#,'sf'
@@ -175,6 +178,7 @@ sldacc[['latitude','longitude']]=sldacc[['latitude','longitude']].astype('float3
 sldacc.rename(columns={'e':'evap'},inplace=True)
 df_new=pd.merge(df2,sldacc,on=['valid_time','latitude','longitude'])
 df2,sldacc=[],[]
+print(df_new)
 
 ### Read in runsums
 sl_runsum_var=['tp','e','ro']
@@ -191,22 +195,27 @@ df3=pd.merge(df_new,runsum_df, on=['valid_time','latitude','longitude'])
 df_grid=runsum_df[['valid_time','latitude','longitude']]
 df_grid['swi2'] = np.nan
 df_grid=df_grid.set_index(['valid_time', 'latitude','longitude'])
-df2,runsum_df=[],[]
+runsum_df,df_new=[],[]
+print(df3)
 
+print('laiswi2')
 ### Read in laihv lailv swi2clim 
 laihv_ds=xr.open_dataset(laihv, engine='cfgrib', 
                     backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))
 lailv_ds=xr.open_dataset(lailv, engine='cfgrib', 
                     backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))
-swi2clim=xr.open_dataset(swi2c, engine='cfgrib', 
+swi2clim1=xr.open_dataset(swi2c1, engine='cfgrib', 
                     backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))['swi2']
-laids=xr.merge([laihv_ds,lailv_ds,swi2clim],compat='override')
-laihv_ds,lailv_ds,swi2clim=[],[],[]
+swi2clim2=xr.open_dataset(swi2c2, engine='cfgrib', 
+                    backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))['swi2']
+laids=xr.merge([laihv_ds,lailv_ds,swi2clim1,swi2clim2],compat='override')
+laihv_ds,lailv_ds,swi2clim1,swi2clim2=[],[],[],[]
 laidf=laids.to_dataframe()
 laidf.reset_index(inplace=True)
 laidf=laidf[['valid_time','latitude','longitude','lai_hv','lai_lv','swi2']]
 laidf[['latitude','longitude']]=laidf[['latitude','longitude']].astype('float32')
 laidf['valid_time']=pd.to_datetime(laidf['valid_time'])
+print(laidf)
 # shift dates
 day1=str(day1)
 mons=(int(day1[0:4])-2020)*12
@@ -214,8 +223,11 @@ laidf['valid_time'] = pd.DatetimeIndex( laidf['valid_time'] ) + pd.DateOffset(mo
 laidf['valid_time']=laidf['valid_time'].dt.date
 laidf['valid_time']=pd.to_datetime(laidf['valid_time'])
 laidf.rename(columns = {'lai_lv':'lailv-00','lai_hv':'laihv-00','swi2':'swi2clim'}, inplace = True)
+print(laidf)
 df=pd.merge(df3,laidf, on=['valid_time','latitude','longitude'])
 df3,laidf=[],[]
+print(df)
+print('almost done')
 
 df['valid_time']=pd.to_datetime(df['valid_time'])
 df['dayOfYear'] = df['valid_time'].dt.dayofyear
@@ -259,6 +271,6 @@ result=df_grid.fillna(df)
 ds=result.to_xarray()
 #print(ds)
 nc=ds.to_netcdf(outfile)
-'''
+
 executionTime=(time.time()-startTime)
 print('Fitting execution time per member in minutes: %.2f'%(executionTime/60))
