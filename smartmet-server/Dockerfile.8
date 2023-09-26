@@ -1,4 +1,4 @@
-FROM rockylinux/rockylinux
+FROM rockylinux/rockylinux:8
 LABEL maintainer "Mikko Strahlendorff mikko.strahlendorffo@fmi.fi>"
 LABEL license    "MIT License Copyright (c) 2020 FMI Open Development"
 
@@ -56,7 +56,7 @@ RUN  dnf -y install drpm && \
  dnf config-manager --disable "pgdg*" && \
  sed -i -e 's/-source\]$/-__source]/' /etc/yum.repos.d/*.repo && \
  dnf -y update && \
- dnf -y install "glibc-langpack-*" && \
+ dnf -y install "glibc-langpack-*" postgresql-server && \
  ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
  dnf -y install \
     smartmet-plugin-backend \
@@ -127,7 +127,7 @@ USER smartmet
 
 # Uncomment to include files in Docker image. 
 # Comment and add in compose-file for development
-#COPY --chown=smartmet config /home/smartmet/config 
+COPY --chown=smartmet config /home/smartmet/config 
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["smartmetd"]

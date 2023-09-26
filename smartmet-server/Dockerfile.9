@@ -1,0 +1,77 @@
+FROM docker.io/rockylinux:9
+LABEL maintainer "Mikko Strahlendorff <mikko.strahlendorff@fmi.fi>"
+LABEL license    "MIT License Copyright (c) 2023 FMI Open Development"
+
+ENV USER_NAME="smartmet" \
+    GOOGLE_FONTS="Lato Noto%20Sans Open%20Sans Poppins Roboto Ubuntu" 
+
+RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-open-release-latest-9.noarch.rpm && \
+    dnf -y install yum-utils && \
+    dnf config-manager --set-enabled crb && \
+    dnf -y install epel-release && \
+    dnf config-manager --setopt="epel.exclude=librsvg2*" --save && \
+    dnf config-manager --setopt="baseos.exclude=librsvg2*" --save && \
+    dnf config-manager --setopt="epel.exclude=eccodes*" --save && \
+    dnf config-manager --set-disabled epel-source && \ 
+    dnf -y module disable postgresql:15 && \
+    dnf -y update && \
+    dnf -y install "glibc-langpack-*" postgresql-server && \
+    ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
+    dnf -y install --setopt=install_weak_deps=False \
+    smartmet-plugin-backend \
+    smartmet-plugin-admin \
+    smartmet-plugin-download \
+    smartmet-plugin-timeseries \
+    smartmet-plugin-wms \
+    smartmet-engine-grid \
+    smartmet-plugin-grid-admin \
+    smartmet-plugin-grid-gui \
+    smartmet-plugin-edr \
+    smartmet-tools-grid \
+    smartmet-qdtools \
+    unzip && \
+    dnf -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
+    dnf clean all 
+
+# Install Google Fonts
+RUN \
+    for FONT in $GOOGLE_FONTS; \
+    do \
+        mkdir -p /usr/share/fonts/truetype/${FONT} && \
+        curl -s -S -o ${FONT}.zip "https://fonts.google.com/download?family=${FONT}" && \
+        unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/${FONT} && \
+        rm -f ${FONT}.zip ; \
+    done
+
+HEALTHCHECK --interval=30s --timeout=10s \
+  CMD curl -f http://localhost:8080/admin?what=qengine || exit 1
+
+# Expose SmartMet Server's default port
+EXPOSE 8080
+
+RUN groupadd -r -g 1000 smartmet
+RUN useradd -r -u 1001 -g smartmet smartmet
+
+# wms.conf defines imagecache. timeseriescache's use is yet to be found.
+# MS 6.3.20: from new Rauhala dockerhub code
+RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
+    chmod -R g=u /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /etc/passwd /var/log
+
+# M.K. 09.01.2020: adopted it to WEkEO paths 
+RUN mkdir -p /srv/data
+# M.K. 09.01.2020: /srv/grid-data adopted to WEkEO setting
+#                  other paths are not created in step before TODO check!
+RUN chown -R smartmet /srv/data /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
+
+# Smartmet Servers configs should be separate from /etc's settings that come from RPM-packages
+# These locations are required to be defined in several different setting files under the config-direcotry
+# M.K. 09.01.2020: do I have to change something here? Dockerfile is aborting here.
+COPY scripts /home/smartmet/scripts 
+RUN chown -R smartmet /home/smartmet/*
+
+### Containers should NOT run as root as a good practice
+USER smartmet
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["smartmetd"]
