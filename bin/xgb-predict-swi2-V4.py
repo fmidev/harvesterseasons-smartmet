@@ -45,7 +45,7 @@ swvl_df['depthBelowLandLayer']=swvl_df['depthBelowLandLayer'].round(2)
 swvl_df = swvl_df[swvl_df.depthBelowLandLayer == 0.07]
 swvl_df.rename(columns = {'vsw':'swvl2-00'}, inplace = True)
 swvl_df=swvl_df[['valid_time','latitude','longitude','swvl2-00']]
-print(swvl_df)
+#print(swvl_df)
 
 # sl, dtm, soilgrids, eccs
 sl_UTC00_var = [#'u10','v10',
@@ -144,25 +144,20 @@ dtm=dtm.set_index(['latitude','longitude','valid_time'])
 dtm=dtm.to_xarray()
 ds1=xr.merge([sl00,dtm,sg_df_all,ecc],compat='override')
 sl00,dtm,sg,ecc=[],[],[],[]
-print('jump')
 df1=ds1.to_dataframe() # > 69G memory usage (19.3G + tää ajo)
 ds1=[]
-print('end jump')
 df1=df1.drop(columns=['surface','depthBelowLandLayer'])
 df1 = df1.reorder_levels(['latitude','longitude','valid_time']).sort_index() 
-print(df1) # check order
+#print(df1) # check order
 df1[dtm_var+sg_var+ecc_var] = df1[dtm_var+sg_var+ecc_var].fillna(method='ffill') # note: row order important
 df1[dtm_var+sg_var+ecc_var] = df1[dtm_var+sg_var+ecc_var].replace(-99999,np.nan)
 df1=df1.dropna()
 df1.reset_index(inplace=True)
-#df1=df1[['valid_time','latitude','longitude']+sl_UTC00_var+sl_disacc_var+dtm_var]
 df1[['latitude','longitude']]=df1[['latitude','longitude']].astype('float32')
 df1.rename(columns = {'d2m':'td2-00','t2m':'t2-00','rsn':'rsn-00','sd':'sd-00','stl1':'stl1-00','p3008':'DTM_height','slor':'DTM_slope','anor':'DTM_aspect','cl':'lake_cover','dl':'lake_depth','lsm':'land_cover','slt':'soiltype','cur':'urban_cover'}, inplace = True)
-print('ecc df1 dropna')
-print(df1.dropna())
 df2 = pd.merge(swvl_df,df1, on=['valid_time','latitude','longitude'])
 df1,swvl_df=[],[]
-print(df2)
+#print(df2)
 
 
 # disacc
@@ -179,7 +174,7 @@ sldacc[['latitude','longitude']]=sldacc[['latitude','longitude']].astype('float3
 sldacc.rename(columns={'e':'evap'},inplace=True)
 df_new=pd.merge(df2,sldacc,on=['valid_time','latitude','longitude'])
 df2,sldacc=[],[]
-print(df_new)
+#print(df_new)
 
 ### Read in runsums
 sl_runsum_var=['tp','e','ro']
@@ -197,9 +192,8 @@ df_grid=runsum_df[['valid_time','latitude','longitude']]
 df_grid['swi2'] = np.nan
 df_grid=df_grid.set_index(['valid_time', 'latitude','longitude'])
 runsum_df,df_new=[],[]
-print(df3)
+#print(df3)
 
-print('laiswi2')
 ### Read in laihv lailv (12 utc) swi2clim (00 utc)
 # mem use ~80G 
 laihv_ds=xr.open_dataset(laihv, engine='cfgrib', 
@@ -213,8 +207,6 @@ laihv_ds,lailv_ds=[],[]
 laidf=laids.to_dataframe()
 swi2cs=swi2clim.to_dataframe()
 swi2clim=[]
-print('swi2cs')
-print(swi2cs.dropna())
 laidf.reset_index(inplace=True)
 swi2cs.reset_index(inplace=True)
 laidf['valid_time']=pd.to_datetime(laidf['valid_time'])
@@ -225,27 +217,20 @@ df4=pd.merge(laidf,swi2cs, on=['valid_time','latitude','longitude'])
 laidf,swi2cs=[],[]
 df4=df4[['valid_time','latitude','longitude','lai_hv','lai_lv','swi2']]
 df4[['latitude','longitude']]=df4[['latitude','longitude']].astype('float32')
-print('before shiftime')
-print(df4.dropna())
 # shift dates
 day1=str(day1)
 mons=(int(day1[0:4])-2020)*12
 df4['valid_time'] = pd.DatetimeIndex( df4['valid_time'] ) + pd.DateOffset(months = mons)
 df4.rename(columns = {'lai_lv':'lailv-00','lai_hv':'laihv-00','swi2':'swi2clim'}, inplace = True)
-print('before merge')
-print(df4.dropna())
 df=pd.merge(df3,df4, on=['valid_time','latitude','longitude'])
 df3,df4=[],[]
-print('after merge')
-print(df.dropna())
-print('almost done')
 
 df['valid_time']=pd.to_datetime(df['valid_time'])
 df['dayOfYear'] = df['valid_time'].dt.dayofyear
 df.rename(columns = {'latitude':'TH_LAT', 'longitude':'TH_LONG'}, inplace = True)
 
 df=df.dropna()
-print(df)
+#print(df)
 swicols=['valid_time','TH_LAT','TH_LONG']
 preds=['evap','evap15d',
         'laihv-00','lailv-00',
@@ -262,11 +247,10 @@ preds=['evap','evap15d',
         'soc_0-5cm','soc_15-30cm','soc_5-15cm',
         'dayOfYear']
 df_preds = df[preds]
-print(df_preds)
 df=df[swicols]
 
 ### Predict with XGBoost fitted model 
-mdl_name='MLmodels/mdl_swi2_2015-2022_10000points-12.txt'
+mdl_name='MLmodels/mdl_swi2_2015-2022_10000points-13.txt'
 fitted_mdl=xgb.XGBRegressor()
 fitted_mdl.load_model(mdl_name)
 
@@ -280,9 +264,9 @@ df.rename(columns = {'TH_LAT':'latitude','TH_LONG':'longitude'}, inplace = True)
 df=df.set_index(['valid_time', 'latitude','longitude'])
 print(df)
 result=df_grid.fillna(df)
-print(result)
+#print(result)
 ds=result.to_xarray()
-print(ds)
+#print(ds)
 nc=ds.to_netcdf(outfile)
 
 executionTime=(time.time()-startTime)
