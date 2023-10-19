@@ -14,8 +14,6 @@ year='2023'
 month='09'
 grid='swi'
 
-
-
 # swvl2: ens/ec-sf_${year}${month}_swvls-24h-eu-5-fixLevs.grib remapped to swi ~26min
 # sellevel pudottaa aika-askelia jostain syystä
 echo 'remap swvl'
@@ -42,15 +40,15 @@ echo 'rolling sums'
 
 echo 'laihv jne'
 # laihv lailv swi2clim
-# KORJAA EHTO
-! [ -f ens/ECC_${year}${month}01T000000_laihv-eu-day.grib ] && ! [ -f ens/ECC_${year}${month}01T000000_lailv-eu-day.grib ] && \
+# 
+! [ -f ens/ECC_${year}${month}01T000000_2020-21_laihv-eu-swi-day.grib ] && ! [ -f ens/ECC_${year}${month}01T000000_2020-21_laihv-eu-swi-day.grib ] && \
     diff=$(($year - 2020)) && \
-    cdo -shifttime,${diff}years -shifttime,-12hour grib/ECC_20000101T000000_laihv-eu-day.grib ens/ECC_${year}${month}01T000000_laihv-eu-day-1km.grib && \
-    cdo -shifttime,${diff}years -shifttime,-12hour grib/ECC_20000101T000000_lailv-eu-day.grib ens/ECC_${year}${month}01T000000_lailv-eu-day-1km.grib && \
+    cdo -shifttime,${diff}years grib/ECC_20000101T000000_2020-21_laihv-eu-swi-day.grib ens/ECC_${year}${month}01T000000_2020-21_laihv-eu-swi-day.grib && \
+    cdo -shifttime,${diff}years grib//ECC_20000101T000000_2020-21_lailv-eu-swi-day.grib ens/ECC_${year}${month}01T000000_2020-21_lailv-eu-swi-day.grib && \
     cdo -shifttime,${diff}years grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean.grib || echo 'not shifting'
 
 echo 'start xgb'
-python3 /home/ubuntu/bin/DEV-xgb-predict-swi2-swigrid.py ens/ec-sf_${grid}_${year}${month}_swvls-24h-eu-5-fixLevs.grib ens/ec-sf_${grid}_${year}${month}_sl00utc-24h-eu-5.grib ens/ec-sf_runsums_${grid}_${year}${month}-5.grib ens/disacc_${grid}_${year}${month}-5.grib ens/ECC_${year}${month}01T000000_laihv-eu-day-1km.grib ens/ECC_${year}${month}01T000000_lailv-eu-day-1km.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean.grib ens/ECXBSF_swi2_${grid}_out_DEV-5.nc
+python3 /home/ubuntu/bin/DEV-xgb-predict-swi2-swigrid.py ens/ec-sf_${grid}_${year}${month}_swvls-24h-eu-5-fixLevs.grib ens/ec-sf_${grid}_${year}${month}_sl00utc-24h-eu-5.grib ens/ec-sf_runsums_${grid}_${year}${month}-5.grib ens/disacc_${grid}_${year}${month}-5.grib ens/ECC_${year}${month}01T000000_2020-21_laihv-eu-swi-day.grib ens/ECC_${year}${month}01T000000_2020-21_lailv-eu-swi-day.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean.grib ens/ECXBSF_swi2_${grid}_out_DEV-5.nc
 
 #echo 'netcdf to grib'
 # netcdf to grib

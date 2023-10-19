@@ -1,0 +1,8 @@
+Daily sums for ERA5 data as follows: 
+
+- download file ERA5_20000101T000000_${year}0101T000000_sl-hourly-eu.grib with ../bin/cds-era5-sl-past-hourly.py $year 
+- download a file with $nextyear first day first hour data (needed for shifttime&daysum for 31.12. to be correct)
+- cat file and year + day1 00utc for correct daysum, then
+- cdo -b P12 -O --eccodes delete,timestep=1 -daysum -shifttime,-1hour ERA5_20000101T000000_${year}0101T000000_sl-hourly-eu-f.grib grib/ERA5_20000101T000000_${year}0101T000000_sl-daysums-eu.grib
+
+sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

@@ -21,6 +21,7 @@ ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
 ECXB2SF;ECXB2SF;EC-C3S-XB2SF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
 ECXSF;ECXSF;EC-C3S-XSF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
 ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
+EDTE;EDTE;EDTE;Extreme Weather Digital Twin forecast data
 #HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
 #HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
 #HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
@@ -45,3 +46,5 @@ S3SY;S3SY;S3SY;Sentinel-3 level 2 Synergy
 #INM-CM4-8;INM-CM4-8;INM-CM4-8;CMIP6 INM-CM4-8 model data from C3S
 #INM-CM5-0;INM-CM5-0;INM-CM5-0;CMIP6 INM-CM5-0 model data from C3S
 #MRI-ESM2-0;MRI-ESM2-0;MRI-ESM2-0;CMIP6 MRI-ESM2-0 model data from C3S
+UMD;UMD;UMD;Univeristy of Maryland forest data
+LSASAFC;LSASAFC;LSASAFC;Land surface analysis SAF climate

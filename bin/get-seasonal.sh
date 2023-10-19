@@ -202,7 +202,7 @@ seq 0 50 | parallel cdo --eccodes -O -b P12 \
 #[ -f $era-orography-XGB-202201-$abr.grib ] && ! [ -f $era-orography-$year${month}-$abr.grib ] && \
 #cdo shifttime,${diff}months $era-orography-XGB-202201-$abr.grib $era-orography-$year${month}-$abr.grib  || echo "NOT current date era5 orography - no input or already produced" 
 ## shiftime doesn't work for past? xgb-predict crashes - download file 
-! [ -f $era-orography-$year${month}-$abr.grib ] && /home/smartmet/bin/cds-era5-orography.py $year $month $area $abr || echo "ERA5 orography data already downloaded"
+#! [ -f $era-orography-$year${month}-$abr.grib ] && /home/smartmet/bin/cds-era5-orography.py $year $month $area $abr || echo "ERA5 orography data already downloaded"
 
 ## run xgb-predict.py
 ## remove print commands from python script when tuotantoajo :D 
@@ -232,6 +232,8 @@ ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}-fixed.grib || echo "NOT fixing pl-pp g
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && ! [ -f grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib ] && \
 grib_copy ens/ec-sf_$year${month}_pl-pp-12h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib || echo "NOT joining pl-pp ensemble members - no input or already produced"
 wait 
+# run xgboost model to produce swi2 forecasts
+run-xgb-predict-swi2.sh
 
 # produce forcing file for HOPS
 # mod. M.Kosmale 18.03.2021: called now independently from cron (v3)

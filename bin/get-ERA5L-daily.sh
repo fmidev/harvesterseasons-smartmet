@@ -43,7 +43,7 @@ cdo -b P8 -O --eccodes daymean -selname,10u,10v,2d,2t,lai_hv,lai_lv,src,skt,asn,
 if [ $yday -eq 01 ]
 then
     mv ERA5L_20000101T000000_${ymond2}T000000_accumulated.grib grib/ERA5L_20000101T000000_${ymond2}T000000_accumulated.grib
-    mv ERA5L_20000101T000000_${ymond2}T000000_dailymeans.grib grib/ERA5LD_20000101T000000_${ymond2}T000000_dailymeans.grib
+    mv ERA5LD_20000101T000000_${ymond2}T000000_dailymeans.grib grib/ERA5LD_20000101T000000_${ymond2}T000000_dailymeans.grib
 else
     export SKIP_SAME_TIME=1
     cdo -b P8 -O --eccodes mergetime grib/ERA5L_20000101T000000_${yyear}${ymonth}01T000000_accumulated.grib ERA5L_20000101T000000_${ymond2}T000000_accumulated.grib grib/out1.grib
