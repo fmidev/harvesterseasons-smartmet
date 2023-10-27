@@ -1,6 +1,8 @@
 #!/bin/bash
 # Fetch LAI_300m_V1 from Copernicus Land Monitoring System 
 # give yearmonthday as cmd (2014-2021) 10 20 30 31 28 29
+eval "$(conda shell.bash hook)"
+conda activate xgb
 version="PROBAV_V1.0.1"
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`

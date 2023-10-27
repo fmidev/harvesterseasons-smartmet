@@ -1,20 +1,15 @@
 #!/bin/bash
 #
 # monthly script for XGBoost prediction for SWI2 in ERA5-Land grid
-# run after get-seasonal has finished
+# give year month as cmd
 
 source ~/.smart
 eval "$(conda shell.bash hook)"
 
 conda activate xgb
-if [ $# -ne 0 ]
-then
-    year=$1
-    month=$2
-else
-    year=$(date +%Y)
-    month=$(date +%m)
-fi
+
+year=$1
+month=$2
 
 cd /home/smartmet/data
 

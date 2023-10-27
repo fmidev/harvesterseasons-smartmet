@@ -2,15 +2,15 @@
     "title": "SWI Soil Wetness Index Layer 2 Isobands",
     "abstract": "SWI2 Copernicus land Soil wetness index layer 2.",
     "projection": {},
-    "producer": "SWI",
+    "producer": "ECXSF",
     "source": "grid",
     "views":[{
 	"layers": [{
 	    "qid": "l", 
 	    "layer_type": "isoband",
-	    "isobands": "json:isobands/SWI.json",
-	    "css": "isobands/SWI.css",
-	    "parameter": "SWI2:SWI:5059:1:0:0",
+	    "isobands": "json:isobands/SWI-0TO1.json",
+	    "css": "isobands/SWI-0TO1.css",
+	    "parameter": "SWI2-0TO1:SWI:5059:1:0:0:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

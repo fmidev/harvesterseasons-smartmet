@@ -30,7 +30,6 @@ else
     oldmonth=$(date -d '1 month ago' +%m)
     oldyear=$(date -d '1 month ago' +%Y)
     rm ens/*_$oldyear${oldmonth}_*.grib
-    # lisää poista swvl säätöjutut
 fi
 cd /home/smartmet/data
 
@@ -90,10 +89,10 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
     ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
 ### adjust evaporation and total precip or other accumulating variables
 ### due to a clearly too strong variance term in tp adjustment is only done with bias for now
-### disacc tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf
+### disacc tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr
 [ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-${bsf}_$year${month}_acc-24h-$abr-50.grib ] && \
- seq 0 50 | parallel "cdo -s --eccodes -O mergetime -seltimestep,1 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
-     -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf ens/ec-sf_$year${month}_all-24h-$abr-{}.grib ens/disacc-$year${month}-{}.grib && \
+ seq 0 50 | parallel "cdo -s --eccodes -O mergetime -seltimestep,1 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+     -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr ens/ec-sf_$year${month}_all-24h-$abr-{}.grib ens/disacc-$year${month}-{}.grib && \
     cdo -s --eccodes ymonmul -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,e,tp ens/disacc-$year${month}-{}.grib \
      -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_$abr.grib \
      ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib && \
@@ -163,12 +162,6 @@ ens/ECSF_$year${month}01T000000_swvls-24h-$abr-{}-fixed.grib
 [ -f grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib ] && echo "NOT joining ensemlbe members ecsf swvls - no input or already produced" || \
 grib_copy ens/ECSF_$year${month}01T000000_swvls-24h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_swvls-24h-$abr.grib
 
-echo "start XGBoost predict" # tmp echo 
-
-#### Gradient boosting bias adjustment for tp 
-## onko era5land orography tiedostoa eli sdor anor slor edes olemassa cds? 
-era='era5'
-bsf='B2SF'
 ## Split pl to ensemble members 
 [ -f ens/ec-sf_$year${month}_pl-12h-$abr-50.grib ] && echo "Ensemble member pl files ready" || grib_copy ec-sf-$year${month}-pl-12h-$abr.grib ens/ec-sf_$year${month}_pl-12h-$abr-[number].grib
 
@@ -182,59 +175,21 @@ seq 0 50 | parallel -q cdo --eccodes -O -b P12 \
         -aexpr,'vp=clev(q)*q/(0.622+0.378*q);' ens/ec-sf_$year${month}_pl-12h-$abr-{}.grib ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib || \
  echo "NOT adding kx to ECSF pressure level - no input or already produced"
 
-## remap to era5(/era5l) 
-[ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && \
-seq 0 50 | parallel cdo --eccodes -O -b P12 \
-    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -sellevel,85000,70000,50000 -selname,t,q,z,u,v,kx ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
-    ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib || echo "NOT remap pl - no input or already produced"
-[ -f ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && \
-seq 0 50 | parallel cdo --eccodes -O -b P12 \
-    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,10u,10v,2d,2t,msl,tp,tsr,e,10fg,slhf,sshf,tcc,ro,sd,sf,rsn,stl1 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
-    ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib || echo "NOT remap sl - no input or already produced"
-[ -f ens/disacc-$year${month}-50.grib ] && ! [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && \
-seq 0 50 | parallel cdo --eccodes -O -b P12 \
-    remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/disacc-$year${month}-{}.grib \
-    ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib || echo "NOT remap disacc - no input or already produced"
+echo "start XGBoost predict for precipitation" # tmp echo 
+run-xgb-predict-prec.sh $year $month
 
-## (change dates in era5-orography-XGB-202105-$abr.grib to match fetched data)
-## not available era5 orography for whole month when tuotantoajo
-#diff=$(( ($year - 2022) * 12 + (10#$month - 10#1) ))
-#[ -f $era-orography-XGB-202201-$abr.grib ] && ! [ -f $era-orography-$year${month}-$abr.grib ] && \
-#cdo shifttime,${diff}months $era-orography-XGB-202201-$abr.grib $era-orography-$year${month}-$abr.grib  || echo "NOT current date era5 orography - no input or already produced" 
-## shiftime doesn't work for past? xgb-predict crashes - download file 
-#! [ -f $era-orography-$year${month}-$abr.grib ] && /home/smartmet/bin/cds-era5-orography.py $year $month $area $abr || echo "ERA5 orography data already downloaded"
-
-## run xgb-predict.py
-## remove print commands from python script when tuotantoajo :D 
-conda activate xgb
-#[ -f ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-50.grib ] && [ -f ens/ec-sf-${era}_$year${month}_all-24h-$abr-50.grib ] && [ -f $era-orography-$year${month}-$abr.grib ] && [ -f ens/ec-sf-${era}_$year${month}_disacc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && \
-#seq 0 50 | parallel -j 6 python3 /home/smartmet/bin/xgb-predict.py ens/ec-sf-${era}_$year${month}_disacc-$abr-{}.grib ens/ec-sf-${era}_$year${month}_pl-pp-12h-$abr-{}.grib ens/ec-sf-${era}_$year${month}_all-24h-$abr-{}.grib $era-orography-$year${month}-$abr.grib ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc || echo "NO input or already produced GB files"
-#conda activate xr
-
-## tp netcdf to grib 
-#[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.nc ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && \
-#seq 0 50 | parallel cdo -b 16 -f grb copy -setparam,128.228 -setmissval,-9.e38 ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.nc ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib || echo "NO input or already netcdf to grib1"
-## tp disacc to accumulated
-#[ -f ens/ECX${bsf}_$year${month}_tp-$abr-disacc-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && \
-#seq 0 50 | parallel cdo -s --eccodes -b P8 timcumsum ens/ECX${bsf}_$year${month}_tp-$abr-disacc-{}.grib ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib || echo "NOT adj xgb-acc - input missing or already produced"
-
-## fix grib attributes for tp and pl-pp 
-#[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50.grib ] && ! [ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib ] && \
-#seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}.grib \
-#ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}-fixed.grib || echo "NOT fixing tp grib attributes - no input or already produced"
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && ! [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && \
 seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
 ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}-fixed.grib || echo "NOT fixing pl-pp grib attributes - no input or already produced"
 
 ## join pl-pp and tp ensemble members and move to grib folder
-#[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib  ] && ! [ -f grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib  ] && \
-#grib_copy ens/ECX${bsf}_$year${month}_tp-acc-$abr-*-fixed.grib grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib || echo "NOT joining tp ensemble members - no input or already produced"
 [ -f ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && ! [ -f grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib ] && \
 grib_copy ens/ec-sf_$year${month}_pl-pp-12h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib || echo "NOT joining pl-pp ensemble members - no input or already produced"
 wait 
-# run xgboost model to produce swi2 forecasts
-run-xgb-predict-swi2.sh
 
+# run xgboost model to produce swi2 forecasts
+echo 'start XGBoost predict for SWI2'
+run-xgb-predict-swi2.sh $year $month
 # produce forcing file for HOPS
 # mod. M.Kosmale 18.03.2021: called now independently from cron (v3)
 #/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month

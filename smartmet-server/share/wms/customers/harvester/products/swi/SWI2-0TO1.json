@@ -8,9 +8,9 @@
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/SWI-M3M3.json",
-            "css": "isobands/SWI-M3M3.css",
-            "parameter": "SWI2:SWI:5029:1:0:0",
+            "isobands": "json:isobands/SWI-0TO1.json",
+            "css": "isobands/SWI-0TO1.css",
+            "parameter": "SWI2-0TO1:SWI:5059:1:0:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

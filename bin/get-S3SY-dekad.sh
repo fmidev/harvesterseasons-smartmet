@@ -4,7 +4,7 @@
 # Mikko Strahlendorff 20.4.2022
 ###################
 eval "$(conda shell.bash hook)"
-#conda activate xr
+conda activate xgb
 if [ $# -ne 0 ]
 then
     d=$1

@@ -1,6 +1,8 @@
 #!/bin/bash
 # Fetch NDVI_300m_V2 from Copernicus Land Monitoring System 
 # give yearmonthday as cmd (July 2020 -> )
+eval "$(conda shell.bash hook)"
+conda activate xgb
 version="V2.0.1"
 #version="V2.0.2"
 if [[ $# -gt 0 ]]; then
