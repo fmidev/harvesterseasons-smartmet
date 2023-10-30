@@ -82,5 +82,6 @@
 # 15) Reverse mapping function
 # 16) Default precision
 # 
+CLMS;FMI-0;2;FMI-0;5052;;0;00000;1;1;1;0;D;;;;
 LSASAF;SKT-K;2;SKT-K;0;;1;00000;1;1;1;0;E;;;;
 LSASAF;SKT-K;2;SKT-K;5053;;1;00000;1;1;1;0;E;;;;
