@@ -7,11 +7,12 @@ eval "$(conda shell.bash hook)"
 conda activate cdo
 if [ $# -ne 0 ]
 then
-    if ! [ -z $2 ] 
-    then 
-        or=r
+    if [ $# -gt 1 ]
+    then
+     or=$2
     else
-        or=$2
+     or=r
+    fi
     d=${1:6:2}
     m=${1:4:2}
     y=${1:0:4}
@@ -24,7 +25,7 @@ else
     ymd="$y$m$d"
 fi
 cd /home/ubuntu/data
-echo "fetching $ymd"
+echo "fetching $ymd $2 $or"
 wget -c --no-check-certificate -q https://litdb.fmi.fi/outgoing/SMOS-FTService/OperationalFT/$y/$m/W_XX-ESA,SMOS,NH_25KM_EASE2_${ymd}_${or}_v300_01_l3soilft.nc && \
  cdo -f grb2 -b P8 -setdate,$y-$m-$d -remapdis,era5-eu-grid -setgrid,ease2-nh-grid -selname,slta -aexpr,'slta=(QF_asc > QF_dsc)?L3FT_asc:L3FT_dsc' \
   W_XX-ESA,SMOS,NH_25KM_EASE2_${ymd}_${or}_v300_01_l3soilft.nc grib/SMOS_20000101T000000_${ymd}_ft-day-eu.grib && \
