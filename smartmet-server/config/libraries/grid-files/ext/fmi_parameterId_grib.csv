@@ -16,10 +16,19 @@
 # Mapping "standard" grib identifiers (defined in the "grib_parameters.csv" file) into 
 # our own FMI identifiers (defined in the "ext/fmi_parameters.csv" file).
 
+# Soil clay fraction in g/kg using soil clay fraction
+SCFR-GKG;198007;;;
+# Soil sand fraction in g/kg using soil sand fraction 
+SSFR-GKG;198006;;;
+# Soil silt fraction in g/kg using soilp shortname
+SILTFR-GKG;260215;;;
+# Soil organic carbon stock in g/kg using soil texture fraction
+SOC-GKG;228092;DIV{10};MUL{10};
+
 # Surface runoff in depth of water in metres
 SRO-M;8;;;
 # Subsurface Runoff in depth of water in metres
-SSRO-M;9;;
+SSRO-M;9;;;
 # 29:Type of low vegetation
 TVL-N;29;;; 
 # 30:Type of high vegetation
@@ -177,3 +186,5 @@ Z-M2S2;500004;;;
 CUR-0TO1;229001;;;
 # 133:Specific humidity (kg kg-1)
 Q-KGKG;133;;;
+# Soil freeze thaw in place for soil type anomaly 
+SFT-N;171043;;;

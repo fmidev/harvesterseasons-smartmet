@@ -1,16 +1,19 @@
 {
-    "title" : "EC SF Volumetric Soil Water Layer 2",
-    "abstract" : "C3S seasonal forecast data from ECMWF.",
+    "title" : "CERRA Soil Temperature",
+    "abstract" : "C3S CERRA-Land reanalysis data from ECMWF. Soil temperature at 7-28cm depth",
     "projection": {},
-    "producer": "ECSF",
+    "producer": "CERRA-L",
     "source":"grid",
     "views": [{
         "layers": [{
-	    "qid":"l",
+            "qid": "l",
             "layer_type": "isoband",
             "isobands": "json:ecsf/temperature/isobands/Temperature.json",
             "css": "ecsf/temperature/isobands/Temperature.css",
-            "parameter": "SWVL2-M3M3:ECSF:0:14:1820:1:0",
+            "parameter": "TSOIL-C:CERRA-L:5067::2:0",
+            "sampling": { 
+		"relativeresolution": 4
+	    },
             "attributes": {
                 "shape-rendering": "crispEdges"
             }

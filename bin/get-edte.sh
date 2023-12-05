@@ -10,77 +10,81 @@ source ~/.smart
 
 eval "$(conda shell.bash hook)"
 conda activate xgb
+python=/home/ubuntu/mambaforge/envs/xgb/bin/python
 if [ $# -ne 0 ]
 then
     date=$1
-    olddate=$(date -d "$1 1 month ago" +%Y%m%d)
-    olddam=$(date -d "$1 21 days ago" +%Y-%m-%d)T00:00:00
 else
     date=$(date -d yesterday +%Y%m%d)
     ## remove previous month files
-    olddate=$(date -d '1 month ago' +%Y%m%d)
-    olddam=$(date -d '21 days ago' +%Y-%m-%d)T00:00:00
     rm grib/EDTE_${olddate}T*.grib
 fi
+tooold=$(date -d "$date 46 days ago" +%Y%m%d)
+olddate=$(date -d "$date 16 days ago" +%Y%m%d)
+olddam=$(date -d "$date 16 days ago" +%Y-%m-%d)T00:00:00
 sdate=$(date -d "$date" +%Y-%m-%d)T00:00:00
-edate=$(date -d "$date 5 days" +%Y-%m-%d)T00:00:00
-dam1=$(date -d '2 day ago' +%Y%m%d)T000000
-dam2=$(date -d '3 day ago' +%Y%m%d)T000000
-dam3=$(date -d '4 day ago' +%Y%m%d)T000000
-dam4=$(date -d '5 day ago' +%Y%m%d)T000000
-dam5=$(date -d '6 day ago' +%Y-%m-%d)T00:00:00
+edate=$(date -d "$date 4 days" +%Y-%m-%d)T00:00:00
+dam1=$(date -d "$date 1 days ago" +%Y%m%d)T000000
+dam2=$(date -d "$date 2 days ago" +%Y%m%d)T000000
+dam3=$(date -d "$date 3 days ago" +%Y%m%d)T000000
+dam4=$(date -d "$date 4 days ago" +%Y%m%d)T000000
+dam5=$(date -d "$date 5 days ago" +%Y%m%d)T000000
 
 cd /home/smartmet/data
-echo 'fetch 3h variables and disaccumulate'
-! [ -f grib/EDTE_${date}T000000_sfc-$abr.grib ] && sed s:2023-10-10:$date:g ../mars/edte-sfc.mars | /home/smartmet/bin/mars && \
- mv edte_${date}_sfc-$abr.grib grib/EDTE_${date}T000000_sfc-$abr.grib || echo "EDTE sfc Data already downloaded"
-
-[ -f ens/edte_${date}_disacc-swi.grib ] && echo "EDTE sfc Data already accumulated" || cdo -s --eccodes -O remap,swi-$abr-grid,swi-edte-$abr-weights.nc -mergetime -seltimestep,1 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf grib/EDTE_${date}T000000_sfc-$abr.grib \
- -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_disacc-swi.grib
+echo 'fetch 3h variables'
+! [ -s grib/EDTE_${date}T000000_sfc-$abr.grib ] &&  \
+ sed s:2023-10-10:$date:g ../mars/edte-sfc.mars | /home/smartmet/bin/mars && \
+ cdo -P 64 --eccodes -s -O aexprf,ec-sde.instr edte_${date}_sfc-$abr.grib grib/EDTE_${date}T000000_sfc-$abr.grib || echo "EDTE sfc Data already downloaded"
+echo 'disaccumulate 24h and shifttime' #,swi-edte-$abr-weights.nc
+! [ -s ens/edte_${date}_disacc-$abr.grib ] && cdo -P 64 -s --eccodes -O shifttime,-1d \
+ -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_disacc-$abr.grib \
+ || echo "EDTE sfc Data already disaccumulated"
 
 echo 'fetch fg/24h variables'
-! [ -f grib/EDTE_${date}T000000_fg-$abr.grib ] && sed s:2023-10-10:$date:g ../mars/edte-fg.mars | /home/smartmet/bin/mars && \
+! [ -s grib/EDTE_${date}T000000_fg-$abr.grib ] && sed s:2023-10-10:$date:g ../mars/edte-fg.mars | /home/smartmet/bin/mars && \
  mv edte_${date}_fg-$abr.grib grib/EDTE_${date}T000000_fg-$abr.grib || echo "EDTE fg Data already downloaded"
-echo 'calculate/remap runsums'
-! [ -f ens/edte_${date}_runsums-$abr.grib ] &&  CDO_TIMESTAT_DATE=last && \
- cdo --eccodes shifttime,-1d -remap,swi-$abr-grid,swi-edte-$abr-weights.nc -runsum,15 -mergetime -seldate,$olddam,$dam5 [ -mergetime \
- -remap,edte-$abr-grid,edte-era5l-$abr-weights.nc -selname,e,tp,ro grib/ERA5L_20000101T000000_${olddate:0:6}01T000000_accumulated.grib \
- -remap,edte-$abr-grid,edte-era5l-$abr-weights.nc -selname,e,tp,ro grib/ERA5L_20000101T000000_${date:0:6}01T000000_accumulated.grib ] \
- -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam4}_sfc-$abr.grib -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam3}_sfc-$abr.grib \
- -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam2}_sfc-$abr.grib -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam1}_sfc-$abr.grib \
- ens/edte_${date}_runsums-$abr.grib || echo "EDTE runsum Data already calculated" 
+echo 'calculate/remap runsums' #,swi-edte-$abr-weights.nc
+! [ -s ens/edte_${date}_runsums-$abr.grib ] && cdo -P 64 --eccodes -S --timestat_date last \
+ seldate,$sdate,$edate -runsum,15 -mergetime \
+ -remap,edte-$abr-grid,edte-era5l-$abr-weights.nc -shifttime,-1d -selname,e,tp,ro grib/ERA5L_20000101T000000_${olddate:0:6}01T000000_accumulated.grib \
+ -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam5}_sfc-$abr.grib \
+ -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam4}_sfc-$abr.grib \
+ -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam3}_sfc-$abr.grib \
+ -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam2}_sfc-$abr.grib \
+ -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam1}_sfc-$abr.grib \
+ -shifttime,-1d -deltat -seltime,00:00:00 -selname,e,tp,ro grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_runsums-$abr.grib || echo "EDTE runsum Data already calculated" 
 
 echo 'remap swvls'
-[ -f ens/edte_${date}_swvls-$abr.grib ] && echo "EDTE swvls Data already calculated" || \
- cdo remap,swi-$abr-grid,swi-edte-$abr-weights.nc -selname,swvl1,swvl2,swvl3,swvl4 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
+[ -s ens/edte_${date}_swvls-$abr.grib ] && echo "EDTE swvls Data already calculated" || \
+ cdo -P 64 -s --eccodes seldate,$sdate,$edate -shifttime,-1d -selname,swvl2 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_swvls-$abr.grib
 
 echo 'remap sl00'
-[ -f ens/edte_${date}_sl00-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
- cdo remap,swi-$abr-grid,swi-edte-$abr-weights.nc -selname,2d,2t,rsn,sde,stl1 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
+[ -s ens/edte_${date}_sl00-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
+ cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib
 
 echo 'shift climate dates'
 y=$(date -d $date +%Y)
 yd=$(echo "$y - 2020" | bc)
-[ -f ens/ECC_${date}T000000_laihv-$abr-swi-day.grib ] && echo "EDTE laihv Data already chopped" || \
- cdo -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_2020-21_laihv-$abr-swi-day.grib ens/ECC_${date}T000000_laihv-$abr-swi-day.grib
-[ -f ens/ECC_${date}T000000_lailv-$abr-swi-day.grib ] && echo "EDTE lailv Data already chopped" || \
- cdo -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_2020-21_lailv-$abr-swi-day.grib ens/ECC_${date}T000000_lailv-$abr-swi-day.grib
-[ -f ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE lailv Data already chopped" || \
- cdo -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${date}T000000_swi-day.grib
+[ -s ens/ECC_${date}T000000_laihv-$abr-edte-day.grib ] && echo "EDTE laihv Data already chopped" || \
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_laihv-$abr-edte-day.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib
+[ -s ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ] && echo "EDTE lailv Data already chopped" || \
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_lailv-$abr-edte-day.grib ens/ECC_${date}T000000_lailv-$abr-edte-day.grib
+[ -s ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE SWIC Data already chopped" || \
+ cdo -P 64 -s --eccodes remapdis,edte-eu-grid -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${date}T000000_swi-day.grib
 
 echo 'start xgb predict'
-python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
+$python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
- ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-swi-day.grib \
- ens/ECC_${date}T000000_lailv-$abr-swi-day.grib \
- ens/SWIC_${date}T000000_swi-day.grib \
+ ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
+ ens/ECC_${date}T000000_lailv-$abr-edte-day.grib \
+ ens/SWIC_${date}T000000_edte-day.grib \
  ens/EDTE_${date}_swi2_out.nc
 
 echo 'netcdf to grib'
 # netcdf to grib
-cdo -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -seltimestep,9/209 ens/EDTE_${date}_swi2_out.nc \
+cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -seltimestep,9/209 ens/EDTE_${date}_swi2_out.nc \
  ens/EDTE_${date}_swi2_out.grib #|| echo "NO input or already netcdf to grib1"
 
 echo 'grib fix'

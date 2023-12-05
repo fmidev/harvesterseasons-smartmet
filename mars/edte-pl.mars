@@ -10,5 +10,6 @@ stream=oper,
 time=00:00:00,
 type=fc,
 area=75/-30/25/50,
+resol=auto,
 grid=0.04/0.04,
 target="edte_2023-10-10_eu-pl.grib"

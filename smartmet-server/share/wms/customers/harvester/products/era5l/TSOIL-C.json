@@ -1,6 +1,6 @@
 {
     "title": "ERA5L Soil Temperature Level 2 Isobands (Celsius)",
-    "abstract": "TSOIL-C Soil temperature level 2 (C) from ECMWF.",
+    "abstract": "C3S ERA-Land reanalysis data. TSOIL-C Soil temperature level 2 (C) 7-28cm depth from ECMWF.",
     "projection": {},
     "producer": "ERA5L",
     "source": "grid",

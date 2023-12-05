@@ -1,16 +1,16 @@
 {
-    "title" : "EC SF Ground Temperature",
+    "title" : "ECBSF Wind Speed",
     "abstract" : "C3S seasonal forecast data from ECMWF.",
     "projection": {},
-    "producer": "ECSF",
+    "producer": "ECBSF",
     "source":"grid",
     "views": [{
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:ecsf/temperature/isobands/TemperatureK.json",
-            "css": "ecsf/temperature/isobands/TemperatureK.css",
-            "parameter": "TG-K:ECSF:0:14:7:1:0",
+            "isobands": "json:isobands/wind_uv.json",
+            "css": "isobands/wind_uv.css",
+            "parameter": "FF-MS:ECBSF:5022:1:0:1:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

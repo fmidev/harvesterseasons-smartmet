@@ -16,31 +16,31 @@ if __name__ == "__main__":
         # input files 
         swvls_ecsf=sys.argv[1] # vsw (swvl layers)
         sl00_ecsf=sys.argv[2] # d2m,t2m,rsn,sde,stl1
-        sl_runsum=sys.argv[3] # 15-day runnins sums for disaccumulated tp,e,ro
+        sl_runsum=sys.argv[3] # 15-day running sums for disaccumulated tp,e,ro
         sl_disacc=sys.argv[4] # disaccumulated tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf 
         laihv=sys.argv[5]
         lailv=sys.argv[6]
         swi2c=sys.argv[7] # swi2clim
-        dtm_aspect='grib/COPERNICUS_20000101T000000_20110701T000000_anor-dtm-aspect-avg_eu-era5l.grb' 
-        dtm_slope='grib/COPERNICUS_20000101T000000_20110701T000000_slor-dtm-slope-avg_eu-era5l.grb'
-        dtm_height='grib/COPERNICUS_20000101T000000_20110701T000000_h-dtm-height-avg_eu-era5l.grb'
-        soilgrids='grib/SG_20200501T000000_soilgrids-0-200cm-eu-era5l.grib' # sand ssfr, silt soilp, clay scfr, soc stf
-        lakecov='grib/ECC_20000101T000000_ilwaterc-frac-eu-9km-fix.grib' # lake cover
-        urbancov='grib/ECC_20000101T000000_urbanc-frac-eu-9km-fix.grib' # urban cover
-        highveg='grib/ECC_20000101T000000_hveg-frac-eu-9km-fix.grib' # high vegetation cover
-        lowveg='grib/ECC_20000101T000000_lveg-frac-eu-9km-fix.grib' # low vegetation cover 
-        lakedepth='grib/ECC_20000101T000000_ilwater-depth-eu-9km-fix.grib' # lake depth
-        landcov='grib/ECC_20000101T000000_lc-frac-eu-9km-fix.grib' # land cover
-        soiltype='grib/ECC_20000101T000000_soiltype-eu-9km-fix.grib' # soil type
-        typehv='grib/ECC_20000101T000000_hveg-type-eu-9km-fix.grib' # type of high vegetation
-        typelv='grib/ECC_20000101T000000_lveg-type-eu-9km-fix.grib' # type of low vegetation 
+        dtm_aspect='grib/COPERNICUS_20000101T000000_20110701_anor-dtm-aspect-avg_eu-edte.grb' 
+        dtm_slope='grib/COPERNICUS_20000101T000000_20110701_slor-dtm-slope-avg_eu-edte.grb'
+        dtm_height='grib/COPERNICUS_20000101T000000_20110701_h-dtm-height-avg_eu-edte.grb'
+        soilgrids='grib/SG_20200501T000000_soilgrids-0-200cm-eu-edte.grib' # sand ssfr, silt soilp, clay scfr, soc stf
+        lakecov='grib/ECC_20000101T000000_ilwaterc-frac-eu-edte-fix.grib' # lake cover
+        urbancov='grib/ECC_20000101T000000_urbanc-frac-eu-edte-fix.grib' # urban cover
+        highveg='grib/ECC_20000101T000000_hveg-frac-eu-edte-fix.grib' # high vegetation cover
+        lowveg='grib/ECC_20000101T000000_lveg-frac-eu-edte-fix.grib' # low vegetation cover 
+        lakedepth='grib/ECC_20000101T000000_ilwater-depth-eu-edte-fix.grib' # lake depth
+        landcov='grib/ECC_20000101T000000_lc-frac-eu-edte.grib' # land cover
+        soiltype='grib/ECC_20000101T000000_soiltype-eu-edte-fix.grib' # soil type
+        typehv='grib/ECC_20000101T000000_hveg-type-eu-edte.grib' # type of high vegetation
+        typelv='grib/ECC_20000101T000000_lveg-type-eu-edte-fix.grib' # type of low vegetation 
         # output file
         outfile=sys.argv[8]
 
         # read in data
         sl_UTC00_var = ['d2m','t2m','rsn','sde','stl1'] 
         names00UTC={'d2m':'td2-00','t2m':'t2-00','rsn':'rsn-00','sde':'sd-00','stl1':'stl1-00'}
-        dtm_var=['p3008','slor','anor']
+        dtm_var=['h','slor','anor']
         sg_var=['clay_0-5cm','sand_0-5cm','silt_0-5cm','soc_0-5cm',
         'clay_5-15cm','sand_5-15cm','silt_5-15cm','soc_5-15cm',
         'clay_15-30cm','sand_15-30cm','silt_15-30cm','soc_15-30cm']
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         sl00=xr.open_dataset(sl00_ecsf, engine='cfgrib',  chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))[sl_UTC00_var].rename_vars(names00UTC)
         height=xr.open_dataset(dtm_height, engine='cfgrib', chunks={'valid_time':1}, 
-                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'p3008':'DTM_height'})
+                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'h':'DTM_height'})
         slope=xr.open_dataset(dtm_slope, engine='cfgrib',  chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'slor':'DTM_slope'})
         aspect=xr.open_dataset(dtm_aspect, engine='cfgrib',  chunks={'valid_time':1},
@@ -96,7 +96,7 @@ if __name__ == "__main__":
         swi2clim=swi2clim.sel(valid_time=slice(date_first,date_last))
         laihv_ds=laihv_ds.sel(valid_time=slice(date_first,date_last))
         lailv_ds=lailv_ds.sel(valid_time=slice(date_first,date_last))
-        swvls=swvls.where((swvls.depthBelowLandLayer<=0.20) & (swvls.depthBelowLandLayer>=0.06), drop=True).rename_vars({'vsw':'swvl2-00'}).squeeze(["depthBelowLandLayer"], drop=True) # use layer 0.07 m for swvl2
+        #swvls=swvls.where((swvls.depthBelowLandLayer<=0.20) & (swvls.depthBelowLandLayer>=0.06), drop=True).rename_vars({'vsw':'swvl2-00'}).squeeze(["depthBelowLandLayer"], drop=True) # use layer 0.07 m for swvl2
         swvls['dayOfYear']=swvls.valid_time.dt.dayofyear
         soilg_ds5=soilg_ds.where((soilg_ds.depthBelowLand<=0.10), drop=True).rename_vars(namesSG5).squeeze(["depthBelowLand"], drop=True) # use layers 0-30cm for swvl2
         soilg_ds15=soilg_ds.where((soilg_ds.depthBelowLand<=0.20) & (soilg_ds.depthBelowLand>=0.10), drop=True).rename_vars(namesSG15).squeeze(["depthBelowLand"], drop=True) # use layers 0-30cm for swvl2
@@ -105,8 +105,8 @@ if __name__ == "__main__":
                       lakecov_ds,hvc_ds,hlc_ds,lakedepth_ds,landcov_ds,soilty_ds,tvh_ds,tvl_ds,ecc_ucov,
                       sldisacc,slrunsum,laihv_ds,lailv_ds,swi2clim
                       ],compat='override')
-        ds1=ds1.drop_vars(['number','surface','depthBelowLandLayer'])
-        ds1=ds1.sel(valid_time=slice(date_first,date_last))
+        ds1=ds1.drop_vars(['surface','depthBelowLandLayer'])
+        ds1=ds1.sel(valid_time=slice(date_first,date_last)) 
         
         df=ds1.to_dataframe() # pandas
         #ds1=ds1.unify_chunks() # dask

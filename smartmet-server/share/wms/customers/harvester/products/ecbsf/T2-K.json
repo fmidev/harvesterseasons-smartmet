@@ -1,5 +1,5 @@
 {
-    "title" : "ECBSF Soil Temperature",
+    "title" : "ECSF 2m Temperature",
     "abstract" : "C3S seasonal forecast data from ECMWF.",
     "projection": {},
     "producer": "ECBSF",
@@ -8,10 +8,10 @@
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:ecsf/temperature/isobands/Temperature.json",
-            "css": "ecsf/temperature/isobands/Temperature.css",
-            "parameter": "TSOIL-K:ECBSF:0:9:7:1:0",
-            "sampling": { 
+            "isobands": "json:isobands/TSOIL-K.json",
+            "css": "isobands/TSOIL-K.css",
+            "parameter": "T2-K:ECBSF:5022:1:0:1:0",
+	    "sampling": { 
 		"relativeresolution": 4
 	    },
             "attributes": {

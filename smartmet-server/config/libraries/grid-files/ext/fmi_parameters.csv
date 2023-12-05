@@ -29,7 +29,11 @@
 # in the "fmi_parameterId_grib.csv" file.
 
 #################################################################################
-
+10000006;SSFR-GKG;g kg-1;Soil sand fraction (g/kg);2;2;2;1;
+10000007;SCFR-GKG;g kg-1;Soil clay fraction (g/kg);2;2;2;1;
+10260215;SILTFR-GKG;g kg-1;Soil silt fraction (g/kg);2;2;2;1;
+10228092;SOC-GKG;g kg-1;Soil carbon fraction (g/kg);2;2;2;1;
+10171043;SFT-N;;Freeze/thaw state of surface soil;1;1;1;1;
 10000008;SRO-M;m;Surface runoff (metres);1;1;1;2;
 10000009;SSRO-M;m;Subsurface Runoff (metres);1;1;1;1;
 10000029;TVL-N;;Type of low vegetation;2;2;2;1;

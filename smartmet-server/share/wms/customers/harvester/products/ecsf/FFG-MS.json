@@ -1,0 +1,22 @@
+{
+    "title": "ECSF 10 Metre Windgust Isobands (ms-1)",
+    "abstract": "C3S ECMWF SEAS5 Seasonal forecast FFG-MS 10 metre windgust (ms-1).",
+    "projection": {},
+    "producer": "ECSF",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l", 
+            "layer_type": "isoband",
+            "isobands": "json:isobands/windgust.json",
+            "css": "isobands/windgust.css",
+            "parameter": "FFG-MS:ECSF::1:0:1:0",
+                "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

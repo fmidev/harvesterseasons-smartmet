@@ -33,9 +33,11 @@
 
 # Soil sand fraction
 6;discipline=192,parameterCategory=128,parameterNumber=6;
+198006;discipline=192,parameterCategory=128,parameterNumber=6;
 
 # Soil clay fraction
 7;discipline=192,parameterCategory=128,parameterNumber=7;
+198007;discipline=192,parameterCategory=128,parameterNumber=7;
 
 # Surface runoff
 8;discipline=192,parameterCategory=128,parameterNumber=8;

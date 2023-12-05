@@ -100,7 +100,7 @@ services:
       NGINX_CLIENT_MAX_BODY_SIZE: 100m
       UPSTREAM: 128.214.255.90:8080
       SERVERNAME: desm.harvesterseasons.com
-      # EXTRANAMES: harmonia.geoss.space
+      EXTRANAMES: urban.geoss.space
       # ,smdev.harvesterseasons.com
     ports:
       - "80:80"

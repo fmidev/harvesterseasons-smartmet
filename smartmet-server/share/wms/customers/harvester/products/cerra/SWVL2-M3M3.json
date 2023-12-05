@@ -1,8 +1,8 @@
 {
-    "title" : "ECB2SF Soil Wetness",
-    "abstract" : "C3S seasonal forecast data from ECMWF, bias adjusted.",
+    "title" : "CERRA Soil Wetness level 2",
+    "abstract" : "C3S Copernicus European Regional ReAnalysis Land data from ECMWF. Soil Water Volumetric Layer 2 M3/M3, 7-28cm depth.",
     "projection": {},
-    "producer": "ECB2SF",
+    "producer": "CERRA-L",
     "source":"grid",
     "views": [{
         "layers": [{
@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/SOILWET-M3M3.json",
             "css": "isobands/SOILWET-M3M3.css",
-            "parameter": "SOILWET-M3M3:ECB2SF:::7:1:0",
+            "parameter": "SWVL2-M3M3:CERRA-L:5067::2:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },
