@@ -52,34 +52,34 @@ echo 'calculate/remap runsums' #,swi-edte-$abr-weights.nc
  -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam3}_sfc-$abr.grib \
  -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam2}_sfc-$abr.grib \
  -shifttime,-1d -seltimestep,5 -selname,e,tp,ro grib/EDTE_${dam1}_sfc-$abr.grib \
- -shifttime,-1d -deltat -seltime,00:00:00 -selname,e,tp,ro grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_runsums-$abr.grib || echo "EDTE runsum Data already calculated" 
+ -shifttime,-1d -deltat -seltime,00:00:00 -selname,e,tp,ro grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_runsums-$abr.grib || echo "EDTE runsum Data already calculated" &
 
 echo 'remap swvls'
 [ -s ens/edte_${date}_swvls-$abr.grib ] && echo "EDTE swvls Data already calculated" || \
  cdo -P 64 -s --eccodes seldate,$sdate,$edate -shifttime,-1d -selname,swvl2 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
- ens/edte_${date}_swvls-$abr.grib
+ ens/edte_${date}_swvls-$abr.grib &
 
 echo 'remap sl00'
 [ -s ens/edte_${date}_sl00-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
  cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
- ens/edte_${date}_sl00-$abr.grib
+ ens/edte_${date}_sl00-$abr.grib &
 
 echo 'shift climate dates'
 y=$(date -d $date +%Y)
 yd=$(echo "$y - 2020" | bc)
 [ -s ens/ECC_${date}T000000_laihv-$abr-edte-day.grib ] && echo "EDTE laihv Data already chopped" || \
- cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_laihv-$abr-edte-day.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_laihv-$abr-edte-day.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib &
 [ -s ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ] && echo "EDTE lailv Data already chopped" || \
- cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_lailv-$abr-edte-day.grib ens/ECC_${date}T000000_lailv-$abr-edte-day.grib
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_lailv-$abr-edte-day.grib ens/ECC_${date}T000000_lailv-$abr-edte-day.grib &
 [ -s ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE SWIC Data already chopped" || \
- cdo -P 64 -s --eccodes remapdis,edte-eu-grid -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${date}T000000_swi-day.grib
-
+ cdo -P 64 -s --eccodes remapdis,edte-eu-grid -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${date}T000000_swi-day.grib &
+wait
 echo 'start xgb predict'
 $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
  ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib \
- ens/SWIC_${date}T000000_edte-day.grib \
+ ens/SWIC_${date}T000000_swi-day.grib \
  ens/EDTE_${date}_swi2_out.nc
 
 echo 'netcdf to grib'

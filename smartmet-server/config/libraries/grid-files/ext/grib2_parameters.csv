@@ -22,10 +22,10 @@
 198006;discipline=192,centre=98,parameterCategory=128,parameterNumber=6;
 
 # Soilp representing the soil silt fraction
-198008;discipline=2,centre=98,parameterCategory=3,parameterNumber=15;
+#198008;discipline=2,centre=98,parameterCategory=3,parameterNumber=15;
 
 # Soiltexture representing the soil organic carbon fraction
-198009;discipline=192,centre=98,parameterCategory=228,parameterNumber=92;
+#198009;discipline=192,centre=98,parameterCategory=228,parameterNumber=92;
 
 # SWVL1;Volumetric soil water layer 1
 198039;discipline=192,centre=86,parameterCategory=128,parameterNumber=39;

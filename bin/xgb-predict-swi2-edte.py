@@ -52,7 +52,7 @@ if __name__ == "__main__":
         namesSG30={'scfr':'clay_15-30cm','ssfr':'sand_15-30cm','soilp':'silt_15-30cm','stf':'soc_15-30cm'}
         ecc_var=['cl','cvh','cvl','dl','lsm','slt','tvh','tvl','cur']
         swvls=xr.open_dataset(swvls_ecsf, engine='cfgrib', chunks={'valid_time':1},
-                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))
+                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'swvl2':'swvl2-00'})
         sl00=xr.open_dataset(sl00_ecsf, engine='cfgrib',  chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))[sl_UTC00_var].rename_vars(names00UTC)
         height=xr.open_dataset(dtm_height, engine='cfgrib', chunks={'valid_time':1}, 
