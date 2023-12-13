@@ -84,12 +84,11 @@ $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.gr
 
 echo 'netcdf to grib'
 # netcdf to grib
-cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -seltimestep,9/209 ens/EDTE_${date}_swi2_out.nc \
+cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${date}_swi2_out.nc \
  ens/EDTE_${date}_swi2_out.grib #|| echo "NO input or already netcdf to grib1"
 
 echo 'grib fix'
 # fix grib attributes
-grib_set -r -s centre=86,productDefinitionTemplateNumber=1,totalNumber=51,number={} ens/EDTE_${date}_swi2_out.grib \
- grib/EDTE_${date}_swi2-$abr.grib
+grib_set -r -s centre=86,jScansPositively=1 ens/EDTE_${date}_swi2_out.grib grib/EDTE_${date}T000000_swi2-$abr.grib
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
