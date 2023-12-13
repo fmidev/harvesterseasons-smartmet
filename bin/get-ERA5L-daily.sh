@@ -32,7 +32,7 @@ source ~/.smart
 cd /home/smartmet/data
 echo "fetch ERA5 for y: $year m: $month d: $day"
 [ -f ERA5L_$year$month${day}T000000_sfc-1h.grib ] || ../bin/cds-era5l.py $year $month $day $abr $area
-
+conda activate cdo
 # accumulated at 00UTC
 cdo -b P8 -O --eccodes shifttime,-1day -selhour,0 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf ERA5L_${ymond1}T000000_sfc-1h.grib ERA5L_20000101T000000_${ymond2}T000000_accumulated.grib
 
@@ -58,5 +58,5 @@ fi
 mv ERA5L_$year$month${day}T000000_sfc-1h.grib grib/ERA5L_20000101T000000_${ymond1}T000000_base+soil.grib
 
 
-#cdo -f grb2 --eccodes selname,sde -exprf,ec-sde.instr ERA5L_$year$month${day}T000000_base+soil.grib grib/ERA5L_${year}0101T000000_$year$month${day}T000000_sde.grib
+cdo -f grb2 --eccodes setparam,11.1.0 -selname,sde -aexprf,ec-sde.instr grib/ERA5L_20000101T000000_$year$month${day}T000000_base+soil.grib grib/ERA5L_${year}0101T000000_$year$month${day}T000000_sde.grib
 sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

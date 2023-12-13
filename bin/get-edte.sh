@@ -17,7 +17,8 @@ then
 else
     date=$(date -d yesterday +%Y%m%d)
     ## remove previous month files
-    rm grib/EDTE_${olddate}T*.grib
+    tooold=$(date -d "$date 46 days ago" +%Y%m%d)
+    rm grib/EDTE_${tooold}T*.grib
 fi
 tooold=$(date -d "$date 46 days ago" +%Y%m%d)
 olddate=$(date -d "$date 16 days ago" +%Y%m%d)
@@ -72,7 +73,7 @@ yd=$(echo "$y - 2020" | bc)
 [ -s ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ] && echo "EDTE lailv Data already chopped" || \
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_lailv-$abr-edte-day.grib ens/ECC_${date}T000000_lailv-$abr-edte-day.grib &
 [ -s ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE SWIC Data already chopped" || \
- cdo -P 64 -s --eccodes remapdis,edte-eu-grid -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean.grib ens/SWIC_${date}T000000_swi-day.grib &
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2023_swis-ydaymean-eu-edte.grib ens/SWIC_${date}T000000_swi-day.grib &
 wait
 echo 'start xgb predict'
 $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
