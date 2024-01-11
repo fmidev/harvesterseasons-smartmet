@@ -99,8 +99,7 @@ services:
       NGINX_CLIENT_MAX_BODY_SIZE: 10m
       UPSTREAM: 86.50.229.247:8080
       SERVERNAME: ml.harvesterseasons.com
-      #EXTRANAMES: sm1.harvesterseasons.com, harmonia.geoss.space
-      # ,smdev.harvesterseasons.com
+      EXTRANAMES: oceanids.geoss.space,smdev.harvesterseasons.com
     ports:
       - "80:80"
       - "443:443"
