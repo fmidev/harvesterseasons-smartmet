@@ -1,6 +1,6 @@
 {
-    "title" : "EDTE Snow Thickness",
-    "abstract" : "Destination Earth extreme weather forecast data from ECMWF.",
+    "title" : "SWI2",
+    "abstract" : "SWI2 Soil water index level 2. Destination Earth extreme weather forecast data from ECMWF.",
     "projection": {},
     "producer": "EDTE",
     "source":"grid",
@@ -8,9 +8,9 @@
         "layers": [{
             "qid": "l",
             "layer_type": "isoband",
-            "isobands": "json:isobands/HSNOW-M.json",
-            "css": "isobands/HSNOW-M.css",
-            "parameter": "HSNOW-M:EDTE:5058:1:0:1",
+            "isobands": "json:isobands/SWI-0TO1.json",
+            "css": "isobands/SWI-0TO1.css",
+            "parameter": "SWI2-0TO1:EDTE:5068:1:0:0",
 	    "sampling": { 
 		"relativeresolution": 4
 	    },

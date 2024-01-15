@@ -62,7 +62,7 @@ echo 'remap swvls'
 
 echo 'remap sl00'
 [ -s ens/edte_${date}_sl00-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
- cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
+ cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1,stl2 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib &
 
 echo 'shift climate dates'
@@ -75,7 +75,7 @@ yd=$(echo "$y - 2020" | bc)
 [ -s ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE SWIC Data already chopped" || \
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2023_swis-ydaymean-eu-edte.grib ens/SWIC_${date}T000000_swi-day.grib &
 wait
-echo 'start xgb predict'
+echo 'start xgb predict soil wetness'
 $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
  ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
@@ -91,5 +91,13 @@ cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${
 echo 'grib fix'
 # fix grib attributes
 grib_set -r -s centre=86,jScansPositively=1 ens/EDTE_${date}_swi2_out.grib grib/EDTE_${date}T000000_swi2-$abr.grib
+
+# echo 'start xgb predict soil temp'
+# $python /home/ubuntu/bin/xgb-predict-stl1-edte.py ens/edte_${date}_swvls-$abr.grib \
+#  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
+#  ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
+#  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib \
+#  ens/SWIC_${date}T000000_swi-day.grib \
+#  ens/EDTE_${date}_swi2_out.nc
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
