@@ -74,8 +74,12 @@ yd=$(echo "$y - 2020" | bc)
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/ECC_20000101T000000_lailv-$abr-edte-day.grib ens/ECC_${date}T000000_lailv-$abr-edte-day.grib &
 [ -s ens/SWIC_${date}T000000_swi-day.grib ] && echo "EDTE SWIC Data already chopped" || \
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2023_swis-ydaymean-eu-edte.grib ens/SWIC_${date}T000000_swi-day.grib &
+[ -s ens/LSASAFC_${date}_sktn.grib ] && echo "EDTE LSASAFC Data already chopped" || \
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/LSASAFC_20000101T000000_ydmean_nights-eu-de.grib ens/LSASAFC_${date}_sktn.grib &
+
 wait
 echo 'start xgb predict soil wetness'
+[ -s ens/EDTE_${date}_swi2_out.nc ] && echo "EDTE swi2 Data already calculated" || \
 $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
  ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
@@ -85,19 +89,28 @@ $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.gr
 
 echo 'netcdf to grib'
 # netcdf to grib
-cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${date}_swi2_out.nc \
- ens/EDTE_${date}_swi2_out.grib #|| echo "NO input or already netcdf to grib1"
+[ -s ens/EDTE_${date}_swi2_out.grib ] && echo "EDTE swi2 Data already reformatted" || \
+ cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${date}_swi2_out.nc \
+ ens/EDTE_${date}_swi2_out.grib 
 
 echo 'grib fix'
 # fix grib attributes
+[ -s grib/EDTE_${date}T000000_swi2-$abr.grib ] && echo "EDTE swi2 Data already fixed" || \
 grib_set -r -s centre=86,jScansPositively=1 ens/EDTE_${date}_swi2_out.grib grib/EDTE_${date}T000000_swi2-$abr.grib
 
-# echo 'start xgb predict soil temp'
-# $python /home/ubuntu/bin/xgb-predict-stl1-edte.py ens/edte_${date}_swvls-$abr.grib \
-#  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_runsums-$abr.grib \
-#  ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
-#  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib \
-#  ens/SWIC_${date}T000000_swi-day.grib \
-#  ens/EDTE_${date}_swi2_out.nc
+echo 'start xgb predict soil temp'
+[ -s ens/EDTE_${date}_stl1_out.nc ] && echo "EDTE stl1 Data already calculated" || \ 
+$python /home/ubuntu/bin/xgb-predict-soiltemp-edte.py ens/edte_${date}_swvls-$abr.grib \
+  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_disacc-$abr.grib ens/LSASAFC_${date}_sktn.grib ens/EDTE_${date}_stl1_out.nc
+echo 'netcdf to grib'
+# netcdf to grib
+[ -s ens/EDTE_${date}_stl1_out.grib ] && echo "EDTE stl1 Data already reformatted" || \
+cdo -P 64 -b 16 -f grb2 copy -setparam,139.128.192 -setmissval,-9.e38 ens/EDTE_${date}_stl1_out.nc \
+ ens/EDTE_${date}_stl1_out.grib #|| echo "NO input or already netcdf to grib1"
+
+echo 'grib fix'
+# fix grib attributes
+[ -s grib/EDTE_${date}T000000_stl1-$abr.grib ] && echo "EDTE stl1 Data already fixed" || \
+grib_set -r -s centre=86,jScansPositively=1 ens/EDTE_${date}_stl1_out.grib grib/EDTE_${date}T000000_stl1-$abr.grib
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

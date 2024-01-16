@@ -13,6 +13,7 @@
 source ~/.smart
 
 eval "$(conda shell.bash hook)"
+cd /home/smartmet/data
 if [ $# -ne 0 ]
 then
     year=$1
@@ -31,7 +32,6 @@ else
     oldyear=$(date -d '1 month ago' +%Y)
     rm ens/*_$oldyear${oldmonth}_*.grib
 fi
-cd /home/smartmet/data
 
 eyear=$(date -d "$year${month}01 7 months" +%Y)
 emonth=$(date -d "$year${month}01 7 months" +%m)
