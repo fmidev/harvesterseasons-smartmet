@@ -10,7 +10,7 @@
 	    "layer_type": "isoband",
 	    "isobands": "json:isobands/NDVI.json",
 	    "css": "isobands/NDVI.css",
-	    "parameter": "NDVI:CLMS",
+	    "parameter": "NDVI:CLMS:5052:1:0:0",
 		"sampling":{
 		"relativeresolution": 4
 	    },

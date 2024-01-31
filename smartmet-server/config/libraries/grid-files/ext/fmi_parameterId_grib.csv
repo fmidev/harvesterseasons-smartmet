@@ -15,6 +15,7 @@
 
 # Mapping "standard" grib identifiers (defined in the "grib_parameters.csv" file) into 
 # our own FMI identifiers (defined in the "ext/fmi_parameters.csv" file).
+STL1X-C;174139;;;
 
 # Soil clay fraction in g/kg using soil clay fraction
 SCFR-GKG;198007;;;

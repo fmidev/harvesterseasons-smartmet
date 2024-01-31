@@ -106,5 +106,5 @@
 # Albedo
 174;discipline=0,parameterCategory=19,parameterNumber=1,crraLocalVersion=1;
 
-# Soil type anomaly for using to show SMOS freeze thaw states
-#171043;discipline=192,parameterCategory=171,parameterNumber=43;
+# Soil temperature layer 1 
+#174139;discipline=192,parameterCategory=174,parameterNumber=139;
