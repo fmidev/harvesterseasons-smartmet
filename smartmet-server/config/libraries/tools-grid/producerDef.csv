@@ -51,3 +51,4 @@ INM-CM5-0;INM-CM5-0;INM-CM5-0;CMIP6 INM-CM5-0 model data from C3S
 MRI-ESM2-0;MRI-ESM2-0;MRI-ESM2-0;CMIP6 MRI-ESM2-0 model data from C3S
 UMD;UMD;UMD;Univeristy of Maryland forest data
 LSASAFC;LSASAFC;LSASAFC;Land surface analysis SAF climate
+AMSR;AMSR;AMSR;AMSR satellite instrument derived products like LST 

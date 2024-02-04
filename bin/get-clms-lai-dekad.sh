@@ -1,6 +1,6 @@
 #!/bin/bash
 # Fetch LAI_300m_V1 from Copernicus Land Monitoring System 
-# give yearmonthday as cmd (2014-2021) 10 20 30 31 28 29
+# give yearmonthday as cmd (2014-2021) 10 20 30 31 28 or 29 as final days of dekad
 eval "$(conda shell.bash hook)"
 conda activate xgb
 if [[ $# -gt 0 ]]; then
@@ -30,13 +30,8 @@ month=`date -d $yday +%m`
 day=`date -d $yday +%d`
 echo $yday
 cd $incoming
-# https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/2021/03/21/SWI10_202103211200_GLOBE_ASCAT_V3.1.1/c_gls_SWI10_202103211200_GLOBE_ASCAT_V3.1.1.nc
-#url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version.nc"
-#metaurl="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_PROD-DESC_${year}${month}${day}1200_GLOBE_ASCAT_V$version.xml"
-#ncfile="c_gls_SWI10_${yday}1200_GLOBE_ASCAT_V$version.nc"
-#meta="c_gls_SWI10_PROD-DESC_${yday}1200_GLOBE_ASCAT_V$version.xml"
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Properties/LAI_300m_V1/$year/$month/$day/${lai}_${year}${month}${day}0000_GLOBE_$version/c_gls_${lai}_${year}${month}${day}0000_GLOBE_$version.nc"
-metaurl="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Properties/LAI_300m_V1/$year/$month/$day/${lai}_${year}${month}${day}0000_GLOBE_$version/c_gls_${lai}_PROD-DESC_${year}${month}${day}0000_GLOBE_$version.xml"
+url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Properties/LAI_300m_V1/$year/$month/$day/${lai}_${year}${month}${day}0000_GLOBE_$version/c_gls_${lai}_${year}${month}${day}0000_GLOBE_$version.nc"
+metaurl="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Properties/LAI_300m_V1/$year/$month/$day/${lai}_${year}${month}${day}0000_GLOBE_$version/c_gls_${lai}_PROD-DESC_${year}${month}${day}0000_GLOBE_$version.xml"
 ncIn="c_gls_${lai}_${year}${month}${day}0000_GLOBE_$version.nc"
 ncfile="c_gls_${lai}_${year}${month}${day}0000_EU_$version.nc"
 meta="c_gls_${lai}_PROD-DESC_${year}${month}${day}0000_GLOBE_$version.xml"
