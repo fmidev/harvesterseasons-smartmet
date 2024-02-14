@@ -80,6 +80,8 @@ yd=$(echo "$y - 2020" | bc)
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/SWIC_20000101T000000_2020_2015-2023_swis-ydaymean-eu-edte.grib ens/SWIC_${date}T000000_swi-day.grib &
 [ -s ens/LSASAFC_${date}_sktn.grib ] && echo "EDTE LSASAFC Data already chopped" || \
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/LSASAFC_20000101T000000_ydmean_nights-eu-de.grib ens/LSASAFC_${date}_sktn.grib &
+[ -s ens/edte_${date}_AMSRC_skt.grib ] && echo "EDTE AMSRC skt 00 UTC data already chopped" || \
+ cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/AMSRC_20000101T000000_2013-2023_daymean-skt-edte-eu.grib ens/edte_${date}_AMSRC_skt.grib &
 
 wait
 echo 'start xgb predict soil wetness'
@@ -107,7 +109,7 @@ echo 'start xgb predict soil temp'
 [ -s ens/EDTE_${date}_stl1_out.nc ] && echo "EDTE stl1 Data already calculated" || \
 $python /home/ubuntu/bin/xgb-predict-soiltemp-edte.py ens/edte_${date}_swvls-$abr.grib \
   ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_disacc-$abr.grib ens/LSASAFC_${date}_sktn.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
-  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ens/edte_${date}_stl2-$abr.grib ens/EDTE_${date}_stl1_out.nc
+  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ens/edte_${date}_stl2-$abr.grib ens/edte_${date}_AMSRC_skt.grib ens/EDTE_${date}_stl1_out.nc  
 echo 'netcdf to grib'
 # netcdf to grib
 [ -s ens/EDTE_${date}_stl1_out.grib ] && echo "EDTE stl1 Data already reformatted" || \

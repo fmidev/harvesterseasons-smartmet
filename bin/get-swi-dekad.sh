@@ -22,8 +22,8 @@ echo $year $month $day
 
 cd $incoming
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/2021/03/21/SWI10_202103211200_GLOBE_ASCAT_V3.1.1/c_gls_SWI10_202103211200_GLOBE_ASCAT_V3.1.1.nc
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version.nc"
-metaurl="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_PROD-DESC_${year}${month}${day}1200_GLOBE_ASCAT_V$version.xml"
+url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version.nc"
+metaurl="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/10-daily_SWI_12.5km_Global_V3/$year/$month/$day/SWI10_${year}${month}${day}1200_GLOBE_ASCAT_V$version/c_gls_SWI10_PROD-DESC_${year}${month}${day}1200_GLOBE_ASCAT_V$version.xml"
 ncfile="c_gls_SWI10_${yday}1200_GLOBE_ASCAT_V$version.nc"
 meta="c_gls_SWI10_PROD-DESC_${yday}1200_GLOBE_ASCAT_V$version.xml"
 fileFix=${ncfile:0:-3}-swi-fix.grib
@@ -41,6 +41,7 @@ nc_ok=$(cdo xinfon $ncfile)
 if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
+    rm $ncfile $meta $fileFix
 else 
   cdo -f grb -s -b P8 copy -chparam,-17,40.228,-20,41.228,-21,42.228,-23,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
   grib_set -r -s centre=224,jScansPositively=0 $fileFix $file

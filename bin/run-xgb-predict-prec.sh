@@ -60,6 +60,6 @@ seq 0 50 | parallel grib_set -r -s table2Version=128,indicatorOfParameter=228,ce
 ens/ECX${bsf}_$year${month}_tp-acc-$abr-{}-fixed.grib || echo "NOT fixing tp grib attributes - no input or already produced"
     
 # join ensemble members
-[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib  ] && ! [ -f grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib  ] && \
-grib_copy ens/ECX${bsf}_$year${month}_tp-acc-$abr-*-fixed.grib grib/ECX${bsf}_$year${month}01T000000_tp-acc-$abr.grib || echo "NOT joining tp ensemble members - no input or already produced"
+[ -f ens/ECX${bsf}_$year${month}_tp-acc-$abr-50-fixed.grib  ] && ! [ -f grib/ECXSF_$year${month}01T000000_tp-acc-$abr.grib  ] && \
+grib_copy ens/ECX${bsf}_$year${month}_tp-acc-$abr-*-fixed.grib grib/ECXSF_$year${month}01T000000_tp-acc-$abr.grib || echo "NOT joining tp ensemble members - no input or already produced"
 

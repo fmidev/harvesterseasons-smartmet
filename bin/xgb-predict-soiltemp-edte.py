@@ -24,13 +24,14 @@ if __name__ == "__main__":
         laihv=sys.argv[5]
         lailv=sys.argv[6]
         stl2=sys.argv[7]
+        skt_amsrc=sys.argv[8]
 
         dtm_aspect='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_anor-dtm-aspect-avg_eu-edte.grb' # aspect
         dtm_slope='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_slor-dtm-slope-avg_eu-edte.grb' # slope
         dtm_height='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_h-dtm-height-avg_eu-edte.grb' # height
 
         # output file
-        outfile=sys.argv[8]
+        outfile=sys.argv[9]
 
         # read in data
         sl_UTC00_var = ['u10','v10','d2m','t2m','rsn','sde','stl1'] 
@@ -71,19 +72,22 @@ if __name__ == "__main__":
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'lai_lv':'lailv-00'})
         stl2_ds=xr.open_dataset(stl2, engine='cfgrib', chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'stl2':'stl2-00'})
+        skt_ds=xr.open_dataset(skt_amsrc, engine='cfgrib', chunks={'valid_time':1},
+                               backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))
 
         date_first=str(swvls.valid_time[0].data)[:10]
         date_last=str(swvls.valid_time[-1].data)[:10]
         laihv_ds=laihv_ds.sel(valid_time=slice(date_first,date_last))
         lailv_ds=lailv_ds.sel(valid_time=slice(date_first,date_last))        
         sktn_ds=sktn_ds.sel(valid_time=slice(date_first,date_last))
+        skt_ds=skt_ds.sel(valid_time=slice(date_first,date_last))
  
         #swvls=swvls.where((swvls.depthBelowLandLayer<=0.20) & (swvls.depthBelowLandLayer>=0.06), drop=True).rename_vars({'vsw':'swvl2-00'}).squeeze(["depthBelowLandLayer"], drop=True) # use layer 0.07 m for swvl2
         swvls['dayOfYear']=swvls.valid_time.dt.dayofyear
  
         ds1=xr.merge([swvls,sl00,
                       sldisacc,
-                      height,slope,aspect,sktn_ds,laihv_ds,lailv_ds,stl2_ds
+                      height,slope,aspect,sktn_ds,laihv_ds,lailv_ds,stl2_ds,skt_ds
                       ],compat='override')
         ds1=ds1.drop_vars(['surface','depthBelowLandLayer'])
         ds1=ds1.sel(valid_time=slice(date_first,date_last)) 
@@ -101,13 +105,13 @@ if __name__ == "__main__":
         
         df=df.dropna()
         preds=["slhf","sshf",
-        "ssrd","strd","str","ssr","skt-00",
+        "ssrd","strd","str","ssr","skt","skt-00",
         "sktn","laihv-00",
         "lailv-00",
         "sd-00","rsn-00",
         "stl1-00","stl2-00","swvl2-00",
         "t2-00","td2-00","u10-00",
-        "v10-00","ro","evapp","longitude","latitude","DTM_height","DTM_slope",
+        "v10-00","ro","evapp","DTM_height","DTM_slope",
         "DTM_aspect",'dayOfYear']
 
         df_preds = df[preds]
@@ -117,7 +121,7 @@ if __name__ == "__main__":
         #print(df.compute()) # dask
         
         ### Predict with XGBoost fitted model 
-        mdl_name='/home/ubuntu/data/MLmodels/xgbmodel_soiltemp_latest_01162024181219.json'
+        mdl_name='/home/ubuntu/data/MLmodels/xgbmodel_soiltemp_latest_02122024092131.json'
         fitted_mdl=xgb.XGBRegressor() # pandas
         #fitted_mdl=xgb.Booster() # dask
         fitted_mdl.load_model(mdl_name)
