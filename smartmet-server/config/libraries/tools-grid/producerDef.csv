@@ -16,6 +16,7 @@ ECBSF;ECBSF;EC-C3S-BSF;Bias adjusted C3S seasonal forecast data
 ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
 ECXB2SF;ECXB2SF;EC-C3S-XB2SF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
 ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
+GLDAS;GLDAS;GLDAS;Global Land Data Assimilation System analysis data
 #HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI
 #HOPSWF;HOPSWF;HOPS-WF;HOPS NWP forecast for soil conditions from FMI
 #HOPSSF;HOPSSF;HOPS-SF;HOPS seasonal forecast for soil conditions from FMI
