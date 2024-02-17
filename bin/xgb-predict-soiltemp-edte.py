@@ -27,7 +27,7 @@ if __name__ == "__main__":
         skt_amsrc=sys.argv[8]
 
         dtm_aspect='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_anor-dtm-aspect-avg_eu-edte.grb' # aspect
-        dtm_slope='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_slor-dtm-slope-avg_eu-edte.grb' # slope
+        dtm_slope='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_slope-eu-edte.grib' # slope
         dtm_height='/home/ubuntu/data/grib/COPERNICUS_20000101T000000_20110701_h-dtm-height-avg_eu-edte.grb' # height
 
         # output file
