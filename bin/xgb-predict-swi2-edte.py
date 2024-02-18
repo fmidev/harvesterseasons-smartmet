@@ -21,9 +21,9 @@ if __name__ == "__main__":
         laihv=sys.argv[5]
         lailv=sys.argv[6]
         swi2c=sys.argv[7] # swi2clim
-        dtm_aspect='grib/COPERNICUS_20000101T000000_aspect-eu-edte.grb' 
+        dtm_aspect='grib/COPERNICUS_20000101T000000_aspect-eu-edte.gr1b' 
         dtm_slope='grib/COPERNICUS_20000101T000000_slope-eu-edte.grib'
-        dtm_height='grib/COPERNICUS_20000101T000000_dtm-eu-edte.grb'
+        dtm_height='grib/COPERNICUS_20000101T000000_dtm-eu-edte.gr1b'
         soilgrids='grib/SG_20200501T000000_soilgrids-0-200cm-eu-edte.grib' # sand ssfr, silt soilp, clay scfr, soc stf
         lakecov='grib/ECC_20000101T000000_ilwaterc-frac-eu-edte-fix.grib' # lake cover
         urbancov='grib/ECC_20000101T000000_urbanc-frac-eu-edte-fix.grib' # urban cover
