@@ -189,3 +189,5 @@ CUR-0TO1;229001;;;
 Q-KGKG;133;;;
 # Soil freeze thaw in place for soil type anomaly 
 SFT-N;171043;;;
+# 500007:Geometric height of earth surface (m)
+HSURF-M;500007;;;
