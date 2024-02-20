@@ -1,8 +1,7 @@
 #!/bin/bash
 # give yearmonthday and version as cmd 
-#eval "$(conda shell.bash hook)"
-#conda activate xr
-
+eval "$(conda shell.bash hook)"
+conda activate cdo
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
     version=$2
@@ -20,7 +19,7 @@ echo $year $month $day
 
 cd $incoming
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/2020/10/11/SWI1km_202010111200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_202010111200_CEURO_SCATSAR_V1.0.1.nc
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
+url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
 fileFix=${ncfile:0:-3}-swi-fix.grib
