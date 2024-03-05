@@ -33,9 +33,10 @@ dam5=$(date -d "$date 5 days ago" +%Y%m%d)T000000
 
 cd /home/smartmet/data
 echo 'fetch 3h variables'
+# sed s:2023-10-10:$date:g ../mars/edte-sfc.mars | /home/smartmet/bin/mars && \
 ! [ -s grib/EDTE_${date}T000000_sfc-$abr.grib ] &&  \
- sed s:2023-10-10:$date:g ../mars/edte-sfc.mars | /home/smartmet/bin/mars && \
- cdo -P 64 --eccodes -s -O aexprf,ec-sde.instr edte_${date}_sfc-$abr.grib grib/EDTE_${date}T000000_sfc-$abr.grib || echo "EDTE sfc Data already downloaded"
+ poly-edte-sfc.mars $date && \
+ cdo -P 64 --eccodes -s -O aexprf,ec-sde.instr -remapnn,edte-eu-grid edte_${date}_sfc-$abr.grib grib/EDTE_${date}T000000_sfc-$abr.grib || echo "EDTE sfc Data already downloaded"
 echo 'disaccumulate 24h and shifttime' #,swi-edte-$abr-weights.nc
 ! [ -s ens/edte_${date}_disacc-$abr.grib ] && cdo -P 64 -s --eccodes -O shifttime,-1d \
  -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf,skt -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib ens/edte_${date}_disacc-$abr.grib \
@@ -65,6 +66,7 @@ echo 'remap sl00'
  cdo -P 64 -s --eccodes aexprf,ec-sde.instr -seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1,10u,10v -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib &
 echo 'remap stl2'
+[ -s grib/edte_${date}_stl2-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
  cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,stl2 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_stl2-$abr.grib &
 

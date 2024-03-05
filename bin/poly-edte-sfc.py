@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from polytope.api import Client
 import json
 import io,sys

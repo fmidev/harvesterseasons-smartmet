@@ -27,11 +27,12 @@ file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url && \
-     wget -q --random-wait $meta
+[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url && wget -q --random-wait $meta
+
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
 #ncog="${nfile:0:-4}_cog.tif"
+
 nc_ok=$(cdo xinfon $ncfile)
 
 if [ -z "$nc_ok" ]
@@ -46,4 +47,4 @@ else
     rm $ncfile ${ncfile:0:-3}.xml $fileFix
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

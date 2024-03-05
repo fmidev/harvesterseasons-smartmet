@@ -53,7 +53,7 @@ echo 'runsums'
     cdo -shifttime,${diff}years grib/SWIC_20000101T000000_2020_2015-2022_swis-ydaymean-eu-9km-fixed.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean-eu-9km-fixed.grib || echo 'not shifting'
 
 echo 'start xgb predict'
-seq 0 50 | parallel -j1 python /home/ubuntu/bin/xgb-predict-swi2-${grid}.py ens/ec-BSF_${year}${month}_swvls-24h-eu-{}-fixed.grib ens/ec-sf_${grid}_${year}${month}_sl00utc-24h-eu-{}.grib ens/ec-sf_runsums_${grid}_${year}${month}-{}-fixed.grib ens/disacc_${grid}_${year}${month}-{}-fixed.grib ens/ECC_${year}${month}01T000000_laihv-eu-day.grib ens/ECC_${year}${month}01T000000_lailv-eu-day.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean-eu-9km-fixed.grib ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.nc
+seq 0 50 | parallel -j3 python /home/ubuntu/bin/xgb-predict-swi2-${grid}.py ens/ec-BSF_${year}${month}_swvls-24h-eu-{}-fixed.grib ens/ec-sf_${grid}_${year}${month}_sl00utc-24h-eu-{}.grib ens/ec-sf_runsums_${grid}_${year}${month}-{}-fixed.grib ens/disacc_${grid}_${year}${month}-{}-fixed.grib ens/ECC_${year}${month}01T000000_laihv-eu-day.grib ens/ECC_${year}${month}01T000000_lailv-eu-day.grib ens/SWIC_${year}${month}01T000000_2020_2015-2022_swis-ydaymean-eu-9km-fixed.grib ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.nc
 
 echo 'netcdf to grib'
 # netcdf to grib

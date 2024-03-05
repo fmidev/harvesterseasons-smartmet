@@ -21,9 +21,9 @@ if __name__ == "__main__":
         laihv=sys.argv[5]
         lailv=sys.argv[6]
         swi2c=sys.argv[7] # swi2clim
-        dtm_aspect='grib/COPERNICUS_20000101T000000_20110701T000000_anor-dtm-aspect-avg_eu-era5l.grb' 
-        dtm_slope='grib/COPERNICUS_20000101T000000_20110701T000000_slor-dtm-slope-avg_eu-era5l.grb'
-        dtm_height='grib/COPERNICUS_20000101T000000_20110701T000000_h-dtm-height-avg_eu-era5l.grb'
+        dtm_aspect='grib/COPERNICUS_20000101T000000_20110701_anor-dtm-aspect-avg_eu-era5l.grib' 
+        dtm_slope='grib/COPERNICUS_20000101T000000_20110701_slor-dtm-slope-avg_eu-era5l.grib'
+        dtm_height='grib/COPERNICUS_20000101T000000_20110701_h-dtm-height-avg_eu-era5l.grib'
         soilgrids='grib/SG_20200501T000000_soilgrids-0-200cm-eu-era5l.grib' # sand ssfr, silt soilp, clay scfr, soc stf
         lakecov='grib/ECC_20000101T000000_ilwaterc-frac-eu-9km-fix.grib' # lake cover
         urbancov='grib/ECC_20000101T000000_urbanc-frac-eu-9km-fix.grib' # urban cover
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         sl00=xr.open_dataset(sl00_ecsf, engine='cfgrib',  chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))[sl_UTC00_var].rename_vars(names00UTC)
         height=xr.open_dataset(dtm_height, engine='cfgrib', chunks={'valid_time':1}, 
-                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'p3008':'DTM_height'})
+                        backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'h':'DTM_height'})
         slope=xr.open_dataset(dtm_slope, engine='cfgrib',  chunks={'valid_time':1},
                         backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath='')).rename_vars({'slor':'DTM_slope'})
         aspect=xr.open_dataset(dtm_aspect, engine='cfgrib',  chunks={'valid_time':1},
