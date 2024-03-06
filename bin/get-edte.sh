@@ -67,7 +67,7 @@ echo 'remap sl00'
  cdo -P 64 -s --eccodes aexprf,ec-sde.instr -seldate,$sdate,$edate -selname,2d,2t,rsn,sd,sde,stl1,10u,10v -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_sl00-$abr.grib &
 echo 'remap stl2'
-[ -s grib/edte_${date}_stl2-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
+[ -s ens/edte_${date}_stl2-$abr.grib ] && echo "EDTE sl00 Data already calculated" || \
  cdo -P 64 -s --eccodes seldate,$sdate,$edate -selname,stl2 -seltime,00:00:00 grib/EDTE_${date}T000000_sfc-$abr.grib \
  ens/edte_${date}_stl2-$abr.grib &
 
@@ -85,6 +85,8 @@ yd=$(echo "$y - 2020" | bc)
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/LSASAFC_20000101T000000_ydmean_nights-eu-de.grib ens/LSASAFC_${date}_sktn.grib &
 [ -s ens/edte_${date}_AMSRC_skt.grib ] && echo "EDTE AMSRC skt 00 UTC data already chopped" || \
  cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/AMSRC_20000101T000000_2013-2023_daymean-skt-edte-eu.grib ens/edte_${date}_AMSRC_skt.grib &
+[ -s ens/CLMSC_${date}_clmsc.grib ] && echo "EDTE CLMSC Data already chopped" || \
+cdo -P 64 -s --eccodes -seldate,$sdate,$edate -shifttime,${yd}year grib/CLMSC_20000101T000000_2006-23_swe-edte.grib ens/CLMSC_${date}clmsc.grib &
 
 wait
 echo 'start xgb predict soil wetness'
@@ -118,10 +120,25 @@ echo 'netcdf to grib'
 [ -s ens/EDTE_${date}_stl1_out.grib ] && echo "EDTE stl1 Data already reformatted" || \
 cdo -P 64 -b 16 -f grb2 copy -setparam,139.174.192 -setmissval,-9.e38 ens/EDTE_${date}_stl1_out.nc \
  ens/EDTE_${date}_stl1_out.grib #|| echo "NO input or already netcdf to grib1"
-
 echo 'grib fix'
 # fix grib attributes
 [ -s grib/EDTE_${date}T000000_stl1-$abr.grib ] && echo "EDTE stl1 Data already fixed" || \
 grib_set -r -s centre=86,jScansPositively=1 ens/EDTE_${date}_stl1_out.grib grib/EDTE_${date}T000000_stl1-$abr.grib
+
+echo 'start xgb predict snow depth'
+# calc snow depth
+[ -s ens/EDTE_${date}_sd_out.nc ] && echo "EDTE sd Data already calculated" || \
+$python /home/ubuntu/bin/xgb-predict-snowdepth-edte.py ens/edte_${date}_swvls-$abr.grib \
+  ens/edte_${date}_sl00-$abr.grib ens/edte_${date}_disacc-$abr.grib ens/ECC_${date}T000000_laihv-$abr-edte-day.grib \
+  ens/ECC_${date}T000000_lailv-$abr-edte-day.grib ens/CLMSC_${date}clmsc.grib ens/EDTE_${date}_sd_out.nc 
+echo 'netcdf to grib'
+# netcdf to grib
+[ -s ens/EDTE_${date}_sd_out.grib ] && echo "EDTE sd Data already reformatted" || \
+cdo -P 64 -b 16 -f grb2 copy -setparam,11.1.0 -setmissval,-9.e38 ens/EDTE_${date}_sd_out.nc \
+ ens/EDTE_${date}_sd_out.grib #|| echo "NO input or already netcdf to grib1"
+echo 'grib fix'
+# fix grib attributes
+[ -s grib/EDTE_${date}T000000_sd-$abr.grib ] && echo "EDTE sd Data already fixed" || \
+grib_set -r -s centre=86,jScansPositively=1,typeOfFirstFixedSurface=1q ens/EDTE_${date}_sd_out.grib grib/EDTE_${date}T000000_hsnow-$abr.grib
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
