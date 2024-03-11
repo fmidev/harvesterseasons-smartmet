@@ -30,6 +30,7 @@
 
 #################################################################################
 10174139;STL1X-C;C;Soil temperature level 1 in Celsius;1;1;1;1;
+10500045;SDE-CM;cm;Snow depth elevation (cm);1;1;1;1;
 10000006;SSFR-GKG;g kg-1;Soil sand fraction (g/kg);2;2;2;1;
 10000007;SCFR-GKG;g kg-1;Soil clay fraction (g/kg);2;2;2;1;
 10260215;SILTFR-GKG;g kg-1;Soil silt fraction (g/kg);2;2;2;1;

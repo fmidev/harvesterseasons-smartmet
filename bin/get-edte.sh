@@ -139,6 +139,6 @@ cdo -P 64 -b 16 -f grb2 copy -setparam,11.1.0 -setmissval,-9.e38 ens/EDTE_${date
 echo 'grib fix'
 # fix grib attributes
 [ -s grib/EDTE_${date}T000000_sd-$abr.grib ] && echo "EDTE sd Data already fixed" || \
-grib_set -r -s centre=86,jScansPositively=1,typeOfFirstFixedSurface=1q ens/EDTE_${date}_sd_out.grib grib/EDTE_${date}T000000_hsnow-$abr.grib
+grib_set -r -s centre=86,jScansPositively=1,typeOfFirstFixedSurface=1 ens/EDTE_${date}_sd_out.grib grib/EDTE_${date}T000000_hsnow-$abr.grib
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
