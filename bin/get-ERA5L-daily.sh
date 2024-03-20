@@ -3,7 +3,8 @@
 # monthly script for fetching ERA5 Land reanalysis data from cdsapi
 # and setting it up in the smartmet-server
 #
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 if [ $# -ne 0 ]
 then
     year=$1

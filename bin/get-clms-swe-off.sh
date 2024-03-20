@@ -16,7 +16,8 @@
 #
 # INFO:
 #=====#################################################################
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 
 yday=$(date -d "3 days ago" '+%Y%m%d')

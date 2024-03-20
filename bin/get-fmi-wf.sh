@@ -1,5 +1,7 @@
 #!/bin/bash
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
+
 conda activate xr
 if [ $# -ne 0 ]
 then

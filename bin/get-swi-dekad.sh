@@ -1,6 +1,8 @@
 #!/bin/bash
 # give yearmonthday and version as cmd
 #eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
+
 #conda activate xr
 if [[ $# -gt 1 ]]; then
     version=$2

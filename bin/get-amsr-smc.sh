@@ -3,7 +3,8 @@
 # download AMSR LST research data from JAXA, combine and transform to grib for smartmet-server ingestion 
 # Mikko Strahlendorff 2.2.2024
 ###################
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 if [ $# -ne 0 ]
 then

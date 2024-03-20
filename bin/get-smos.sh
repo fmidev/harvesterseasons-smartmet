@@ -3,7 +3,8 @@
 # download SMOS data from FMI, combine and transform to grib for smartmet-server ingestion 
 # Mikko Strahlendorff 28.11.2023
 ###################
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 if [ $# -ne 0 ]
 then

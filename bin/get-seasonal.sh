@@ -12,7 +12,8 @@
 
 source ~/.smart
 
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 cd /home/smartmet/data
 if [ $# -ne 0 ]
 then
@@ -30,7 +31,7 @@ else
     ## remove previous month files
     oldmonth=$(date -d '1 month ago' +%m)
     oldyear=$(date -d '1 month ago' +%Y)
-    rm ens/*_$oldyear${oldmonth}_*.grib
+    rm ens/*-$oldyear${oldmonth}_*.grib
 fi
 
 eyear=$(date -d "$year${month}01 7 months" +%Y)

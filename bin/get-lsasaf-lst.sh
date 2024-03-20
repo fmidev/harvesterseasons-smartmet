@@ -3,7 +3,8 @@
 # download Sentinel 3 Synergy data from CreoDIAS, combine and transform to grib for smartmet-server ingestion 
 # Mikko Strahlendorff 20.4.2022
 ###################
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 if [ $# -ne 0 ]
 then

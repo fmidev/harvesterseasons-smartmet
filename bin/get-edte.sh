@@ -8,7 +8,9 @@
 
 source ~/.smart
 
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
+
 conda activate xgb
 python=/home/ubuntu/mambaforge/envs/xgb/bin/python
 if [ $# -ne 0 ]

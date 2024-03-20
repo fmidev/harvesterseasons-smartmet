@@ -1,6 +1,6 @@
 #!/bin/bash
 # give yearmonthday and version as cmd 
-eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
@@ -47,4 +47,4 @@ else
     rm $ncfile ${ncfile:0:-3}.xml $fileFix
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
-sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

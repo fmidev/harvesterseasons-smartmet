@@ -1,7 +1,8 @@
 #!/bin/bash
 # Fetch NDVI_300m_V2 from Copernicus Land Monitoring System 
 # give yearmonthday as cmd (July 2020 -> )
-eval "$(conda shell.bash hook)"
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate cdo
 version="V2.0.1"
 #version="V2.0.2"
