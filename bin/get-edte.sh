@@ -103,7 +103,7 @@ $python /home/ubuntu/bin/xgb-predict-swi2-edte.py ens/edte_${date}_swvls-$abr.gr
 echo 'netcdf to grib'
 # netcdf to grib
 [ -s ens/EDTE_${date}_swi2_out.grib ] && echo "EDTE swi2 Data already reformatted" || \
- cdo -P 64 -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${date}_swi2_out.nc \
+ cdo -P 64 -s -b P16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/EDTE_${date}_swi2_out.nc \
  ens/EDTE_${date}_swi2_out.grib 
 
 echo 'grib fix'
@@ -120,7 +120,7 @@ $python /home/ubuntu/bin/xgb-predict-soiltemp-edte.py ens/edte_${date}_swvls-$ab
 echo 'netcdf to grib'
 # netcdf to grib
 [ -s ens/EDTE_${date}_stl1_out.grib ] && echo "EDTE stl1 Data already reformatted" || \
-cdo -P 64 -b 16 -f grb2 copy -setparam,139.174.192 -setmissval,-9.e38 ens/EDTE_${date}_stl1_out.nc \
+cdo -P 64 -b P16 -f grb2 copy -setparam,139.174.192 -setmissval,-9.e38 ens/EDTE_${date}_stl1_out.nc \
  ens/EDTE_${date}_stl1_out.grib #|| echo "NO input or already netcdf to grib1"
 echo 'grib fix'
 # fix grib attributes
@@ -136,7 +136,7 @@ $python /home/ubuntu/bin/xgb-predict-snowdepth-edte.py ens/edte_${date}_swvls-$a
 echo 'netcdf to grib'
 # netcdf to grib
 [ -s ens/EDTE_${date}_sd_out.grib ] && echo "EDTE sd Data already reformatted" || \
-cdo -P 64 -b 16 -f grb2 copy -setparam,11.1.0 -setmissval,-9.e38 ens/EDTE_${date}_sd_out.nc \
+cdo -P 64 -b P16 -f grb2 copy -setparam,11.1.0 -setmissval,-9.e38 ens/EDTE_${date}_sd_out.nc \
  ens/EDTE_${date}_sd_out.grib #|| echo "NO input or already netcdf to grib1"
 echo 'grib fix'
 # fix grib attributes
