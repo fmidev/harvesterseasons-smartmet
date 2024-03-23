@@ -15,10 +15,11 @@ COPERNICUS;COPERNICUS;COPERNICUS;Copernicus Digital Elevation Map products
 C3S;C3S;C3S;Copernicus Climate Change Service products
 CERRA;CERRA;CERRA;Copernicus European Regional ReAnalysis
 CERRA-L;CERRA-L;CERRA-L;Copernicus European Regional ReAnalysis Land
-ERA5;ERA5;ERA5;Era5 data from ECMWF
+ERA5;ERA5;ERA5;ERA5 data from ECMWF
+ERA5D;ERA5D;ERA5D;ERA5 daily data from ECMWF
 #UERRA;UERRA;UERRA;UERRA regional reanalysis data
-ERA5L;ERA5L;ERA5L;ERA5 Land data from ECMWF
-ERA5LD;ERA5LD;ERA5LD;ERA5 Land data from ECMWF as daily statistics
+ERA5L;ERA5L;ERA5L;ERA5-Land data from ECMWF
+ERA5LD;ERA5LD;ERA5LD;ERA5-Land data from ECMWF as daily statistics
 #ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 #ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
 ECC;ECC;ECC;IFS ancilliary data for static fields or seasonal climatologies used in the model
