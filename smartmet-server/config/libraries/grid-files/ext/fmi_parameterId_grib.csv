@@ -43,6 +43,9 @@ SWVL3-M3M3;41;;;
 # Volumetric Soil Water layer 4
 SWVL4-M3M3;42;;;
 
+# instantaneous wind gust at 10 m
+FFG-MS;49;;;
+
 # Soil temperature level 1 in Kelvins
 STL1-K;139;;;
 

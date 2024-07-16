@@ -1,6 +1,8 @@
 #!/bin/bash
 eval "$(conda shell.bash hook)"
 conda activate xr
+
+source /home/smartmet/.fmiapi
 if [ $# -ne 0 ]
 then
     date=$1
@@ -10,8 +12,6 @@ else
     ydate=$(date -d '1 day ago' +%Y%m%d)
 fi
 echo $date $ydate
-#fmiapi=710d743a-7a54-4b40-bf28-89c8b8cf33ed for Metsäteho
-fmiapi=edfa704e-69a2-45e2-89bf-d173d79b6b76 
 # for HarvesterSesaons
 timestep=1440
 # predictions 

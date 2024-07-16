@@ -23,6 +23,6 @@ cd /home/ubuntu/data/GLDAS
  wget -c --no-check-certificate -r -np -nd -q -A '*.nc4' https://hydro1.gesdisc.eosdis.nasa.gov/data/GLDAS/GLDAS_NOAH025_3H.2.1/$y/$dy/ && \
  cdo -s -f grb2 -b P15 selname,sd,sde,skt,swvl1,swvl2,swvl3,swvl4,stl1,stl2,stl3,stl4 -aexprf,gldas2ec-soils.instr  \
     [ -mergetime GLDAS_NOAH025_3H.A$ymd.*00.021.nc4 ] ../grib/GLDAS_20000101T000000_${ymd}_noah-gl.grib && \
- s3cmd put -Pq GLDAS_NOAH025_3H.A$ymd.*00.021.nc4 s3://copernicus/gldas/noah/ && rm GLDAS_NOAH025_3H.A$ymd.*00.021.nc4
+ rclone move ./ lit:copernicus/gldas/noah/ --include "GLDAS_NOAH025_3H.A$ymd.*00.021.nc4"
 
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+# sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
