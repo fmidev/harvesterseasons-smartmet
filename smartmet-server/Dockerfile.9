@@ -1,9 +1,9 @@
 FROM docker.io/rockylinux:9
 LABEL maintainer "Mikko Strahlendorff <mikko.strahlendorff@fmi.fi>"
-LABEL license    "MIT License Copyright (c) 2023 FMI Open Development"
+LABEL license    "MIT License Copyright (c) 2025 FMI Open Development"
 
 ENV USER_NAME="smartmet" \
-    GOOGLE_FONTS="Lato Noto%20Sans Open%20Sans Poppins Roboto Ubuntu" 
+    GOOGLE_FONTS="Montserrat NotoSans OpenSans Roboto" 
 
 RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-open-release-latest-9.noarch.rpm && \
     dnf -y install yum-utils && \
@@ -14,22 +14,26 @@ RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-
     dnf config-manager --setopt="epel.exclude=eccodes*" --save && \
     dnf config-manager --set-disabled epel-source && \ 
     dnf -y module disable postgresql:15 && \
+    dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
+    dnf config-manager --disable "pgdg*" && \
+    sed -i -e 's/-source\]$/-__source]/' /etc/yum.repos.d/*.repo && \
     dnf -y update && \
     dnf -y install "glibc-langpack-*" postgresql-server && \
     ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
     dnf -y install --setopt=install_weak_deps=False \
-    smartmet-plugin-backend \
     smartmet-plugin-admin \
+    smartmet-plugin-autocomplete \
+    smartmet-plugin-backend \
     smartmet-plugin-download \
+    smartmet-plugin-edr \
     smartmet-plugin-timeseries \
     smartmet-plugin-wms \
     smartmet-engine-grid \
     smartmet-plugin-grid-admin \
     smartmet-plugin-grid-gui \
-    smartmet-plugin-edr \
     smartmet-tools-grid \
-    smartmet-qdtools \
-    unzip && \
+     unzip \
+    glibc-langpack-en && \
     dnf -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
     dnf clean all 
 
@@ -41,9 +45,6 @@ RUN \
         curl -s -S --output-dir /usr/share/fonts/truetype/${FONT}  "https://github.com/google/fonts/raw/main/ofl/${FONT,,}/${FONT}%5Bwdth,wght%5D.ttf" && \
         curl -s -S --output-dir /usr/share/fonts/truetype/${FONT}  "https://github.com/google/fonts/raw/main/ofl/${FONT,,}/${FONT}-italic%5Bwdth,wght%5D.ttf" ; \
     done
-    #curl -s -S -o ${FONT}.zip "https://fonts.google.com/download?family=${FONT}" && \
-        #unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/${FONT} && \
-        #rm -f ${FONT}.zip ; \
 
 HEALTHCHECK --interval=30s --timeout=10s \
   CMD curl -f http://localhost:8080/admin?what=qengine || exit 1
@@ -54,23 +55,18 @@ EXPOSE 8080
 RUN groupadd -r -g 1000 smartmet
 RUN useradd -r -u 1001 -g smartmet smartmet
 
-# wms.conf defines imagecache. timeseriescache's use is yet to be found.
-# MS 6.3.20: from new Rauhala dockerhub code
-RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
-    chgrp -R 0 /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints && \
-    chmod -R g=u /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartmet/querydata/validpoints /etc/passwd /var/log
+RUN mkdir -p /srv/data/ 
+#{meps,hirlam,gfs,meteor,nam,icon,gem,gens-avg,gens-ctrl,hbm,wam,aws}/{surface,pressure} \
+#             /smartmet/share/wms
 
-# M.K. 09.01.2020: adopted it to WEkEO paths 
-RUN mkdir -p /srv/data
-# M.K. 09.01.2020: /srv/grid-data adopted to WEkEO setting
-#                  other paths are not created in step before TODO check!
-RUN chown -R smartmet /srv/data /var/log/smartmet /var/smartmet/timeseriescache /var/smartmet/imagecache
+RUN install -m 775 -g 0 -d /var/smartmet
+RUN chown -R smartmet /srv/data /var/log/smartmet /var/smartmet
 
-# Smartmet Servers configs should be separate from /etc's settings that come from RPM-packages
-# These locations are required to be defined in several different setting files under the config-direcotry
-# M.K. 09.01.2020: do I have to change something here? Dockerfile is aborting here.
 COPY scripts /home/smartmet/scripts 
 RUN chown -R smartmet /home/smartmet/*
+RUN chmod -R g=u /var/smartmet /etc/passwd /var/log
+
+COPY docker-entrypoint.sh /
 
 ### Containers should NOT run as root as a good practice
 USER smartmet

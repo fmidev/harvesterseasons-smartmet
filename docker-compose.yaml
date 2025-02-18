@@ -1,11 +1,10 @@
-version: "3"
 
 services:
   smartmet-server:
     image: smartmet-server:latest
     build: 
       context: ./smartmet-server
-      dockerfile: Dockerfile.9
+      dockerfile: Dockerfile
     security_opt:
       - seccomp:unconfined
     container_name: smartmet-server
