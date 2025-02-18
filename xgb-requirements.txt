@@ -9,12 +9,12 @@ brotlipy=0.7.0=py39h27cfd23_1003
 bzip2=1.0.8=hb9a14ef_9
 c-ares=1.18.1=h7f98852_0
 ca-certificates=2022.6.15=ha878542_0
-certifi=2022.6.15=py39hf3d152e_0
+certifi>=2024.07.04
 cffi=1.15.0=py39hd667e15_1
 cfgrib=0.9.10.1=pyhd8ed1ab_0
 chardet=4.0.0=py39h06a4308_1003
 click=8.1.3=py39hf3d152e_0
-cryptography=36.0.0=py39h9ce1e76_0
+cryptography>=42.0.0
 curl=7.82.0=h7f8727e_0
 daal4py=2021.6.0=py39_intel_915
 dal=2021.6.0=intel_915
@@ -83,10 +83,10 @@ python_abi=3.9=2_cp39
 pytz=2021.3=pyhd3eb1b0_0
 readline=8.1.2=h7f8727e_1
 requests=2.25.1=pyhd3eb1b0_0
-scikit-learn=1.0.1=py39h51133e4_0
+scikit-learn>s=1.5.0
 scikit-learn-intelex=2021.6.0=py39_intel_915
 scipy=1.7.3=py39h5c0f66f_1
-setuptools=58.0.4=py39h06a4308_0
+setuptools>=70.0.0
 six=1.16.0=pyhd3eb1b0_1
 sqlite=3.38.0=hc218d9a_0
 tbb=2021.6.0=intel_835

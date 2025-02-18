@@ -3,8 +3,7 @@ LABEL maintainer "Mikko Strahlendorff mikko.strahlendorffo@fmi.fi>"
 LABEL license    "MIT License Copyright (c) 2020 FMI Open Development"
 
 ENV USER_NAME="smartmet" \
-    NOTO_FONTS="NotoSans-unhinted NotoSerif-unhinted NotoMono-hinted" \
-        GOOGLE_FONTS="Open%20Sans Roboto Lato Ubuntu"
+    GOOGLE_FONTS="Lato Noto%20Sans Open%20Sans Poppins Roboto Ubuntu" 
 
 # FMI proxy setup if needed
 COPY proxydetect.sh /usr/local/bin/proxydetect.sh
@@ -73,23 +72,13 @@ RUN  dnf -y install drpm && \
  dnf clean all && \
  rm -rf /var/cache/yum
 
-# Install Google Noto fonts
-RUN mkdir -p /usr/share/fonts/truetype/noto && \
-     for FONT in ${NOTO_FONTS}; \
-     do \
-         curl -s -S -o ${FONT}.zip https://noto-website-2.storage.googleapis.com/pkgs/${FONT}.zip && \
-         unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/noto && \
-         rm -f ${FONT}.zip ; \
-     done
-
-# Install Google Fonts
+# Install Google fonts
 RUN \
     for FONT in $GOOGLE_FONTS; \
     do \
         mkdir -p /usr/share/fonts/truetype/${FONT} && \
-        curl -s -S -o ${FONT}.zip "https://fonts.google.com/download?family=${FONT}" && \
-        unzip -o ${FONT}.zip -d /usr/share/fonts/truetype/${FONT} && \
-        rm -f ${FONT}.zip ; \
+        curl -s -S --output-dir /usr/share/fonts/truetype/${FONT}  "https://github.com/google/fonts/raw/main/ofl/${FONT,,}/${FONT}%5Bwdth,wght%5D.ttf" && \
+        curl -s -S --output-dir /usr/share/fonts/truetype/${FONT}  "https://github.com/google/fonts/raw/main/ofl/${FONT,,}/${FONT}-italic%5Bwdth,wght%5D.ttf" ; \
     done
 					    
 HEALTHCHECK --interval=30s --timeout=10s \

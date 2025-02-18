@@ -68,6 +68,8 @@
 1;5068;EDTE-EU-INV;2001;1251;-30.000000;25.000000;0.040000;0.040000;+x+y;0.000000;0.000000;EDTE EU 0.04 deg inverted
 1;5070;AMSR;3600;1800;0.000000;90.000000;0.100000;0.100000;+x-y;0.000000;0.000000;AMSR L3 equirectangular global grid at 0.1 deg
 1;5071;GLDAS;1440;600;-179.875000;-59.875000;0.250000;0.250000;+x+y;0.000000;0.000000;GLDAS global 0.25 deg Land grid
+1;5072;IS4FIRES-ARC;201;501;30.005000;25.005000;0.100000;0.100000;+x+y;0.000000;0.000000;IS4FIRES Arctic 0.1 deg
+1;5074;CCI;8001;5001;-29.995001;25.004999;0.010000;0.010000;+x+y;0.000000;0.000000;CCI 0.01 deg
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------
