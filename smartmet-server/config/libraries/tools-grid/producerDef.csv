@@ -23,11 +23,16 @@ ERA5LD;ERA5LD;ERA5LD;ERA5-Land data from ECMWF as daily statistics
 #ECMARK5;ECMARK5;ECMARK5;EFFIS Australian fire weather indices
 #ECFWI;ECFWI;ECFWI;EFFIS Canadian fire weather indices
 ECC;ECC;ECC;IFS ancilliary data for static fields or seasonal climatologies used in the model
+EC-EARTH;EC-EARTH;EC-EARTH;EC-EARTH climate prediction model data
+EOBS;EOBS;EOBS;E-OBS daily gridded meteorological data for Europe derived from in-situ observations
 ECSF;ECSF;EC-C3S-SF;C3S seasonal forecast data from ECMWF
 ECBSF;ECBSF;EC-C3S-BSF;statistically Bias adjusted C3S seasonal forecast data
 ECB2SF;ECB2SF;EC-C3S-B2SF;2nd method Bias adjusted C3S seasonal forecast data
 #ECXB2SF;ECXB2SF;EC-C3S-XB2SF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
+ECENS;ECENS;EC-C3S-ENS;Ensemble forecast data in ERA5-Land grid from ECMWF
+ECXENS;ECXENS;EC-C3S-XENS;eXtreme gradient boost method Bias adjusted Ensemble forecast data in ERA5-Land grid from ECMWF
 ECXSF;ECXSF;EC-C3S-XSF;eXtreme gradient boost method Bias adjusted C3S seasonal forecast data
+ECXQSF;ECXQSF;EC-C3S-XQSF;eXtreme gradient boost quantile error method Bias adjusted C3S seasonal forecast data
 #ECBUSF;ECBUSF;EC-C3S-BUSF;UERRA Bias adjusted C3S seasonal forecast data
 EDTE;EDTE;EDTE;Extreme Weather Digital Twin forecast data
 #HOPSANA;HOPSANA;HOPS-ANA;HOPS soil conditions analysis from FMI

@@ -4,8 +4,9 @@ import sys
 
 year=sys.argv[1]
 var=sys.argv[2]
+stat=sys.argv[3]
 
-#print('year: '+year+', var: '+var)
+#print(f'year: {year}, var: {var}, stat: {stat}')
 
 dataset = 'derived-era5-single-levels-daily-statistics'
 request = {
@@ -31,10 +32,9 @@ request = {
         '28', '29', '30',
         '31'
     ],
-    'daily_statistic': 'daily_sum',
+    'daily_statistic': stat,
     'time_zone': 'utc+00:00',
     'frequency': '1_hourly',
-    'format': 'grib',
     'area': [75, -30, 25, 50]
 }
 

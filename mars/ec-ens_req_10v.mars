@@ -1,0 +1,12 @@
+retrieve,
+class=od,
+date=2025-02-21,
+expver=1,
+levtype=sfc,
+param=166.128,
+step=0/TO/360/BY/6,
+stream=enfo,
+time=12:00:00,
+type=cf,
+area=72/3/52/33,
+target="ec-ens_2025-02-21_sfc-10v-nd-6h-0.grib"

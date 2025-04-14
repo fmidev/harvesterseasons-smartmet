@@ -111,3 +111,9 @@
 
 # Total precipitation
 228;discipline=0,parameterCategory=1,parameterNumber=193,typeOfFirstFixedSurface=1,typeOfStatisticalProcessing=1,unitsFactor=1000;
+
+# Maximum temperature at 2 metres in the last 24 hours
+301121;discipline=0,parameterCategory=0,parameterNumber=0,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=2,scaleFactorOfFirstFixedSurface=0,indicatorOfUnitForTimeRange=1,typeOfStatisticalProcessing=2,lengthOfTimeRange=24,is_uerra=0;
+
+# Minimum temperature at 2 metres in the last 24 hours
+301122;discipline=0,parameterCategory=0,parameterNumber=0,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=2,scaleFactorOfFirstFixedSurface=0,indicatorOfUnitForTimeRange=1,typeOfStatisticalProcessing=3,lengthOfTimeRange=24,is_uerra=0;

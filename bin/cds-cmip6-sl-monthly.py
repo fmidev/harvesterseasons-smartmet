@@ -5,26 +5,25 @@ import sys
 
 mod=sys.argv[1]
 var=sys.argv[2]
+period=sys.argv[3]
+exp=sys.argv[4]
 
-target='/home/ubuntu/data/cmip6/%s_%s_1995-2014_CMIP6_monthly_euro.zip'%(mod,var)
+target='/home/ubuntu/data/cmip6/%s_%s_%s_CMIP6_monthly_euro.zip'%(mod,var,period)
 print(target)
 
 c = cdsapi.Client()
+dataset='multi-origin-c3s-atlas'
 
 c.retrieve(
-    'projections-cmip6',
-    {
-        'format': 'zip',
-        'temporal_resolution': 'monthly',
-        'experiment': 'historical',
-        'level': 'single_levels',
+    dataset,{
+        'origin': mod,
+        "experiment": exp,
+        "domain": "global",
+        "period": period,
         'variable': var,
-        'model': mod,
-        'date': '1995-01-01/2014-12-31',
         'area': [
             75, -30, 25,
             50,
         ],
-    },
-    dataset)
+    }).download(target)
 

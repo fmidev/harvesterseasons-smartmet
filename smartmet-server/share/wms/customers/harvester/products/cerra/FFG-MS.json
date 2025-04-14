@@ -1,7 +1,7 @@
 {
     "title": "CERRA 10 Metre Windgust Isobands (ms-1)",
     "abstract": "C3S Copernicus European Regional ReAnalysis FFG-MS 10 metre windgust (ms-1).",
-    "projection": {"5057"},
+    "projection": {},
     "producer": "CERRA",
     "source": "grid",
     "views":[{

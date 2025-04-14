@@ -1,0 +1,30 @@
+{
+    "Vuosaari": {
+        "latitude": 60.20867,
+        "longitude": 25.1959
+    },
+    "Rauma": {
+        "latitude": 61.14475,
+        "longitude": 21.30273
+    },
+    "Raahe": {
+        "latitude": 64.66589,
+        "longitude": 24.40695
+    },
+    "Bremerhaven": {
+        "latitude": 53.53321,
+        "longitude": 8.576089
+    },
+    "Malaga": {
+        "latitude": 36.66611,
+        "longitude": -4.48222
+    },
+    "Malaga-Puerto": {
+        "latitude": 36.7166,
+        "longitude": -4.4197
+    },
+    "PraiaDaVittoria": {
+        "latitude": 38.7666702,
+        "longitude": -27.1000004
+    }
+  }

@@ -5,13 +5,10 @@ lat=61.14475
 lon=21.30273 
 
 predictand='WG_PT24H_MAX'
-mdl_name=f'mdl_{predictand}_2013-2024_sf_{harbor}_quantileerror-fe.txt'
-predictors00='10u,10v,2d,2t,10fg'
-predictorsDSUM='ewss,nsss,slhf,sshf,ssrd,strd,tp'
-cols_own='ewss-1','ewss-2','ewss-3','ewss-4','fg10-1','fg10-2','fg10-3','fg10-4','nsss-1','nsss-2','nsss-3','nsss-4','slhf-1','slhf-2','slhf-3','slhf-4','sshf-1','sshf-2','sshf-3','sshf-4','ssrd-1','ssrd-2','ssrd-3','ssrd-4','strd-1','strd-2','strd-3','strd-4','t2-1','t2-2','t2-3','t2-4','td2-1','td2-2','td2-3','td2-4','tp-1','tp-2','tp-3','tp-4','u10-1','u10-2','u10-3','u10-4','v10-1','v10-2','v10-3','v10-4'
-pred00='lat','lon','u10','v10','fg10','td2','t2'
-predDSUM='lat','lon','ewss','nsss','slhf','sshf','ssrd','strd','tp'
+correl_pred='fg10'
+predictors00='10u,10v,2d,2t,10fg,msl,tcc,tclw' # grib file
+predictorsDSUM='ewss,nsss,slhf,sshf,ssr,ssrd,strd,tp,e,str' # grib file
 
-f1='obs-oceanids-20240101T000000Z-20240803T000000Z-WG_PT1H_MAX-Rauma-daymax.csv'
-threshold_values = [62.26, 54.87, 48.71, 38.33, 29.03, 28.0, 24.19, 29.68, 35.0, 54.33, 51.67, 53.55]
+#f1='obs-oceanids-20240101T000000Z-20240803T000000Z-WG_PT1H_MAX-Rauma-daymax.csv'
+#threshold_values = [62.26, 54.87, 48.71, 38.33, 29.03, 28.0, 24.19, 29.68, 35.0, 54.33, 51.67, 53.55]
 th_wind=15

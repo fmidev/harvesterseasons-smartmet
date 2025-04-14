@@ -2,9 +2,10 @@ import sys
 import pandas as pd
 import calendar
 #from Vuosaari_151028_XGBoost import *
-from Raahe_101785_XGBoost import *
+#from Raahe_101785_XGBoost import *
 #from Rauma_101061_XGBoost import *
 #from Malaga_000231_XGBoost  import *
+from Vuosaari_config import *
 pd.set_option('mode.chained_assignment', None) # turn off SettingWithCopyWarning 
 
 # ECXSF and observations
@@ -13,7 +14,8 @@ yearmon=sys.argv[1]
 data_dir='/home/ubuntu/data/OCEANIDS/'
 
 cols1=['utctime',predictand]
-f2 = 'ECXSF_'+yearmon+'_WG_PT1H_MAX_'+harbor+'_'+FMISID+'.csv' # sf XGBoost result file
+# ECXSF_202501_WG_PT24H_MAX_Vuosaari_151028.csv
+f2 = f'ECXSF_{yearmon}_{predictand}_{harbor}_{FMISID}.csv' # sf XGBoost result file
 df=pd.read_csv(data_dir+f2)
 df.rename(columns={'valid_time': 'utctime'},inplace=True)
 df=df.set_index('utctime')

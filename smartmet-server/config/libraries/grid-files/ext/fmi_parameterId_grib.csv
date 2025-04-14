@@ -194,3 +194,11 @@ SFT-N;171043;;;
 HSURF-M;500007;;;
 # 78:Total column cloud liquid water (kg m-2)
 TCLW-KGM2;78;;;
+# 301121:Maximum temperature at 2 metres in the last 24 hours (K)
+TX2T24-K;301121;;;
+# 301122:Minimum temperature at 2 metres in the last 24 hours (K)
+TN2T24-K;301122;;;
+# 228005:Mean of 10 metre wind speed
+FF10AVG-MS;228005;;;
+# 228004:Mean temperature at 2 metres
+T2AVG-K;228004;;;

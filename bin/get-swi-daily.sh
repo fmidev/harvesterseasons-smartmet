@@ -26,7 +26,7 @@ cd $incoming
 
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/2020/10/11/SWI1km_202010111200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_202010111200_CEURO_SCATSAR_V1.0.1.nc
 #url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
-url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V1.0.2.nc"
+url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 #meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
 fileFix=${ncfile:0:-3}-swi-fix.grib

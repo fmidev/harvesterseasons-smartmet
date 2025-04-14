@@ -1,10 +1,18 @@
 #!/bin/bash
 #
-# monthly script for fetching seasonal data from cdsapi, doing bias corrections and
-# and setting up data in the smartmet-server
-#
-# 14.1.2020 Mikko Strahlendorff
-eval "$(conda shell.bash hook)"
+# Monthly script for fetching seasonal data from cdsapi, doing bias corrections,
+# and setting up data in the Smartmet-server.
+# Bias adjustments done based on ERA5 reanalysis. 
+# XGBoost downscaling for OCEANIDS project.
+# (AK 2025)
+
+source ~/.smart
+
+#eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
+cd /home/smartmet/data
+
+# give year month or else use current
 if [ $# -ne 0 ]
 then
     year=$1
@@ -13,62 +21,155 @@ else
     year=$(date +%Y)
     month=$(date +%m)
 fi
-cd /home/smartmet/data
-
 eyear=$(date -d "$year${month}01 7 months" +%Y)
 emonth=$(date -d "$year${month}01 7 months" +%m)
 
-echo "y: $year m: $month ending $eyear-$emonth"
-## Fetch seasonal data from CDS-API
-[ -f ec-sf-$year$month-all-24h-euro.grib ] && echo "SF Data file already downloaded" ||cds-sf-all-24h.py $year $month
+bsf='B2SF'
+era='era5'
 
-# ensure new eccodes and cdo
-conda activate xr
-## Make bias-adjustement
-[ -f ens/ec-sf_$year${month}_all-24h-eu-6.grib ] && echo "Ensemble member files ready" || grib_copy ec-sf-$year$month-all-24h-euro.grib ens/ec-sf_$year${month}_all-24h-eu-[number].grib
-seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ cdo --eccodes aexprf,ec-sde.instr -ymonadd \
-    -remapbil,era5-eu-grid -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selvar,2d,2t,rsn,sd,stl1,swvl1,swvl2,swvl3,swvl4 era5/era5-ecsf_2000-2019_unbound_bias.grib \
-    ens/ec-b2sf_$year${month}_unbound-24h-eu-{}.grib 
-seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonmul \
-    -remapbil,era5-eu-grid -aexpr,'ws=sqrt(10u^2+10v^2);' -selvar,10u,10v ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -aexpr,'10u=ws;10v=ws;' -selvar,ws era5/era5-ecsf_2000-2019_bound_bias+varc.grib \
-    ens/ec-b2sf_$year${month}_bound-24h-eu-{}.grib
-seq 0 50 | parallel -j 16 --compress --tmpdir tmp/ "cdo --eccodes mergetime -seltimestep,1 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-     -sub -seltimestep,2/215 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-      -seltimestep,1/214 -selvar,e,tp ens/ec-sf_$year${month}_all-24h-eu-{}.grib disacc2-tmp-{}.grib && \
-    cdo --eccodes ymonmul -remapbil,era5-eu-grid disacc2-tmp-{}.grib\
-     -selvar,e,tp era5/era5-ecsf_2000-2019_bound_bias+varc.grib \
-     ens/ec-b2sf_$year${month}_disacc-24h-eu-{}.grib && \
-    cdo --eccodes timcumsum ens/ec-b2sf_$year${month}_disacc-24h-eu-{}.grib ens/ec-b2sf_$year${month}_acc-24h-eu-{}.grib"
-rm disacc2-tmp-*.grib
-## Make stl2,3,4 from stl1
-seq 0 50 |parallel -j 16 --compress --tmpdir tmp/ -q cdo --eccodes ymonadd \
-    -aexpr,'stl2=stl1;stl3=stl1;stl4=stl1;' -remapbil,era5-eu-grid -selvar,stl1 ens/ec-sf_$year${month}_all-24h-eu-{}.grib \
-    -selvar,stl1,stl2,stl3,stl4 era5/era5-stls-diff+bias-climate-eu.grib \
-    ens/ec-b2sf_$year${month}_stl-24h-eu-{}.grib
+echo "$bsf $era y: $year m: $month ending $eyear-$emonth area: $area abr: $abr"
+
+## Fetch seasonal data from CDS-API
+[ -s ec-sf-$year$month-all-24h-$abr.grib ] && echo "SF Data file alreakdy downloaded" || /home/smartmet/bin/cds-sf-all-24h.py $year $month $area $abr
+[ -s ec-sf-$year$month-pl-12h-$abr.grib ] && echo "SF pressurelevel Data already downloaded" || /home/smartmet/bin/cds-sf-pl-12h.py $year $month $area $abr
+
+# split sl/pl to ensemble members
+[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && echo "Ensemble member sl files ready" || \
+    grib_copy ec-sf-$year$month-all-24h-$abr.grib ens/ec-sf_$year${month}_all-24h-$abr-[number].grib
+[ -s ens/ec-sf_$year${month}_pl-12h-$abr-50.grib ] && echo "Ensemble member pl files ready" || \
+    grib_copy ec-sf-$year$month-pl-12h-$abr.grib ens/ec-sf_$year${month}_pl-12h-$abr-[number].grib
+
+# BIAS ADJUSTMENS
+
+# adjust unbound variables (2d,2t,msl,tcc,tclw,tcwv,u10,v10)
+[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && \
+ seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
+    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,2d,2t,msl,tclw,tcwv,10u,10v ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+    -selname,2d,2t,msl,tclw,tcwv,10u,10v $era/$era-ecsf_1995-2024_unbound-bias-$abr.grib \
+    ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib || echo "NOT adj unbound - seasonal forecast input missing or already produced"
+
+# adjust wind (10fg)
+#[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_bound-24h-$abr-50.grib ] && \
+# seq 0 50 | parallel -q cdo -s -b P8 -O --eccodes ymonmul \
+#    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -aexpr,'ws=sqrt(10u^2+10v^2);' -selname,10u,10v ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+#    -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ecsf_2000-2019_bound_bias_$abr.grib \
+#    ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib || echo "NOT adj wind - seasonal forecast input missing or already produced"
+
+# create disacc file from accumulated variables (tp,e,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr,ewss,nsss)
+[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-sf_$year${month}_disacc-${era}-$abr-50.grib ] && \
+ seq 0 50 | parallel "cdo -s --eccodes -O remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -mergetime -seltimestep,1 -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr,ewss,nsss ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+     -deltat -selname,e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf,tsr,ttr,ewss,nsss ens/ec-sf_$year${month}_all-24h-$abr-{}.grib ens/ec-sf_$year${month}_disacc-${era}-$abr-{}.grib" || echo "NOT disacc - seasonal forecast input missing or already produced"
+
+# adjust unbound disacc variables (slhf, sshf, str, strd, ewss, nsss)
+[ -s ens/ec-sf_$year${month}_disacc-${era}-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_disacc-24h-$abr-50.grib ] && \
+ seq 0 50 | parallel "cdo -s --eccodes ymonmul -selname,sshf,slhf,str,strd,ewss,nsss ens/ec-sf_$year${month}_disacc-${era}-$abr-{}.grib \
+     -selname,sshf,slhf,str,strd,ewss,nsss $era/$era-ecsf_1995-2024_unbound-bias-$abr.grib \
+     ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib" || echo "NOT adj unbound disacc - seasonal forecast input missing or already produced" 
+
+# adjust pressure level data
+[ -s ens/ec-sf_$year${month}_pl-12h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_pl-unbound-24h-$abr-50.grib ] && \
+ seq 0 50 | parallel cdo -s --eccodes ymonadd \
+    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,z,q,v,u,t -selhour,0 -sellevel,50000,70000,85000 ens/ec-sf_$year${month}_pl-12h-$abr-{}.grib \
+    -selname,z,q,v,u,t $era/$era-ecsf_1995-2024_pl_unbound-bias-$abr.grib \
+    ens/ec-${bsf}_$year${month}_pl-unbound-24h-$abr-{}.grib || echo "NOT adj pl - seasonal forecast input missing or already produced"
+
+# add K index to adjusted pressure level data
+[ -s ens/ec-${bsf}_$year${month}_pl-unbound-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_pl-pp-unbound-24h-$abr-50.grib ] && \
+seq 0 50 | parallel -q cdo --eccodes -O -b P12 \
+        aexpr,'kx=sellevel(t,85000)-sellevel(t,50000)+sellevel(dpt,85000)-(sellevel(t,70000)-sellevel(dpt,70000));' \
+        -aexpr,'dpt=log(vp/6.112)*243.5/(17.67-log(vp/6.112));' -aexpr,'ws=sqrt(u^2+v^2);' \
+    -aexpr,'wdir=180+180/3.14159265*2*atan(v/(sqr(u^2+v^2)+u));' \
+        -aexpr,'vp=clev(q)*q/(0.622+0.378*q);' ens/ec-${bsf}_$year${month}_pl-unbound-24h-$abr-{}.grib ens/ec-${bsf}_$year${month}_pl-pp-unbound-24h-$abr-{}.grib || \
+ echo "NOT adding kx to ECSF pressure level - no input or already produced"
+
+# adjust mn2t24
+[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_mn2t24-unbound-24h-$abr-50.grib ] && \
+ seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
+    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,mn2t24 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+    -selname,mn2t24 $era/$era-ecsf_2000-2024_mn2t24_unbound-bias-$abr.grib \
+    ens/ec-${bsf}_$year${month}_mn2t24-unbound-24h-$abr-{}.grib || echo "NOT adj mn2t24 - seasonal forecast input missing or already produced"
+
+# adjust mx2t24
+[ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_mx2t24-unbound-24h-$abr-50.grib ] && \
+ seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
+    -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,mx2t24 ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
+    -selname,mx2t24 $era/$era-ecsf_2000-2024_mx2t24_unbound-bias-$abr.grib \
+    ens/ec-${bsf}_$year${month}_mx2t24-unbound-24h-$abr-{}.grib || echo "NOT adj mx2t24 - seasonal forecast input missing or already produced"
+
+#[ -s  ] && ! [ -s ens/ec-${bsf}_$year${month}_acc-24h-$abr-50.grib ] && \
+# seq 0 50 | parallel "cdo -s --eccodes ymonmul -selname,e,tp ens/disacc_$year${month}_{}.grib \
+#     -selname,e,tp $era/$era-ecsf_2000-2019_bound_bias_$abr.grib \
+#     ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib && \
+#    cdo -s --eccodes -b P8 timcumsum ens/ec-${bsf}_$year${month}_disacc-24h-$abr-{}.grib ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}.grib" || echo "NOT adj acc - seasonal forecast input missing or already produced"
+# adjust tp,e variables
+
+# xgboost for oceanids
+parallel ./run-xgb-predict-era5-oceanids.sh $year $month {\1} {\2} :::: harbors.txt :::: predictands.txt
+
+#echo 'stop'
 
 ## fix grib attributes
-seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_unbound-24h-eu-{}.grib \
-    ens/ec-b2sf_$year${month}_unbound-24h-eu-{}-fixed.grib
-seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_bound-24h-eu-{}.grib \
-    ens/ec-b2sf_$year${month}_bound-24h-eu-{}-fixed.grib
-seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_acc-24h-eu-{}.grib \
-    ens/ec-b2sf_$year${month}_acc-24h-eu-{}-fixed.grib
-seq 0 50 | parallel -j 16 grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-b2sf_$year${month}_stl-24h-eu-{}.grib \
-    ens/ec-b2sf_$year${month}_stl-24h-eu-{}-fixed.grib
+#[ -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && [ ! -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50-fixed.grib ] && \
+# seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib \
+#    ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}-fixed.grib || echo "NOT fixing unbound gribs attributes - no input or already produced"
+#[ -s ens/ec-${bsf}_$year${month}_snow-24h-$abr-50.grib ] && [ ! -s ens/ec-${bsf}_$year${month}_snow-24h-$abr-50-fixed.grib ] && \
+# seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}.grib \
+#    ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}-fixed.grib || echo "NOT fixing snow gribs attributes - no input or already produced"
+#[ -s ens/ec-${bsf}_$year${month}_bound-24h-$abr-50.grib ] && [ ! -s ens/ec-${bsf}_$year${month}_bound-24h-$abr-50-fixed.grib ] && \
+# seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}.grib \
+#    ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}-fixed.grib || echo "NOT fixing bound gribs attributes - no input or already produced"
+#[ -s ens/ec-${bsf}_$year${month}_acc-24h-$abr-50.grib ] && [ ! -s ens/ec-${bsf}_$year${month}_acc-24h-$abr-50-fixed.grib ] && \
+# seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}.grib \
+#    ens/ec-${bsf}_$year${month}_acc-24h-$abr-{}-fixed.grib || echo "NOT fixing acc gribs attributes - no input or already produced"
 
 ## join ensemble members and move to grib folder
-grib_copy ens/ec-b2sf_$year${month}_unbound-24h-eu-*-fixed.grib grib/ECB2SF_$year${month}01T0000_unbound-24h-eu.grib &
-grib_copy ens/ec-b2sf_$year${month}_bound-24h-eu-*-fixed.grib grib/ECB2SF_$year${month}01T0000_bound-24h-eu.grib &
-grib_copy ens/ec-b2sf_$year${month}_acc-24h-eu-*-fixed.grib grib/ECB2SF_$year${month}01T0000_acc-24h-eu.grib &
-grib_copy ens/ec-b2sf_$year${month}_stl-24h-eu-*-fixed.grib grib/ECB2SF_$year${month}01T0000_stl-24h-eu.grib &
-wait
-rm ens/ec-b2sf_$year${month}_*-24h-eu-*.grib
-#grib_set -s edition=2 ec-sf-$year$month-all-24h.grib grib/EC-SF-${year}${month}01T0000-all-24h.grib2
-cdo --eccodes -f nc2 merge -sellonlatbox,0,42,74,51 -selvar,2t,sde,swvl2 grib/ECBSF_$year${month}01T0000_unbound-24h-eu.grib \
-    -sellonlatbox,0,42,74,51 grib/ECBSF_$year${month}01T0000_acc-24h-eu.grib -sellonlatbox,0,42,74,51 -selvar,stl2 grib/ECBSF_$year${month}01T0000_stl-24h-eu.grib \
-    ../bin/harvester_code_hops/data/ecmwf/domains/scandi/fcast_ens/ec-sf-$year$month-b2all-24h-nordic.nc
+#[ -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50-fixed.grib ] && [ ! -s grib/EC${bsf}_$year${month}01T000000_unbound-24h-$abr.grib ] &&\
+# grib_copy ens/ec-${bsf}_$year${month}_unbound-24h-$abr-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_unbound-24h-$abr.grib &
+#[ -s ens/ec-${bsf}_$year${month}_snow-24h-$abr-50-fixed.grib ] && [ ! -s grib/EC${bsf}_$year${month}01T000000_snow-24h-$abr.grib ] &&\
+# grib_copy ens/ec-${bsf}_$year${month}_snow-24h-$abr-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_snow-24h-$abr.grib &
+#[ -s ens/ec-${bsf}_$year${month}_bound-24h-$abr-50-fixed.grib ] && [ ! -s grib/EC${bsf}_$year${month}01T000000_bound-24h-$abr.grib ] &&\
+# grib_copy ens/ec-${bsf}_$year${month}_bound-24h-$abr-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_bound-24h-$abr.grib &
+#[ -s ens/ec-${bsf}_$year${month}_acc-24h-$abr-50-fixed.grib ] && [ ! -s grib/EC${bsf}_$year${month}01T000000_acc-24h-$abr.grib ] &&\
+# grib_copy ens/ec-${bsf}_$year${month}_acc-24h-$abr-*-fixed.grib grib/EC${bsf}_$year${month}01T000000_acc-24h-$abr.grib &
+wait 
 
-#grib_set  -s jScansPositively=0,numberOfForecastsInEnsemble=51 -w jScansPositively=1,numberOfForecastsInEnsemble=0 EC-SF_$year${month}01T0000_all-24h-euro+y.grib grib/EC-SF_$year${month}01T0000_all-24h-euro.grib
+# fix grib attributes for ECSF
+#[ -s ens/ec-sf_$year${month}_all+sde-24h-$abr-50.grib ] && [ ! -s ens/ECSF_$year${month}01T000000_all-24h-$abr-50.grib ] && \
+# seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ec-sf_$year${month}_all+sde-24h-$abr-{}.grib \
+#    ens/ECSF_$year${month}01T000000_all-24h-$abr-{}.grib || echo "NOT fixing ecsf swvls gribs attributes - no input or already produced"
+# join ensemble members and move to grib folder 
+#[ -s ens/ECSF_$year${month}01T000000_all-24h-$abr-50.grib ] && [ ! -s grib/ECSF_$year${month}01T000000_all-24h-$abr.grib ] &&\
+#grib_copy ens/ECSF_$year${month}01T000000_all-24h-$abr-*.grib grib/ECSF_$year${month}01T000000_all-24h-$abr.grib || echo "NOT joining ensemble members ecsf - no input or already produced"
+
+## Post-process pressure level data to add K-index 
+## calculate variables vapour pressures, dew point temps, k-index and add them to the data set
+#[ -s ens/ec-sf_$year${month}_pl-12h-$abr-50.grib ] && ! [ -s ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && \
+#seq 0 50 | parallel -q cdo --eccodes -O -b P12 \
+#        aexpr,'kx=sellevel(t,85000)-sellevel(t,50000)+sellevel(dpt,85000)-(sellevel(t,70000)-sellevel(dpt,70000));' \
+#        -aexpr,'dpt=log(vp/6.112)*243.5/(17.67-log(vp/6.112));' -aexpr,'ws=sqrt(u^2+v^2);' \
+#    -aexpr,'wdir=180+180/3.14159265*2*atan(v/(sqr(u^2+v^2)+u));' \
+#        -aexpr,'vp=clev(q)*q/(0.622+0.378*q);' ens/ec-sf_$year${month}_pl-12h-$abr-{}.grib ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib || \
+# echo "NOT adding kx to ECSF pressure level - no input or already produced"
+
+# fix grib attributes for pl-pp
+#[ -s ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && ! [ -s ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && \
+#seq 0 50 | parallel grib_set -r -s centre=98,setLocalDefinition=1,localDefinitionNumber=15,jScansPositively=0,totalNumber=51,number={} ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}.grib \
+#ens/ec-sf_$year${month}_pl-pp-12h-$abr-{}-fixed.grib || echo "NOT fixing pl-pp grib attributes - no input or already produced"
+
+## join pl-pp and tp ensemble members and move to grib folder
+#[ -s ens/ec-sf_$year${month}_pl-pp-12h-$abr-50-fixed.grib ] && ! [ -s grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib ] && \
+#grib_copy ens/ec-sf_$year${month}_pl-pp-12h-$abr-*-fixed.grib grib/ECSF_$year${month}01T000000_pl-pp-12h-$abr.grib || echo "NOT joining pl-pp ensemble members - no input or already produced"
+#wait 
+
+
+# run XGBoost model to produce harbor forecasts
+#! [ -s  ]
+
+# run XGBoost model to produce precipitation forecasts
+#! [ -s grib/ECXSF_$year${month}01T000000_tp-acc-$abr.grib ] && echo "start XGBoost predict for precipitation" && run-xgb-predict-prec.sh $year $month
+
+# produce forcing file for HOPS
+# mod. M.Kosmale 18.03.2021: called now independently from cron (v3)
+#/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month
+
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

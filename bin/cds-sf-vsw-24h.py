@@ -7,7 +7,6 @@ month = sys.argv[2]
 area = sys.argv[3]
 abr = sys.argv[4]
 
-print('/home/smartmet/data/ec-sf-%s%s-all-24h-%s.grib'%(year,month,abr))
 c = cdsapi.Client()
 
 c.retrieve(

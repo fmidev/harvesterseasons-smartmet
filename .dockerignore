@@ -1,1 +1,5 @@
-!smartmet-server/scripts
+.git
+.github
+README.md
+build.sh
+**/*~
