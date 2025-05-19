@@ -26,5 +26,25 @@
     "PraiaDaVittoria": {
         "latitude": 38.7666702,
         "longitude": -27.1000004
+    },
+    "Chios": {
+        "latitude": 38.3453,
+        "longitude": 26.1420
+    },
+    "Heraklion": {
+        "latitude": 35.3353,
+        "longitude": 25.1820
+    },
+    "Limnos": {
+        "latitude": 39.9246,
+        "longitude": 25.2442
+    },
+    "Palaiochora": {
+        "latitude": 35.2253,
+        "longitude": 23.6757
+    },
+    "Corfu": {
+        "latitude": 39.6081,
+        "longitude": 19.9139
     }
   }

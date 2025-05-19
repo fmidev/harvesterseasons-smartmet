@@ -1,7 +1,8 @@
 import xarray as xr
-import cfgrib,time,sys,json
+import cfgrib, time, sys, json
 import pandas as pd
 import xgboost as xgb
+import os
 
 #startTime=time.time()
 
@@ -27,15 +28,18 @@ unbound = sys.argv[4] # unbound data
 unbdisacc = sys.argv[5] # unbound disaccumulated data
 mx2t = sys.argv[6] # maximum temperature
 mn2t = sys.argv[7] # minimum temperature
+bound = sys.argv[8] # unbound data
 #lsm=sys.argv[4] # land sea mask omitted from predictors
-ensmem = sys.argv[8] # ensemble member
-predictand = sys.argv[9] # predictand in fitting
-harbor=sys.argv[10]
-outFile = sys.argv[11] # output csv filename
+ensmem = sys.argv[9] # ensemble member
+predictand = sys.argv[10] # predictand in fitting
+harbor=sys.argv[11]
+outFile = sys.argv[12] # output csv filename
 
 # Define the predictand mappings
 predictand_mappings={
     'WG_PT24H_MAX': 'fg10',
+    'WS_PT24H_AVG': 'ws',
+    'RH_PT24H_AVG': 'rh',
     'TA_PT24H_MAX': 'mx2t',
     'TA_PT24H_MIN': 'mn2t',
     'TP_PT24H_ACC': 'tp'
@@ -43,7 +47,10 @@ predictand_mappings={
 correl_pred=predictand_mappings[predictand]
 
 mdl_name=f'mdl_{harbor}_{predictand}_xgb_era5_oceanids-QE.json'
-clim_data=f'training_data_oceanids_{harbor}-sf_2020-clim.csv'
+clim_data=f'training_data_oceanids_{harbor}-sf_2020-clim.csv.gz'
+
+if not os.path.exists(mod_dir + mdl_name):
+    sys.exit("Error: Model file not found: " + mod_dir + mdl_name)
 
 # read in fitting data
 pred00= ["lat", "lon", "fg10", "tcc-00"]
