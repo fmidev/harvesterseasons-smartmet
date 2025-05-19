@@ -2,6 +2,7 @@
 services:
   smartmet-server:
     image: smartmet-server:latest
+    init: true
     build: 
       context: ./smartmet-server
       dockerfile: Dockerfile
@@ -97,10 +98,10 @@ services:
     environment:
       HSTS_HEADER: skip
       NGINX_CLIENT_MAX_BODY_SIZE: 100m
-      UPSTREAM: 128.214.255.90:8080
+      UPSTREAM: 128.214.254.78:8080
       SERVERNAME: desm.harvesterseasons.com
-      EXTRANAMES: urban.geoss.space,baltic.geoss.space,harmonia.geoss.space
-      # ,smdev.harvesterseasons.com
+      EXTRANAMES: urban.geoss.space,copernicus.geoss.space,harmonia.geoss.space,data.geoss.space,smartmet.xyz,oceanids.geoss.space
+    #,sm.harvesterseasons.com
     ports:
       - "80:80"
       - "443:443"

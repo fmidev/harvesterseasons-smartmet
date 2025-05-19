@@ -44,6 +44,8 @@
 10000040;SWVL2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 10000041;SWVL3-M3M3;M3M3;Volumetric Soil Water layer 3;1;1;1;5;
 10000042;SWVL4-M3M3;M3M3;Volumetric Soil Water layer 4;1;1;1;5;
+10360199;VSW1-M3M3;M3M3;Volumetric Soil Water layer 1;1;1;1;5;
+10460199;VSW2-M3M3;M3M3;Volumetric Soil Water layer 2;1;1;1;5;
 10000139;STL1-K;K;Soil temperature level 1 in Kelvins;1;1;1;1;
 10000178;TSR-J;J;Top Net Solar Radation;1;1;1;2;
 10000182;EVAP-M;m;Evaporation (m of water equivalent);1;1;1;1;

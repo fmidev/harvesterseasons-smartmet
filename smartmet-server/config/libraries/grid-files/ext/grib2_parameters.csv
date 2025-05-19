@@ -117,3 +117,7 @@
 
 # Minimum temperature at 2 metres in the last 24 hours
 301122;discipline=0,parameterCategory=0,parameterNumber=0,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=2,scaleFactorOfFirstFixedSurface=0,indicatorOfUnitForTimeRange=1,typeOfStatisticalProcessing=3,lengthOfTimeRange=24,is_uerra=0;
+
+# VSW - Volumetric soil water for layer 1 and 2
+360199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=0,
+460199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=7,

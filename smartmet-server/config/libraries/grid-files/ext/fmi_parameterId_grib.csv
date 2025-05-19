@@ -37,8 +37,10 @@ TVL-N;29;;;
 TVH-N;30;;;
 # Surface soil wetness
 SWVL1-M3M3;39;;;
+VSW1-M3M3;360199;;;
 # Volumetric Soil Water layer 2
 SWVL2-M3M3;40;;;
+VSW2-M3M3;460199;;;
 # Volumetric Soil Water layer 3
 SWVL3-M3M3;41;;;
 # Volumetric Soil Water layer 4
