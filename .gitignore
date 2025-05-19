@@ -3,6 +3,7 @@ smartmet-server/config/engines/grid-engine/mapping_newbase_auto.csv
 fminames-db/data
 bin/mars
 dev/
+mars/ec-ens_*
 .fmi-apikey
 .vscode/
 .pytest_cache
