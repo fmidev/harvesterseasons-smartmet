@@ -9,12 +9,11 @@ warnings.filterwarnings("ignore")
 #startTime=time.time()
 
 # input files
-input1=sys.argv[1] # 2t/2d/stl1/rsn/sde
-input2=sys.argv[2] # swvl2
-input3=sys.argv[3] # e,tp,slhf,sshf,ro,str,strd,ssr,ssrd,sf
-laihv=sys.argv[4] # laihv
-lailv=sys.argv[5] # lailv
-swi2clim=sys.argv[6] # swi2clim
+input1=sys.argv[1] # sl data
+input2=sys.argv[2] # disaccumulated data
+laihv=sys.argv[3] # laihv
+lailv=sys.argv[4] # lailv
+swi2clim=sys.argv[5] # swi2clim
 dtm_aspect='ec-ens/COPERNICUS_20000101T000000_20110701_anor-dtm-aspect-avg_nd-era5l-fix.grib' # DTM ASPECT
 dtm_slope='ec-ens/COPERNICUS_20000101T000000_20110701_slor-dtm-slope-avg_nd-era5l-fix.grib' # DTM SLOPE
 dtm_height='ec-ens/COPERNICUS_20000101T000000_20110701_h-dtm-height-avg_nd-era5l-fix.grib' # DTM HEIGHT
@@ -29,12 +28,11 @@ soiltype='ec-ens/ECC_20000101T000000_soiltype-nd-9km.grib' # soil type
 typehv='ec-ens/ECC_20000101T000000_hveg-type-nd-9km.grib' # type of high vegetation
 typelv='ec-ens/ECC_20000101T000000_lveg-type-nd-9km.grib' # type of low vegetation 
             
-output=sys.argv[7] # output file
+output=sys.argv[6] # output file
 
 mdl_name='MLmodels/mdl_swi2_2015-2022_10000points-noRunsums.txt'
 
 # Read in data
-# surface
 sl_vars={'d2m':'td2-00','t2m':'t2-00','rsn':'rsn-00','sde':'sd-00'}
 sl_sfc = xr.open_dataset(input1,engine='cfgrib',
     backend_kwargs={
@@ -49,26 +47,29 @@ stl1_var = {'stl1':'stl1-00'}
 sl_stl1 = xr.open_dataset(input1,engine='cfgrib',
     backend_kwargs={
         'time_dims': ('valid_time', 'verifying_time'),
-        'indexpath': '',
-        'filter_by_keys': {'typeOfLevel': 'depthBelowLandLayer'},
-        'errors': 'ignore' # errors for stl2-4 can be ignored
+        'indexpath': '',    
+        'filter_by_keys': {
+            'shortName': 'stl1'
+        }
     })[stl1_var.keys()].rename_vars(stl1_var)
 sl_stl1 = sl_stl1.where(sl_stl1.valid_time.dt.strftime("%H:%M:%S") != "12:00:00", drop=True)
 
 # swvl2
 swvl2_var = {'swvl2':'swvl2-00'}
-sl_swvl2 = xr.open_dataset(input2,engine='cfgrib',
-    backend_kwargs={
-        'time_dims': ('valid_time', 'verifying_time'),
-        'indexpath': '',
-        'filter_by_keys': {'typeOfLevel': 'depthBelowLandLayer'}
-    })[swvl2_var.keys()].rename_vars(swvl2_var)
+# swvl2
+sl_swvl2 = xr.open_dataset(input1, engine='cfgrib', backend_kwargs={
+    'time_dims': ('valid_time', 'verifying_time'),
+    'indexpath': '',
+    'filter_by_keys': {
+        'shortName': 'swvl2'
+    }
+})[swvl2_var.keys()].rename_vars(swvl2_var)
 sl_swvl2 = sl_swvl2.where(sl_swvl2.valid_time.dt.strftime("%H:%M:%S") != "12:00:00", drop=True)
 sl_swvl2['dayOfYear']=sl_swvl2.valid_time.dt.dayofyear
 
 # disaccumulated
 sl_disacc_vars=['tp','e','slhf','sshf','ro','str','ssr','ssrd']
-sl_disacc=xr.open_dataset(input3,engine='cfgrib',
+sl_disacc=xr.open_dataset(input2,engine='cfgrib',
     backend_kwargs={
         'time_dims': ('valid_time', 'verifying_time'),
         'indexpath': '',
@@ -186,7 +187,7 @@ ds=ds.drop_vars(['number','surface','depthBelowLandLayer'])
 df=ds.to_dataframe() 
 df=df.reset_index() 
 df.rename(columns={'latitude': 'TH_LAT', 'longitude': 'TH_LONG'}, inplace=True)
-print(df.dropna())
+#print(df.dropna())
 
 # store grid for final result
 df_grid=df[['valid_time','TH_LAT','TH_LONG']]
@@ -230,6 +231,6 @@ result=df_grid.fillna(df)
 ds=result.to_xarray()
 #print(ds)
 nc=ds.to_netcdf(output)
-
+#print(result.dropna())
 #executionTime=(time.time()-startTime)
 #print('Fitting execution time per member in minutes: %.2f'%(executionTime/60))

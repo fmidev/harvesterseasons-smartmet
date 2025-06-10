@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+
 # monthly script for XGBoost prediction for OCEANIDS ML in ERA5 grid
 # get-seasonal.sh must be run first to get the predictors
 # give year, month, and harbor name as cmd
@@ -54,7 +54,7 @@ seq 0 50 | parallel cdo --eccodes -O -b P8 sellonlatbox,$bbox -selname,z,q,t,u,v
 [ -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50-fix.grib ] && ! [ -s ens/ec-${bsf}_${year}${month}_unbound-${harbor}-50.grib ] && \
 seq 0 50 | parallel cdo -b P8 -O --eccodes sellonlatbox,$bbox ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}-fix.grib ens/ec-${bsf}_${year}${month}_unbound-${harbor}-{}.grib || echo "NOT remap unbound - no input or already produced"
 
-# bias-adjusted bound (ws,rh) to fitting grid points
+# bias-adjusted bound (ws,r) to fitting grid points
 [ -s ens/ec-${bsf}_$year${month}_bound-24h-$abr-50-fix.grib ] && ! [ -s ens/ec-${bsf}_${year}${month}_bound-${harbor}-50.grib ] && \
 seq 0 50 | parallel cdo -b P8 -O --eccodes sellonlatbox,$bbox ens/ec-${bsf}_$year${month}_bound-24h-$abr-{}-fix.grib ens/ec-${bsf}_${year}${month}_bound-${harbor}-{}.grib || echo "NOT remap unbound - no input or already produced"
 
@@ -77,7 +77,7 @@ seq 0 50 | parallel cdo -b P8 -O --eccodes sellonlatbox,$bbox ens/ec-${bsf}_$yea
 #echo "Disaccumulated daily sums to ERA5 grid, and fitting grid points done"
 
 # Disaccumulated daily sums to ERA5 grid, and fitting grid points # onko tämä data missä hilassa ja miksi ei nimetty siihen hilaan
-[ -s ens/ec-${bsf}_$year${month}_disacc-$abr-50-fix.grib ] && ! [ -s ens/ec-${bsf}_${year}${month}_dailysums-${harbor}-50.grib ] && \
+#[ -s ens/ec-${bsf}_$year${month}_disacc-$abr-50-fix.grib ] && ! [ -s ens/ec-${bsf}_${year}${month}_dailysums-${harbor}-50.grib ] && \
 seq 0 50 | parallel cdo -b P8 -O --eccodes sellonlatbox,$bbox -selname,ssr,ssrd,tp,e,ttr ens/ec-${bsf}_$year${month}_disacc-$abr-{}-fix.grib ens/ec-${bsf}_${year}${month}_dailysums-${harbor}-{}.grib || echo "NOT remap disacc - no input or already produced"
 #echo "Disaccumulated daily sums to ERA5 grid, and fitting grid points done"
 

@@ -6,13 +6,8 @@ month=str(sys.argv[2])
 dataset = "reanalysis-era5-land"
 request = {
     "variable": [
-        #"forecast_albedo",
-        "surface_latent_heat_flux",
-        "surface_net_solar_radiation",
-        "surface_net_thermal_radiation",
-        "surface_sensible_heat_flux",
-        "surface_solar_radiation_downwards",
-        "surface_thermal_radiation_downwards"
+        "leaf_area_index_high_vegetation",
+        "leaf_area_index_low_vegetation"
     ],
     "year": year,
     "month": month,
@@ -38,6 +33,7 @@ request = {
     "area": [83, -30, 25, 50]
 }
 
+
 client = cdsapi.Client()
-output_filename = f'/home/ubuntu/data/grib/ERA5L_20000101T000000_{year}{month}_rad+heat.grib'
+output_filename = f'/home/ubuntu/data/grib/ERA5L_20000101T000000_{year}{month}_vegetation.grib'
 client.retrieve(dataset, request).download(output_filename)

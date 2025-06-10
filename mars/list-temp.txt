@@ -1,0 +1,9 @@
+size=204671951000;
+number_of_fields=15500;
+online_size=204671951000;
+off_line_size=0;
+number_of_tape_files=0;
+number_of_disk_files=16;
+number_of_online_fields=15500;
+number_of_offline_fields=0;
+number_of_tapes=0;

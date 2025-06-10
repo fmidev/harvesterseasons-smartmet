@@ -60,6 +60,7 @@ predDSUM= ["lat", "lon", "ssr", "ssrd", "tp", "e", "ttr"]
 predPL= ["lat", "lon", "t850-00", "q850-00", "z850-00", "u850-00", "v850-00", "kx-00"]
 predMX2T= ["lat", "lon", "mx2t"]
 predMN2T= ["lat", "lon", "mn2t"]
+predB= ["lat", "lon", "ws",'rh']
 
 #json_file = f'{mod_dir}{predictand}_training_preds.json'
 '''json_file = f'{mod_dir}training_preds.json'
@@ -195,7 +196,25 @@ df3=filter_points(df_mn2t,lat3,lon3,3,predMN2T)
 df4=filter_points(df_mn2t,lat4,lon4,4,predMN2T)
 df_new7 = pd.concat([df1,df2,df3,df4],axis=1,sort=False).reset_index()
 # merge mn2t to others
-df_fin= pd.concat([df_apu5,df_new7],axis=1,sort=False).reset_index()
+df_apu6= pd.concat([df_apu5,df_new7],axis=1,sort=False).reset_index()
+if 'level_0' in df_apu6.columns:
+    df_apu6=df_apu6.drop(columns=['level_0'])
+
+# bound
+bound_ds=xr.open_dataset(bound, engine='cfgrib',
+                    backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''))
+df_bound=bound_ds.to_dataframe()
+df_bound.reset_index(['latitude','longitude'],inplace=True)
+df_bound=df_bound.drop(columns=['surface'])
+df_bound.rename(columns={'r': 'rh'}, inplace=True)
+# filter points
+df1=filter_points(df_bound,lat1,lon1,1,predB)
+df2=filter_points(df_bound,lat2,lon2,2,predB)
+df3=filter_points(df_bound,lat3,lon3,3,predB)
+df4=filter_points(df_bound,lat4,lon4,4,predB)
+df_new8 = pd.concat([df1,df2,df3,df4],axis=1,sort=False).reset_index()
+# merge to others
+df_fin= pd.concat([df_apu6,df_new8],axis=1,sort=False).reset_index()
 
 '''# lsm
 lsm_ds=xr.open_dataset(lsm, engine='cfgrib', 

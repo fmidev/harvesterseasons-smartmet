@@ -1,0 +1,29 @@
+2025-06-01 0.1/0.1 BSF era5l
+ec-ens/ec-ens_2025-06-01_era5l_sfc-mn2t-nd-0.grib: No such file or directory
+ec-ens/ec-ens_2025-06-01_era5l_sfc-mx2t-nd-0.grib: No such file or directory
+ec-ens/ec-ens_2025-06-01_era5l_sfc-10fg-nd-0.grib: No such file or directory
+2025-05-31 0.1/0.1 BSF era5l
+ec-ens/ec-ens_2025-05-31_era5l_sfc-mn2t-nd-0.grib: No such file or directory
+ec-ens/ec-ens_2025-05-31_era5l_sfc-mx2t-nd-0.grib: No such file or directory
+ec-ens/ec-ens_2025-05-31_era5l_sfc-10fg-nd-0.grib: No such file or directory
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_pl-*-nd-0.grib<
+              No such file or directory
+EC-ENS pl 0 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_pl-*-nd-1to50.grib<
+              No such file or directory
+EC-ENS pl 1-50 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_sfc-*-nd-fix-0.grib<
+              No such file or directory
+EC-ENS fixed 0 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_sfc-*-nd-fix-1to50.grib<
+              No such file or directory
+EC-ENS fixed 1-50 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_sfc-swvl1-nd-0.grib<
+              No such file or directory
+EC-ENS sfc swvls 0 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_sfc-swvl1-nd-1to50.grib<
+              No such file or directory
+EC-ENS sfc swvls 1-50 merged already
+cdo    merge: Open failed on >ec-ens/ec-ens_2025-05-31_era5l_sfc-ssr-nd-0.grib<
+              No such file or directory
+EC-ENS sfc 0 merged already

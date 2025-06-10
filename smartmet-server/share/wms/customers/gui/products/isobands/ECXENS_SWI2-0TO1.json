@@ -1,0 +1,22 @@
+{
+    "title": "ECXENS SWI2 Soil Water Index Layer 2 Isobands",
+    "abstract": "ECXENS SWI2 Soil water index layer 2. ML prediction with EC ensemble forecast. The control run member of an ensemble is used until the ensemble mean works in WMS as well",
+    "projection": {},
+    "producer": "ECXENS",
+    "source": "grid",
+    "views":[{
+        "layers": [{
+            "qid": "l", 
+            "layer_type": "isoband",
+            "isobands": "json:isobands/SWI-0TO1.json",
+            "css": "isobands/SWI-0TO1.css",
+            "parameter": "SWI2-0TO1:ECXENS:5072:1:0:0:0",
+                "sampling":{
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

@@ -1,0 +1,18 @@
+2025-06-02 09:35:45 ECMWF API python library 1.6.3
+2025-06-02 09:35:45 ECMWF API at https://api.ecmwf.int/v1
+2025-06-02 09:35:45 Welcome Mikko Strahlendorff
+2025-06-02 09:35:46 In case of problems, please check https://confluence.ecmwf.int/display/WEBAPI/Web+API+FAQ or contact servicedesk@ecmwf.int
+2025-06-02 09:35:47 Request submitted
+2025-06-02 09:35:47 Request id: 683d7073d894d488fce57a57
+2025-06-02 09:35:47 Request is submitted
+2025-06-02 09:35:48 Request is queued
+Traceback (most recent call last):
+  File "/home/ubuntu/bin/mars", line 31, in <module>
+    c.execute(req, target)
+  File "/home/ubuntu/mambaforge/lib/python3.10/site-packages/ecmwfapi/api.py", line 642, in execute
+    c.execute(req, target)
+  File "/home/ubuntu/mambaforge/lib/python3.10/site-packages/ecmwfapi/api.py", line 532, in execute
+    self.connection.wait()
+  File "/home/ubuntu/mambaforge/lib/python3.10/site-packages/ecmwfapi/api.py", line 405, in wait
+    time.sleep(self.retry)
+KeyboardInterrupt

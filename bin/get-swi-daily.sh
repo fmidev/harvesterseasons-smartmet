@@ -10,7 +10,7 @@ if [[ $# -gt 0 ]]; then
     version=$2
 else
     yday=`date -d '2 days ago' +%Y%m%d`
-    version=1.0.2
+    version=1.0.1
 fi
 incoming=~/data/swi1km
 mkdir -p $incoming
@@ -47,14 +47,13 @@ then
     echo "Downloading failed: $ncfile $url" 
     exit 1
 else     
-    cdo --eccodes -z aec -f grb2 -s -b P8 copy -chparam,-4,40.228.192,-8,41.228.192,-14,42.228.192,-16,43.228.192 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
+    cdo --eccodes -O -z aec -f grb2 -s -b P8 copy -chparam,-4,40.228.192,-8,41.228.192,-14,42.228.192,-16,43.228.192 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
     grib_set -s centre=224,jScansPositively=0 $fileFix $file
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/
 #       s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
-#    rm $ncfile ${ncfile:0:-3}.xml $fileFix
+    rm $ncfile $fileFix
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
-
 echo "Done"
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

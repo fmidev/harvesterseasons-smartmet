@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import xarray as xr
-import cfgrib,sys
+import cfgrib,sys,time
 import pandas as pd
 import xgboost as xgb
 import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
 
-### Prepare datasets
+startTime=time.time()
 
 # Predictand to be fitted, from era5, with parameter ID
 predictand_mappings={
@@ -15,41 +15,67 @@ predictand_mappings={
     }
 predictand='t2m' #sys.argv[1] # predictand to be fitted
 
-# File paths
-ecsf_file = '/home/ubuntu/data/era5/ECSF_19950101T000000_1995-2024_sl-mon-era5-eu-fix.grib'
-era5_file = '/home/ubuntu/data/era5/ERA5_19950101T000000_1995-2024_sl-mon-eu.grib'
+# Data directory for control runs for XGB bias training
+data_dir = '/home/ubuntu/data/xgb-bias/yearly-controls/'
+
+# ECSF files 20200101-20241201
+# control runs with files for each year
+# Anni/Rasmus... fiksaa vielä kun sieltä puuttuu ainakin 2022 03 ja taisi puuttua 2023 joku myös
+# löytyy siis /data/xgb-bias/control ja sitten sinne kun saa puuttuvat niin cat ECSF_2020*all* > ECSF_2020_all.grib etc per vuosi ja all/pl
+sf_sl_2020 = data_dir + 'ECSF_2020_all.grib'
+sf_sl_2021 = data_dir + 'ECSF_2021_all.grib'
+sf_sl_2022 = data_dir + 'ECSF_2022_all.grib'
+sf_sl_2023 = data_dir + 'ECSF_2023_all.grib'
+sf_sl_2024 = data_dir + 'ECSF_2024_all.grib'
+sf_pl_2020 = data_dir + 'ECSF_2020_pl.grib'
+sf_pl_2021 = data_dir + 'ECSF_2021_pl.grib'
+sf_pl_2022 = data_dir + 'ECSF_2022_pl.grib'
+sf_pl_2023 = data_dir + 'ECSF_2023_pl.grib'
+sf_pl_2024 = data_dir + 'ECSF_2024_pl.grib'
+
+# ERA5(L?) dataa 2020-2024
+#era5_file = '/home/ubuntu/data/era5/ERA5_19950101T000000_1995-2024_sl-mon-eu.grib' # ei käytetä monthly dataa
+
 mod_dir = '/home/ubuntu/data/MLmodels/'
 mod_name = f'xgb-bias_era5_ecsf_1995-2024_{predictand}.json' # model name
 
-# ECSF parameters 21 in total 
-# alla olevat ja t ja z pl-tiedostosta painepinnoille 925hPa ja 850hPa
-ecsf_param_names = [
-    'u10',    # 10m u-component of wind
-    'v10',    # 10m v-component of wind
-    'fg10',   # 10m wind gust
-    'd2m',     # 2m dewpoint temperature
-    't2m',     # 2m temperature
-    'ewssra', # Eastward turbulent surface stress accumulated
-    'erate',  # Evaporation rate
-    'mx2t24', # Maximum 2m temperature in the past 24 hours
-    'msl',    # Mean sea level pressure
-    'mn2t24', # Minimum 2m temperature in the past 24 hours
-    'nsssra', # Northward turbulent surface stress accumulated
-    'mslhfl', # Mean sea level latent heat flux
-    'msshfl', # Mean surface sensible heat flux
-    #'msnsrf', # Mean surface net solar radiation flux
-    #'msdsrf', # Mean surface downward solar radiation flux
-    #'msntrf', # Mean surface net thermal radiation flux
-    #'msdtrf', # Mean surface downward thermal radiation flux
-    #'mtnsrf', # Mean top net solar radiation flux
-    #'mtntrf', # Mean top net thermal radiation flux
-    'tcc',    # Total cloud cover
-    'tclw',   # Total column liquid water
-    'tcwv',   # Total column water vapour
-    'tprate'  # Total precipitation rate
+# ECSF parameters 
+ecsf_sl=['t2m']#,'d2m','u10','v10','fg10'] # single level features (add)
+ecsf_pl = ['t','z'] # pressure level features
+
+ecsf_1 = xr.open_dataset(
+    sf_sl_2020,
+    engine='cfgrib',
+    backend_kwargs=dict(
+        #filter_by_keys={'number': 0},
+        #time_dims=('valid_time', 'verifying_time'),
+        indexpath=''
+        )
+)[ecsf_sl]
+
+print(ecsf_1)
+sf=ecsf_1.to_dataframe()
+
+df_flat = sf.reset_index()
+df_flat['utctime'] = df_flat['valid_time']
+df_final = df_flat[['utctime', 't2m', 'latitude', 'longitude']].copy()
+df_final.reset_index(drop=True, inplace=True)
+print(sf)
+print(df_final)
+
+df_final['utctime'] = pd.to_datetime(df_final['utctime'])
+
+# Filter rows with utctime == 2020-05-14
+rows_on_date = df_final[
+    (df_final['utctime'] == '2020-05-14') &
+    (df_final['latitude'] == 75) &
+    (df_final['longitude'] == -30)
 ]
+print(rows_on_date)
+
+'''
 # lisäksi ECSF z, lsm, lai staattisina tai kuukausi muuttujina
-ecsf=xr.open_dataset(ecsf_file, engine='cfgrib',
+ecsf=xr.open_dataset(ecsf202312_sl, engine='cfgrib',
                     backend_kwargs=dict(filter_by_keys= {'typeOfLevel': 'surface'},time_dims=('valid_time','verifying_time'),indexpath=''))[ecsf_param_names]
 
 # avoid errors by filtering parameters by paramId
@@ -72,9 +98,38 @@ era5_z = xr.open_dataset(era5_file, engine='cfgrib',
                               'time_dims': ('valid_time', 'verifying_time')
                           })
 xgb_ds = xr.merge([era5_lsm, era5_z, ecsf,era5_predictand], compat='override')
-xgb_df = xgb_ds.to_dataframe()
+
+# Define the directions and their corresponding shifts
+directions = {
+    'o': (0, 0),    # original (no shift)
+    'n': (1, 0),    # north
+    'ne': (1, 1),   # northeast
+    'e': (0, 1),    # east
+    'se': (-1, 1),  # southeast
+    's': (-1, 0),    # south
+    'sw': (-1, -1), # southwest
+    'w': (0, -1),   # west
+    'nw': (1, -1)   # northwest
+}
+
+# Create a new dataset with all the shifted variables
+new_ds = xr.Dataset()
+for var_name in list(xgb_ds.data_vars):
+    # Skip certain variables if needed
+    if var_name in ['surface', 'number']:
+        continue
+    
+    for direction, (lat_shift, lon_shift) in directions.items():
+        if lat_shift == 0 and lon_shift == 0:
+            # No shift for original point
+            new_ds[f"{var_name}_{direction}"] = xgb_ds[var_name]
+        else:
+            # Create shifted version
+            new_ds[f"{var_name}_{direction}"] = xgb_ds[var_name].shift(latitude=lat_shift, longitude=lon_shift)
+
+# Convert to dataframe (using new_ds instead of xgb_ds)
+xgb_df = new_ds.to_dataframe()
 xgb_df.reset_index(['latitude','longitude'],inplace=True)
-xgb_df=xgb_df.drop(columns=['surface','number'])
 xgb_df['month'] = xgb_df.index.get_level_values('valid_time').month
 print(xgb_df)
 
@@ -105,6 +160,7 @@ test_predictors = test_set.drop(columns=[predictand_column,'valid_time'])
 # convert to DMatrix for XGBoost
 dtrain = xgb.DMatrix(train_predictors, label=train_predictand)
 dtest = xgb.DMatrix(test_predictors, label=test_predictand)
+
 
 # Custom objective function
 def custom_objective(y_pred, dtrain):
@@ -216,3 +272,18 @@ plt.title('XGBoost Feature Importance')
 plt.tight_layout()
 plt.savefig(f'{mod_dir}{mod_name}_XGBfeature_importance.png')  # Save as PNG
 plt.show()
+'''
+
+elapsed = time.time() - startTime
+
+if elapsed < 60:
+    print(f"Script completed in {elapsed:.2f} seconds.")
+elif elapsed < 3600:
+    minutes = int(elapsed // 60)
+    seconds = elapsed % 60
+    print(f"Script completed in {minutes} minutes {seconds:.2f} seconds.")
+else:
+    hours = int(elapsed // 3600)
+    minutes = int((elapsed % 3600) // 60)
+    seconds = elapsed % 60
+    print(f"Script completed in {hours} hours {minutes} minutes {seconds:.2f} seconds.")

@@ -69,14 +69,13 @@
 1;5070;AMSR;3600;1800;0.000000;90.000000;0.100000;0.100000;+x-y;0.000000;0.000000;AMSR L3 equirectangular global grid at 0.1 deg
 1;5071;ECENS-ERA5L;301;201;3.000000;72.000000;0.100000;0.100000;+x-y;0.000000;0.000000;ECENS in ERA5L grid
 1;5072;ECXENS-ERA5L;301;201;3.000000;52.000000;0.100000;0.100000;+x+y;0.000000;0.000000;ECXENS in ERA5L grid
-1;5073;EC-EARTH;114;71;-29.531250;25.613980;0.703125;0.701749;+x+y;0.000000;0.000000;EC-EARTH3 CMIP6 grid over Europe
+1;5073;EC-EARTH;114;71;-29.531250;25.613983;0.703125;0.701749;+x+y;0.000000;0.000000;EC-EARTH3 CMIP6 grid over Europe
 1;5074;EOBS;705;465;-24.950000;25.050000;0.100000;0.100000;+x+y;0.000000;0.000000;E-OBS 0.1 deg grid over Europe
 1;5075;AMSRC;801;501;-30.000000;75.000000;0.100000;0.100000;+x+y;0.000000;0.000000;AMSRC Europe
 1;5076;S3SY-NORTH_ASIA;15119;3921;45.008929;75.000000;0.008929;0.008929;+x+y;0.000000;0.000000;S3SY NDVI North Asia 0.0089 deg latlon grid
 1;5077;S3SY-Africa;9632;8176;-25.991071;37.991071;0.008929;0.008929;+x+y;0.000000;0.000000;S3SY NDVI Africa 0.0089 deg latlon grid
 
-
-
+1;5078;ERA5L-EU+;801;581;-30.000000;83.000000;0.100000;0.100000;+x-y;0.000000;0.000000;ERA5L EU+ domain extended Arctic area
 
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------

@@ -60,11 +60,11 @@ seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp -j3  python /home/ubuntu/bin/
 
 echo 'netcdf to grib'
 # netcdf to grib
-seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp cdo -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -seltimestep,9/209 ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.nc ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.grib #|| echo "NO input or already netcdf to grib1"
+seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp cdo -b 10 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.nc ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.grib #|| echo "NO input or already netcdf to grib1"
 
 echo 'grib fix'
 # fix grib attributes
-seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s centre=86,productDefinitionTemplateNumber=1,totalNumber=51,number={} ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.grib \
+seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s edition=1,centre=98,setLocalDefinition=1,localDefinitionNumber=15,totalNumber=51,number={} ens/ECXSF_${year}${month}_swi2_${grid}_out-{}.grib \
 ens/ECXSF_${year}${month}_swi2_${grid}_out-{}-fixed.grib
 # || echo "NOT fixing swi2 grib attributes - no input or already produced"
 
