@@ -10,7 +10,7 @@
             "layer_type": "isoband",
             "isobands": "json:isobands/windgust.json",
             "css": "isobands/windgust.css",
-            "parameter": "FFG-MS:CERRA:5057:6:10:0",
+            "parameter": "FFG-MS:CERRA:5069:6:10:0",
                 "sampling":{
                 "relativeresolution": 4
             },
