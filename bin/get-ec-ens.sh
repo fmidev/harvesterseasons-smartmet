@@ -6,6 +6,8 @@
 # Default date is yesterday, give year month day as cmd for other dates.
 # Default grid is ERA5-Land, give era5 as 4th cmd for ERA5 grid.
 # (AK 2025)
+eval "$(conda shell.bash hook)"
+conda activate xgb
 
 if [ $# -ne 0 ]
 then
