@@ -1,0 +1,22 @@
+{
+    "title" : "ECENS Surface Snow Thickness in Meters",
+    "abstract" : "Surface snow thickness in meters from ECENS (15 day ensemble forecast).",
+    "projection": {},
+    "producer": "ECENS",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/HSNOW-M.json",
+            "css": "isobands/HSNOW-M.css",
+            "parameter": "HSNOW-M:ECENS::1:0:1:0",
+	    "sampling": { 
+		"relativeresolution": 4
+	    },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

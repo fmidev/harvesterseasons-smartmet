@@ -1,0 +1,22 @@
+{
+    "title" : "ECENS Soil Temperature in Kelvins",
+    "abstract" : "Soil temperature in Kelvins from ECENS (15 day ensemble forecast).",
+    "projection": {},
+    "producer": "ECENS",
+    "source":"grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/TSOIL-K.json",
+            "css": "isobands/TSOIL-K.css",
+            "parameter": "TSOIL-K:ECENS::::1:0",
+	    "sampling": { 
+		"relativeresolution": 4
+	    },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}
