@@ -115,7 +115,7 @@ def main():
     B = p90r
     C = p10r
     out = xr.where((B>=65)&((A==3)|(A==5)), 6,
-            xr.where((C<65)&(A>1), 1, A))
+            xr.where((C<65)&((A>1)&(A<6)), 1, A))
     out = out.astype(np.uint8)
     print(f"Output raster, shape: {out.shape}")
 
