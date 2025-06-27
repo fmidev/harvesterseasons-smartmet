@@ -15,3 +15,5 @@ parallel -j 3 gdal_translate -q -of COG -co COMPRESS=DEFLATE -co PREDICTOR=2 -co
 parallel mv {.}-cog.tif {} ::: trafficability_modified_*_${sdate}.tif
 parallel gdalinfo -stats -hist {} ::: trafficability_modified_*_${sdate}.tif
 parallel s3cmd put -Pq {} s3://wetterra/sten/ ::: trafficability_modified_*_${sdate}.tif
+ls -1 trafficability_modified_*_${sdate}.tif | sed s;tr;https://wetterra.data.lit.fmi.fi/sten/tr; >> MANIFEST
+s3cmd put -Pq MANIFEST s3://wetterra/sten/
