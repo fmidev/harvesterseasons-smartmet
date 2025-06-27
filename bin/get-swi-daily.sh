@@ -26,15 +26,18 @@ cd $incoming
 
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/2020/10/11/SWI1km_202010111200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_202010111200_CEURO_SCATSAR_V1.0.1.nc
 #url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
-url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
+maniurl="https://globalland.vito.be/download/manifest/swi_1km_v1_daily_netcdf/manifest_clms_global_swi_1km_v1_daily_netcdf_latest.txt"
 #meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
 fileFix=${ncfile:0:-3}-swi-fix.grib
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
+manifest=$(wget -q --random-wait $maniurl)
+url=$(grep "$year$month${day}1200_CEURO" manifest_clms_global_swi_1km_v1_daily_netcdf_latest.txt)
+# url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url #&& wget -q --random-wait $meta
+[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url
 
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
