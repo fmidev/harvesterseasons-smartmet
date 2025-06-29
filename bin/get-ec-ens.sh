@@ -6,7 +6,7 @@
 # Default date is yesterday, give year month day as cmd for other dates.
 # Default grid is ERA5-Land, give era5 as 4th cmd for ERA5 grid.
 # (AK 2025)
-eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 conda activate xgb
 
 if [ $# -ne 0 ]
@@ -91,7 +91,7 @@ cd /home/ubuntu/data
 # single level data
 # add snow depth to ec-ens
 [ -s ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc-nd-50.grib ] && [ ! -s ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc+sde-nd-50.grib ] && \
-    seq 0 50 | parallel cdo -s --eccodes -O aexprf,ec-sde.instr ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc-nd-{}.grib ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc+sde-nd-{}.grib ||\
+    seq 0 50 | parallel cdo -s --eccodes -O aexprf,ec-sde.instr ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc-nd-{}.grib ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc+sde-nd-{}.grib || \
     echo "NOT adding snow - no input or already produced"
 # fix grib attributes for ECENS
 [ -s ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc+sde-nd-50.grib ] && [ ! -s ec-ens/ensmems/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd-50.grib ] && \
@@ -105,8 +105,6 @@ grib_copy ec-ens/ensmems/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd-*.
 ! [ -s grib/ECXENS_$year${month}${day}T000000_swi2-nd.grib ] && echo 'start XGBoost predict for SWI2' && run-xgb-predict-swi2-ecens.sh $year $month $day || echo 'NOT XGBoost predict for SWI2 - no input or already produced'
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
-
-
 
 # bias adjustments for surface parameters
 # adjust unbound variables 
@@ -129,5 +127,3 @@ grib_copy ec-ens/ensmems/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd-*.
 #    -aexpr,'ws=sqrt(10u^2+10v^2);' -selname,10u,10v ec-ens/ensmems/ec-ens_${DATE}_${era}_sfc-all-nd-{}.grib \
 #    -aexpr,'10u=ws;10v=ws;' -selname,ws $era/$era-ec-ens_2000-2019_bound_bias_nd.grib \
 #    ec-ens/ensmems/ec-ens-${bsf}_${DATE}_${era}_sfc-bound-nd-{}.grib || echo "NOT adj wind - input missing or already produced"
-
-

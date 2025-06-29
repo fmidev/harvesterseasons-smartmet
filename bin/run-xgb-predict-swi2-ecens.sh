@@ -25,9 +25,9 @@ era='era5l'
 echo 'shift laihv lailv swi2clim dates'
 ! [ -s ec-ens/ECC_${year}${month}${day}T000000_laihv-nd-day.grib ] && ! [ -s ec-ens/ECC_${year}${month}${day}T000000_lailv-nd-day.grib ] && ! [ -s ec-ens/SWIC_${year}${month}${day}T000000_2020_2015-2022_swis-ydaymean-nd-9km-fixed.grib ] && \
     diff=$(($year - 2020)) && \
-    cdo seldate,$DATE,$EDATE -shifttime,${diff}years -shifttime,-12hour ECC_20000101T000000_laihv-nd-day.grib ec-ens/ECC_${year}${month}${day}T000000_laihv-nd-day.grib && \
-    cdo seldate,$DATE,$EDATE -shifttime,${diff}years -shifttime,-12hour ECC_20000101T000000_lailv-nd-day.grib ec-ens/ECC_${year}${month}${day}T000000_lailv-nd-day.grib && \
-    cdo seldate,$DATE,$EDATE -shifttime,${diff}years SWIC_20000101T000000_2020_2015-2022_swis-ydaymean-nd-9km-fixed.grib ec-ens/SWIC_${year}${month}${day}T000000_2020_2015-2022_swis-ydaymean-nd-9km-fixed.grib || echo 'not shifting'
+    cdo -s seldate,$DATE,$EDATE -shifttime,${diff}years -shifttime,-12hour ECC_20000101T000000_laihv-nd-day.grib ec-ens/ECC_${year}${month}${day}T000000_laihv-nd-day.grib && \
+    cdo -s seldate,$DATE,$EDATE -shifttime,${diff}years -shifttime,-12hour ECC_20000101T000000_lailv-nd-day.grib ec-ens/ECC_${year}${month}${day}T000000_lailv-nd-day.grib && \
+    cdo -s seldate,$DATE,$EDATE -shifttime,${diff}years SWIC_20000101T000000_2020_2015-2022_swis-ydaymean-nd-9km-fixed.grib ec-ens/SWIC_${year}${month}${day}T000000_2020_2015-2022_swis-ydaymean-nd-9km-fixed.grib || echo 'not shifting'
 #seldate,$DATE,$EDATE
 
 # fix grib attributes for laihv,lailv and swi2clim
@@ -51,13 +51,13 @@ echo 'start xgb predict'
 # netcdf to grib and remove first/last date (all nan)
 echo 'netcdf to grib'
 #[ -s ec-ens/ECXENS_${year}${month}${day}_swi2_${era}_nd-out-50.nc ] && ! [ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50.grib ] && \
-seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp cdo -b 16 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -delete,timestep=1 -delete,timestep=-1 ec-ens/ECXENS_${year}${month}${day}_swi2_${era}_nd-out-{}.nc ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib || echo "NO input or already netcdf to grib"
+seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp cdo -s -b P8 -f grb2 copy -setparam,41.228.192 -setmissval,-9.e38 -delete,timestep=1 -delete,timestep=-1 ec-ens/ECXENS_${year}${month}${day}_swi2_${era}_nd-out-{}.nc ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib || echo "NO input or already netcdf to grib"
 
 # fix grib attributes
 echo 'fix grib attributes'
 [ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50.grib ] && ! [ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50-fixed.grib ] && \
-#seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s productDefinitionTemplateNumber=11,centre=86,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
 seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s edition=1,setLocalDefinition=1,localDefinitionNumber=15,centre=98,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
+#seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s productDefinitionTemplateNumber=11,centre=86,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
 
 # join ensemble members and move to grib folder
 echo 'join ensemble members and move to grib folder'

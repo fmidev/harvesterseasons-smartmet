@@ -72,6 +72,12 @@ def main():
     # Create datasets with proper naming
     p90 = p90.to_dataset(name="swi2_p90")
     p10 = p10.to_dataset(name="swi2_p10")
+
+    # cast to uint8 and set nodata
+    p90 = p90.astype(np.uint8)
+    p10 = p10.astype(np.uint8)
+    p90["swi2_p90"].rio.set_nodata(0, inplace=True)
+    p10["swi2_p10"].rio.set_nodata(0, inplace=True)
     
     # Try to handle projection issues - first set the CRS properly
     try:
@@ -98,6 +104,8 @@ def main():
         # Attempt standard reprojection
         p90r = p90["swi2_p90"].rio.reproject_match(orig)
         p10r = p10["swi2_p10"].rio.reproject_match(orig)
+        p90r.rio.set_nodata(0, inplace=True)  # Set nodata value to 0
+        p10r.rio.set_nodata(0, inplace=True)  # Set nodata value to 0
         print("Standard reprojection successful")
     except Exception as e:
         print(f"Reprojection error: {e}")
