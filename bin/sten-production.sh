@@ -9,11 +9,11 @@ else
 fi
 sdate=$(date -d "$date" +%Y%m%d)
 cd /home/smartmet/data
-parallel -j 3 /home/ubuntu/mambaforge/envs/xgb/bin/python /home/ubuntu/bin/make_finland_trafficability_map.py $date ::: 1 7 14
+parallel --tmpdir tmp -j 3 /home/ubuntu/mambaforge/envs/xgb/bin/python /home/ubuntu/bin/make_finland_trafficability_map.py $date ::: 1 7 14
 cd /home/smartmet/data/maps
-parallel -j 3 gdal_translate -q -of COG -co COMPRESS=DEFLATE -co PREDICTOR=2 -co BIGTIFF=IF_SAFER -co NUM_THREADS=ALL_CPUS {} {.}-cog.tif ::: trafficability_modified_*_${sdate}.tif
-parallel mv {.}-cog.tif {} ::: trafficability_modified_*_${sdate}.tif
-parallel gdalinfo -stats -hist {} ::: trafficability_modified_*_${sdate}.tif
-parallel s3cmd put -Pq {} s3://wetterra/sten/ ::: trafficability_modified_*_${sdate}.tif*
+parallel --tmpdir ../tmp -j 3 gdal_translate -q -of COG -co COMPRESS=DEFLATE -co PREDICTOR=2 -co BIGTIFF=IF_SAFER -co NUM_THREADS=ALL_CPUS {} {.}-cog.tif ::: trafficability_modified_*_${sdate}.tif
+parallel --tmpdir ../tmp mv {.}-cog.tif {} ::: trafficability_modified_*_${sdate}.tif
+parallel --tmpdir ../tmp gdalinfo -stats -hist {} ::: trafficability_modified_*_${sdate}.tif
+parallel --tmpdir ../tmp s3cmd put -Pq {} s3://wetterra/sten/ ::: trafficability_modified_*_${sdate}.tif*
 ls -1 trafficability_modified_*_${sdate}.tif | sed 's;tr;https://wetterra.data.lit.fmi.fi/sten/tr;' >> MANIFEST
 s3cmd put -Pq MANIFEST s3://wetterra/sten/

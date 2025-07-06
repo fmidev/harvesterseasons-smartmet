@@ -4,7 +4,7 @@
 # give year month day as cmd
 # ouput is ECXENS product
 # (AK 2025)
-eval "$(conda shell.bash hook)"
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
 
 conda activate xgb
 TMPDIR=/home/smartmet/data/tmp
@@ -13,6 +13,9 @@ month=$2
 day=$3
 
 DATE=${year}-${month}-${day}
+SWIDATE=$(date -d "$DATE 1 days ago" +%Y-%m-%d)
+SWIDATET=$(date -d "$DATE 2 days ago" +%Y%m%d)
+SWIDATES=$(date -d "$DATE 1 days ago" +%Y%m%d)
 EDATE=$(date -d "$DATE +14 days" +%Y-%m-%d)
 echo $DATE $EDATE
 
@@ -59,10 +62,27 @@ echo 'fix grib attributes'
 seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s edition=1,setLocalDefinition=1,localDefinitionNumber=15,centre=98,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
 #seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s productDefinitionTemplateNumber=11,centre=86,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
 
+# adjust here the starting SWI2 to the last obs-fc difference and that fc up to this day
+ cdo --eccodes sub -remapdis,era5l-nordic-grid -selname,swi2 grib/SWI_20000101T000000_${SWIDATES}T120000_swis.grib \
+  -seldate,$SWIDATE -ensmean [ ec-ens/ECXENS_${SWIDATET}_swi2-${era}-nd-out-*-fixed.grib ] \
+  ec-ens/ecxens-adjust-${SWIDATES}.grib
+
+# add adjustment to each ens member
+seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp cdo -s add \
+ ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib  ec-ens/ecxens-adjust-${SWIDATES}.grib \
+ ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed2.grib || echo "NO input or already adjusted ens members"
+
+# fix grib attributes
+echo 'fix grib attributes'
+[ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50-fixed2.grib ] && ! [ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50-fixed3.grib ] && \
+seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s edition=1,setLocalDefinition=1,localDefinitionNumber=15,centre=98,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed2.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed3.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
+#seq 0 50 | parallel --tmpdir /home/ubuntu/data/tmp grib_set -r -s productDefinitionTemplateNumber=11,centre=86,totalNumber=51,number={} ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}.grib ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-{}-fixed.grib || echo "NOT fixing swi2 grib attributes - no input or already produced"
+
 # join ensemble members and move to grib folder
 echo 'join ensemble members and move to grib folder'
-[ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50-fixed.grib ] && ! [ -s grib/ECXENS_${year}${month}${day}T000000_swi2-${era}-nd.grib ] && \
-grib_copy ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-*-fixed.grib grib/ECXENS_${year}${month}${day}T000000_swi2-${era}-nd.grib || echo "NOT joining ens members - no input or already done"
+[ -s ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-50-fixed2.grib ] && ! [ -s grib/ECXENS_${year}${month}${day}T000000_swi2-${era}-nd.grib ] && \
+ grib_copy ec-ens/ECXENS_${year}${month}${day}_swi2-${era}-nd-out-*-fixed3.grib grib/ECXENS_${year}${month}${day}T000000_swi2-${era}-nd.grib \
+ || echo "NOT joining ens members - no input or already done"
 
 echo 'done'
 #wait 

@@ -60,10 +60,10 @@ process_param() {
         "${MARS_DIR}/${REQ_TEMP_1TO50}" > "$REQUEST_FILE_1TO50"
 
     # download control 0
-    [ -s ec-ens/${TARGET_0} ] && echo "EC-ENS control file already downloaded" || cat $REQUEST_FILE_0 | mars
+    [ -s ec-ens/${TARGET_0} ] && echo "EC-ENS control file already downloaded" || cat $REQUEST_FILE_0 | /home/ubuntu/bin/mars
     
     # download members 1 to 50
-    [ -s ec-ens/${TARGET_1TO50} ] && echo "EC-ENS members 1 to 50 file already downloaded" || cat $REQUEST_FILE_1TO50 | mars
+    [ -s ec-ens/${TARGET_1TO50} ] && echo "EC-ENS members 1 to 50 file already downloaded" || cat $REQUEST_FILE_1TO50 | /home/ubuntu/bin/mars
 
     [ -s ec-ens/${TARGET_0} ] && [ -s ec-ens/${TARGET_1TO50} ] && echo "EC-ENS ready" || mv $TARGET_0 $TARGET_1TO50 ec-ens/
 

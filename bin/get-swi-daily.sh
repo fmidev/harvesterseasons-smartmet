@@ -43,7 +43,7 @@ url=$(grep "$year$month${day}1200_CEURO" manifest_clms_global_swi_1km_v1_daily_n
 #cog="${file:0:-4}_cog.tif"
 #ncog="${nfile:0:-4}_cog.tif"
 
-nc_ok=$(cdo xinfon $ncfile)
+nc_ok=$(cdo filedes $ncfile)
 
 if [ -z "$nc_ok" ]
 then
@@ -55,7 +55,7 @@ else
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/
 #       s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
-    rm $ncfile $fileFix
+    rm $ncfile $fileFix manifest_clms_global_swi_1km_v1_daily_netcdf_latest.txt*
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
 echo "Done"
