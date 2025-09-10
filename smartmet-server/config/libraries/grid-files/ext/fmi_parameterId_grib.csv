@@ -181,3 +181,6 @@ VSW-M3M3;260199;;;
 
 # 229010: crop cover fraction
 CROP-FR;229010;;;
+
+# 63: Start time of skin temperature time difference to daily reference (s)
+STSKTD-S;63;;;

@@ -1,16 +1,18 @@
 #!/bin/bash
-# give yearmonthday and version as cmd 
-#eval "$(conda shell.bash hook)"
-#conda activate xr
-
+# VITO discontinued the service 2024-7-1
+# daily script for fetching SWI 1km data now from CLMS
+# new download method with EU-login and apikey not implemented as not working, using MANIFEST urls directly to VITO instead 2024-07-20
+# USAGE: get-swi-daily.sh [yearmonthday] [version]
+eval "$(/home/ubuntu/mambaforge/bin/conda shell.bash hook)"
+conda activate cdo
 if [[ $# -gt 0 ]]; then
     yday=`date -d $1 +%Y%m%d`
     version=$2
 else
     yday=`date -d '2 days ago' +%Y%m%d`
-    version=1.0.2
+    version=1.0.1
 fi
-incoming=~/data/copernicus
+incoming=~/data/swi1km
 mkdir -p $incoming
 year=`date -d $yday +%Y`
 month=`date -d $yday +%m`
@@ -19,33 +21,42 @@ day=`date -d $yday +%d`
 echo $year $month $day
 
 cd $incoming
+# "Obtaining JWT access tokens for CLMS ..."
+#token=$(clms-grant.py)
+
 # https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/2020/10/11/SWI1km_202010111200_CEURO_SCATSAR_V1.0.1/c_gls_SWI1km_202010111200_CEURO_SCATSAR_V1.0.1.nc
-url="https://mstrahl:Hehec3po@land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
-meta=${url:0:-3}.xml
+#url="https://land.copernicus.vgt.vito.be/PDF/datapool/Vegetation/Soil_Water_Index/Daily_SWI_1km_Europe_V1/$year/$month/$day/SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
+maniurl="https://globalland.vito.be/download/manifest/swi_1km_v1_daily_netcdf/manifest_clms_global_swi_1km_v1_daily_netcdf_latest.txt"
+#meta=${url:0:-3}.xml
 ncfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V$version.nc"
 fileFix=${ncfile:0:-3}-swi-fix.grib
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
+manifest=$(wget -q -c --random-wait $maniurl)
+url=$(grep "$year$month${day}1200_CEURO" manifest_clms_global_swi_1km_v1_daily_netcdf_latest.txt)
+# url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url && \
-     wget -q --random-wait $meta
+[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q --random-wait $url
+
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
 #ncog="${nfile:0:-4}_cog.tif"
-nc_ok=$(cdo xinfon $ncfile)
+
+nc_ok=$(cdo filedes $ncfile)
 
 if [ -z "$nc_ok" ]
 then
     echo "Downloading failed: $ncfile $url" 
-else 
-    
-    cdo --eccodes -f grb -s -b P8 copy -chparam,-4,40.228,-8,41.228,-14,42.228,-16,43.228 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
-    grib_set -r -s centre=224,jScansPositively=0 $fileFix $file
+    exit 1
+else     
+    cdo --eccodes -O -z aec -f grb2 -s -b P8 copy -chparam,-4,40.228.192,-8,41.228.192,-14,42.228.192,-16,43.228.192 -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $fileFix
+    grib_set -s centre=224,jScansPositively=0 $fileFix $file
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
-     s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/ &&\
-       s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
-    rm $ncfile ${ncfile:0:-3}.xml $fileFix
-    mv $file ../grib/SWI_${file:13:4}0101T120000_${file:13:8}T${file:21:4}_swis.grib
+     s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/
+#       s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
+    rm $ncfile $fileFix manifest_clms_global_swi_1km_v1_daily_netcdf_latest.*
+    mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
+echo "Done"
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

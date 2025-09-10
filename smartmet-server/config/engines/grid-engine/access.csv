@@ -1,0 +1,14 @@
+# This is an example file for the access definitions that are used for accessing S3-servers.
+# Do not use this file. Instead use a similar file with limited read/write protection. The location
+# of the access file is defined in the grid-engine's main configuration file.
+
+# FIELD:
+#   1) server[:port]
+#   2) authenticationMethod
+#      0 = None
+#      1 = AWS4-HMAC-SHA256
+#   3) username
+#   4) password
+#
+ecache.data.lit.fmi.fi;0;username;password;
+#lake.fmi.fi;0;username;password;

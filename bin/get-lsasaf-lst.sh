@@ -18,7 +18,7 @@ else
 fi
 cd /home/ubuntu/data
 
-wget -c --no-check-certificate -r -np -nd -q --user=mstrahl --password='Hehe-c3po' -R '*.html' https://datalsasaf.lsasvcs.ipma.pt/PRODUCTS/EPS/EDLST/NETCDF/$y/$m/$d/ && \
+wget -c --no-check-certificate -r -np -nd -q -R '*.html' https://datalsasaf.lsasvcs.ipma.pt/PRODUCTS/EPS/EDLST/NETCDF/$y/$m/$d/ && \
  cdo --eccodes -s -f grb2 -z aec -b P8 setname,skt -selname,LST-day NETCDF4_LSASAF_M01-AVHR_EDLST-DAY_GLOBE_${ymd}0000.nc grib/LSASAF_${ymd:0:4}0101T120000_${ymd}_lst-day-gl.grib && \
   cdo --eccodes -s -f grb2 -z aec -b P8 setname,skt -selname,LST-night NETCDF4_LSASAF_M01-AVHR_EDLST-NIGHT_GLOBE_${ymd}0000.nc grib/LSASAF_${ymd:0:4}0101T000000_${ymd}_lst-night-gl.grib && \
    s3cmd put -Pq NETCDF4_LSASAF_M01-AVHR_EDLST-*_GLOBE_${ymd}0000.nc s3://copernicus/lsasaf/edlst/ && rm NETCDF4_LSASAF_M01-AVHR_EDLST-*_GLOBE_${ymd}0000.nc

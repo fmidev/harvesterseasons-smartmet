@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+file="$1"
+if [[ -z "$file" ]]; then
+  echo "Usage: colless <file.csv|file.csv.gz>"
+  exit 1
+fi
+
+# choose reader
+if [[ "$file" == *.gz ]]; then
+  reader="zcat"
+else
+  reader="cat"
+fi
+
+# define some colours (cycle through as many as you like)
+cols=(
+  $'\e[31m'   # red
+  $'\e[32m'   # green
+  $'\e[33m'   # yellow
+  $'\e[34m'   # blue
+  $'\e[35m'   # magenta
+  $'\e[36m'   # cyan
+)
+RESET=$'\e[0m'
+N=${#cols[@]}
+
+$reader "$file" | \
+awk -F, -v OFS=, -v N="$N" -v cols="$(printf '%s,' "${cols[@]}")" -v RESET="$RESET" '
+BEGIN {
+  # split the comma-joined colours back into an array
+  n=split(substr(cols,1,length(cols)-1), C, ",")
+}
+{
+  for (i=1; i<=NF; i++) {
+    # pick a colour based on column index
+    ci = ((i-1) % n) + 1
+    $i = C[ci] $i RESET
+  }
+  print
+}
+' | less -R
