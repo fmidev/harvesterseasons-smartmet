@@ -33,7 +33,7 @@ file=${ncfile:0:-3}-NDVI-V1-eu-fix.grib
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
 [ ! -s "$ncIn" ] && echo "Downloading from vito" && wget -q --random-wait $url && \
-     wget -q --random-wait $metaurl
+     wget -q -c --random-wait $metaurl
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
 #ncog="${nfile:0:-4}_cog.tif"

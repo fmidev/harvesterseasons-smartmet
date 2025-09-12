@@ -13,9 +13,9 @@ month=$2
 day=$3
 
 DATE=${year}-${month}-${day}
-SWIDATE=$(date -d "$DATE 1 days ago" +%Y-%m-%d)
-SWIDATET=$(date -d "$DATE 2 days ago" +%Y%m%d)
-SWIDATES=$(date -d "$DATE 1 days ago" +%Y%m%d)
+SWIDATE=$(date -d "$DATE 2 days ago" +%Y-%m-%d)
+SWIDATET=$(date -d "$DATE 3 days ago" +%Y%m%d)
+SWIDATES=$(date -d "$DATE 2 days ago" +%Y%m%d)
 EDATE=$(date -d "$DATE +14 days" +%Y-%m-%d)
 echo $DATE $EDATE
 

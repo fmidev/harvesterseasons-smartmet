@@ -1,13 +1,13 @@
 import xarray as xr
-import cfgrib,time,sys
-import pandas as pd
-import numpy as np
-import xgboost as xgb
+import dask.distributed
 
-file='/home/ubuntu/data/xgb-bias/yearly-controls/ECSF_2023_sfc-era5.grib'
-ds=xr.open_dataset(file, engine='cfgrib',
-                   backend_kwargs={'indexpath': ''}, decode_timedelta=True)
+if __name__ == "__main__":
+    cluster=dask.distributed.LocalCluster()
+    client=dask.distributed.Client(cluster)
+    file='/home/ubuntu/data/xgb-bias/yearly-controls/ECSF_2023_sfc-era5.grib'
+    ds=xr.open_dataset(file, engine='cfgrib', chunks={'valid_time':1},
+                   backend_kwargs=dict(time_dims=('valid_time','verifying_time'),indexpath=''), decode_timedelta=True)
 
-print(ds)
-df=ds.to_dataframe()
-print(df)
+    print(ds)
+    df=ds.to_dataframe()
+    print(df)

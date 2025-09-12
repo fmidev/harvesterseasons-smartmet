@@ -45,7 +45,7 @@ file=${ncfile:0:-3}-LAI-V1-eu-fix.grib
 #ceph="https://copernicus.data.lit.fmi.fi/land/gl_swi12.5km/$ncfile"
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncIn" ] && echo "Downloading from vito" && wget -q --random-wait $url #&& \
+[ ! -s "$ncIn" ] && echo "Downloading from vito" && wget -q -c --random-wait $url #&& \
 #     wget -q --random-wait $metaurl
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"

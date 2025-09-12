@@ -1,4 +1,3 @@
-
 services:
   smartmet-server:
     image: smartmet-server:latest
@@ -20,6 +19,9 @@ services:
     cap_add:
       - SYS_PTRACE
     environment:
+      - TIMEOUT=7200
+      - CONNECTION_TIMEOUT=7200
+      - HTTP_TIMEOUT=7200
       # Settings for grib files are here
       # Some of these may be need to be copied to config files
       - SMARTMET_GRID_CONFIG_FILE=/home/smartmet/config/libraries/grid-files/grid-files.conf
@@ -101,7 +103,13 @@ services:
       UPSTREAM: 128.214.254.78:8080
       SERVERNAME: desm.harvesterseasons.com
       EXTRANAMES: urban.geoss.space,copernicus.geoss.space,harmonia.geoss.space,data.geoss.space,smartmet.xyz,oceanids.geoss.space
-    #,sm.harvesterseasons.com
+      # Add nginx timeout settings
+      NGINX_PROXY_READ_TIMEOUT: 3600s
+      NGINX_PROXY_CONNECT_TIMEOUT: 3600s
+      NGINX_PROXY_SEND_TIMEOUT: 3600s
+      NGINX_CLIENT_BODY_TIMEOUT: 3600s
+      NGINX_CLIENT_HEADER_TIMEOUT: 3600s
+      NGINX_KEEPALIVE_TIMEOUT: 600s
     ports:
       - "80:80"
       - "443:443"

@@ -16,7 +16,7 @@ else
     yday=`date -d '10 days ago' +%Y%m%d`
     yday=${yday:0:-1}1
 fi
-incoming=/home/smartmet/data/copernicus
+incoming=/home/smartmet/data/clms
 mkdir -p $incoming
 year=`date -d $yday +%Y`
 month=`date -d $yday +%m`
@@ -33,9 +33,11 @@ ncfile="c_gls_NDVI300_${year}${month}${day}0000_EU_OLCI_$version.nc"
 fileFix=${ncfile:0:-3}-NDVI-V2-eu.grib
 file=${ncfile:0:-3}-NDVI-V2-eu-fix.grib
 #ceph="https://copernicus.data.lit.fmi.fi/land/gl_swi12.5km/$ncfile"
+mani=$(wget -q -c https://globalland.vito.be/download/manifest/ndvi_300m_v2_10daily_netcdf/manifest_clms_global_ndvi_300m_v2_10daily_netcdf_latest.txt)
+url=$(grep "$year$month${day}0000_GLOBE" manifest_clms_global_ndvi_300m_v2_10daily_netcdf_latest.txt)
 
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncIn" ] && echo "Downloading from vito" && wget -q $url
+[ ! -s "$ncIn" ] && echo "Downloading from vito" && wget -q -c $url
 nc_ok=$(cdo xinfon $ncIn)
 
 if [ -z "$nc_ok" ]

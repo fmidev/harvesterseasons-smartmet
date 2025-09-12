@@ -26,6 +26,7 @@ else
 fi
 
 DATE="${year}-${month}-${day}"
+
 echo $DATE $GRID $bsf $era
 
 # MARS parameters for surface and pressure levels
@@ -102,7 +103,7 @@ cd /home/ubuntu/data
 grib_copy ec-ens/ensmems/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd-*.grib grib/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd.grib || echo "NOT joining all+sde ensemble members ECENS - no input or already produced"
 
 # run XGBoost model to produce swi2 forecasts
-! [ -s grib/ECXENS_$year${month}${day}T000000_swi2-nd.grib ] && echo 'start XGBoost predict for SWI2' && run-xgb-predict-swi2-ecens.sh $year $month $day || echo 'NOT XGBoost predict for SWI2 - no input or already produced'
+! [ -s grib/ECXENS_$year${month}${day}T000000_swi2-nd.grib ] && echo 'start XGBoost predict for SWI2' && /home/ubuntu/bin/run-xgb-predict-swi2-ecens.sh $year $month $day || echo 'NOT XGBoost predict for SWI2 - no input or already produced'
 
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
 

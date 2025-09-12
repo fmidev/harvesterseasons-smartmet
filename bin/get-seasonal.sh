@@ -78,7 +78,7 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
     ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib || echo "NOT adj unbound - seasonal forecast input missing or already produced"
 ### adjust snow variables
 [ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_snow-24h-$abr-50.grib ] && \
- seq 0 50 | parallel cdo -s -O -b P12 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
+ seq 0 50 | parallel cdo -s -O -b P8 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
     -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,rsn,sd ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
     -selname,rsn,sd $era/$era-ecsf_2000-2019_unbound_bias_$abr.grib \
     ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}.grib || echo "NOT adj snow - seasonal forecast input missing or already produced"
@@ -169,7 +169,7 @@ grib_copy ens/ECSF_$year${month}01T000000_swvls-24h-$abr-*-fixed.grib grib/ECSF_
 ## Post-process pressure level data to add K-index 
 ## calculate variables vapour pressures, dew point temps, k-index and add them to the data set
 [ -s ens/ec-sf_$year${month}_pl-12h-$abr-50.grib ] && ! [ -s ens/ec-sf_$year${month}_pl-pp-12h-$abr-50.grib ] && \
-seq 0 50 | parallel -q cdo --eccodes -O -b P12 \
+seq 0 50 | parallel -q cdo --eccodes -O -b P8 \
         aexpr,'kx=sellevel(t,85000)-sellevel(t,50000)+sellevel(dpt,85000)-(sellevel(t,70000)-sellevel(dpt,70000));' \
         -aexpr,'dpt=log(vp/6.112)*243.5/(17.67-log(vp/6.112));' -aexpr,'ws=sqrt(u^2+v^2);' \
     -aexpr,'wdir=180+180/3.14159265*2*atan(v/(sqr(u^2+v^2)+u));' \
