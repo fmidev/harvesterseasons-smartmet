@@ -78,7 +78,7 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
     ens/ec-${bsf}_$year${month}_unbound-24h-$abr-{}.grib || echo "NOT adj unbound - seasonal forecast input missing or already produced"
 ### adjust snow variables
 [ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_snow-24h-$abr-50.grib ] && \
- seq 0 50 | parallel cdo -s -O -b P8 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
+ seq 0 50 | parallel cdo -s -O -b P12 --eccodes setmisstoc,0.0 -aexprf,ec-sde.instr -ymonadd \
     -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc -selname,rsn,sd ens/ec-sf_$year${month}_all-24h-$abr-{}.grib \
     -selname,rsn,sd $era/$era-ecsf_2000-2019_unbound_bias_$abr.grib \
     ens/ec-${bsf}_$year${month}_snow-24h-$abr-{}.grib || echo "NOT adj snow - seasonal forecast input missing or already produced"
@@ -199,4 +199,4 @@ wait
 # mod. M.Kosmale 18.03.2021: called now independently from cron (v3)
 #/home/smartmet/harvesterseasons-hops2smartmet/get-seasonal_hops.sh $year $month
 
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /etc/smartmet/libraries/tools-grid/filesys-to-smartmet.cfg 0

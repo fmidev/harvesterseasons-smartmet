@@ -74,10 +74,12 @@
 1;5075;AMSRC;801;501;-30.000000;75.000000;0.100000;0.100000;+x+y;0.000000;0.000000;AMSRC Europe
 1;5076;S3SY-NORTH_ASIA;15119;3921;45.008929;75.000000;0.008929;0.008929;+x+y;0.000000;0.000000;S3SY NDVI North Asia 0.0089 deg latlon grid
 1;5077;S3SY-Africa;9632;8176;-25.991071;37.991071;0.008929;0.008929;+x+y;0.000000;0.000000;S3SY NDVI Africa 0.0089 deg latlon grid
-
 1;5078;ERA5L-EU+;801;581;-30.000000;83.000000;0.100000;0.100000;+x-y;0.000000;0.000000;ERA5L EU+ domain extended Arctic area
 1;5079;ECXSF-ND;121;81;3.000000;73.000000;0.250000;0.250000;+x-y;0.000000;0.000000;ECXSF Nordic domain
-
+1;5080;ERA5D-ND;201;161;3.000000;73.000000;0.250000;0.250000;+x-y;0.000000;0.000000;ERA5D Nordic domain
+1;5081;ERA5-EU+;321;233;-30.000000;83.000000;0.250000;0.250000;+x-y;0.000000;0.000000;ERA5 EU+ domain extended Arctic area
+1;5082;CAMS-EU;701;401;-25.000000;30.000000;0.100000;0.100000;+x+y;0.000000;0.000000;CAMS EU reanalysis grid
+1;5083;CCIX-BL;1000;1000;19.996000;62.996000;0.009000;0.009000;+x-y;0.000000;0.000000;CCIX Baltic Land surface temperature grid
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------
 # 2;135;MONEUROPE;36;34;-18.000000;27.500000;1.500000;1.500000;+x-y;0.000000;-30.000000;0.000000;0.000000;0.000000;ECMWF monthly forecasts Europe;

@@ -32,7 +32,7 @@ cd /home/smartmet/data
 
 # ERA5-Land hourly to create 24h accumulated data
 [ -s grib/ERA5LD_20000101T000000_${year}${month}${day}T000000_24h-acc-$abr.grib ] && echo "Already downloaded ERA5L 1-hourly for $day-$month-$year" || ../bin/cds-era5l-1h.py $year $month $day #$abr $area # area not working anymore in cdsapi as intended
-[ -s ERA5L_${year}${month}${day}T000000_sfc-1h.grib ] && ! [ -s grib/ERA5LD_20000101T000000_${year}${month}${day}T000000_24h-acc-$abr.grib ] && cdo -b P8 -O --eccodes shifttime,-11hours -shifttime,-30minutes -daysum ERA5L_${year}${month}${day}T000000_sfc-1h.grib grib/ERA5LD_20000101T000000_${year}${month}${day}T000000_24h-acc-$abr.grib || echo "Already accumulated ERA5L for $day-$month-$year"
+[ -s ERA5L_${year}${month}${day}T000000_sfc-1h.grib ] && ! [ -s grib/ERA5LD_20000101T000000_${year}${month}${day}T000000_24h-acc-$abr.grib ] && cdo -b P8 -O --eccodes shifttime,-11hours -shifttime,-30minutes -daysum ERA5L_${year}${month}${day}T000000_sfc-1h.grib grib/ERA5LD_20000101T000000_${year}${month}${day}T000000_24h-acc-$abr.grib && rm ERA5L_${year}${month}${day}T000000_sfc-1h.grib || echo "Already accumulated ERA5L for $day-$month-$year"
 
 # ERA5-Land daily statistics
 # daily means

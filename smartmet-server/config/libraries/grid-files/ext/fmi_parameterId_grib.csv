@@ -204,3 +204,5 @@ TN2T24-K;301122;;;
 FF10AVG-MS;228005;;;
 # 228004:Mean temperature at 2 metres
 T2AVG-K;228004;;;
+# 210122:Sulphur dioxide mixing ratio (kg kg-1)
+SO2-KGKG;210122;;;

@@ -105,7 +105,7 @@ grib_copy ec-ens/ensmems/ECENS_${year}${month}${day}T000000_${era}_sfc+sde-nd-*.
 # run XGBoost model to produce swi2 forecasts
 ! [ -s grib/ECXENS_$year${month}${day}T000000_swi2-nd.grib ] && echo 'start XGBoost predict for SWI2' && /home/ubuntu/bin/run-xgb-predict-swi2-ecens.sh $year $month $day || echo 'NOT XGBoost predict for SWI2 - no input or already produced'
 
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /etc/smartmet/libraries/tools-grid/filesys-to-smartmet.cfg 0
 
 # bias adjustments for surface parameters
 # adjust unbound variables 

@@ -6,10 +6,16 @@ month=str(sys.argv[2])
 dataset = "reanalysis-era5-land"
 request = {
     "variable": [
-        "volumetric_soil_water_layer_1",
-        "volumetric_soil_water_layer_2",
-        "volumetric_soil_water_layer_3",
-        "volumetric_soil_water_layer_4"
+        #"runoff",
+        #"sub_surface_runoff",
+        #"surface_runoff",
+        #"total_evaporation",
+        "10m_u_component_of_wind",
+        "10m_v_component_of_wind",
+        "surface_pressure",
+        "total_precipitation",
+        "leaf_area_index_high_vegetation",
+        "leaf_area_index_low_vegetation"
     ],
     "year": year,
     "month": month,
@@ -41,7 +47,6 @@ request = {
     "area": [83, -30, 25, 50]
 }
 
-
 client = cdsapi.Client()
-output_filename = f'/home/ubuntu/data/grib/ERA5L_20000101T000000_{year}{month}_soilwater.grib'
+output_filename = f'/home/ubuntu/data/grib/ERA5L_20000101T000000_{year}{month}_many.grib'
 client.retrieve(dataset, request).download(output_filename)

@@ -44,12 +44,12 @@ fileFix=${ncfile:0:-3}-swi-fix.grib
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
 
-manifest=$(wget -q -c --random-wait $maniurl)
+#manifest=$(wget -q -c --random-wait $maniurl)
 url=$(grep "$year$month${day}1200_CEURO" manifest_clms_global_swi_1km_v2_daily_netcdf_latest.txt)
 echo $url
-# url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
+#url="https://globalland.vito.be/download/netcdf/soil_water_index/swi_1km_v1_daily/${year}/${year}${month}${day}/c_gls_SWI1km_${year}${month}${day}1200_CEURO_SCATSAR_V$version.nc"
 #wget -q --method=HEAD $ceph && wget -q $ceph && upload=grb || 
-[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q -c --random-wait $url
+[ ! -s "$ncfile" ] && echo "Downloading from vito" && wget -q -c --random-wait $url || echo "already downloaded"
 
 #nfile=${ncfile:0:-3}-swi_noise.tif
 #cog="${file:0:-4}_cog.tif"
@@ -74,4 +74,4 @@ else
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
 echo "Done"
-#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0
+#sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /etc/smartmet/libraries/tools-grid/filesys-to-smartmet.cfg 0

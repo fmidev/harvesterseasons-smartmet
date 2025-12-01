@@ -120,3 +120,4 @@
 10301122;TN2T24-K;K;Minimum temperature at 2 metres in the last 24 hours;1;1;1;1; 
 10228005;FF10AVG-MS;m s-1;Time-mean 10 metre wind speed (m/s);1;1;1;1; 
 10228004;T2AVG-K;K;Mean temperature at 2 metres;1;1;1;1;
+10210122;SO2-KGKG;kgkg-1;Sulphur dioxide mixing ratio;1;1;1;1;

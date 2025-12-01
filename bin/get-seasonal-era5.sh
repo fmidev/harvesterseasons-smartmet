@@ -133,4 +133,18 @@ seq 0 50 | parallel grib_set -r -s jScansPositively=0 ens/ec-${bsf}_$year${month
 cd /home/ubuntu/bin
 parallel -j1 ./run-xgb-predict-oceanids.sh $year $month {\1} {\2} :::: harbors.txt :::: predictands.txt
 
+yearmonth="${year}${month}"
+local_pred_pattern="/home/ubuntu/data/OCEANIDS/ECXSF_${yearmonth}_*.csv"
+remote_dir="/media/ftp/FMI/sf/${yearmonth}"
+
+lftp -e "
+set net:timeout 20
+set ftp:ssl-allow no
+open 64.225.142.204
+mkdir -p $remote_dir
+cd $remote_dir
+mput $local_pred_pattern
+bye
+"
+
 #sudo docker exec smartmet-server /bin/fmi/filesys2smartmet /home/smartmet/config/libraries/tools-grid/filesys-to-smartmet.cfg 0

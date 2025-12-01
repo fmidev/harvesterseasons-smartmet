@@ -1,0 +1,65 @@
+FROM docker.io/rockylinux:9
+LABEL maintainer "Mikko Strahlendorff <mikko.strahlendorff@fmi.fi>"
+LABEL license    "MIT License Copyright (c) 2023 FMI Open Development"
+
+ENV USER_NAME="smartmet" \
+    GOOGLE_FONTS="Montserrat NotoSans OpenSans Roboto" 
+
+RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-open-release-latest-9.noarch.rpm && \
+    dnf -y install yum-utils && \
+    dnf config-manager --set-enabled crb && \
+    dnf -y install epel-release && \
+    dnf config-manager --setopt="epel.exclude=librsvg2*" --save && \
+    dnf config-manager --setopt="baseos.exclude=librsvg2*" --save && \
+    dnf config-manager --setopt="epel.exclude=eccodes*" --save && \
+    dnf config-manager --set-disabled epel-source && \ 
+    dnf -y module disable postgresql:15 && \
+    sed -i -e 's/^mirrorlist=/#mirrorlist=/' -e 's/^#baseurl=/baseurl=/' /etc/yum.repos.d/rocky.repo && \
+    dnf -y update && \
+    dnf -y install --setopt=install_weak_deps=False \
+    smartmet-server \
+    smartmet-plugin-autocomplete \
+    smartmet-plugin-backend \
+    smartmet-plugin-download \
+    smartmet-plugin-edr \
+    smartmet-plugin-timeseries \
+    smartmet-plugin-wms \
+    smartmet-engine-grid \
+    smartmet-plugin-grid-admin \
+    smartmet-plugin-grid-gui \
+    smartmet-tools-grid \
+    smartmet-library-tron \
+    smartmet-plugin-q3 \
+    lua-newcairo-q3 \
+    unzip \
+    glibc-langpack-en && \
+    dnf -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
+    dnf clean all 
+
+HEALTHCHECK --interval=30s --timeout=10s \
+  CMD curl -f http://localhost:8080/grid-admin/ || exit 1
+
+# Expose SmartMet Server's default port
+EXPOSE 8080
+RUN groupadd -r -g 1000 smartmet
+RUN useradd -r -u 1001 -g smartmet smartmet
+#RUN mkdir -p /etc/smartmet /var/log/smartmet 
+#RUN mkdir -p /smartmet/data/{meps,hirlam,gfs,meteor,nam,icon,gem,gens-avg,gens-ctrl,hbm,wam,aws}/{surface,pressure} \
+#             /smartmet/share/wms
+
+RUN install -m 775 -g 0 -d /var/smartmet
+RUN install -m 775 -g 0 -d /var/smartmet/archivecache
+RUN chmod -R g=u /var/smartmet /etc/passwd /var/log/smartmet
+#RUN chown -R smartmet /home/smartmet/*
+#RUN chown -R smartmet /srv/data /var/log/smartmet
+RUN touch /var/log/smartmet/info-access-log
+RUN chown smartmet /var/log/smartmet/info-access-log
+
+COPY scripts /home/smartmet/scripts 
+COPY docker-entrypoint.sh /
+
+### Containers should NOT run as root as a good practice
+USER smartmet
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["smartmetd"]

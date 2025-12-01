@@ -119,5 +119,14 @@
 301122;discipline=0,parameterCategory=0,parameterNumber=0,typeOfFirstFixedSurface=103,scaledValueOfFirstFixedSurface=2,scaleFactorOfFirstFixedSurface=0,indicatorOfUnitForTimeRange=1,typeOfStatisticalProcessing=3,lengthOfTimeRange=24,is_uerra=0;
 
 # VSW - Volumetric soil water for layer 1 and 2
-360199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=0,
-460199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=7,
+360199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=0;
+460199;discipline=2,parameterCategory=0,parameterNumber=25;,typeOfFirstFixedSurface=106,scaledValueOfFirstFixedSurface=7;
+
+# Nitrogen dioxide mass mixing ratio
+210121;discipline=0,parameterCategory=20,parameterNumber=2,constituentType=5;
+
+# Sulphur dioxide mass mixing ratio
+210122;discipline=0,parameterCategory=20,parameterNumber=2,constituentType=8;
+
+# Carbon monoxide mass mixing ratio
+210123;discipline=0,parameterCategory=20,parameterNumber=2,constituentType=4;

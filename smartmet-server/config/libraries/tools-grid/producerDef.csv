@@ -9,6 +9,7 @@
 #
 AMSR;AMSR;AMSR;AMSR satellite instrument derived products 
 AMSRC;AMSRC;AMSRC;AMSR satellite instrument derived variables climatology 
+CAMS;CAMS;CAMS;Copernicus Atmosphere Monitoring Service
 CLMS;CLMS;CLMS;Copernicus Land Monitoring Service
 CLMSC;CLMSC;CLMSC;Copernicus Land Monitoring Service variables climatology
 COPERNICUS;COPERNICUS;COPERNICUS;Copernicus Digital Elevation Map products
