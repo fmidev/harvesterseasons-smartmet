@@ -1,0 +1,48 @@
+# --------------------------------------------------------------------------------
+# This file defines unit conversions that can be used in parameter mappings. The idea
+# is that a parameter name contains also its unit (for example: T-K). This helps us
+# to create new parameter names (= alias names) and define required conversions. 
+
+# Fields:
+# ------
+# 1) Source unit 
+# 2) Target unit
+# 3) Conversion function
+# 4) Reverse conversion function
+# --------------------------------------------------------------------------------
+
+# Kelvin => Celsius
+K;C;SUM{$,-273.15};SUM{$,273.15}
+
+# Celsius => Kelvin
+C;K;SUM{$,273.15};SUM{$,-273.15}
+
+# 0..1 values => Percents:
+0TO1;PRCNT;MUL{$,100};DIV{$,100}
+
+# Percents => 0..1 values:
+PRCNT;0TO1;DIV{$,100};MUL{$,100}
+
+# Feets => Meters
+FT;M;MUL{$,0.3048};DIV{$,0.3048}
+
+# Meters => Feets
+M;FT;DIV{$,0.3048};MUL{$,0.3048}
+
+# HehtoPascal => Pascal
+HPA;PA;MUL{$,100};DIV{$,100}
+
+# Pascal => HehtoPascal
+PA;HPA;DIV{$,100};MUL{$,100}
+
+# Meters/sec => Knots
+MS;KT;MUL{$,1.94384449244};DIV{$,1.94384449244}
+
+# Knots => Meters/sec
+KT;MS;DIV{$,1.94384449244};MUL{$,1.94384449244}
+
+# Degrees => Radians
+D;RAD;MUL{$,0.017453292};DIV{$,0.017453292}
+
+# Radians => Degrees
+RAD;D;DIV{$,0.017453292};MUL{$,0.017453292}

@@ -26,12 +26,12 @@ if target not in target_mappings:
 # Paths
 mod_dir = '/home/ubuntu/data/ML/xgb-bias-models/'
 data_dir = '/home/ubuntu/data/xgb-bias/'
-sf_data_dir = data_dir + 'training_data_fin/'
+sf_data_dir = data_dir + 'reduced-fin/'
 era5_data_dir = data_dir + 'era5-targets/'
 dtm_data_dir = data_dir + 'dtm/'
 
 # output model name
-mod_name = f'xgb-bias_era5_ecsf_2020-2024_{target}.json'
+mod_name = f'xgb-bias_era5_ecsf_2020-2024_{target}-V2.json'
 
 # ERA5 target
 if target == '2t':
@@ -62,6 +62,28 @@ era5_16 = era5.astype(np.float16)
 df_era5 = era5_16.to_dataframe().reset_index()
 print('ERA5 data loaded.')
 
+# ECSF
+years1 = [2017,2018,2019,2020,2021]
+years2 = [2022,2023,2024]
+
+# ECSF surface features 2017-2024
+ecsf_sl_vars = ['10u','10v','10fg','2d','2t','rsn','sd','stl1','tcc']
+ensmems = list(range(51))  # 0–50
+ds_list = []
+
+for nro in ensmems:
+    print('Loading ECSF surface data for ensemble member', nro)
+    ds = xr.open_dataset(
+        f'{sf_data_dir}ecsf-era5_2017-2021_3days-sfc-eu_{nro}.nc'
+    )[ecsf_sl_vars]
+    ds = ds.rename({var: f"{var}_{nro}" for var in ds.data_vars})
+    ds_list.append(ds)
+ds_merged_sfc = xr.merge(ds_list)
+df = ds_merged_sfc.to_dataframe().reset_index()
+print(df)
+
+# ECSF disaccumulated features 
+'''
 # ECSF features
 years = [2020,2021,2022,2023,2024]
 
@@ -80,7 +102,6 @@ for y in years:
     ds_list.append(ds)
 
 print('Merging ECSF surface datasets...')
-ds_merged_sfc = xr.concat(ds_list, dim='time')
 #df_ecsf_sfc = ds_merged_sfc.to_dataframe().reset_index()
 
 ecsf_disacc_vars=['ewss','e','nsss','ro','sf','slhf','ssr','str','sshf','ssrd','strd','tsr','ttr','tp']
@@ -169,21 +190,6 @@ season_map = {
 df_xgb["season"] = df_xgb["month"].map(season_map)
 print(df_xgb)
 
-
-'''print("Plotting unique lat/lon points before filtering...")
-unique_points = df_xgb[['lat', 'lon']].drop_duplicates()
-plt.figure(figsize=(10, 10))
-ax = plt.axes(projection=ccrs.PlateCarree())
-ax.set_extent([0, 36, 50, 76], crs=ccrs.PlateCarree())
-ax.coastlines(resolution='10m')
-ax.add_feature(cfeature.BORDERS, linestyle=':')
-ax.add_feature(cfeature.LAND, facecolor='lightgray')
-ax.add_feature(cfeature.OCEAN, facecolor='lightblue')
-ax.scatter(unique_points['lon'], unique_points['lat'], s=1, color='red', alpha=0.5, transform=ccrs.PlateCarree())
-plt.title('Unique Grid Points (lat/lon) Before Filtering')
-plt.savefig(mod_dir + 'latlon_coverage-nd-era5.png', dpi=300)
-plt.close()
-'''
 # study nro of nans
 nan_counts = df_xgb.isna().sum()
 nan_counts = nan_counts[nan_counts > 0].sort_values(ascending=False)
@@ -316,3 +322,4 @@ plt.close()
 
 executionTime=(time.time()-startTime)
 print('Execution time in minutes: %.2f'%(executionTime/60))
+'''
