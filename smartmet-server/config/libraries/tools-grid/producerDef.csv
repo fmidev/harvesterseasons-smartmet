@@ -9,6 +9,7 @@
 #
 AMSR;AMSR;AMSR;AMSR satellite instrument derived products 
 AMSRC;AMSRC;AMSRC;AMSR satellite instrument derived variables climatology 
+AURORA;AURORA;AURORA;Aurora Clima products based on xgboost downscaling
 CAMS;CAMS;CAMS;Copernicus Atmosphere Monitoring Service
 CLMS;CLMS;CLMS;Copernicus Land Monitoring Service
 CLMSC;CLMSC;CLMSC;Copernicus Land Monitoring Service variables climatology
@@ -61,3 +62,5 @@ HadGEM3-GC31-MM;HadGEM3-GC31-MM;HadGEM3-GC31-MM;CMIP6 HadGEM3-GC31-MM model data
 INM-CM4-8;INM-CM4-8;INM-CM4-8;CMIP6 INM-CM4-8 model data from C3S
 INM-CM5-0;INM-CM5-0;INM-CM5-0;CMIP6 INM-CM5-0 model data from C3S
 MRI-ESM2-0;MRI-ESM2-0;MRI-ESM2-0;CMIP6 MRI-ESM2-0 model data from C3S
+# CryoSCOPE tests
+RGI2000;RGI2000;RGI2000;CryoSCOPE RGI2000 glacier climate data

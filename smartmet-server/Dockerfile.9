@@ -14,14 +14,13 @@ RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-
     dnf config-manager --setopt="epel.exclude=eccodes*" --save && \
     dnf config-manager --set-disabled epel-source && \ 
     dnf -y module disable postgresql:15 && \
-    dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
+    dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
     dnf config-manager --disable "pgdg*" && \
     sed -i -e 's/-source\]$/-__source]/' /etc/yum.repos.d/*.repo && \
     dnf -y update && \
     dnf -y install "glibc-langpack-*" postgresql-server && \
     ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime && \
     dnf -y install --setopt=install_weak_deps=False \
-    smartmet-plugin-admin \
     smartmet-plugin-autocomplete \
     smartmet-plugin-backend \
     smartmet-plugin-download \
@@ -32,6 +31,7 @@ RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-
     smartmet-plugin-grid-admin \
     smartmet-plugin-grid-gui \
     smartmet-tools-grid \
+    smartmet-topography-data \
     glibc-langpack-en && \
     dnf -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
     dnf clean all 
