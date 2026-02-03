@@ -1,0 +1,11 @@
+ml.harvesterseasons.com {
+    reverse_proxy smartmet-server:8080 {
+        header_up X-Forwarded-Proto {scheme}
+        transport http {
+            read_buffer 4096
+            response_header_timeout 600s
+            dial_timeout 90s
+        }
+    }
+    encode gzip
+}

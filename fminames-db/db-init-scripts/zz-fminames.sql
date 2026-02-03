@@ -17,7 +17,7 @@ SET row_security = off;
 -- Name: fminames; Type: DATABASE; Schema: -; Owner: fminames_user
 --
 
-CREATE DATABASE fminames WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
+CREATE DATABASE IF NOT EXISTS fminames WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
 
 
 ALTER DATABASE fminames OWNER TO fminames_user;
@@ -36,7 +36,7 @@ SET row_security = off;
 -- Name: topology; Type: SCHEMA; Schema: -; Owner: fminames_user
 --
 
-CREATE SCHEMA topology;
+CREATE SCHEMA IF NOT EXISTS topology;
 
 
 ALTER SCHEMA topology OWNER TO fminames_user;
@@ -96,7 +96,7 @@ SET search_path = public, pg_catalog;
 -- Name: source_enum; Type: TYPE; Schema: public; Owner: fminames_user
 --
 
-CREATE TYPE source_enum AS ENUM (
+CREATE TYPE IF NOT EXISTS source_enum AS ENUM (
     'geonames.org',
     'fmi',
     'fmihav'
@@ -135,7 +135,7 @@ ALTER TABLE alternate_geonames OWNER TO fminames_user;
 -- Name: alternate_municipalities; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE alternate_municipalities (
+CREATE TABLE IF NOT EXISTS alternate_municipalities (
     id integer NOT NULL,
     municipalities_id integer NOT NULL,
     name character varying(200) NOT NULL,
@@ -149,7 +149,7 @@ ALTER TABLE alternate_municipalities OWNER TO fminames_user;
 -- Name: countries; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE countries (
+CREATE TABLE IF NOT EXISTS countries (
     iso2 character(2) NOT NULL,
     iso3 character(3) NOT NULL,
     iso_numeric integer,
@@ -177,7 +177,7 @@ ALTER TABLE countries OWNER TO fminames_user;
 -- Name: features; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE features (
+CREATE TABLE IF NOT EXISTS features (
     code character varying(8) NOT NULL,
     shortdesc character varying(50) DEFAULT ''::character varying NOT NULL,
     longdesc character varying(255) DEFAULT ''::character varying NOT NULL,
@@ -191,7 +191,7 @@ ALTER TABLE features OWNER TO fminames_user;
 -- Name: geonames; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE geonames (
+CREATE TABLE IF NOT EXISTS geonames (
     id integer NOT NULL,
     name character varying(200) NOT NULL,
     ansiname character varying(200) DEFAULT ''::character varying,
@@ -226,7 +226,7 @@ ALTER TABLE geonames OWNER TO fminames_user;
 -- Name: keywords; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE keywords (
+CREATE TABLE IF NOT EXISTS keywords (
     keyword character varying(50) NOT NULL,
     comment character varying(200) DEFAULT ''::character varying,
     languages character varying(200) DEFAULT ''::character varying,
@@ -240,7 +240,7 @@ ALTER TABLE keywords OWNER TO fminames_user;
 -- Name: keywords_has_geonames; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE keywords_has_geonames (
+CREATE TABLE IF NOT EXISTS keywords_has_geonames (
     keyword character varying(50) NOT NULL,
     geonames_id integer NOT NULL,
     comment character varying(200) DEFAULT ''::character varying,
@@ -255,7 +255,7 @@ ALTER TABLE keywords_has_geonames OWNER TO fminames_user;
 -- Name: languages; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE languages (
+CREATE TABLE IF NOT EXISTS languages (
     iso_639_3 character(3) NOT NULL,
     iso_639_2 character(3) DEFAULT NULL::bpchar,
     iso_639_1 character(2) DEFAULT NULL::bpchar,
@@ -269,7 +269,7 @@ ALTER TABLE languages OWNER TO fminames_user;
 -- Name: municipalities; Type: TABLE; Schema: public; Owner: fminames_user
 --
 
-CREATE TABLE municipalities (
+CREATE TABLE IF NOT EXISTS municipalities (
     id integer NOT NULL,
     countries_iso2 character(2) NOT NULL,
     name character varying(200) NOT NULL,

@@ -1,4 +1,3 @@
-
 services:
   smartmet-server:
     image: smartmet-server:latest
@@ -24,9 +23,9 @@ services:
       - HTTP_TIMEOUT=7200
       # Settings for grib files are here
       # Some of these may be need to be copied to config files
-      - SMARTMET_GRID_CONFIG_FILE=/home/smartmet/config/libraries/grid-files/grid-files.conf
+      - SMARTMET_GRID_CONFIG_FILE=/etc/smartmet/libraries/grid-files/grid-files.conf
       # Other settings for grib file things
-      - SMARTMET_ENV_FILE=/home/smartmet/config/engines/grid-engine/base.conf
+      - SMARTMET_ENV_FILE=/etc/smartmet/engines/grid-engine/base.conf
       # Redis adderess is the name of docker service
       - REDIS_CONTENT_SERVER_ADDRESS=redis-db
       - REDIS_CONTENT_SERVER_PORT=6379
@@ -34,16 +33,18 @@ services:
       - REDIS_CONTENT_SERVER_TABLE_PREFIX=a.
       # The password is only required for the entrypoint script (see below)
       # Wouldn't it be nice to store this some where else.
+      - POSTGRES_USER=fminames_user
+      - POSTGRES_DB=fminames
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!
     ports:
       - "8080:8080"
     depends_on:
       # Entrypoint has script to validate that database is ready
-      - fminames-db
       - redis-db
+      - fminames-db
     restart: "unless-stopped" 
     volumes:
-      - ../config:/home/smartmet/config:Z
+      - ../config:/etc/smartmet/:Z
       - ../share:/home/smartmet/share:Z
       # For this container you need grib2-data in ../data/grib directory
       # Location is relative to this docker-compose.yaml file.
@@ -54,7 +55,7 @@ services:
     entrypoint:
       # The content of 'command' is passed as an argument to entrypoint script
       - "/home/smartmet/scripts/wait-for-postgres.sh"
-    command: fminames-db /usr/sbin/smartmetd -c /home/smartmet/config/smartmet.conf
+    command: fminames-db /usr/sbin/smartmetd -c /etc/smartmet/smartmet.conf
 
   # Smartmet-server is very demanding and requires this database to be present
   # Some settings need to be manually updated to smartmet-servers settings:
@@ -64,21 +65,21 @@ services:
     build: 
       context: ./fminames-db
       dockerfile: Dockerfile
-    image: fminames-db:latest
+    image: fminames-db
     container_name: fminames-db
-    restart: "no"
     environment:
-      # This silly password needs to copied into ./smartmet/geonames.conf
       - POSTGRES_PASSWORD=OmaHassuSalasana1234!
       - POSTGRES_USER=fminames_user
-      #- POSTGRES_DB=fminames  
+      - POSTGRES_DB=fminames
+#      - PGDATA=/var/lib/postgresql/data
     ports:
-      # Port exposed for connecting from host (not required in production)
      - "5432:5432"
-    #volumes:
-    #
-    # Keep database stuff stored on local file system
-     # ../data/db:/var/lib/postgresql/data2:Z
+#    healthcheck:
+#      test: ["CMD-SHELL", "pg_isready -U fminames_user -d fminames"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+    restart: unless-stopped
 
   # Redis is used for storing information for grib-data files
   redis-db:
@@ -86,32 +87,25 @@ services:
     image: redis:latest
     # Create a container named...
     container_name: redis-content-server
-    restart: always
+    restart: unless-stopped
     ports:
       # Port exposed for connecting from host (not required in production)
       - "6379:6379"
 
-  # https addresses for the smartmet-server 
-  nginx-ssl-proxy:
-    image: danieldent/nginx-ssl-proxy
-    container_name: ssl-proxy
-    restart: always
-    environment:
-      HSTS_HEADER: skip
-      NGINX_CLIENT_MAX_BODY_SIZE: 100m
-      UPSTREAM: 86.50.229.247:8080
-      SERVERNAME: ml.harvesterseasons.com
-      # EXTRANAMES: oceanids.geoss.space,smdev.harvesterseasons.com
-      # Add nginx timeout settings
-      NGINX_PROXY_READ_TIMEOUT: 3600s
-      NGINX_PROXY_CONNECT_TIMEOUT: 3600s
-      NGINX_PROXY_SEND_TIMEOUT: 3600s
-      NGINX_CLIENT_BODY_TIMEOUT: 3600s
-      NGINX_CLIENT_HEADER_TIMEOUT: 3600s
-      NGINX_KEEPALIVE_TIMEOUT: 3600s
+  # HTTPS reverse proxy (Caddy) replacing legacy nginx-ssl-proxy
+  caddy:
+    image: caddy:2.7
+    container_name: caddy
+    depends_on:
+      - smartmet-server
     ports:
       - "80:80"
       - "443:443"
+    environment:
+      # Optional: increase timeouts for long SmartMet responses
+      - CADDY_MAX_HEADER_BYTES=1048576
     volumes:
-      - "/etc/letsencrypt"
-      - ./ssl-conf/main_location.conf:/etc/nginx/main_location.conf
+      - ./ssl-conf/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ../caddy-data:/data:z
+      - ../caddy-config:/config:z
+    restart: unless-stopped
