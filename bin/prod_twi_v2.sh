@@ -16,7 +16,7 @@ dtm=${1}
 # Fill DTM depressions with Wang 2006 XXL method and 0.01 minimum slope
 [ ! -f $dtm-filled.tif ] && /usr/bin/saga_cmd ta_preprocessor 5 -ELEV $dtm-burn.tif -FILLED $dtm-filled -MINSLOPE 0.01\
  && gdal_translate -of COG -co COMPRESS=DEFLATE -co BIGTIFF=IF_SAFER -co PREDICTOR=YES $dtm-filled.sdat $dtm-filled.tif\ # && rm $dtm-filled.[smp]*\
- && gdalinfo -stats -hist $dtm-burn.tif && s3cmd -P -q sync $dtm-burn.tif* s3://copernicus/dtm/stream-burn/ #&& rm $dtm-burn.tif*
+ && gdalinfo -stats -hist $dtm-filled.tif && s3cmd -P -q sync $dtm-filled.tif* s3://copernicus/dtm/stream-burn/ #&& rm $dtm-burn.tif*
 # determine Channels and drainage basins. !not in use as DEM preprocess uses Copernicus DEM Water body mask
 #[ ! -f $dtm-stream.tif ] && [ ! -f $dtm-flowdir.tif ] && /usr/bin/saga_cmd ta_channels 5 -DEM $dtm-filled.tif -DIRECTION $dtm-flowdir -BASIN $dtm-stream -SEGMENTS $dtm-channels -BASINS $dtm-basins\
 # && parallel -j 2 s3cmd -P -q put $dtm-{}.* s3://copernicus/dtm/{}/ ::: basins channels\
@@ -38,7 +38,7 @@ dtm=${1}
 # && rm $dtm-scarea.[smp]* $dtm-flow-width.[smp]*\
 # Calculate TWI with Standard Beven & Kirkby 1979
 [ ! -f $dtm-twi.tif ] && /usr/bin/saga_cmd ta_hydrology 20 -SLOPE $dtm-slope.sdat -AREA $dtm-scarea.sdat -TWI $dtm-twi\
- && gdal_translate -q -of COG -co COMPRESS=DEFLATE -co BIGTIFF=IF_SAFER -co PREDICTOR=3 $dtm-twi.sdat $dtm-twi.tif\
- && rm $dtm-twi.[smp]*
+ && gdal_translate -q -of COG -co COMPRESS=DEFLATE -co BIGTIFF=IF_SAFER -co PREDICTOR=3 $dtm-twi.sdat $dtm-twi.tif
+# && rm $dtm-twi.[smp]*
 # Translated TWI and contributing steps in cloud optimized tiff format are uploaded to cloud storage
-[ -f $dtm-twi.tif ] && upload.sh $dtm
+[ -f $dtm-twi.tif ] && parallel gdalinfo -stats -hist ::: $dtm-*.tif  && upload.sh $dtm && rm $dtm-*.[smp]*
