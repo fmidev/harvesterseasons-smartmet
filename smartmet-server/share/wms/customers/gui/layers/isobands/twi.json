@@ -1,0 +1,256 @@
+[
+  {
+    "qid": "twi_inf_15",
+    "lolimit": 15,
+    "attributes": {
+      "class": "TWI_INF_15"
+    }
+  },
+  {
+    "qid": "twi_15_14",
+    "lolimit": 14,
+    "hilimit": 15,
+    "attributes": {
+      "class": "TWI_15_14"
+    }
+  },
+  {
+    "qid": "twi_14_13",
+    "lolimit": 13,
+    "hilimit": 14,
+    "attributes": {
+      "class": "TWI_14_13"
+    }
+  },
+  {
+    "qid": "twi_13_12",
+    "lolimit": 12,
+    "hilimit": 13,
+    "attributes": {
+      "class": "TWI_13_12"
+    }
+  },
+  {
+    "qid": "twi_12_11",
+    "lolimit": 11,
+    "hilimit": 12,
+    "attributes": {
+      "class": "TWI_12_11"
+    }
+  },
+  {
+    "qid": "twi_11_10",
+    "lolimit": 10,
+    "hilimit": 11,
+    "attributes": {
+      "class": "TWI_11_10"
+    }
+  },
+  {
+    "qid": "twi_10_9",
+    "lolimit": 9,
+    "hilimit": 10,
+    "attributes": {
+      "class": "TWI_10_9"
+    }
+  },
+  {
+    "qid": "twi_9_8",
+    "lolimit": 8,
+    "hilimit": 9,
+    "attributes": {
+      "class": "TWI_9_8"
+    }
+  },
+  {
+    "qid": "twi_8_7",
+    "lolimit": 7,
+    "hilimit": 8,
+    "attributes": {
+      "class": "TWI_8_7"
+    }
+  },
+  {
+    "qid": "twi_7_6",
+    "lolimit": 6,
+    "hilimit": 7,
+    "attributes": {
+      "class": "TWI_7_6"
+    }
+  },
+  {
+    "qid": "twi_6_5",
+    "lolimit": 5,
+    "hilimit": 6,
+    "attributes": {
+      "class": "TWI_6_5"
+    }
+  },
+  {
+    "qid": "twi_5_4",
+    "lolimit": 4,
+    "hilimit": 5,
+    "attributes": {
+      "class": "TWI_5_4"
+    }
+  },
+  {
+    "qid": "twi_4_3",
+    "lolimit": 3,
+    "hilimit": 4,
+    "attributes": {
+      "class": "TWI_4_3"
+    }
+  },
+  {
+    "qid": "twi_3_2",
+    "lolimit": 2,
+    "hilimit": 3,
+    "attributes": {
+      "class": "TWI_3_2"
+    }
+  },
+  {
+    "qid": "twi_2_1",
+    "lolimit": 1,
+    "hilimit": 2,
+    "attributes": {
+      "class": "TWI_2_1"
+    }
+  },
+  {
+    "qid": "twi_1_0",
+    "lolimit": 0,
+    "hilimit": 1,
+    "attributes": {
+      "class": "TWI_1_0"
+    }
+  },
+  {
+    "qid": "twi_0_n1",
+    "lolimit": -1,
+    "hilimit": 0,
+    "attributes": {
+      "class": "TWI_0_N1"
+    }
+  },
+  {
+    "qid": "twi_n1_n2",
+    "lolimit": -2,
+    "hilimit": -1,
+    "attributes": {
+      "class": "TWI_N1_N2"
+    }
+  },
+  {
+    "qid": "twi_n2_n3",
+    "lolimit": -3,
+    "hilimit": -2,
+    "attributes": {
+      "class": "TWI_N2_N3"
+    }
+  },
+  {
+    "qid": "twi_n3_n4",
+    "lolimit": -4,
+    "hilimit": -3,
+    "attributes": {
+      "class": "TWI_N3_N4"
+    }
+  },
+  {
+    "qid": "twi_n4_n5",
+    "lolimit": -5,
+    "hilimit": -4,
+    "attributes": {
+      "class": "TWI_N4_N5"
+    }
+  },
+  {
+    "qid": "twi_n5_n6",
+    "lolimit": -6,
+    "hilimit": -5,
+    "attributes": {
+      "class": "TWI_N5_N6"
+    }
+  },
+  {
+    "qid": "twi_n6_n7",
+    "lolimit": -7,
+    "hilimit": -6,
+    "attributes": {
+      "class": "TWI_N6_N7"
+    }
+  },
+  {
+    "qid": "twi_n7_n8",
+    "lolimit": -8,
+    "hilimit": -7,
+    "attributes": {
+      "class": "TWI_N7_N8"
+    }
+  },
+  {
+    "qid": "twi_n8_n9",
+    "lolimit": -9,
+    "hilimit": -8,
+    "attributes": {
+      "class": "TWI_N8_N9"
+    }
+  },
+  {
+    "qid": "twi_n9_n10",
+    "lolimit": -10,
+    "hilimit": -9,
+    "attributes": {
+      "class": "TWI_N9_N10"
+    }
+  },
+  {
+    "qid": "twi_n10_n11",
+    "lolimit": -11,
+    "hilimit": -10,
+    "attributes": {
+      "class": "TWI_N10_N11"
+    }
+  },
+  {
+    "qid": "twi_n11_n12",
+    "lolimit": -12,
+    "hilimit": -11,
+    "attributes": {
+      "class": "TWI_N11_N12"
+    }
+  },
+  {
+    "qid": "twi_n12_n13",
+    "lolimit": -13,
+    "hilimit": -12,
+    "attributes": {
+      "class": "TWI_N12_N13"
+    }
+  },
+  {
+    "qid": "twi_n13_n14",
+    "lolimit": -14,
+    "hilimit": -13,
+    "attributes": {
+      "class": "TWI_N13_N14"
+    }
+  },
+  {
+    "qid": "twi_n14_n15",
+    "lolimit": -15,
+    "hilimit": -14,
+    "attributes": {
+      "class": "TWI_N14_N15"
+    }
+  },
+  {
+    "qid": "twi_n15_inf",
+    "hilimit": -15,
+    "attributes": {
+      "class": "TWI_N15_INF"
+    }
+  }
+]

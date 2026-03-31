@@ -206,3 +206,15 @@ FF10AVG-MS;228005;;;
 T2AVG-K;228004;;;
 # 210122:Sulphur dioxide mixing ratio (kg kg-1)
 SO2-KGKG;210122;;;
+# total precipitation rate
+TPRATE-KGM2S1;235055;;;
+# 160182:Evaporation (kg m-2 s-1)
+EREA-KGM2S1;160182;;;
+# 51:Maximum temperature at 2 metres in the last 24 hours (K)
+#TMAX-24-K;51;;;
+# 52:Minimum temperature at 2 metres in the last 24 hours (K)
+#TMIN-24-K;52;;;
+# 207:Time-mean 10 metre wind speed (m/s)
+FF10-MS;207;;;
+# 231025:Topographic wetness index
+TWI;231025;;;

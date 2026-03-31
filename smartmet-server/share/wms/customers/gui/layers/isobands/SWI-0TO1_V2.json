@@ -1,0 +1,163 @@
+[
+    {
+        "attributes": {
+            "class": "SWI_95_100"
+        },
+        "hilimit": 1.0,
+        "lolimit": 0.95,
+        "qid": "SWI_95_100"
+    },
+    {
+        "attributes": {
+            "class": "SWI_90_95"
+        },
+        "hilimit": 0.95,
+        "lolimit": 0.90,
+        "qid": "SWI_90_95"
+    },
+    {
+        "attributes": {
+            "class": "SWI_85_90"
+        },
+        "hilimit": 0.90,
+        "lolimit": 0.85,
+        "qid": "SWI_85_90"
+    },
+    {
+        "attributes": {
+            "class": "SWI_80_85"
+        },
+        "hilimit": 0.85,
+        "lolimit": 0.80,
+        "qid": "SWI_80_85"
+    },
+    {
+        "attributes": {
+            "class": "SWI_75_80"
+        },
+        "hilimit": 0.80,
+        "lolimit": 0.75,
+        "qid": "SWI_75_80"
+    },
+    {
+        "attributes": {
+            "class": "SWI_70_75"
+        },
+        "hilimit": 0.75,
+        "lolimit": 0.70,
+        "qid": "SWI_70_75"
+    },
+    {
+        "attributes": {
+            "class": "SWI_65_70"
+        },
+        "hilimit": 0.70,
+        "lolimit": 0.65,
+        "qid": "SWI_65_70"
+    },
+    {
+        "attributes": {
+            "class": "SWI_60_65"
+        },
+        "hilimit": 0.65,
+        "lolimit": 0.60,
+        "qid": "SWI_60_65"
+    },
+    {
+        "attributes": {
+            "class": "SWI_55_60"
+        },
+        "hilimit": 0.60,
+        "lolimit": 0.55,
+        "qid": "SWI_55_60"
+    },
+    {
+        "attributes": {
+            "class": "SWI_50_55"
+        },
+        "hilimit": 0.55,
+        "lolimit": 0.50,
+        "qid": "SWI_50_55"
+    },
+    {
+        "attributes": {
+            "class": "SWI_45_50"
+        },
+        "hilimit": 0.50,
+        "lolimit": 0.45,
+        "qid": "SWI_45_50"
+    },
+    {
+        "attributes": {
+            "class": "SWI_40_45"
+        },
+        "hilimit": 0.45,
+        "lolimit": 0.40,
+        "qid": "SWI_40_45"
+    },
+    {
+        "attributes": {
+            "class": "SWI_35_40"
+        },
+        "hilimit": 0.40,
+        "lolimit": 0.35,
+        "qid": "SWI_35_40"
+    },
+    {
+        "attributes": {
+            "class": "SWI_30_35"
+        },
+        "hilimit": 0.35,
+        "lolimit": 0.30,
+        "qid": "SWI_30_35"
+    },
+    {
+        "attributes": {
+            "class": "SWI_25_30"
+        },
+        "hilimit": 0.30,
+        "lolimit": 0.25,
+        "qid": "SWI_25_30"
+    },
+    {
+        "attributes": {
+            "class": "SWI_20_25"
+        },
+        "hilimit": 0.25,
+        "lolimit": 0.20,
+        "qid": "SWI_20_25"
+    },
+    {
+        "attributes": {
+            "class": "SWI_15_20"
+        },
+        "hilimit": 0.20,
+        "lolimit": 0.15,
+        "qid": "SWI_15_20"
+    },
+    {
+        "attributes": {
+            "class": "SWI_10_15"
+        },
+        "hilimit": 0.15,
+        "lolimit": 0.10,
+        "qid": "SWI_10_15"
+    },
+    {
+        "attributes": {
+            "class": "SWI_5_10"
+        },
+        "hilimit": 0.10,
+        "lolimit": 0.05,
+        "qid": "SWI_5_10"
+    },
+    {
+        "attributes": {
+            "class": "SWI_0_5"
+        },
+        "hilimit": 0.05,
+        "lolimit": 0.0,
+        "qid": "SWI_0_5"
+    }
+]
+

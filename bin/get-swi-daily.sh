@@ -16,7 +16,7 @@ if [[ $# -gt 0 ]]; then
     version=$2
 else
     yday=`date -d '1 days ago' +%Y%m%d`
-    version=2.0.1
+    version=2.1.1 # new version 2.1.1. since 20260223, older vas 2.0.1 / AK
 fi
 
 incoming=~/data/swi1km

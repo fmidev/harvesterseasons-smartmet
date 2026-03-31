@@ -1,28 +1,40 @@
 import cdsapi,sys
 
-year=sys.argv[1]
-print(year)
+var=sys.argv[1]
+print(var)
 
 c = cdsapi.Client()
 
 c.retrieve(
-    'reanalysis-era5-single-levels',
+    'reanalysis-era5-single-levels-monthly-means',
     {
-        'product_type': 'reanalysis',
+#        "stream": "oper",
+#        "levtype": "sfc",
         'variable': [
-            'evaporation', 'runoff', 'snowfall',
-            'surface_latent_heat_flux', 'surface_net_solar_radiation', 'surface_sensible_heat_flux',
-            'surface_solar_radiation_downwards', 'surface_thermal_radiation_downwards', 'top_net_solar_radiation',
-            'top_net_thermal_radiation', 'total_precipitation',
+            var,
         ],
-        'year': year,
-        'month':'01',
-        'day': '01',
+   "year": [
+        "1995", "1996", "1997",
+        "1998", "1999", "2000",
+        "2001", "2002", "2003",
+        "2004", "2005", "2006",
+        "2007", "2008", "2009",
+        "2010", "2011", "2012",
+        "2013", "2014", "2015",
+        "2016", "2017", "2018",
+        "2019", "2020", "2021",
+        "2022", "2023", "2024",
+        "2025", "2026"
+    ],
+    "month": [
+        "01", "02", "03",
+        "04", "05", "06",
+        "07", "08", "09",
+        "10", "11", "12"
+    ],
         'time':'00:00',
-        'area': [
-            75, -30, 25,
-            50,
-        ],
-        'format': 'grib',
+        'area': [ 83, -33, 28, 55],
+        "download_format": "unarchived",
+        'data_format': 'grib',
     },
-    '/home/ubuntu/data/era5-%s-sl-1h-eu.grib'%(year))
+    '/home/ubuntu/data/era5-%s-sl-mon-eu.grib'%(var))

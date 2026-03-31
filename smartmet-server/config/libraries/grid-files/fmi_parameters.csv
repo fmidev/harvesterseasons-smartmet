@@ -60,8 +60,8 @@
 47;PREC30-KGM2;kg m-2;Thirty days precipitation in kgm-2;1;1;1;;
 48;PGR-PA;kg m-1 s-2;Pressure on ground;1;1;1;;
 49;TOTCWV-KGM2;kg m-2;Total column water vapour;1;1;1;;
-50;MAXT-K;K;Maximum temperature on ambiguous level;1;1;1;;
-51;MINT-K;K;Minimum temperature on ambiguous level;1;1;1;;
+50;TMAX-24-K;K;Maximum temperature on ambiguous level;1;1;1;;
+51;TMIN-24-K;K;Minimum temperature on ambiguous level;1;1;1;;
 52;CLDICE-KGKG;kg kg-1;Cloud ice;1;1;1;;
 53;TCLDTOP-K;K;Cloud top temperature;1;1;1;;
 54;TWVRAD-K;K;Water vapour radiation temperature;1;1;1;;

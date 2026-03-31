@@ -1,6 +1,6 @@
 {
     "title": "ECXENS Soil Water Index Layer 1",
-    "abstract": "Soil water index layer 1 from ECXENS (15 day ensemble forecast) [%].",
+    "abstract": "Soil water index layer 1 from ECXENS (1 day ensemble mean forecast) [%].",
     "projection": {},
     "producer": "ECXENS",
     "source": "grid",
@@ -8,9 +8,9 @@
         "layers": [{
             "qid": "l", 
             "layer_type": "isoband",
-            "isobands": "json:isobands/SWI-0TO100-V2.json",
-            "css": "isobands/SWI-0TO100-V2.css",
-            "parameter": "AVG{SWI1:ECXENS:5072:1:0:1:0;SWI1:ECXENS:5072:1:0:3:1-50}",
+            "isobands": "json:isobands/SoilWetnessClass.json",
+            "css": "isobands/SoilWetnessClass.css",
+            "parameter": "AVG{SWI1:ECXENS:5099:1:0:1:0;SWI1:ECXENS:5099:1:0:3:1-50}",
                 "sampling":{
                 "relativeresolution": 4
             },

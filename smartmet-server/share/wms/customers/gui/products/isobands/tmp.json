@@ -1,0 +1,36 @@
+{
+
+            "layer_type": "legend",
+            "x": 10,  // will be replaced in the code, the original value will be added
+            "y": 15,  // will be replaced in the code, the original value will be added
+            "dx": 0,
+            "dy": 9,
+            "isobands": "json:isobands/temperature.json",
+            "symbols":
+            {
+                "css": "isobands/temperature.css",
+                "symbol": "temperature_isoband_rect",
+                "start": "temperature_isoband_uptriangle",
+                "end": "temperature_isoband_downtriangle",
+                "attributes":
+                {
+                    "stroke": "black",
+                    "stroke-width": "0.5"
+                }
+            },
+            "labels":
+            {
+                "type": "lolimit",
+                "separator": "...",     // en dash = " \u2013 "
+                "dx": 18,
+                "dy": 12,
+                "conversions":
+                {
+                    "0": { "fi": "LÄMPENEE", "en": "GETTING WARMER"},
+                    "14": { "fi": "LÄMMIN", "en": "WARM"},
+                    "30": { "fi": "KUUMA", "en": "HOT" },
+                    "38": "< 38",
+                    "-50": "> -50"
+                }
+            }
+        },

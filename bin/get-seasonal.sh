@@ -68,7 +68,7 @@ grib_set -s levelType=106,level:d=3,topLevel:d=1.0,bottomLevel:d=2.54 ens/ec-sf_
 [ -s ens/ec-sf_$year${month}_swvls-24h-$abr-50-fixLevs.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_swvls-24h-$abr-50.grib ] && \
  seq 0 50 | parallel cdo -s -b P8 -O --eccodes ymonadd \
  -remap,$era-$abr-grid,ec-sf-$era-$abr-weights.nc ens/ec-sf_$year${month}_swvls-24h-$abr-{}-fixLevs.grib \
- era5l/era5l-ecsf_2000-2019_swvls_unbound_bias_eu_vsws_fixed.grib \
+ era5l/era5l-ecsf_2000-2019_swvls_unbound_bias_eu_vsws.grib \
  ens/ec-${bsf}_$year${month}_swvls-24h-$abr-{}.grib || echo "NOT adj swvls - seasonal forecast input missing or already produced"
  ### adjust unbound variables (removed swvl1/2 in Nov 2022 as not anymore available from CDS)
 [ -s ens/ec-sf_$year${month}_all-24h-$abr-50.grib ] && ! [ -s ens/ec-${bsf}_$year${month}_unbound-24h-$abr-50.grib ] && \

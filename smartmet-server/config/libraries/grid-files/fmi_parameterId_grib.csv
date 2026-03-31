@@ -2196,7 +2196,7 @@ RADGLO-WM2;3116;;;
 # 160181:North-South surface stress (N m-2 s-1)
 
 # 160182:Evaporation (kg m-2 s-1)
-
+EREA-KGM2S1;160182;;;
 # 160184:Soil wetness level 3 (m)
 
 # 160198:Skin reservoir content (kg m-2)

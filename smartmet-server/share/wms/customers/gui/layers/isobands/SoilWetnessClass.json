@@ -1,0 +1,43 @@
+[
+    {
+        "attributes": {
+            "class": "Extremely_wet"
+        },
+        "hilimit": 100,
+        "lolimit": 90,
+        "qid": "Extremely_wet"
+    },
+    {
+        "attributes": {
+            "class": "Wet"
+        },
+        "hilimit": 90,
+        "lolimit": 65,
+        "qid": "Wet"
+    },
+    {
+        "attributes": {
+            "class": "Moist"
+        },
+        "hilimit": 65,
+        "lolimit": 35,
+        "qid": "Moist"
+    },
+    {
+        "attributes": {
+            "class": "Dry"
+        },
+        "hilimit": 35,
+        "lolimit": 15,
+        "qid": "Dry"
+    },
+    {
+        "attributes": {
+            "class": "Very_dry"
+        },
+        "hilimit": 15,
+        "lolimit": 0,
+        "qid": "Very_dry"
+    }
+]
+

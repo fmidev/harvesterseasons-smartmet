@@ -1,0 +1,22 @@
+{
+    "title": "SWI Soil Wetness Index Layer 1 Isobands",
+    "abstract": "SWI1 Copernicus land Soil wetness index layer 1.",
+    "projection": {},
+    "producer": "SWI",
+    "source": "grid",
+    "views":[{
+	"layers": [{
+	    "qid": "l", 
+	    "layer_type": "isoband",
+	    "isobands": "json:isobands/SWI-0TO100-V2.json",
+	    "css": "isobands/SWI-0TO100-V2.css",
+	    "parameter": "SWI1:SWI:5059:1:0:0",
+		"sampling":{
+		"relativeresolution": 4
+	    },
+	    "attributes": {
+		"shape-rendering": "crispEdges"
+	    }
+	}]
+    }]
+}

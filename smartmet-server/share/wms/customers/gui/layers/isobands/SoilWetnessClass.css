@@ -1,0 +1,5 @@
+.Very_dry       { stroke:none; fill: rgb(90, 35, 0) }
+.Dry            { stroke:none; fill: rgb(178, 122, 58) }
+.Moist          { stroke:none; fill: rgb(118, 163, 214) }
+.Wet            { stroke:none; fill: rgb(16, 60, 152) }
+.Extremely_wet  { stroke:none; fill: rgb(242, 8, 188)  }

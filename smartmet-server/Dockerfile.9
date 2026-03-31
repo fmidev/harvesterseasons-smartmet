@@ -25,13 +25,17 @@ RUN dnf -y install https://download.fmi.fi/smartmet-open/rhel/9/x86_64/smartmet-
     smartmet-plugin-backend \
     smartmet-plugin-download \
     smartmet-plugin-edr \
-    smartmet-plugin-timeseries \
     smartmet-plugin-wms \
     smartmet-engine-grid \
+    smartmet-engine-querydata \
+    smartmet-plugin-timeseries \
+    smartmet-engine-observation \
+    smartmet-engine-geonames \
     smartmet-plugin-grid-admin \
     smartmet-plugin-grid-gui \
     smartmet-tools-grid \
     smartmet-topography-data \
+    smartmet-library-spine-devel \
     glibc-langpack-en && \
     dnf -y reinstall --setopt=override_install_langs='' --setopt=tsflags='' glibc-common eccodes && \
     dnf clean all 
@@ -46,7 +50,7 @@ RUN \
     done
 
 HEALTHCHECK --interval=30s --timeout=10s \
-  CMD curl -f http://localhost:8080/admin?what=qengine || exit 1
+  CMD curl -f http://localhost:8080/info?what=qengine || exit 1
 
 # Expose SmartMet Server's default port
 EXPOSE 8080
