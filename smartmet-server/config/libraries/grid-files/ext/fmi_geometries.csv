@@ -94,7 +94,7 @@
 1;5097;ND300;10000;6666;3.000000;52.005000;0.003000;0.003000;+x+y;0.000000;0.000000;Nordic 300m grid
 1;5098;CCM-HKI;1960;1725;24.629581;59.980018;0.000300;0.000300;+x+y;0.000000;0.000000;Helsinki 30m LST from CONSTLR
 1;5099;ND300-2;9686;6389;3.942000;52.005000;0.003000;0.003000;+x+y;0.000000;0.000000;Nordic 300m grid VOL 2
-
+1;5100;CCI-TRE;1861;1460;23.489290;61.226581;0.000300;0.000300;+x+y;0.000000;0.000000;Tampere 30m LST from CONSTLR
 # ROTATED LATLON : projection,id,name,ni,nj,first_lon,first_lat,di,dj,scanning_mode,south_pole_lon,south_pole_lat,angle,earthSemiMajor,earthSemiMinor,description
 # --------------------------------------------------------------------------------------------------------------------------------------
 # 2;135;MONEUROPE;36;34;-18.000000;27.500000;1.500000;1.500000;+x-y;0.000000;-30.000000;0.000000;0.000000;0.000000;ECMWF monthly forecasts Europe;
