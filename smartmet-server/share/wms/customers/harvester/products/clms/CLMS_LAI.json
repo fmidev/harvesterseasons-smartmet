@@ -1,0 +1,22 @@
+{
+    "title": "LAI Leaf Area Index Isobands",
+    "abstract": "LAI Leaf area index, CLMS.",
+    "projection": {},
+    "producer": "CLMS",
+    "source": "grid",
+    "views": [{
+        "layers": [{
+            "qid": "l",
+            "layer_type": "isoband",
+            "isobands": "json:isobands/LAI.json",
+            "css": "isobands/LAI.css",
+            "parameter": "LAI:CLMS:5052:1:0:0",
+            "sampling": {
+                "relativeresolution": 4
+            },
+            "attributes": {
+                "shape-rendering": "crispEdges"
+            }
+        }]
+    }]
+}

@@ -44,6 +44,7 @@ ncfixfile="c_gls_SWI1km_${yday}1200_CEURO_SCATSAR_V${version}_fix.nc"
 fileFix=${ncfile:0:-3}-swi-fix.grib
 file=${ncfile:0:-3}-swi.grib
 ceph="https://copernicus.data.lit.fmi.fi/land/eu_swi1km/$ncfile"
+#s3="s3://eodata/CLMS/bio-geophysical/soil_water_index/swi_europe_1km_daily_v1/$year/$month/$day/$ncpath/$ncfile"
 s3="s3://eodata/CLMS/bio-geophysical/soil_water_index/swi_europe_1km_daily_v2/$year/$month/$day/$ncpath/$ncfile"
 #manifest=$(wget -q -c --random-wait $maniurl)
 #url=$(grep "$year$month${day}1200_CEURO" manifest_clms_global_swi_1km_v2_daily_netcdf_latest.txt)
@@ -66,12 +67,12 @@ else
     # ensure only SWI variables are in the nc file
     cdo -selname,SWI_005,SWI_015,SWI_060,SWI_100 $ncfile $ncfixfile
     # convert to grib
-    cdo --eccodes -O -z aec -f grb2 -s -b P8 copy -chparam,-1,40.228.192,-2,41.228.192,-3,42.228.192,-4,43.228.192 $ncfixfile $fileFix
+    cdo --eccodes -O -f grb2 -s -b P8 copy -chparam,-1,40.228.192,-2,41.228.192,-3,42.228.192,-4,43.228.192 $ncfixfile $fileFix
     grib_set -s centre=224,jScansPositively=0 $fileFix $file
     s3cmd put -q -P --no-progress $ncfile s3://copernicus/land/eu_swi1km/ &&\
      s3cmd put -q -P --no-progress $file s3://copernicus/land/eu_swi1km_grb/
 #       s3cmd put -q -P --no-progress ${ncfile:0:-3}.xml s3://copernicus/land/eu_swi1km_meta/
-    #rm $ncfile $ncfixfile $fileFix manifest_clms_global_swi_1km_v1_daily_netcdf_latest.*
+    rm $ncfile $ncfixfile $fileFix manifest_clms_global_swi_1km_v1_daily_netcdf_latest.*
     mv $file ../grib/SWI_20000101T000000_${file:13:8}T${file:21:4}00_swis.grib
 fi
 echo "Done"

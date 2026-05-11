@@ -300,7 +300,7 @@ lailv_ecc = try_open_static_var('lailv_ecc', '/home/ubuntu/data/grib/ECC_2000010
 # --- XGBoost Prediction Section ---
 # 1. Load the XGBoost model
 model = xgb.Booster()
-model.load_model('/home/ubuntu/data/aurora/model_skt.json')
+model.load_model('/home/ubuntu/data/aurora/model_skt_combined.json')
 
 # 2. Prepare the input features for prediction
 # Example: concatenate all variables into a single DataFrame
